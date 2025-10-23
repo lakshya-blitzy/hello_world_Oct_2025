@@ -164,11 +164,11 @@ http://127.0.0.1:3000
 
 **Response:**
 - **Status Code**: 200 OK  
-  *Source: `/server.js:7`*
+  *Source: `/server.js:51`*
 - **Content-Type**: text/plain  
-  *Source: `/server.js:8`*
+  *Source: `/server.js:52`*
 - **Body**: `Hello, World!\n`  
-  *Source: `/server.js:9`*
+  *Source: `/server.js:53`*
 
 **Example Requests:**
 
@@ -224,7 +224,7 @@ Let's break down `server.js` line by line:
 const http = require('http');
 ```
 Imports Node.js's built-in HTTP module for creating web servers.  
-*Source: `/server.js:1`*
+*Source: `/server.js:12`*
 
 **2. Define Server Configuration**
 ```javascript
@@ -232,7 +232,7 @@ const hostname = '127.0.0.1';  // Localhost IPv4 address
 const port = 3000;              // Default development port
 ```
 Configures where the server listens. `127.0.0.1` restricts access to the local machine.  
-*Source: `/server.js:3-4`*
+*Source: `/server.js:22,32`*
 
 **3. Create HTTP Server with Request Handler**
 ```javascript
@@ -247,7 +247,7 @@ Creates a server instance with a callback function that:
 - Sets response content type to plain text
 - Sends "Hello, World!" and closes the connection
 
-*Source: `/server.js:6-10`*
+*Source: `/server.js:50-54`*
 
 **4. Start Listening for Connections**
 ```javascript
@@ -256,7 +256,7 @@ server.listen(port, hostname, () => {
 });
 ```
 Binds the server to the specified hostname and port, then logs a confirmation message.  
-*Source: `/server.js:12-14`*
+*Source: `/server.js:64-66`*
 
 ### Key Concepts
 
@@ -270,7 +270,7 @@ Binds the server to the specified hostname and port, then logs a confirmation me
 ### Hostname Configuration
 
 **Default Value**: `127.0.0.1` (localhost)  
-*Source: `/server.js:3`*
+*Source: `/server.js:22`*
 
 **Options:**
 - `127.0.0.1` - Only accessible from local machine (development)
@@ -286,7 +286,7 @@ const hostname = '0.0.0.0';  // Allow external connections
 ### Port Configuration
 
 **Default Value**: `3000`  
-*Source: `/server.js:4`*
+*Source: `/server.js:32`*
 
 **Common Ports:**
 - `3000` - Common Node.js development port
@@ -498,6 +498,16 @@ Hello, World!
 2. Open a web browser
 3. Navigate to: `http://127.0.0.1:3000/`
 4. Expected display: `Hello, World!`
+
+### Automated Testing
+
+Currently, no automated test framework is configured. The package.json test script intentionally fails:
+
+```json
+"test": "echo \"Error: no test specified\" && exit 1"
+```
+
+This is expected behavior. The project is designed as a minimal example without test infrastructure.
 
 ### Expected Responses
 
