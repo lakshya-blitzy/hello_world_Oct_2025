@@ -13,6 +13,7 @@ A minimal Node.js HTTP server implementation designed for backprop integration t
 - [API Reference](#api-reference)
 - [How It Works](#how-it-works)
 - [Configuration](#configuration)
+- [Security](#security)
 - [Deployment](#deployment)
 - [Testing](#testing)
 - [Troubleshooting](#troubleshooting)
@@ -165,11 +166,11 @@ http://127.0.0.1:3000
 
 **Response:**
 - **Status Code**: 200 OK  
-  *Source: `/server.js:7`*
+  *Source: `/server.js:51`*
 - **Content-Type**: text/plain  
-  *Source: `/server.js:8`*
+  *Source: `/server.js:52`*
 - **Body**: `Hello, World!\n`  
-  *Source: `/server.js:9`*
+  *Source: `/server.js:53`*
 
 **Example Requests:**
 
@@ -225,7 +226,7 @@ Let's break down `server.js` line by line:
 const http = require('http');
 ```
 Imports Node.js's built-in HTTP module for creating web servers.  
-*Source: `/server.js:1`*
+*Source: `/server.js:12`*
 
 **2. Define Server Configuration**
 ```javascript
@@ -233,7 +234,7 @@ const hostname = '127.0.0.1';  // Localhost IPv4 address
 const port = 3000;              // Default development port
 ```
 Configures where the server listens. `127.0.0.1` restricts access to the local machine.  
-*Source: `/server.js:3-4`*
+*Source: `/server.js:22,32`*
 
 **3. Create HTTP Server with Request Handler**
 ```javascript
@@ -248,7 +249,7 @@ Creates a server instance with a callback function that:
 - Sets response content type to plain text
 - Sends "Hello, World!" and closes the connection
 
-*Source: `/server.js:6-10`*
+*Source: `/server.js:50-54`*
 
 **4. Start Listening for Connections**
 ```javascript
@@ -257,7 +258,7 @@ server.listen(port, hostname, () => {
 });
 ```
 Binds the server to the specified hostname and port, then logs a confirmation message.  
-*Source: `/server.js:12-14`*
+*Source: `/server.js:64-66`*
 
 ### Key Concepts
 
@@ -271,7 +272,7 @@ Binds the server to the specified hostname and port, then logs a confirmation me
 ### Hostname Configuration
 
 **Default Value**: `127.0.0.1` (localhost)  
-*Source: `/server.js:3`*
+*Source: `/server.js:22`*
 
 **Options:**
 - `127.0.0.1` - Only accessible from local machine (development)
@@ -287,7 +288,7 @@ const hostname = '0.0.0.0';  // Allow external connections
 ### Port Configuration
 
 **Default Value**: `3000`  
-*Source: `/server.js:4`*
+*Source: `/server.js:32`*
 
 **Common Ports:**
 - `3000` - Common Node.js development port
@@ -314,6 +315,354 @@ Then run with:
 ```bash
 PORT=8080 HOST=0.0.0.0 node server.js
 ```
+
+## Security
+
+### Security Overview
+
+This project demonstrates a minimal HTTP server implementation. While suitable for learning and testing, production deployments require additional security measures.
+
+### Current Security Posture
+
+#### Strengths
+
+✅ **Zero External Dependencies**
+- No third-party npm packages means zero supply chain attack surface
+- No dependency vulnerabilities to patch or monitor
+- Reduced risk from compromised packages
+- *Source: `/package.json` - no dependencies field*
+
+✅ **Minimal Attack Surface**
+- Single-file implementation (~15 lines of code)
+- Limited functionality = fewer potential vulnerabilities
+- Easy to audit and review for security issues
+
+✅ **Localhost Binding by Default**
+- Default `hostname: '127.0.0.1'` restricts access to local machine only
+- Prevents unauthorized external network access in development
+- *Source: `/server.js:22`*
+
+✅ **Stateless Design**
+- No session management or state storage
+- No authentication/authorization complexity
+- No database connections to secure
+
+#### Current Limitations
+
+⚠️ **No HTTPS/TLS Support**
+- Traffic is unencrypted (plain HTTP)
+- Vulnerable to man-in-the-middle attacks
+- Credentials/sensitive data would be exposed if transmitted
+
+⚠️ **No Input Validation**
+- Server accepts all requests without validation
+- Suitable for this simple example, but risky for real applications
+
+⚠️ **No Rate Limiting**
+- Vulnerable to denial-of-service attacks
+- No protection against request flooding
+
+⚠️ **No Security Headers**
+- Missing security headers (CSP, HSTS, X-Frame-Options, etc.)
+- Browser-side protections not implemented
+
+⚠️ **No Request Logging**
+- No audit trail for security monitoring
+- Difficult to detect or investigate attacks
+
+### Security Best Practices
+
+#### 1. Network Exposure
+
+**Development (Current Configuration):**
+```javascript
+const hostname = '127.0.0.1';  // ✅ Secure - localhost only
+const port = 3000;              // ✅ Safe - non-privileged port
+```
+
+**Production (Requires Careful Configuration):**
+```javascript
+const hostname = '0.0.0.0';     // ⚠️ Exposes to all network interfaces
+const port = process.env.PORT || 3000;
+```
+
+**⚠️ Warning:** Binding to `0.0.0.0` makes the server accessible from any network interface. Only use this when:
+- Behind a firewall or security group
+- Behind a reverse proxy (nginx, Apache)
+- In a trusted network environment
+- With proper authentication implemented
+
+#### 2. Privileged Ports
+
+**Security Risk:**
+```javascript
+const port = 80;   // ❌ Requires root/admin privileges
+const port = 443;  // ❌ Requires root/admin privileges
+```
+
+**Best Practice:**
+- **Never run Node.js as root** in production
+- Use ports above 1024 (e.g., 3000, 8080, 8443)
+- Use a reverse proxy (nginx/Apache) to handle ports 80/443
+- Or use port forwarding: `sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000`
+
+#### 3. HTTPS/TLS Implementation
+
+For production, implement HTTPS to encrypt traffic:
+
+**Option A: Using Node.js HTTPS Module**
+```javascript
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('/path/to/private-key.pem'),
+  cert: fs.readFileSync('/path/to/certificate.pem')
+};
+
+const server = https.createServer(options, (req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+
+server.listen(443, '0.0.0.0', () => {
+  console.log('Secure server running at https://0.0.0.0:443/');
+});
+```
+
+**Option B: Using Reverse Proxy (Recommended)**
+- Let nginx or Apache handle TLS termination
+- Node.js server runs on localhost port 3000
+- Reverse proxy handles SSL certificates, security headers, rate limiting
+
+**Option C: Using Cloud Load Balancer**
+- AWS ALB, Azure Application Gateway, GCP Load Balancer
+- Managed TLS certificates (AWS Certificate Manager, Let's Encrypt)
+- Built-in DDoS protection and WAF capabilities
+
+#### 4. Security Headers
+
+Add security headers to protect against common web vulnerabilities:
+
+```javascript
+const server = http.createServer((req, res) => {
+  // Prevent clickjacking
+  res.setHeader('X-Frame-Options', 'DENY');
+  
+  // Prevent MIME type sniffing
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  
+  // Enable XSS protection
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  
+  // Content Security Policy
+  res.setHeader('Content-Security-Policy', "default-src 'self'");
+  
+  // Referrer Policy
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  
+  // Strict Transport Security (HTTPS only)
+  // res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+```
+
+#### 5. Rate Limiting and DDoS Protection
+
+Implement rate limiting to prevent abuse:
+
+**Using Express Rate Limit (requires adding dependencies):**
+```javascript
+// Example only - would require npm install express express-rate-limit
+const express = require('express');
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
+```
+
+**Using Reverse Proxy Rate Limiting:**
+- Configure nginx `limit_req_zone` and `limit_req`
+- Use cloud provider rate limiting (AWS WAF, Cloudflare)
+- Implement IP-based throttling at firewall level
+
+#### 6. Input Validation and Sanitization
+
+While this server doesn't process user input, real applications should:
+
+```javascript
+const server = http.createServer((req, res) => {
+  // Validate request method
+  const allowedMethods = ['GET', 'POST', 'HEAD'];
+  if (!allowedMethods.includes(req.method)) {
+    res.statusCode = 405;
+    res.setHeader('Allow', allowedMethods.join(', '));
+    res.end('Method Not Allowed\n');
+    return;
+  }
+  
+  // Validate path (prevent directory traversal)
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  if (url.pathname.includes('..')) {
+    res.statusCode = 400;
+    res.end('Bad Request\n');
+    return;
+  }
+  
+  // Your application logic here
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+```
+
+#### 7. Security Monitoring and Logging
+
+Implement logging for security monitoring:
+
+```javascript
+const server = http.createServer((req, res) => {
+  // Log request details
+  const timestamp = new Date().toISOString();
+  const clientIP = req.socket.remoteAddress;
+  const method = req.method;
+  const url = req.url;
+  const userAgent = req.headers['user-agent'] || 'unknown';
+  
+  console.log(`[${timestamp}] ${clientIP} ${method} ${url} - ${userAgent}`);
+  
+  // Your application logic
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+  
+  // Log response
+  console.log(`[${timestamp}] Response: ${res.statusCode}`);
+});
+```
+
+**Production Logging Best Practices:**
+- Use structured logging (JSON format)
+- Send logs to centralized logging service (ELK stack, Splunk, CloudWatch)
+- Log security events: failed auth attempts, suspicious requests, errors
+- Never log sensitive data (passwords, tokens, PII)
+- Implement log rotation to prevent disk space issues
+
+#### 8. Environment and Configuration Security
+
+**Secure Configuration Management:**
+
+```bash
+# ❌ DON'T hardcode secrets in source code
+const API_KEY = 'sk_live_abc123def456';
+
+# ✅ DO use environment variables
+const API_KEY = process.env.API_KEY;
+
+# ✅ DO use .env files (and add to .gitignore)
+# Create .env file:
+echo "API_KEY=sk_live_abc123def456" > .env
+echo "DATABASE_URL=postgres://..." >> .env
+
+# Add to .gitignore:
+echo ".env" >> .gitignore
+```
+
+**Environment Variable Validation:**
+```javascript
+// Validate required environment variables at startup
+const requiredEnvVars = ['API_KEY', 'DATABASE_URL'];
+const missing = requiredEnvVars.filter(name => !process.env[name]);
+
+if (missing.length > 0) {
+  console.error(`Missing required environment variables: ${missing.join(', ')}`);
+  process.exit(1);
+}
+```
+
+#### 9. Dependency Security (For Future Enhancements)
+
+If you add npm dependencies in the future:
+
+```bash
+# Check for known vulnerabilities
+npm audit
+
+# Fix automatically where possible
+npm audit fix
+
+# Use npm ci for reproducible installs
+npm ci
+
+# Keep dependencies updated
+npm outdated
+npm update
+
+# Use Snyk or Dependabot for automated vulnerability scanning
+```
+
+#### 10. Deployment Security Checklist
+
+Before deploying to production:
+
+- [ ] **Remove development configurations** (debug mode, verbose logging)
+- [ ] **Use environment variables** for all configuration (no hardcoded values)
+- [ ] **Implement HTTPS/TLS** encryption (or use reverse proxy/load balancer)
+- [ ] **Add security headers** (CSP, HSTS, X-Frame-Options, etc.)
+- [ ] **Implement rate limiting** to prevent DoS attacks
+- [ ] **Set up monitoring and alerting** for security events
+- [ ] **Configure firewall rules** (allow only necessary ports)
+- [ ] **Run as non-root user** (never run Node.js as root)
+- [ ] **Enable security groups** (AWS) or network security groups (Azure)
+- [ ] **Implement request logging** for audit trails
+- [ ] **Set up automated backups** (if applicable)
+- [ ] **Use process manager** (PM2, systemd) for automatic restarts
+- [ ] **Keep Node.js updated** to latest LTS version
+- [ ] **Scan for vulnerabilities** (npm audit, Snyk, etc.)
+- [ ] **Implement health checks** and graceful shutdown
+- [ ] **Review and minimize exposed endpoints**
+- [ ] **Use secrets manager** for sensitive credentials (AWS Secrets Manager, Azure Key Vault)
+- [ ] **Enable CORS properly** (don't use `*` in production)
+- [ ] **Implement authentication/authorization** if needed
+- [ ] **Set up Web Application Firewall (WAF)** for additional protection
+
+### Security Resources
+
+**Node.js Security Best Practices:**
+- [Node.js Security Best Practices](https://nodejs.org/en/docs/guides/security/)
+- [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html)
+- [Express Security Best Practices](https://expressjs.com/en/advanced/best-practice-security.html)
+
+**Security Tools:**
+- [npm audit](https://docs.npmjs.com/cli/v8/commands/npm-audit) - Vulnerability scanning
+- [Snyk](https://snyk.io/) - Dependency vulnerability monitoring
+- [OWASP ZAP](https://www.zaproxy.org/) - Security testing
+- [Let's Encrypt](https://letsencrypt.org/) - Free SSL/TLS certificates
+
+**Security Standards:**
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/) - Most critical web security risks
+- [CWE Top 25](https://cwe.mitre.org/top25/) - Most dangerous software weaknesses
+
+### Reporting Security Vulnerabilities
+
+If you discover a security vulnerability in this project:
+
+1. **Do NOT create a public GitHub issue**
+2. Contact the project maintainer privately
+3. Provide detailed information about the vulnerability
+4. Allow time for the issue to be addressed before public disclosure
+
+### Disclaimer
+
+This project is designed for **learning and testing purposes**. It is NOT production-ready out of the box. Implementing the security measures described above is YOUR responsibility when deploying to production environments.
 
 ## Deployment
 
@@ -499,6 +848,16 @@ Hello, World!
 2. Open a web browser
 3. Navigate to: `http://127.0.0.1:3000/`
 4. Expected display: `Hello, World!`
+
+### Automated Testing
+
+Currently, no automated test framework is configured. The package.json test script intentionally fails:
+
+```json
+"test": "echo \"Error: no test specified\" && exit 1"
+```
+
+This is expected behavior. The project is designed as a minimal example without test infrastructure.
 
 ### Expected Responses
 
