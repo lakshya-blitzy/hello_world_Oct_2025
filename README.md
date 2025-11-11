@@ -1,10 +1,16 @@
 # hao-backprop-test
 
-A minimal Node.js HTTP server implementation designed for backprop integration testing. This project demonstrates a simple "Hello, World!" server built with Node.js core modules, requiring zero external dependencies.
+A minimal HTTP server implementation available in both **Node.js** and **Python Flask**, designed for backprop integration testing. This project demonstrates a simple "Hello, World!" server in two popular languages:
+
+- **Node.js version** (`server.js`): Zero external dependencies, uses only Node.js core `http` module
+- **Python Flask version** (`app.py`): Minimal Flask implementation with identical functionality
+
+Both implementations provide identical behavior and API responses, allowing you to choose based on your preferred technology stack.
 
 ## Table of Contents
 
 - [Features](#features)
+- [Choosing an Implementation](#choosing-an-implementation)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
@@ -23,26 +29,67 @@ A minimal Node.js HTTP server implementation designed for backprop integration t
 
 ## Features
 
-- **Lightweight HTTP Server**: Minimal Node.js implementation using only core modules
-- **Zero External Dependencies**: No npm packages required - uses only built-in `http` module
-- **Single-File Implementation**: Complete server in one file (`server.js`) - easy to understand
+- **Dual Implementation**: Available in both Node.js and Python Flask - choose your preferred stack
+- **Lightweight HTTP Server**: Minimal implementation in both languages
+- **Node.js Version**: Zero external dependencies - uses only built-in `http` module
+- **Python Flask Version**: Minimal Flask dependency with clean, Pythonic code
+- **Single-File Implementations**: Complete server in one file per language - easy to understand
+- **Identical Behavior**: Both implementations provide the exact same API and responses
 - **Simple Endpoint**: Returns "Hello, World!" response to all requests
-- **Easy to Understand**: Perfect for learning Node.js HTTP server basics
+- **Easy to Understand**: Perfect for learning HTTP server basics in Node.js or Python
 - **Easy to Modify**: Clean, straightforward code structure ideal for customization
+
+## Choosing an Implementation
+
+This project provides two functionally identical HTTP server implementations. Choose based on your needs:
+
+### Node.js Version (`server.js`)
+
+**Choose this if you:**
+- Prefer JavaScript/Node.js ecosystem
+- Want zero external dependencies (only Node.js runtime required)
+- Need the absolute minimal setup (no package installation)
+- Are learning Node.js HTTP server basics
+
+**Pros:**
+- No `npm install` required
+- Smaller footprint (no dependencies)
+- Native async/event-driven architecture
+- Faster startup time
+
+### Python Flask Version (`app.py`)
+
+**Choose this if you:**
+- Prefer Python ecosystem
+- Are more comfortable with Python syntax
+- Want to extend with Python's extensive libraries
+- Are learning Flask web framework basics
+
+**Pros:**
+- Cleaner, more readable Python syntax
+- Easy integration with Python data science/ML tools
+- Extensive Flask ecosystem for future expansion
+- Strong typing support with type hints
+
+### Functional Equivalence
+
+Both implementations provide:
+- Identical HTTP responses (status 200, text/plain, "Hello, World!")
+- Same binding (127.0.0.1:3000 by default)
+- Same console output on startup
+- Same behavior for all HTTP methods and paths
+
+**You can use either one interchangeably based on your preference.**
 
 ## Prerequisites
 
-Before running this project, ensure you have the following installed:
+### For Node.js Version
 
 - **Node.js**: Version 14.0.0 or higher (tested with v22.21.0)
   - Download from [nodejs.org](https://nodejs.org/)
 - **npm**: Comes bundled with Node.js
-- **Command Line Knowledge**: Basic familiarity with terminal/command prompt
-- **curl** (optional): For testing HTTP endpoints from the command line
 
-### Verify Installation
-
-Check your Node.js and npm versions:
+**Verify Installation:**
 
 ```bash
 node --version
@@ -52,9 +99,29 @@ npm --version
 # Expected output: 6.0.0 or higher
 ```
 
-## Installation
+### For Python Flask Version
 
-This project has no external dependencies, making installation straightforward:
+- **Python 3**: Version 3.8 or higher (tested with v3.12.3)
+  - Download from [python.org](https://www.python.org/)
+- **pip**: Python package installer (comes with Python 3.4+)
+- **Virtual environment** (recommended): `python3 -m venv`
+
+**Verify Installation:**
+
+```bash
+python3 --version
+# Expected output: Python 3.8.0 or higher
+
+pip3 --version
+# Expected output: pip 20.0.0 or higher
+```
+
+### Common Requirements (Both Versions)
+
+- **Command Line Knowledge**: Basic familiarity with terminal/command prompt
+- **curl** (optional): For testing HTTP endpoints from the command line
+
+## Installation
 
 ### Step 1: Clone the Repository
 
@@ -63,40 +130,97 @@ git clone <repository-url>
 cd hao-backprop-test
 ```
 
-### Step 2: Verify Node.js Installation
+### Step 2: Choose Your Implementation
+
+#### Option A: Node.js Version (Zero Dependencies)
+
+**Verify Node.js Installation:**
 
 ```bash
 node --version
+# Expected: v14.0.0 or higher
 ```
 
-Expected output: `v14.0.0` or higher
-
-### Step 3: Ready to Run
-
-No dependency installation needed! The project uses only Node.js built-in modules.
+**No additional installation needed!** The Node.js version uses only built-in modules.
 
 ```bash
 # No need to run npm install - there are no dependencies!
 ```
 
-## Quick Start
+#### Option B: Python Flask Version
 
-Get the server running in three simple commands:
+**Verify Python Installation:**
 
 ```bash
-# 1. Start the server
+python3 --version
+# Expected: Python 3.8.0 or higher
+```
+
+**Create Virtual Environment (Recommended):**
+
+```bash
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# On Linux/macOS:
+source venv/bin/activate
+
+# On Windows:
+venv\Scripts\activate
+```
+
+**Install Dependencies:**
+
+```bash
+pip install -r requirements.txt
+# Installs Flask and dependencies
+```
+
+**Verify Flask Installation:**
+
+```bash
+python3 -c "import flask; print(f'Flask {flask.__version__} installed')"
+# Expected: Flask 3.1.0 installed
+```
+
+## Quick Start
+
+### Node.js Version
+
+Get the Node.js server running:
+
+```bash
+# Start the server
 node server.js
 
 # Output: Server running at http://127.0.0.1:3000/
 ```
 
+### Python Flask Version
+
+Get the Flask server running:
+
+```bash
+# Activate virtual environment (if using one)
+source venv/bin/activate  # Linux/macOS
+# OR: venv\Scripts\activate  # Windows
+
+# Start the server
+python3 app.py
+
+# Output: Server running at http://127.0.0.1:3000/
+```
+
+### Testing Either Version
+
 In another terminal window:
 
 ```bash
-# 2. Test the server
+# Test the server
 curl http://127.0.0.1:3000/
 
-# 3. Expected output
+# Expected output
 Hello, World!
 ```
 
@@ -105,6 +229,8 @@ That's it! Your server is now running and responding to requests.
 ## Usage
 
 ### Starting the Server
+
+#### Node.js Version
 
 Run the server using Node.js:
 
@@ -117,11 +243,36 @@ Expected console output:
 Server running at http://127.0.0.1:3000/
 ```
 
-The server is now listening on `localhost` (127.0.0.1) at port 3000.
+#### Python Flask Version
+
+Run the server using Python:
+
+```bash
+# Activate virtual environment first (if using one)
+source venv/bin/activate  # Linux/macOS
+# OR: venv\Scripts\activate  # Windows
+
+# Start the server
+python3 app.py
+```
+
+Expected console output:
+```
+Server running at http://127.0.0.1:3000/
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:3000
+Press CTRL+C to quit
+```
+
+**Note:** The Flask development server shows additional warnings about production deployment, which is normal for development.
+
+Both servers listen on `localhost` (127.0.0.1) at port 3000.
 
 ### Stopping the Server
 
-To stop the server, press:
+To stop either server, press:
 
 ```bash
 Ctrl+C
@@ -131,16 +282,29 @@ Ctrl+C
 
 ### Changing Port or Hostname
 
-To run on a different port or hostname, modify the constants in `server.js`:
+#### For Node.js (`server.js`)
+
+Modify the constants:
 
 ```javascript
 const hostname = '127.0.0.1';  // Change to '0.0.0.0' for external access
 const port = 3000;              // Change to your preferred port
 ```
 
-Or set environment variables (requires code modification to read from `process.env`).
+#### For Python Flask (`app.py`)
+
+Modify the constants:
+
+```python
+HOSTNAME = '127.0.0.1'  # Change to '0.0.0.0' for external access
+PORT = 3000              # Change to your preferred port
+```
+
+Or set environment variables (requires code modification to read from `os.environ`).
 
 ## API Reference
+
+**Both Node.js and Python Flask implementations provide identical API responses.**
 
 ### Base URL
 
@@ -159,17 +323,20 @@ http://127.0.0.1:3000
 **Description:** Responds with "Hello, World!" to all HTTP requests regardless of method or path.
 
 **Request:**
-- **Methods**: GET, POST, PUT, DELETE, etc. (all methods accepted)
+- **Methods**: GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD (all methods accepted)
 - **URL**: Any path (e.g., `/`, `/test`, `/api/users`)
 - **Headers**: None required
 
-**Response:**
+**Response (Identical for Both Implementations):**
 - **Status Code**: 200 OK  
-  *Source: `/server.js:51`*
+  *Node.js Source: `/server.js:51`*  
+  *Python Source: `/app.py:47-49`*
 - **Content-Type**: text/plain  
-  *Source: `/server.js:52`*
+  *Node.js Source: `/server.js:52`*  
+  *Python Source: `/app.py:49`*
 - **Body**: `Hello, World!\n`  
-  *Source: `/server.js:53`*
+  *Node.js Source: `/server.js:53`*  
+  *Python Source: `/app.py:48`*
 
 **Example Requests:**
 
@@ -200,14 +367,19 @@ Displays: Hello, World!
 
 ### Architecture Overview
 
-This server implements a simple HTTP request/response cycle using Node.js's built-in `http` module. Every incoming request is handled by a single callback function that sends the same response.
+Both implementations follow a simple HTTP request/response cycle:
 
-### Request Flow Diagram
+- **Node.js version**: Uses Node.js's built-in `http` module with event-driven callbacks
+- **Python Flask version**: Uses Flask's routing decorators with WSGI application framework
+
+Every incoming request is handled by a single function that sends the same response, regardless of HTTP method or path.
+
+### Request Flow Diagram (Both Implementations)
 
 ```mermaid
 sequenceDiagram
     participant Client as Client (Browser/curl)
-    participant Server as Node.js HTTP Server
+    participant Server as HTTP Server (Node.js or Flask)
     
     Client->>Server: HTTP Request (Any Method, Any Path)
     Server->>Server: Execute Request Handler
@@ -216,9 +388,11 @@ sequenceDiagram
     Note over Client: Receives: Hello, World!
 ```
 
+Both implementations follow the same flow, differing only in implementation details.
+
 ### Code Walkthrough
 
-Let's break down `server.js` line by line:
+#### Node.js Implementation (`server.js`)
 
 **1. Import the HTTP Module**
 ```javascript
@@ -259,19 +433,81 @@ server.listen(port, hostname, () => {
 Binds the server to the specified hostname and port, then logs a confirmation message.  
 *Source: `/server.js:64-66`*
 
+#### Python Flask Implementation (`app.py`)
+
+**1. Import Flask and Response**
+```python
+from flask import Flask, Response
+```
+Imports Flask web framework and Response class for creating HTTP responses.  
+*Source: `/app.py:11`*
+
+**2. Define Server Configuration**
+```python
+HOSTNAME = '127.0.0.1'  # Localhost IPv4 address
+PORT = 3000              # Default development port
+```
+Configures where the server listens. `127.0.0.1` restricts access to the local machine.  
+*Source: `/app.py:16,21`*
+
+**3. Create Flask Application**
+```python
+app = Flask(__name__)
+```
+Creates a Flask application instance.  
+*Source: `/app.py:24`*
+
+**4. Define Route Handler (All Paths, All Methods)**
+```python
+@app.route('/', defaults={'path': ''}, methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'])
+@app.route('/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'])
+def hello_world(path=''):
+    return Response(
+        'Hello, World!\n',
+        status=200,
+        mimetype='text/plain'
+    )
+```
+Defines a route handler that:
+- Catches all HTTP methods (GET, POST, PUT, DELETE, etc.)
+- Catches all paths (/, /test, /any/path)
+- Returns Response with status 200, text/plain type, and "Hello, World!" body
+
+*Source: `/app.py:27-50`*
+
+**5. Start Server**
+```python
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=False, use_reloader=False, threaded=True)
+```
+Starts the Flask development server on the specified hostname and port.  
+*Source: `/app.py:53-61`*
+
 ### Key Concepts
 
-- **Event-Driven Architecture**: Node.js uses callbacks to handle requests asynchronously
+#### Node.js Architecture
+- **Event-Driven Architecture**: Uses callbacks to handle requests asynchronously
 - **Single-Threaded**: One process handles all requests using the event loop
+- **Non-Blocking I/O**: Efficient handling of concurrent requests
+
+#### Python Flask Architecture
+- **WSGI Application**: Python Web Server Gateway Interface standard
+- **Request Context**: Flask manages request and response objects
+- **Threaded**: Handles concurrent requests with threading (threaded=True)
+
+#### Common Concepts (Both)
 - **Stateless Server**: Each request is independent with no session management
 - **Simple Response**: Same response for every request regardless of path or method
+- **Development Server**: Built-in servers suitable for development, not production
 
 ## Configuration
 
 ### Hostname Configuration
 
-**Default Value**: `127.0.0.1` (localhost)  
-*Source: `/server.js:22`*
+**Default Value**: `127.0.0.1` (localhost) for both implementations  
+*Node.js Source: `/server.js:22`*  
+*Python Source: `/app.py:16`*
 
 **Options:**
 - `127.0.0.1` - Only accessible from local machine (development)
@@ -279,32 +515,45 @@ Binds the server to the specified hostname and port, then logs a confirmation me
 - Specific IP - Bind to a specific network interface
 
 **How to Change:**
-Edit `server.js` line 3:
+
+For Node.js (`server.js`):
 ```javascript
 const hostname = '0.0.0.0';  // Allow external connections
 ```
 
+For Python Flask (`app.py`):
+```python
+HOSTNAME = '0.0.0.0'  # Allow external connections
+```
+
 ### Port Configuration
 
-**Default Value**: `3000`  
-*Source: `/server.js:32`*
+**Default Value**: `3000` for both implementations  
+*Node.js Source: `/server.js:32`*  
+*Python Source: `/app.py:21`*
 
 **Common Ports:**
-- `3000` - Common Node.js development port
+- `3000` - Common development port (both Node.js and Python)
+- `5000` - Flask default port (alternative for Python)
 - `8000`, `8080` - Alternative development ports
 - `80` - HTTP (requires root/admin privileges)
 - `443` - HTTPS (requires root/admin privileges)
 
 **How to Change:**
-Edit `server.js` line 4:
+
+For Node.js (`server.js`):
 ```javascript
 const port = 8080;  // Use port 8080 instead
 ```
 
+For Python Flask (`app.py`):
+```python
+PORT = 8080  # Use port 8080 instead
+```
+
 ### Environment Variables (Future Enhancement)
 
-To support environment-based configuration, you could modify the code:
-
+**For Node.js:**
 ```javascript
 const hostname = process.env.HOST || '127.0.0.1';
 const port = process.env.PORT || 3000;
@@ -313,6 +562,18 @@ const port = process.env.PORT || 3000;
 Then run with:
 ```bash
 PORT=8080 HOST=0.0.0.0 node server.js
+```
+
+**For Python Flask:**
+```python
+import os
+HOSTNAME = os.environ.get('HOST', '127.0.0.1')
+PORT = int(os.environ.get('PORT', 3000))
+```
+
+Then run with:
+```bash
+PORT=8080 HOST=0.0.0.0 python3 app.py
 ```
 
 ## Security
@@ -667,18 +928,27 @@ This project is designed for **learning and testing purposes**. It is NOT produc
 
 ### Local Development
 
-**Direct Node.js Execution:**
+**Node.js Version:**
 
 ```bash
 node server.js
+```
+
+**Python Flask Version:**
+
+```bash
+# Activate virtual environment first
+source venv/bin/activate  # Linux/macOS
+python3 app.py
 ```
 
 Simple and suitable for development and testing.
 
 ### Production Deployment
 
-#### Option 1: Direct Node.js (Basic)
+#### Option 1: Direct Execution (Basic)
 
+**Node.js:**
 ```bash
 # Run in foreground
 node server.js
@@ -687,9 +957,17 @@ node server.js
 nohup node server.js > server.log 2>&1 &
 ```
 
-**Limitations**: Process stops if terminal closes or errors occur.
+**Python Flask (NOT recommended for production):**
+```bash
+# Flask development server is NOT suitable for production
+# Use Gunicorn or uWSGI instead (see Option 2)
+```
 
-#### Option 2: PM2 Process Manager (Recommended)
+**Limitations**: Process stops if terminal closes or errors occur. Flask development server is not production-ready.
+
+#### Option 2: Process Manager (Recommended)
+
+**For Node.js - PM2:**
 
 PM2 keeps your application running, restarts on crashes, and provides monitoring.
 
@@ -717,9 +995,31 @@ pm2 startup
 pm2 save
 ```
 
+**For Python Flask - Gunicorn:**
+
+Gunicorn is a production-ready WSGI server for Python applications.
+
+```bash
+# Install Gunicorn in virtual environment
+source venv/bin/activate
+pip install gunicorn
+
+# Start with Gunicorn (4 worker processes)
+gunicorn -w 4 -b 127.0.0.1:3000 app:app
+
+# Or with Gunicorn as daemon
+gunicorn -w 4 -b 127.0.0.1:3000 app:app --daemon --pid gunicorn.pid
+
+# Stop Gunicorn daemon
+kill $(cat gunicorn.pid)
+
+# Alternative: Use systemd service (production)
+# Create /etc/systemd/system/hello-world-flask.service
+```
+
 #### Option 3: Docker Deployment
 
-**Create a `Dockerfile`:**
+**For Node.js - Create `Dockerfile.node`:**
 
 ```dockerfile
 FROM node:18-alpine
@@ -733,31 +1033,65 @@ EXPOSE 3000
 CMD ["node", "server.js"]
 ```
 
-**Build and run:**
+**Build and run Node.js:**
 
 ```bash
 # Build Docker image
-docker build -t hello-world-server .
+docker build -f Dockerfile.node -t hello-world-node .
 
 # Run container
-docker run -d -p 3000:3000 --name hello-server hello-world-server
+docker run -d -p 3000:3000 --name hello-server-node hello-world-node
 
 # View logs
-docker logs hello-server
+docker logs hello-server-node
 
 # Stop container
-docker stop hello-server
+docker stop hello-server-node
+```
+
+**For Python Flask - Create `Dockerfile.python`:**
+
+```dockerfile
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY app.py .
+
+EXPOSE 3000
+
+# Use Gunicorn for production
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:3000", "app:app"]
+```
+
+**Build and run Python Flask:**
+
+```bash
+# Build Docker image
+docker build -f Dockerfile.python -t hello-world-flask .
+
+# Run container
+docker run -d -p 3000:3000 --name hello-server-flask hello-world-flask
+
+# View logs
+docker logs hello-server-flask
+
+# Stop container
+docker stop hello-server-flask
 ```
 
 #### Option 4: Cloud Platform Deployment
 
-**Heroku:**
+**Heroku (Node.js):**
 
 ```bash
 # Create Heroku app
 heroku create
 
-# Add Procfile
+# Add Procfile for Node.js
 echo "web: node server.js" > Procfile
 
 # Deploy
@@ -767,7 +1101,26 @@ git push heroku main
 heroku open
 ```
 
-**AWS Elastic Beanstalk:**
+**Heroku (Python Flask):**
+
+```bash
+# Create Heroku app
+heroku create
+
+# Add Procfile for Python
+echo "web: gunicorn -w 4 -b 0.0.0.0:\$PORT app:app" > Procfile
+
+# Ensure requirements.txt includes gunicorn
+echo "gunicorn==21.2.0" >> requirements.txt
+
+# Deploy
+git push heroku main
+
+# Open in browser
+heroku open
+```
+
+**AWS Elastic Beanstalk (Node.js):**
 
 1. Install AWS CLI and EB CLI
 2. Initialize Elastic Beanstalk:
@@ -777,12 +1130,30 @@ heroku open
    eb open
    ```
 
-**Azure App Service:**
+**AWS Elastic Beanstalk (Python):**
+
+1. Install AWS CLI and EB CLI
+2. Initialize Elastic Beanstalk:
+   ```bash
+   eb init -p python-3.12
+   eb create production-env
+   eb open
+   ```
+
+**Azure App Service (Node.js):**
 
 1. Install Azure CLI
 2. Deploy:
    ```bash
-   az webapp up --name hello-world-server --runtime "NODE:18-lts"
+   az webapp up --name hello-world-node --runtime "NODE:18-lts"
+   ```
+
+**Azure App Service (Python):**
+
+1. Install Azure CLI
+2. Deploy:
+   ```bash
+   az webapp up --name hello-world-flask --runtime "PYTHON:3.12"
    ```
 
 ### Environment Considerations
@@ -795,6 +1166,8 @@ heroku open
 
 ## Testing
 
+**Both implementations provide identical responses and can be tested the same way.**
+
 ### Manual Testing with curl
 
 **Test the root endpoint:**
@@ -802,7 +1175,7 @@ heroku open
 curl http://127.0.0.1:3000/
 ```
 
-**Expected output:**
+**Expected output (identical for both Node.js and Python):**
 ```
 Hello, World!
 ```
@@ -812,6 +1185,7 @@ Hello, World!
 curl http://127.0.0.1:3000/test
 curl http://127.0.0.1:3000/api/users
 curl http://127.0.0.1:3000/anything
+# All return: Hello, World!
 ```
 
 All return: `Hello, World!`
@@ -924,10 +1298,71 @@ curl: (7) Failed to connect to 127.0.0.1 port 3000: Connection refused
 
 **Possible Causes:**
 
-1. **Server not running**: Start the server with `node server.js`
+1. **Server not running**: 
+   - Node.js: Start with `node server.js`
+   - Python: Start with `python3 app.py` (with venv activated)
 2. **Wrong hostname**: Verify server is listening on `127.0.0.1`
 3. **Wrong port**: Verify server is using port 3000
 4. **Firewall blocking**: Check firewall settings
+
+### Python-Specific Issues
+
+#### Flask Not Installed
+
+**Error Message:**
+```
+ModuleNotFoundError: No module named 'flask'
+```
+
+**Solution:**
+
+```bash
+# Activate virtual environment
+source venv/bin/activate  # Linux/macOS
+# OR: venv\Scripts\activate  # Windows
+
+# Install Flask
+pip install -r requirements.txt
+
+# Verify installation
+python3 -c "import flask; print(flask.__version__)"
+```
+
+#### Virtual Environment Not Activated
+
+**Symptom:** Flask commands not found or import errors
+
+**Solution:**
+
+```bash
+# Check if virtual environment is activated (look for (venv) in prompt)
+
+# If not activated:
+source venv/bin/activate  # Linux/macOS
+# OR: venv\Scripts\activate  # Windows
+
+# Verify activation
+which python3  # Should show path inside venv/
+```
+
+#### Python Version Mismatch
+
+**Error Message:**
+```
+SyntaxError: f-string expression part cannot include a backslash
+```
+
+**Cause:** Python version older than 3.8
+
+**Solution:**
+
+```bash
+# Check Python version
+python3 --version
+
+# Upgrade to Python 3.8+ or use Python 3.12
+# Download from https://www.python.org/downloads/
+```
 
 ### Module Not Found Errors
 
@@ -948,30 +1383,44 @@ Reinstall Node.js from [nodejs.org](https://nodejs.org/)
 
 ```
 hao-backprop-test/
-├── README.md           # This documentation file
-├── package.json        # Project metadata (no dependencies)
-├── package-lock.json   # Lock file (empty dependencies)
-└── server.js           # Main server implementation (15 lines)
+├── README.md           # This comprehensive documentation
+├── package.json        # Node.js project metadata (no npm dependencies)
+├── package-lock.json   # Node.js lock file (empty dependencies)
+├── server.js           # Node.js server implementation (67 lines with JSDoc)
+├── app.py              # Python Flask server implementation (61 lines)
+├── requirements.txt    # Python dependencies (Flask)
+├── venv/               # Python virtual environment (not in git)
+└── blitzy/            # Documentation and specs
+    └── documentation/
 ```
 
-**Total Files:** 4  
-**Lines of Code:** ~15 lines in `server.js`  
-**External Dependencies:** 0
+**Implementation Stats:**
+- **Node.js version:** ~67 lines (including comprehensive JSDoc comments)
+- **Python version:** ~61 lines (including comprehensive docstrings)
+- **Node.js dependencies:** 0 external (only Node.js core `http` module)
+- **Python dependencies:** Flask and Werkzeug
 
 ### Making Changes
 
 #### Modify the Response
 
-Edit `server.js` line 9:
-
+**Node.js (`server.js`):**
 ```javascript
 res.end('Your custom message here!\n');
 ```
 
+**Python Flask (`app.py`):**
+```python
+return Response(
+    'Your custom message here!\n',
+    status=200,
+    mimetype='text/plain'
+)
+```
+
 #### Add Basic Routing
 
-Replace the request handler with:
-
+**Node.js (`server.js`):**
 ```javascript
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -987,8 +1436,25 @@ const server = http.createServer((req, res) => {
 });
 ```
 
+**Python Flask (`app.py`):**
+```python
+@app.route('/hello')
+def hello():
+    return 'Hello, World!\n', 200, {'Content-Type': 'text/plain'}
+
+@app.route('/goodbye')
+def goodbye():
+    return 'Goodbye, World!\n', 200, {'Content-Type': 'text/plain'}
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path=''):
+    return 'Welcome!\n', 200, {'Content-Type': 'text/plain'}
+```
+
 #### Add JSON Response
 
+**Node.js (`server.js`):**
 ```javascript
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -997,13 +1463,35 @@ const server = http.createServer((req, res) => {
 });
 ```
 
+**Python Flask (`app.py`):**
+```python
+from flask import jsonify
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path=''):
+    return jsonify({'message': 'Hello, World!'})
+```
+
 ### Code Style Guidelines
 
-- **Formatting**: Use 2-space indentation (current style)
-- **Comments**: Add JSDoc comments for functions (recommended)
-- **Naming**: Use descriptive variable names
-- **Simplicity**: Keep the code minimal and readable
-- **Node.js Version**: Maintain compatibility with Node.js 14+
+**Node.js (`server.js`):**
+- **Indentation:** 2 spaces (no tabs)
+- **Variable Declarations:** Use `const` for constants, `let` for mutable variables
+- **String Quotes:** Single quotes `'` preferred
+- **Semicolons:** Required at end of statements
+- **Comments:** JSDoc format (`/** ... */`)
+- **Naming:** `camelCase` for variables/functions, `UPPER_CASE` for constants
+- **Compatibility:** Maintain Node.js 14+ compatibility
+
+**Python Flask (`app.py`):**
+- **Indentation:** 4 spaces (PEP 8 standard, no tabs)
+- **String Quotes:** Single quotes `'` preferred, `"""` for docstrings
+- **Line Length:** 79 characters maximum (PEP 8)
+- **Comments:** Docstrings format (`"""..."""`) for functions and modules
+- **Naming:** `snake_case` for functions, `UPPER_CASE` for constants, `PascalCase` for classes
+- **Imports:** Group by standard library, third-party, then local imports
+- **Compatibility:** Maintain Python 3.7+ compatibility
 
 ## Contributing
 
@@ -1091,4 +1579,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 **Last Updated:** 2024-10-22  
 **Documentation Version:** 1.0.0  
-**Tested with Node.js:** v22.21.0
+**Tested Versions:**
+- **Node.js:** v22.21.0 (compatible with v14.0.0+)
+- **Python:** 3.12.3 (compatible with 3.7+)
+- **Flask:** 3.1.0
