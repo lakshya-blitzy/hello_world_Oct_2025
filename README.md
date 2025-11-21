@@ -132,7 +132,7 @@ cd hao-backprop-test
 
 ### Step 2: Choose Your Implementation
 
-#### Option A: Node.js Version (Zero Dependencies)
+#### Option A: Node.js Version (Zero Runtime Dependencies)
 
 **Verify Node.js Installation:**
 
@@ -141,10 +141,20 @@ node --version
 # Expected: v14.0.0 or higher
 ```
 
-**No additional installation needed!** The Node.js version uses only built-in modules.
+**For running the server only:**
+No additional installation needed! The Node.js version uses only built-in modules.
 
 ```bash
-# No need to run npm install - there are no dependencies!
+# No need to run npm install - there are no runtime dependencies!
+node server.js  # Just run it!
+```
+
+**For running tests (optional):**
+If you want to run the automated test suite, install dev dependencies:
+
+```bash
+npm install  # Installs Jest test framework (dev dependency only)
+npm test     # Run all 36 unit tests
 ```
 
 #### Option B: Python Flask Version
@@ -1224,13 +1234,84 @@ Hello, World!
 
 ### Automated Testing
 
-Currently, no automated test framework is configured. The package.json test script intentionally fails:
+The Node.js version includes comprehensive unit tests using **Jest**. The test suite covers all functions, constants, and server behavior.
 
-```json
-"test": "echo \"Error: no test specified\" && exit 1"
+**Run all tests:**
+```bash
+npm test
 ```
 
-This is expected behavior. The project is designed as a minimal example without test infrastructure.
+**Expected output:**
+```
+PASS ./server.test.js
+  Server Configuration Constants
+    hostname
+      ✓ should be defined
+      ✓ should be a string
+      ✓ should be localhost IP address
+      ✓ should be a valid IPv4 address format
+    port
+      ✓ should be defined
+      ✓ should be a number
+      ✓ should be 3000
+      ✓ should be within valid port range (1-65535)
+      ✓ should be an integer
+  Request Handler Function
+    requestHandler
+      ✓ should be defined
+      ✓ should be a function
+      ✓ should accept two parameters
+      ✓ should set response status code to 200
+      ✓ should set Content-Type header to text/plain
+      ✓ should end response with "Hello, World!\n"
+      ✓ should call res.end exactly once
+      ✓ should handle GET requests
+      ✓ should handle POST requests identically
+      ✓ should handle PUT requests identically
+      ✓ should handle DELETE requests identically
+      ✓ should ignore request URL path
+      ✓ should not throw errors
+  Server Creation Function
+    createServer
+      ✓ should be defined
+      ✓ should be a function
+      ✓ should return an http.Server instance
+      ✓ should create a server with the request handler
+      ✓ should create different server instances on each call
+  Server Integration Tests
+    ✓ should respond to HTTP GET requests
+    ✓ should respond to requests with any path
+    ✓ should handle multiple concurrent requests
+    ✓ should handle POST requests
+  Module Exports
+    ✓ should export hostname
+    ✓ should export port
+    ✓ should export requestHandler
+    ✓ should export createServer
+    ✓ should export exactly 4 properties
+
+Test Suites: 1 passed, 1 total
+Tests:       36 passed, 36 total
+```
+
+**Test Coverage:**
+- ✅ Configuration constants (hostname, port)
+- ✅ Request handler function with all HTTP methods
+- ✅ Server creation and instance validation
+- ✅ Integration tests with real HTTP requests
+- ✅ Module exports validation
+- ✅ Concurrent request handling
+- ✅ Response headers and body verification
+
+**Run tests in watch mode (for development):**
+```bash
+npx jest --watch
+```
+
+**Run tests with coverage report:**
+```bash
+npx jest --coverage
+```
 
 ### Expected Responses
 

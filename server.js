@@ -36,7 +36,7 @@ const port = 3000;
  * and sends a plain text "Hello, World!" response. This handler ignores the
  * request method and path, responding identically to all requests.
  * 
- * @callback requestHandler
+ * @function requestHandler
  * @param {http.IncomingMessage} req - The HTTP request object containing request details
  * @param {http.ServerResponse} res - The HTTP response object used to send the response
  * @returns {void}
@@ -47,20 +47,43 @@ const port = 3000;
  * // Content-Type: text/plain
  * // Body: Hello, World!
  */
-const server = http.createServer((req, res) => {
+function requestHandler(req, res) {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   res.end('Hello, World!\n');
-});
+}
 
 /**
- * Server startup callback function. Executed once the server successfully starts
- * listening on the specified hostname and port. Logs a confirmation message to
- * the console indicating the server is ready to accept connections.
+ * Creates and returns an HTTP server instance with the request handler.
  * 
- * @callback serverStartCallback
- * @returns {void}
+ * @function createServer
+ * @returns {http.Server} HTTP server instance
  */
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+function createServerInstance() {
+  return http.createServer(requestHandler);
+}
+
+// Export for testing
+module.exports = {
+  hostname,
+  port,
+  requestHandler,
+  createServer: createServerInstance
+};
+
+// Only start the server if this file is run directly (not imported for testing)
+if (require.main === module) {
+  const server = createServerInstance();
+  
+  /**
+   * Server startup callback function. Executed once the server successfully starts
+   * listening on the specified hostname and port. Logs a confirmation message to
+   * the console indicating the server is ready to accept connections.
+   * 
+   * @callback serverStartCallback
+   * @returns {void}
+   */
+  server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });
+}
