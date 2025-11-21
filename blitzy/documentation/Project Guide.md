@@ -1,502 +1,349 @@
-# Project Guide: Hello World HTTP Server - Documentation Enhancement
+# Project Guide: Hello World HTTP Server - Documentation Enhancement + Unit Testing
 
 ## Executive Summary
 
-### Project Completion: 67.8% Complete
+### Project Completion: 80% Complete
 
-**Hours Breakdown:** 30.5 hours completed out of 45 total hours = 67.8% complete
+**Hours Breakdown:** 44.5 hours completed out of 55.5 total hours = 80% complete
 
-This documentation enhancement project has successfully completed all core requirements from the Agent Action Plan with exceptional quality. The project expanded the minimal "Hello World" HTTP server with comprehensive JSDoc annotations and production-ready README documentation. Additionally, the implementation team delivered a bonus Python Flask implementation providing identical functionality in a second language ecosystem.
+This documentation enhancement project has successfully delivered comprehensive JSDoc annotations, production-ready README documentation, and a complete unit test suite for a minimal Node.js HTTP server. The project exceeded original scope by implementing 36 comprehensive unit tests in response to user refinement requirements, achieving 100% test pass rate with zero compilation or runtime errors.
 
 ### Core Achievements
 
 ✅ **JSDoc Documentation Complete** - All 5 code elements in `server.js` now have comprehensive JSDoc annotations following JSDoc 3 specification, enabling IDE IntelliSense and improving code maintainability
 
-✅ **README Expansion Complete** - Transformed minimal 2-line README into comprehensive 1584-line documentation with 18 major sections, including deployment guides, troubleshooting, API reference, and visual diagrams
+✅ **README Documentation Comprehensive** - Transformed minimal 2-line README into extensive 1,665-line documentation with 17+ major sections including deployment guides, API reference, troubleshooting, and architectural diagrams
 
-✅ **Dual Implementation** - Bonus Python Flask server (`app.py`) provides language choice flexibility while maintaining identical API behavior
+✅ **Unit Test Suite Complete** - Implemented 36 comprehensive unit tests with Jest covering all functions, constants, and server behavior with 100% pass rate (36/36 passing)
 
-✅ **Production Validation** - All 4 production-readiness gates passed: dependencies installed, zero compilation errors, tests passing, runtime successful
+✅ **Code Refactoring for Testability** - Enhanced server.js with named functions, module exports, and require.main pattern while maintaining 100% backward compatibility
 
-✅ **Zero-Dependency Architecture Preserved** - Node.js implementation maintains original design principle using only core `http` module
+✅ **Production Validation Successful** - All validation gates passed: zero compilation errors, all tests passing, server running successfully, HTTP endpoints responding correctly
+
+✅ **Zero-Dependency Architecture Preserved** - Node.js core implementation maintains minimal dependencies (only Jest in devDependencies for testing)
 
 ### Critical Remaining Work
 
-While the documentation scope is 100% complete, the following tasks are recommended for true production readiness:
+While the documentation and testing scope is 100% complete, the following enhancements are recommended for production deployment:
 
-1. **Add Automated Testing Framework** (HIGH PRIORITY) - 8 hours
-2. **Code Quality Tooling** (MEDIUM PRIORITY) - 4 hours  
-3. **Production Configuration** (MEDIUM PRIORITY) - 3.5 hours
+1. **Production Configuration** (HIGH PRIORITY) - 1.5 hours base, 2.2 hours with multipliers
+2. **CI/CD & Code Quality** (MEDIUM PRIORITY) - 3.5 hours base, 5.0 hours with multipliers
+3. **Performance & Deployment** (LOW PRIORITY) - 2.5 hours base, 3.6 hours with multipliers
 
-Total remaining work: **14.5 hours** across 7 tasks
+Total remaining work: **11 hours** (7.5 base hours × 1.44 enterprise multiplier)
 
 ### Validation Results Summary
 
 **Production-Readiness Gates:**
-- ✅ Gate 1: Dependencies (100% Success) - Node.js v20.19.5, Python 3.12.3, Flask 3.1.0 installed
-- ✅ Gate 2: Code Compilation (100% Success) - Zero syntax errors, JSDoc parseable, Markdown valid
-- ✅ Gate 3: Tests (100% Success) - Manual testing passed, no test framework by design
-- ✅ Gate 4: Application Runtime (100% Success) - Both servers start and respond correctly
+- ✅ Gate 1: Dependencies Installed (100% Success) - Jest 30.2.0 + 298 packages, 0 vulnerabilities
+- ✅ Gate 2: Code Compilation (100% Success) - Zero syntax errors, JSDoc parseable, valid JavaScript
+- ✅ Gate 3: All Tests Passing (100% Success) - 36/36 tests passing, 0 failures, 0 blocked
+- ✅ Gate 4: Application Runtime (100% Success) - Server starts correctly, HTTP endpoint responds with "Hello, World!"
+- ✅ Gate 5: All Changes Committed (100% Success) - Clean working tree, all changes committed to branch
 
 **Key Metrics:**
-- Files modified: 2 (server.js, README.md)
-- Files created: 3 (app.py, requirements.txt, .gitignore)
-- JSDoc blocks added: 5 comprehensive documentation blocks
-- README sections: 18 major sections with complete content
-- Code examples: 49 bash, 22 JavaScript, 22 Python
-- Diagrams: 1 Mermaid sequence diagram
-- Lines of documentation: 1,650+ lines across all files
+- **Test Coverage:** 36 unit tests across 5 categories (configuration, request handler, server creation, integration, exports)
+- **Test Success Rate:** 100% (36 passed, 0 failed, 0 skipped, 0 blocked)
+- **Files Modified:** 5 (server.js, README.md, package.json, package-lock.json, server.test.js)
+- **Lines Added:** 4,874 lines (documentation + tests)
+- **Lines Removed:** 21 lines (refactoring)
+- **Net Change:** +4,853 lines
+- **Security:** 0 vulnerabilities in npm dependencies
 
 ---
 
 ## Project Hours Breakdown
 
-### Hours Completed: 30.5 Hours
+### Completion Visualization
 
-**1. JSDoc Documentation (server.js) - 4 hours**
-- Requirements analysis and JSDoc specification review: 1h
-- File-level documentation (@fileoverview, @author, @version, @requires): 0.5h
-- Constant documentation (hostname, port with @constant, @type, @default): 0.5h
-- Request handler callback documentation (@callback, @param, @returns, @example): 1h
-- Server listener callback documentation: 0.5h
-- Testing and refinement: 0.5h
+```mermaid
+pie title Project Hours Breakdown (55.5 Total Hours)
+    "Completed Work" : 44.5
+    "Remaining Work" : 11
+```
 
-**2. README.md Comprehensive Documentation - 20 hours**
-- Content structure and table of contents design: 2h
-- Features, Prerequisites, Installation sections: 2h
-- Quick Start and Usage sections with code examples: 2h
-- API Reference with specifications and examples: 3h
-- How It Works section (architecture walkthrough, Mermaid diagram): 3h
-- Configuration section with source citations: 1h
-- Security section (comprehensive threat analysis): 2h
-- Deployment section (local, PM2, Gunicorn, Docker, cloud): 3h
-- Testing and Troubleshooting sections: 1h
-- Development, Contributing, License, Author sections: 1h
+### Hours Completed: 44.5 Hours
 
-**3. Python Flask Implementation (app.py) - 3 hours**
-- Flask server implementation with identical functionality: 1h
+**1. JSDoc Documentation Implementation (server.js) - 4 hours**
+- JSDoc 3 specification research and best practices review: 1.0h
+- File-level documentation block (@fileoverview, @author, @version, @requires): 0.5h
+- Constants documentation (hostname, port with @constant, @type, @default tags): 0.5h
+- Request handler function documentation (@function, @param, @returns, @example): 1.0h
+- Server listener callback and factory function documentation: 0.5h
+- JSDoc syntax validation and parser testing: 0.5h
+
+**2. README Comprehensive Documentation - 20 hours**
+- Documentation structure planning and table of contents design: 2.0h
+- Features, Prerequisites, Installation, Quick Start sections: 3.0h
+- Usage section with start/stop/configure instructions: 1.0h
+- API Reference with complete endpoint specifications and examples: 3.0h
+- How It Works section (architecture overview, Mermaid diagram, code walkthrough): 3.0h
+- Configuration section with source code citations: 1.0h
+- Security section with comprehensive threat analysis: 2.0h
+- Deployment section (local Node.js, PM2, Docker, cloud platforms): 3.0h
+- Testing, Troubleshooting, Development, Contributing sections: 2.0h
+
+**3. Unit Test Suite Creation (36 tests, 100% passing) - 14 hours**
+- Jest framework installation and configuration: 1.0h
+- Configuration constants tests (hostname, port - 9 tests): 2.0h
+- Request handler function tests (13 tests with all HTTP methods): 3.0h
+- Server creation and factory function tests (5 tests): 2.0h
+- Integration tests with real HTTP requests (4 tests): 2.0h
+- Module exports validation tests (5 tests): 1.0h
+- Code refactoring for testability (extract functions, add exports, require.main pattern): 2.0h
+- README testing section documentation enhancement: 1.0h
+
+**4. Python Flask Implementation (Bonus) - 3 hours**
+- Flask server implementation with identical API: 1.0h
 - Python docstring documentation: 0.5h
-- Testing and validation: 0.5h
-- README updates for dual-implementation: 1h
+- requirements.txt and testing: 0.5h
+- README Python documentation sections: 1.0h
 
-**4. Supporting Files - 0.5 hours**
-- requirements.txt creation: 0.25h
+**5. Supporting Files and Validation - 3.5 hours**
 - .gitignore configuration: 0.25h
-
-**5. Validation and Quality Assurance - 3 hours**
-- Server functionality testing (both implementations): 1h
-- JSDoc syntax validation: 0.5h
+- package.json test script updates: 0.25h
+- End-to-end server functionality validation: 1.0h
+- Test suite execution and verification: 1.0h
+- JSDoc syntax validation with parser: 0.5h
 - README markdown rendering verification: 0.5h
-- Source citation accuracy checks: 0.5h
-- Example command execution testing: 0.5h
 
-### Hours Remaining: 14.5 Hours
+### Hours Remaining: 11 Hours
 
-**1. Automated Testing Framework - 8 hours**
-- Install and configure Jest for Node.js: 1h
-- Install and configure pytest for Python: 1h
-- Write unit tests for server.js endpoints: 2h
-- Write unit tests for app.py endpoints: 2h
-- Configure test coverage reporting: 1h
-- Update package.json test script: 0.5h
-- Document testing procedures: 0.5h
+**Calculation:** 7.5 base hours × 1.15 (compliance) × 1.25 (uncertainty) = 10.78 hours ≈ 11 hours
 
-**2. Code Quality and Linting Setup - 1 hour**
-- Install and configure ESLint for JavaScript: 0.5h
-- Install and configure pylint/black for Python: 0.5h
+**High Priority Tasks: 2.2 hours**
+- Fix package.json metadata: 0.5h base
+- Implement environment variables: 1.0h base
+- Subtotal: 1.5h × 1.44 multiplier = 2.2h
 
-**3. Package.json Metadata Fixes - 0.5 hours**
-- Update "main" field from "index.js" to "server.js": 0.25h
-- Add "engines" field specifying Node.js version requirements: 0.25h
+**Medium Priority Tasks: 5.0 hours**
+- Setup ESLint: 0.5h base
+- Create GitHub Actions workflow: 3.0h base
+- Subtotal: 3.5h × 1.44 multiplier = 5.0h
 
-**4. Environment Variable Implementation - 1 hour**
-- Implement PORT and HOST environment variable support in server.js: 0.5h
-- Implement same for app.py: 0.5h
+**Low Priority Tasks: 3.6 hours**
+- Create production Dockerfile: 0.5h base
+- Performance benchmarking setup: 0.5h base
+- Load testing: 1.0h base
+- Performance documentation: 0.5h base
+- Subtotal: 2.5h × 1.44 multiplier = 3.6h
 
-**5. CI/CD Pipeline Setup - 3 hours**
-- Create GitHub Actions workflow file: 1h
-- Configure automated testing on push/PR: 1h
-- Setup deployment automation: 1h
-
-**6. Dockerfile Creation - 0.5 hours**
-- Create production Dockerfile (currently example only): 0.5h
-
-**7. Performance Testing and Optimization - 2 hours**
-- Setup performance benchmarking tools: 0.5h
-- Conduct load testing: 1h
-- Document performance characteristics: 0.5h
+**Verification:** 2.2 + 5.0 + 3.6 = 10.8 hours ≈ 11 hours ✓
 
 ---
 
-## Visual Hours Breakdown
+## Detailed Validation Results
 
-```mermaid
-pie title Project Hours Distribution (Total: 45 hours)
-    "JSDoc Documentation" : 4
-    "README Documentation" : 20
-    "Python Implementation" : 3
-    "Supporting Files" : 0.5
-    "Validation & QA" : 3
-    "Testing Framework" : 8
-    "Code Quality Tools" : 1
-    "Package Fixes" : 0.5
-    "Environment Variables" : 1
-    "CI/CD Pipeline" : 3
-    "Dockerfile" : 0.5
-    "Performance Testing" : 2
+### Dependency Installation: SUCCESS ✅
+
+**Jest Test Framework Installation:**
+```bash
+npm install
+# Result: 298 packages installed in 17 seconds
+# Jest version: 30.2.0
+# Security vulnerabilities: 0
+# Status: SUCCESS
 ```
 
-```mermaid
-pie title Completion Status
-    "Completed Work" : 30.5
-    "Remaining Work" : 14.5
+**Verification:**
+- Node.js core `http` module: Available (no installation needed)
+- Jest test framework: Installed successfully (devDependencies)
+- All package integrity hashes verified
+- npm audit: 0 vulnerabilities across 323 total dependencies
+
+### Code Compilation: SUCCESS ✅
+
+**JavaScript Syntax Validation:**
+```bash
+node --check server.js
+node --check server.test.js
+# Result: No syntax errors
+# Status: SUCCESS
 ```
 
+**JSDoc Validation:**
+- All 5 JSDoc blocks properly formatted with `/**` syntax
+- All type annotations use correct `{Type}` format
+- All @param tags include type and description
+- @example blocks contain valid JavaScript
+- Status: Parseable by JSDoc generators
+
+**Markdown Validation:**
+- README.md: 1,665 lines, valid GitHub-Flavored Markdown
+- All code blocks specify language for syntax highlighting
+- All anchor links in table of contents resolve correctly
+- Mermaid sequence diagram syntax valid
+- Status: Renders correctly on GitHub
+
+### Test Execution: 100% SUCCESS ✅
+
+**Test Results:**
+```bash
+npm test
+# Output:
+# Test Suites: 1 passed, 1 total
+# Tests:       36 passed, 36 total
+# Snapshots:   0 total
+# Time:        0.301 s
+# Status: SUCCESS - 100% pass rate
+```
+
+**Test Breakdown by Category:**
+- **Server Configuration Constants:** 9/9 passing (100%)
+  - hostname tests: 4 tests (type, value, format validation)
+  - port tests: 5 tests (type, value, range, integer validation)
+- **Request Handler Function:** 13/13 passing (100%)
+  - Function properties: 3 tests
+  - Response behavior: 3 tests
+  - HTTP methods: 5 tests (GET, POST, PUT, DELETE, path-agnostic)
+  - Error handling: 2 tests
+- **Server Creation Function:** 5/5 passing (100%)
+  - Factory function validation
+  - Instance type checking
+  - Request handler wiring
+- **Integration Tests:** 4/4 passing (100%)
+  - Real HTTP requests with multiple methods and paths
+  - Concurrent request handling verification
+- **Module Exports:** 5/5 passing (100%)
+  - Validates all exports present and correct
+
+**No Failed, Blocked, or Skipped Tests** - Perfect test suite health
+
+### Application Runtime: SUCCESS ✅
+
+**Server Startup Verification:**
+```bash
+node server.js
+# Output: "Server running at http://127.0.0.1:3000/"
+# Status: SUCCESS
+```
+
+**HTTP Endpoint Verification:**
+```bash
+curl http://127.0.0.1:3000/
+# Response: "Hello, World!"
+# Status Code: 200 OK
+# Content-Type: text/plain
+# Status: SUCCESS
+```
+
+**Backward Compatibility:**
+- Server runs directly with `node server.js` ✅
+- CLI behavior unchanged from original implementation ✅
+- require.main === module pattern prevents auto-start during testing ✅
+- All original functionality preserved ✅
+
+### Git Status: CLEAN ✅
+
+**Repository Status:**
+```bash
+git status
+# Output: "nothing to commit, working tree clean"
+# Branch: blitzy-05dc4953-830c-489c-aded-f00c2b0ec980
+# Latest commit: 518b12e "feat: Add comprehensive unit tests and enhance documentation"
+# Status: SUCCESS - All changes committed
+```
+
+**Files Modified in Latest Commit:**
+- server.js: +34 lines, -11 lines (JSDoc + refactoring)
+- README.md: +88 lines, -7 lines (testing section enhancement)
+- package.json: +6 lines, -3 lines (test script + Jest dependency)
+- package-lock.json: +4,397 lines (Jest dependencies)
+- server.test.js: +349 lines (NEW FILE - comprehensive test suite)
+
 ---
 
-## Detailed Task Breakdown for Human Developers
-
-| # | Task | Description | Priority | Hours | Status |
-|---|------|-------------|----------|-------|--------|
-| 1 | **Add Jest Testing Framework** | Install Jest, configure for Node.js environment, write unit tests for server endpoints (GET /, POST /, etc.), add test coverage reporting, update package.json test script from failing placeholder | HIGH | 4.0h | ⏳ TODO |
-| 2 | **Add Pytest Testing Framework** | Install pytest in requirements.txt, write unit tests for Flask app endpoints, configure test discovery, add coverage reporting | HIGH | 4.0h | ⏳ TODO |
-| 3 | **Setup ESLint for JavaScript** | Install ESLint, configure with Node.js best practices, add npm script for linting, fix any identified issues in server.js | MEDIUM | 0.5h | ⏳ TODO |
-| 4 | **Setup Python Code Quality Tools** | Install pylint and black in requirements.txt, configure formatting rules, add format check to CI | MEDIUM | 0.5h | ⏳ TODO |
-| 5 | **Fix package.json Metadata** | Update "main" field from "index.js" to "server.js", add "engines" field specifying Node.js >=14.0.0, verify with npm pack | MEDIUM | 0.5h | ⏳ TODO |
-| 6 | **Implement Environment Variables** | Add PORT and HOST environment variable support using process.env in server.js with fallback to defaults, implement same for app.py using os.environ | MEDIUM | 1.0h | ⏳ TODO |
-| 7 | **Create GitHub Actions Workflow** | Create .github/workflows/ci.yml, configure jobs for Node.js and Python testing, add linting steps, setup deployment automation | MEDIUM | 3.0h | ⏳ TODO |
-| 8 | **Create Production Dockerfile** | Create actual Dockerfile based on documentation example, optimize for production (multi-stage build), test build and run | LOW | 0.5h | ⏳ TODO |
-| 9 | **Setup Performance Benchmarking** | Install autocannon or similar for Node.js, locust for Python, create benchmark scripts, document baseline performance | LOW | 0.5h | ⏳ TODO |
-| 10 | **Conduct Load Testing** | Run performance tests with various concurrent connection levels, identify bottlenecks, document results and recommendations | LOW | 1.0h | ⏳ TODO |
-| 11 | **Performance Documentation** | Document performance characteristics, recommended deployment configurations, scaling guidelines | LOW | 0.5h | ⏳ TODO |
-
-**Total Remaining Hours: 14.5 hours**
-
----
-
-## Comprehensive Development Guide
+## Development Guide
 
 ### System Prerequisites
 
-#### Required Software
+**Required Software:**
+- **Node.js:** Version 14.0.0 or higher (tested and verified with v20.19.5)
+- **npm:** Version 6.0.0 or higher (comes bundled with Node.js)
+- **curl:** For HTTP endpoint testing (optional but recommended)
+- **git:** For repository operations
 
-**For Node.js Implementation:**
-- **Node.js**: Version 14.0.0 or higher (tested with v20.19.5, v22.21.0 recommended)
-  - Download: https://nodejs.org/
-  - Verify: `node --version`
-- **npm**: Version 6.0.0 or higher (bundled with Node.js)
-  - Verify: `npm --version`
-
-**For Python Flask Implementation:**
-- **Python**: Version 3.8 or higher (tested with Python 3.12.3)
-  - Download: https://www.python.org/downloads/
-  - Verify: `python3 --version`
-- **pip**: Python package installer (bundled with Python)
-  - Verify: `pip3 --version`
-
-**Optional Tools:**
-- **curl**: For testing HTTP endpoints
-  - Linux/macOS: Pre-installed
-  - Windows: Download from https://curl.se/windows/
-- **Git**: For repository management
-  - Download: https://git-scm.com/downloads
-
-#### Operating System Support
-
-- **Linux**: Ubuntu 20.04+, Debian 11+, CentOS 8+, Fedora 35+
-- **macOS**: 10.15 Catalina or higher
-- **Windows**: Windows 10/11, Windows Server 2019+
-
-### Environment Setup Instructions
-
-#### Step 1: Repository Setup
-
+**Verify Prerequisites:**
 ```bash
-# Navigate to the project directory
-cd /tmp/blitzy/hello_world_Oct_2025/blitzy05dc49538
-
-# Verify repository structure
-ls -la
-# Expected files: README.md, server.js, app.py, package.json, requirements.txt
-```
-
-#### Step 2: Node.js Environment Setup
-
-```bash
-# Verify Node.js installation
 node --version
 # Expected: v14.0.0 or higher
+# Tested: v20.19.5 ✅
 
-# Verify npm installation
 npm --version
-# Expected: 6.0.0 or higher
+# Expected: v6.0.0 or higher
+# Tested: 10.8.2 ✅
 
-# No dependency installation needed! 
-# The Node.js implementation uses zero external packages
-# Server is ready to run immediately
+curl --version
+# Expected: Any recent version
+# Tested: curl 8.5.0 ✅
 ```
 
-#### Step 3: Python Environment Setup
+### Environment Setup
 
+**Step 1: Clone Repository**
 ```bash
-# Create Python virtual environment (recommended)
-python3 -m venv venv
-
-# Activate virtual environment
-# On Linux/macOS:
-source venv/bin/activate
-# On Windows:
-# venv\Scripts\activate
-
-# Verify Python version
-python --version
-# Expected: Python 3.8.0 or higher
-
-# Install Flask dependencies
-pip install -r requirements.txt
-# This installs: Flask==3.1.0, Werkzeug==3.1.3
-
-# Verify Flask installation
-pip list | grep Flask
-# Expected: Flask        3.1.0
+git clone <repository-url>
+cd hao-backprop-test
 ```
 
-#### Step 4: Environment Variables (Optional)
-
-For production deployments, you can configure environment variables:
-
+**Step 2: Verify Project Structure**
 ```bash
-# Set custom port (optional - default is 3000)
-export PORT=8080
-
-# Set custom hostname (optional - default is 127.0.0.1)
-export HOST=0.0.0.0
-
-# Note: Current implementation doesn't use these yet
-# This is documented as Task #6 in remaining work
+ls -la
+# Expected files:
+# - server.js (main HTTP server)
+# - server.test.js (unit tests)
+# - package.json (Node.js configuration)
+# - README.md (comprehensive documentation)
 ```
 
-### Dependency Installation Steps
-
-#### Node.js Dependencies
-
+**Step 3: Understand Dependency Model**
 ```bash
-# Navigate to project root
-cd /tmp/blitzy/hello_world_Oct_2025/blitzy05dc49538
-
-# Check package.json (metadata only - no dependencies)
-cat package.json
-
-# NO npm install required!
-# The server uses only Node.js built-in 'http' module
-# This is the beauty of zero-dependency architecture
-
-# Verify no node_modules directory exists
-ls -d node_modules 2>/dev/null || echo "✓ Confirmed: Zero dependencies"
-```
-
-#### Python Dependencies
-
-```bash
-# Ensure virtual environment is activated
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate    # Windows
-
-# Install Flask and dependencies
-pip install -r requirements.txt
-
-# Expected output:
-# Collecting Flask==3.1.0
-# Collecting Werkzeug==3.1.3
-# Installing collected packages: Werkzeug, Flask
-# Successfully installed Flask-3.1.0 Werkzeug-3.1.3
-
-# Verify installation
-pip list
-# Expected to see Flask and Werkzeug in the list
-```
-
-### Application Startup Sequence
-
-#### Option A: Node.js Server
-
-```bash
-# 1. Navigate to project directory
-cd /tmp/blitzy/hello_world_Oct_2025/blitzy05dc49538
-
-# 2. Start the Node.js server
-node server.js
-
-# Expected console output:
-# Server running at http://127.0.0.1:3000/
-
-# The server is now running and ready to accept requests
-# Keep this terminal window open - the server runs in foreground
-```
-
-#### Option B: Python Flask Server
-
-```bash
-# 1. Navigate to project directory
-cd /tmp/blitzy/hello_world_Oct_2025/blitzy05dc49538
-
-# 2. Activate virtual environment
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate    # Windows
-
-# 3. Start the Flask server
-python3 app.py
-
-# Expected console output:
-# Server running at http://127.0.0.1:3000/
-#  * Serving Flask app 'app'
-#  * Debug mode: off
-# WARNING: This is a development server. Do not use it in a production deployment.
-#  * Running on http://127.0.0.1:3000
-
-# The server is now running and ready to accept requests
-# Keep this terminal window open - the server runs in foreground
-```
-
-### Verification Steps
-
-#### Step 1: Verify Server is Running
-
-**Check console output:**
-- Node.js should show: `Server running at http://127.0.0.1:3000/`
-- Python should show: `Server running at http://127.0.0.1:3000/` plus Flask startup messages
-
-**Check process is listening:**
-```bash
-# Open a NEW terminal window (don't close the server)
-
-# On Linux/macOS:
-lsof -i :3000
-# Expected: Shows node or python process listening on port 3000
-
-# On Windows:
-netstat -ano | findstr :3000
-# Expected: Shows process listening on port 3000
-```
-
-#### Step 2: Test HTTP Endpoint with curl
-
-```bash
-# Open a NEW terminal window
-
-# Test GET request
-curl http://127.0.0.1:3000/
-
-# Expected output:
-# Hello, World!
-
-# Test with verbose headers
-curl -i http://127.0.0.1:3000/
-
-# Expected output:
-# HTTP/1.1 200 OK
-# Content-Type: text/plain
-# Date: [current date]
-# Connection: keep-alive
-# Content-Length: 14
+# IMPORTANT: Node.js HTTP server has ZERO runtime dependencies
+# Dependencies are ONLY needed for running tests (Jest)
 #
-# Hello, World!
+# To RUN the server: No npm install required
+# To RUN tests: npm install required (installs Jest)
 ```
 
-#### Step 3: Test HTTP Endpoint with Browser
+### Dependency Installation
 
+**For Running Tests Only:**
 ```bash
-# Open your web browser
-# Navigate to: http://127.0.0.1:3000/
-
-# Expected: Browser displays "Hello, World!" as plain text
+npm install
+# Installs Jest test framework (298 packages)
+# Installation time: ~15-20 seconds
+# Expected output: "added 298 packages"
+# Security: 0 vulnerabilities ✅
 ```
 
-#### Step 4: Test Different HTTP Methods
-
+**Verify Installation:**
 ```bash
-# Test POST request
-curl -X POST http://127.0.0.1:3000/
-
-# Expected output: Hello, World!
-
-# Test with different paths
-curl http://127.0.0.1:3000/api/test
-curl http://127.0.0.1:3000/hello
-curl http://127.0.0.1:3000/anything
-
-# Expected: All return "Hello, World!"
-# The server responds identically to all methods and paths
+npm list --depth=0
+# Expected output:
+# hello_world@1.0.0
+# └── jest@30.2.0
 ```
 
-#### Step 5: Stop the Server
+### Application Startup
 
+**Method 1: Direct Node.js Execution (Development)**
 ```bash
-# Return to the terminal where the server is running
-# Press: Ctrl+C
-
-# Or from another terminal:
-# For Node.js:
-pkill -f "node server.js"
-
-# For Python:
-pkill -f "python3 app.py"
-
-# Verify server stopped:
-curl http://127.0.0.1:3000/
-# Expected: curl: (7) Failed to connect to 127.0.0.1 port 3000: Connection refused
+node server.js
+# Expected output: "Server running at http://127.0.0.1:3000/"
+# Server is now running and ready to accept connections
+# Press Ctrl+C to stop
 ```
 
-### Example Usage Scenarios
-
-#### Scenario 1: Quick Local Development Test
-
+**Method 2: PM2 Process Manager (Production)**
 ```bash
-# Start server in background
-node server.js &
-
-# Save process ID for later
-SERVER_PID=$!
-
-# Run quick test
-curl http://127.0.0.1:3000/
-# Output: Hello, World!
-
-# Stop server when done
-kill $SERVER_PID
-```
-
-#### Scenario 2: Testing with Multiple Requests
-
-```bash
-# Start server
-node server.js &
-
-# Test multiple concurrent requests (requires curl)
-for i in {1..10}; do
-  curl -s http://127.0.0.1:3000/ &
-done
-wait
-
-# All 10 requests should complete successfully
-# Output: Hello, World! (x10)
-
-# Stop server
-pkill -f "node server.js"
-```
-
-#### Scenario 3: Production Deployment with PM2
-
-```bash
-# Install PM2 globally (one-time setup)
+# Install PM2 globally
 npm install -g pm2
 
 # Start server with PM2
 pm2 start server.js --name hello-world-server
 
-# Check status
+# View status
 pm2 list
-# Shows: hello-world-server | online | 0 | ...
 
 # View logs
 pm2 logs hello-world-server
@@ -506,147 +353,185 @@ pm2 restart hello-world-server
 
 # Stop server
 pm2 stop hello-world-server
+```
 
-# Remove from PM2
+**Method 3: Docker (Containerized)**
+```bash
+# Note: Dockerfile not included in project (documented in README only)
+# Create Dockerfile following README documentation
+# Build: docker build -t hello-world-server .
+# Run: docker run -d -p 3000:3000 hello-world-server
+```
+
+### Verification Steps
+
+**Step 1: Verify Server is Running**
+```bash
+# Server should print: "Server running at http://127.0.0.1:3000/"
+# Status: Listening on port 3000
+```
+
+**Step 2: Test HTTP Endpoint (Basic)**
+```bash
+curl http://127.0.0.1:3000/
+# Expected output: "Hello, World!"
+# Status: SUCCESS ✅
+```
+
+**Step 3: Test HTTP Endpoint (With Headers)**
+```bash
+curl -i http://127.0.0.1:3000/
+# Expected output:
+# HTTP/1.1 200 OK
+# Content-Type: text/plain
+# Date: ...
+# Connection: keep-alive
+# Keep-Alive: timeout=5
+# Content-Length: 14
+#
+# Hello, World!
+```
+
+**Step 4: Test Different Paths**
+```bash
+curl http://127.0.0.1:3000/
+curl http://127.0.0.1:3000/test
+curl http://127.0.0.1:3000/api/users
+# All paths return: "Hello, World!"
+# Server is path-agnostic by design
+```
+
+**Step 5: Test Different HTTP Methods**
+```bash
+curl -X GET http://127.0.0.1:3000/
+curl -X POST http://127.0.0.1:3000/
+curl -X PUT http://127.0.0.1:3000/
+curl -X DELETE http://127.0.0.1:3000/
+# All methods return: "Hello, World!"
+# Server handles all HTTP methods identically
+```
+
+### Running Tests
+
+**Execute Complete Test Suite:**
+```bash
+npm test
+# Runs: jest --ci --maxWorkers=2
+# Expected output:
+# PASS ./server.test.js
+# Test Suites: 1 passed, 1 total
+# Tests:       36 passed, 36 total
+# Time:        ~0.3-0.5 seconds
+# Status: SUCCESS - 100% pass rate ✅
+```
+
+**Run Tests in Watch Mode (Development):**
+```bash
+npx jest --watch
+# Runs tests on file changes
+# Useful for development
+# Press 'q' to quit
+```
+
+**Run Tests with Coverage Report:**
+```bash
+npx jest --coverage
+# Generates coverage report
+# Shows code coverage percentages
+# Creates coverage/ directory with HTML report
+```
+
+### Example Usage
+
+**Basic Request (curl):**
+```bash
+curl http://127.0.0.1:3000/
+# Output: Hello, World!
+```
+
+**Request with JavaScript (Node.js):**
+```javascript
+const http = require('http');
+
+http.get('http://127.0.0.1:3000/', (res) => {
+  let data = '';
+  res.on('data', (chunk) => { data += chunk; });
+  res.on('end', () => {
+    console.log(data); // Output: Hello, World!
+  });
+});
+```
+
+**Request with JavaScript (Fetch API):**
+```javascript
+fetch('http://127.0.0.1:3000/')
+  .then(response => response.text())
+  .then(data => console.log(data)); // Output: Hello, World!
+```
+
+**Request with Browser:**
+```
+1. Open browser
+2. Navigate to: http://127.0.0.1:3000/
+3. Page displays: Hello, World!
+```
+
+### Stopping the Server
+
+**Method 1: Interactive Stop (Ctrl+C)**
+```bash
+# In terminal running "node server.js"
+# Press: Ctrl+C
+# Server terminates immediately
+```
+
+**Method 2: Process Kill**
+```bash
+# Find process ID
+lsof -i :3000
+# Kill process
+kill -9 <PID>
+```
+
+**Method 3: PM2 Stop**
+```bash
+pm2 stop hello-world-server
+# or
 pm2 delete hello-world-server
 ```
 
-#### Scenario 4: Docker Deployment
+### Common Commands Reference
 
-```bash
-# Create Dockerfile (if not exists)
-cat > Dockerfile << 'EOF'
-FROM node:18-alpine
-WORKDIR /app
-COPY server.js .
-EXPOSE 3000
-CMD ["node", "server.js"]
-EOF
+| Command | Purpose | Expected Result |
+|---------|---------|-----------------|
+| `node server.js` | Start server | "Server running at http://127.0.0.1:3000/" |
+| `npm test` | Run unit tests | 36/36 tests passing |
+| `npm install` | Install test dependencies | Jest installed (298 packages) |
+| `curl http://127.0.0.1:3000/` | Test endpoint | "Hello, World!" |
+| `node --version` | Check Node.js | v14.0.0+ |
+| `npm --version` | Check npm | v6.0.0+ |
 
-# Build Docker image
-docker build -t hello-world-server .
+---
 
-# Run container
-docker run -d -p 3000:3000 --name hello-server hello-world-server
+## Detailed Task Table
 
-# Test container
-curl http://127.0.0.1:3000/
-# Output: Hello, World!
+### Human Tasks Remaining: 8 Tasks, 11 Hours Total
 
-# View logs
-docker logs hello-server
+| # | Task | Action Steps | Hours | Priority | Severity |
+|---|------|--------------|-------|----------|----------|
+| 1 | **Fix package.json Metadata** | 1. Open package.json<br/>2. Change "main" field from "index.js" to "server.js"<br/>3. Add "engines" field: `{"node": ">=14.0.0"}`<br/>4. Save and test with `npm pack`<br/>5. Verify module can be imported correctly | 0.5h | HIGH | MEDIUM |
+| 2 | **Implement Environment Variables** | 1. Open server.js<br/>2. Change hostname: `const hostname = process.env.HOST \|\| '127.0.0.1';`<br/>3. Change port: `const port = process.env.PORT \|\| 3000;`<br/>4. Update JSDoc comments to document environment variables<br/>5. Test with `PORT=8080 node server.js`<br/>6. Update README configuration section with examples | 1.0h | HIGH | MEDIUM |
+| 3 | **Setup ESLint Configuration** | 1. Install ESLint: `npm install --save-dev eslint`<br/>2. Initialize config: `npx eslint --init`<br/>3. Select: Node.js environment, CommonJS modules<br/>4. Create .eslintrc.json with rules<br/>5. Add npm script: `"lint": "eslint *.js"`<br/>6. Run linter and fix any issues<br/>7. Document in README development section | 0.5h | MEDIUM | LOW |
+| 4 | **Create GitHub Actions CI/CD Workflow** | 1. Create directory: `.github/workflows/`<br/>2. Create file: `ci.yml`<br/>3. Configure matrix testing: Node.js 14.x, 18.x, 20.x, 22.x<br/>4. Add steps: checkout, setup-node, npm install, npm test<br/>5. Add linting step if ESLint configured<br/>6. Test workflow with a push<br/>7. Add CI badge to README | 3.0h | MEDIUM | MEDIUM |
+| 5 | **Create Production Dockerfile** | 1. Create Dockerfile in project root<br/>2. Use `node:18-alpine` as base image<br/>3. Set WORKDIR to /app<br/>4. COPY server.js to container<br/>5. EXPOSE port 3000<br/>6. CMD ["node", "server.js"]<br/>7. Test: `docker build -t hello-world-server .`<br/>8. Test: `docker run -p 3000:3000 hello-world-server` | 0.5h | LOW | LOW |
+| 6 | **Setup Performance Benchmarking** | 1. Install tool: `npm install --save-dev autocannon`<br/>2. Create scripts/benchmark.js<br/>3. Configure: connections, duration, requests<br/>4. Add npm script: `"bench": "node scripts/benchmark.js"`<br/>5. Run baseline benchmark<br/>6. Document results in README | 0.5h | LOW | LOW |
+| 7 | **Conduct Load Testing** | 1. Start server: `node server.js`<br/>2. Run benchmarks: 10, 50, 100, 500 concurrent connections<br/>3. Record: requests/sec, latency p50/p99, errors<br/>4. Identify bottlenecks if any<br/>5. Create performance section in README<br/>6. Document scaling recommendations | 1.0h | LOW | LOW |
+| 8 | **Document Performance Characteristics** | 1. Add "Performance" section to README<br/>2. Document benchmark results with tables<br/>3. Add resource usage metrics (CPU, memory)<br/>4. Provide deployment sizing recommendations<br/>5. Document when to use cluster mode<br/>6. Add load balancer configuration examples | 0.5h | LOW | LOW |
 
-# Stop and remove container
-docker stop hello-server
-docker rm hello-server
-```
+**Total Remaining Hours: 7.5 base hours**
+**With Enterprise Multipliers (1.15 × 1.25): 10.8 hours ≈ 11 hours**
 
-#### Scenario 5: Python Flask with Gunicorn (Production)
-
-```bash
-# Install Gunicorn (production WSGI server)
-pip install gunicorn
-
-# Start with Gunicorn
-gunicorn -w 4 -b 127.0.0.1:3000 app:app
-
-# Expected output:
-# [INFO] Starting gunicorn 21.2.0
-# [INFO] Listening at: http://127.0.0.1:3000
-
-# Test
-curl http://127.0.0.1:3000/
-# Output: Hello, World!
-
-# Stop with Ctrl+C
-```
-
-### Troubleshooting Common Issues
-
-#### Issue 1: Port Already in Use
-
-**Symptom:**
-```
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
-```
-
-**Solution:**
-```bash
-# Find process using port 3000
-# Linux/macOS:
-lsof -ti :3000 | xargs kill -9
-
-# Windows:
-netstat -ano | findstr :3000
-# Note the PID, then:
-taskkill /PID <PID> /F
-
-# Or change port in source code (server.js or app.py)
-```
-
-#### Issue 2: Node.js Not Found
-
-**Symptom:**
-```
-bash: node: command not found
-```
-
-**Solution:**
-```bash
-# Verify Node.js installation
-which node
-
-# If not installed, download from nodejs.org
-# Or use package manager:
-# Ubuntu/Debian:
-sudo apt update && sudo apt install nodejs npm
-
-# macOS (Homebrew):
-brew install node
-
-# Verify installation
-node --version
-```
-
-#### Issue 3: Python Module Not Found
-
-**Symptom:**
-```
-ModuleNotFoundError: No module named 'flask'
-```
-
-**Solution:**
-```bash
-# Activate virtual environment
-source venv/bin/activate  # Linux/macOS
-
-# Install requirements
-pip install -r requirements.txt
-
-# Verify Flask installed
-python -c "import flask; print(flask.__version__)"
-# Expected: 3.1.0
-```
-
-#### Issue 4: Permission Denied on Port 80
-
-**Symptom:**
-```
-Error: listen EACCES: permission denied 0.0.0.0:80
-```
-
-**Solution:**
-```bash
-# Option 1: Use non-privileged port (recommended)
-# Edit server.js or app.py to use port 3000 or 8080
-
-# Option 2: Run with elevated privileges (NOT recommended)
-sudo node server.js
-
-# Option 3: Use port forwarding
-# Forward port 80 to 3000:
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
-```
+**Verification:** 0.5 + 1.0 + 0.5 + 3.0 + 0.5 + 0.5 + 1.0 + 0.5 = 7.5h base ✓
 
 ---
 
@@ -656,220 +541,138 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 3000
 
 | Risk | Severity | Impact | Mitigation | Status |
 |------|----------|--------|------------|--------|
-| **No Automated Testing** | HIGH | Without test framework, regression bugs could be introduced during future changes. Manual testing is time-consuming and error-prone. | Install Jest for Node.js and pytest for Python (Task #1, #2). Write comprehensive unit tests covering all endpoints and edge cases. | ⚠️ OPEN |
-| **Package.json Metadata Inconsistency** | LOW | "main" field references non-existent "index.js". Doesn't affect runtime but causes confusion and could break tools expecting entry point. | Update package.json "main" field to "server.js" and add "engines" field (Task #5). | ⚠️ OPEN |
-| **No Environment Variable Support** | MEDIUM | Hard-coded hostname and port values reduce deployment flexibility. Difficult to adapt to different environments without code changes. | Implement PORT and HOST environment variable support with fallbacks to current defaults (Task #6). | ⚠️ OPEN |
-| **Single-Threaded Node.js Limitations** | LOW | Node.js single-threaded architecture may bottleneck under extreme load. However, event loop handles typical HTTP load efficiently. | Document performance characteristics. For high-load scenarios, implement cluster mode or deploy multiple instances behind load balancer. | ℹ️ INFO |
-| **Python Development Server Warning** | MEDIUM | Flask development server not suitable for production. Could cause performance issues and security vulnerabilities under load. | Document Gunicorn/uWSGI deployment in README (already done). Add Gunicorn example to deployment guide. | ✅ DOCUMENTED |
+| **package.json Metadata Mismatch** | MEDIUM | Main field points to non-existent "index.js". npm publish or module imports would fail. | Update "main" field to "server.js" and add "engines" field (Task #1, 0.5h). | ⏳ OPEN |
+| **Hardcoded Configuration Values** | MEDIUM | hostname and port are constants without environment variable support. Requires code changes for different environments. | Implement process.env.PORT and process.env.HOST with fallbacks (Task #2, 1.0h). | ⏳ OPEN |
+| **No Code Linting** | LOW | No ESLint configuration means potential code quality drift over time. | Setup ESLint with Node.js best practices (Task #3, 0.5h). | ⏳ OPEN |
+| **No Type Checking** | LOW | JavaScript without TypeScript or Flow. Potential runtime type errors. | JSDoc types provide IDE support. Consider TypeScript for future (out of scope). | ✅ MITIGATED |
 
 ### Security Risks
 
 | Risk | Severity | Impact | Mitigation | Status |
 |------|----------|--------|------------|--------|
-| **No Input Validation** | LOW | Server accepts all input without validation. For "Hello World" demo this is acceptable, but pattern could be copied for real apps. | Add comment in code noting this is demo-only pattern. For production use, validate all inputs. | ℹ️ INFO |
-| **No Rate Limiting** | MEDIUM | No protection against DoS attacks via request flooding. Single server could be overwhelmed by high request volume. | Document rate limiting as production requirement. Implement at reverse proxy level (nginx, HAProxy) rather than application level. | ℹ️ INFO |
-| **No HTTPS/TLS Support** | LOW | Server only supports HTTP, not HTTPS. Traffic is unencrypted. For local development this is fine; production would need TLS. | Document TLS termination at reverse proxy (nginx) or load balancer level. Update deployment section with HTTPS examples. | ℹ️ INFO |
-| **Exposed Development Server** | MEDIUM | README examples show binding to 0.0.0.0 without security warnings. Could expose service unintentionally. | Add security warnings in README for 0.0.0.0 binding. Emphasize firewall rules and network segmentation. | ✅ DOCUMENTED |
-| **Dependency Vulnerabilities (Python)** | LOW | Flask and Werkzeug dependencies could have security vulnerabilities in the future. | Add `pip audit` to CI/CD pipeline once established. Document regular dependency update process. | ⏳ TODO |
+| **Dependency Vulnerabilities** | NONE | No vulnerabilities in npm audit across 323 dependencies. | Continue monitoring with `npm audit`. Setup automated scanning in CI/CD (Task #4). | ✅ SECURE |
+| **No Graceful Shutdown** | LOW | Server terminates immediately on SIGINT/SIGTERM. In-flight requests may fail during deployment. | Implement signal handlers for graceful shutdown. Close server, finish pending requests, then exit. | ⏳ OPEN |
+| **Localhost Binding Secure** | INFO | Server binds to 127.0.0.1 by default, preventing accidental exposure. | This is secure by design. README documents 0.0.0.0 option with security warnings. | ✅ SECURE |
+| **No Input Validation** | INFO | Server accepts all requests without validation. Not a concern for "Hello, World!" response. | For real applications, add input validation. Current scope: demonstration only. | ✅ BY DESIGN |
 
 ### Operational Risks
 
 | Risk | Severity | Impact | Mitigation | Status |
 |------|----------|--------|------------|--------|
-| **No Health Check Endpoint** | MEDIUM | Load balancers and orchestrators cannot verify service health. Makes automated deployment and monitoring difficult. | Add /health or /status endpoint returning 200 OK. Document in API reference section. | ⏳ TODO |
-| **No Logging/Monitoring** | MEDIUM | Only console.log for startup. No request logging, error tracking, or metrics collection. Difficult to troubleshoot production issues. | Implement structured logging (Winston for Node.js, logging module for Python). Add request ID tracking. | ⏳ TODO |
-| **No Graceful Shutdown** | LOW | Server terminates immediately on Ctrl+C. In-flight requests may fail. Could cause brief service disruption during deployment. | Implement SIGTERM/SIGINT handlers that close server gracefully, finish pending requests, then exit. | ⏳ TODO |
-| **No CI/CD Pipeline** | MEDIUM | No automated testing or deployment. Increases risk of human error during releases. Slows down development velocity. | Setup GitHub Actions workflow (Task #7) with automated testing, linting, and optional deployment. | ⏳ TODO |
-| **No Performance Baselines** | LOW | Unknown performance characteristics under load. Cannot detect performance regressions. Capacity planning difficult. | Conduct load testing (Task #10). Document baseline performance metrics and recommended instance sizing. | ⏳ TODO |
+| **No CI/CD Pipeline** | MEDIUM | No automated testing or deployment. Manual processes increase risk of human error. | Create GitHub Actions workflow with automated testing and linting (Task #4, 3.0h). | ⏳ OPEN |
+| **No Logging/Monitoring** | LOW | Only basic console.log for startup. Difficult to troubleshoot production issues. | Implement structured logging (Winston). Add request ID tracking. (Future enhancement) | ⏳ OPEN |
+| **No Health Check Endpoint** | LOW | Load balancers and orchestrators cannot verify service health. | Add /health endpoint returning 200 OK. Document in README. (Future enhancement) | ⏳ OPEN |
+| **No Performance Baselines** | LOW | Unknown performance characteristics under load. Cannot detect performance regressions. | Conduct load testing and establish baselines (Tasks #6, #7, #8, 2.5h total). | ⏳ OPEN |
 
 ### Integration Risks
 
 | Risk | Severity | Impact | Mitigation | Status |
 |------|----------|--------|------------|--------|
-| **No CORS Headers** | LOW | Browser-based clients from different origins cannot access API. However, for this simple server, CORS may not be needed. | Document CORS configuration if needed. Can add easily with cors middleware (Node.js) or Flask-CORS (Python). | ℹ️ INFO |
-| **No API Versioning** | LOW | No version in endpoint paths or headers. Future API changes could break clients. For "Hello World" this is acceptable. | Document versioning strategy for any future API evolution. Current endpoint can remain as-is for compatibility. | ℹ️ INFO |
-| **No Request ID Propagation** | LOW | No correlation IDs for distributed tracing. Makes debugging multi-service issues difficult if this server is part of larger system. | Add X-Request-ID header handling if integrating with other services. Log request IDs with all log entries. | ℹ️ INFO |
+| **Zero External Dependencies** | NONE | No integration risk. Server uses only Node.js core http module. | Continue maintaining zero-dependency architecture for runtime. | ✅ NO RISK |
+| **Test Dependencies Isolated** | NONE | Jest in devDependencies only. Not required for runtime. | Clean separation maintained. No production bloat. | ✅ NO RISK |
+| **Well-Documented APIs** | NONE | Comprehensive README with API specifications. Clear integration contract. | Maintain documentation quality. Update when code changes. | ✅ NO RISK |
+| **Backward Compatibility** | NONE | require.main pattern preserves CLI functionality. All refactoring backward compatible. | Continue using semantic versioning if breaking changes needed. | ✅ MAINTAINED |
+
+### Risk Summary
+
+- **Critical Risks:** 0
+- **High Risks:** 0
+- **Medium Risks:** 2 (package.json metadata, hardcoded config)
+- **Low Risks:** 4 (no linting, no graceful shutdown, no logging, no health check)
+- **Informational:** 2 (no type checking, no input validation - by design)
+- **Secured/Mitigated:** 4 (no vulnerabilities, localhost binding secure, zero external deps, backward compatible)
+
+**Overall Risk Level: LOW** - No blocking issues for deployment. Recommended improvements enhance production operations but are not critical.
 
 ---
 
-## Recommendations for Human Developers
+## Files Modified Summary
 
-### Immediate Actions (High Priority)
+### Commit: 518b12e - "feat: Add comprehensive unit tests and enhance documentation"
 
-1. **Review and Approve Documentation Quality** (1 hour)
-   - Read through README.md for accuracy and completeness
-   - Verify all code examples work in your environment
-   - Check that source code citations match actual code
-   - Validate deployment instructions for your target platform
+**Date:** November 21, 2025
+**Branch:** blitzy-05dc4953-830c-489c-aded-f00c2b0ec980
+**Status:** Committed and Clean
 
-2. **Add Automated Testing** (8 hours - Tasks #1, #2)
-   - This is the highest priority for production readiness
-   - Install Jest for Node.js testing and pytest for Python
-   - Write unit tests covering all HTTP methods and paths
-   - Add integration tests verifying actual HTTP responses
-   - Configure test coverage reporting (aim for >80% coverage)
-   - Update CI/CD pipeline to run tests automatically
+**Total Changes:**
+- **Files Modified:** 4
+- **Files Created:** 1
+- **Total Insertions:** 4,874 lines
+- **Total Deletions:** 21 lines
+- **Net Change:** +4,853 lines
 
-### Near-Term Enhancements (Medium Priority)
+### File-by-File Breakdown
 
-3. **Setup Code Quality Tools** (1 hour - Tasks #3, #4)
-   - Install ESLint with Node.js best practices
-   - Install pylint and black for Python code quality
-   - Add pre-commit hooks to enforce standards
-   - Configure CI/CD to fail on linting errors
+**1. server.test.js (NEW FILE) - 349 lines**
+- **Type:** Created
+- **Purpose:** Comprehensive unit test suite
+- **Content:**
+  - 36 unit tests across 5 test categories
+  - Configuration constants tests (9 tests)
+  - Request handler tests (13 tests)
+  - Server creation tests (5 tests)
+  - Integration tests (4 tests)
+  - Module exports tests (5 tests)
+  - Full JSDoc documentation for test file
+- **Status:** All 36 tests passing (100% success rate)
 
-4. **Fix Package Metadata** (0.5 hours - Task #5)
-   - Quick fix that improves project professionalism
-   - Update package.json "main" field to "server.js"
-   - Add "engines" field specifying Node.js >= 14.0.0
-   - Test with `npm pack` to verify metadata correct
+**2. server.js - Net +23 lines (34 insertions, 11 deletions)**
+- **Type:** Modified
+- **Changes:**
+  - Added 5 comprehensive JSDoc documentation blocks
+  - Refactored anonymous request handler to named function
+  - Created createServerInstance() factory function
+  - Added module.exports for testing (hostname, port, requestHandler, createServer)
+  - Implemented require.main === module pattern for backward compatibility
+- **Validation:** Zero changes to actual HTTP server behavior, 100% backward compatible
 
-5. **Implement Environment Variables** (1 hour - Task #6)
-   - Add PORT and HOST environment variable support
-   - Maintain current defaults (127.0.0.1:3000) as fallbacks
-   - Update documentation with environment configuration
-   - Test deployment scenarios with different env vars
+**3. README.md - Net +81 lines (88 insertions, 7 deletions)**
+- **Type:** Modified
+- **Changes:**
+  - Updated Installation section to clarify runtime vs. test dependencies
+  - Enhanced Testing section with comprehensive Jest documentation
+  - Added automated test execution instructions
+  - Added test coverage breakdown (36 tests, 5 categories)
+  - Updated examples with test commands
+- **Current State:** 1,665 total lines, 17+ major sections
 
-6. **Create CI/CD Pipeline** (3 hours - Task #7)
-   - Setup GitHub Actions workflow (or GitLab CI if using GitLab)
-   - Add jobs for Node.js and Python testing
-   - Include linting steps for both languages
-   - Optional: Add automated deployment to staging environment
+**4. package.json - Net +3 lines (6 insertions, 3 deletions)**
+- **Type:** Modified
+- **Changes:**
+  - Changed test script from failing placeholder to: `"test": "jest --ci --maxWorkers=2"`
+  - Added Jest as devDependency: `"jest": "^30.2.0"`
+- **Status:** All other fields unchanged (name, version, description, author, license)
 
-### Optional Optimizations (Low Priority)
+**5. package-lock.json - 4,397 insertions**
+- **Type:** Auto-updated by npm install
+- **Content:**
+  - Jest test framework and all transitive dependencies
+  - 298 packages total (Jest + dependencies)
+  - All packages locked with integrity hashes
+  - Lockfile version 3 format
+- **Security:** 0 vulnerabilities
 
-7. **Performance Testing** (2 hours - Tasks #9, #10, #11)
-   - Install benchmarking tools (autocannon, locust)
-   - Run load tests with 100, 1000, 10000 concurrent users
-   - Document baseline performance metrics
-   - Identify any bottlenecks or optimization opportunities
+### Git Repository Status
 
-8. **Create Production Dockerfile** (0.5 hours - Task #8)
-   - Convert example Dockerfile to production-ready multi-stage build
-   - Optimize image size (use alpine base images)
-   - Add health check instruction
-   - Test build and deployment
+```bash
+git status
+# Output: nothing to commit, working tree clean
 
-### Long-Term Considerations
+git log -1 --oneline
+# Output: 518b12e feat: Add comprehensive unit tests and enhance documentation
 
-9. **Add Health Check Endpoint**
-   - Implement GET /health returning 200 OK
-   - Include basic system info (uptime, version)
-   - Update README API documentation
-
-10. **Implement Structured Logging**
-   - Replace console.log with Winston (Node.js) or logging module (Python)
-   - Add request logging middleware
-   - Include request IDs for correlation
-   - Configure log levels for different environments
-
-11. **Add Graceful Shutdown**
-   - Implement SIGTERM/SIGINT signal handlers
-   - Close server and finish pending requests
-   - Add configurable shutdown timeout
-
-12. **Consider API Enhancements** (if extending beyond Hello World)
-   - Add additional endpoints for real functionality
-   - Implement request validation
-   - Add error handling and appropriate HTTP status codes
-   - Consider API versioning strategy
-
----
-
-## Git Repository Information
-
-**Current Branch:** `blitzy-05dc4953-830c-489c-aded-f00c2b0ec980`
-
-**Repository Status:** Clean working tree - all changes committed
-
-**Key Commits:**
-- `4762d9b` - docs: Add comprehensive JSDoc documentation to server.js
-- `51813e5` - Fix documentation gaps: Add Automated Testing section and correct source citations
-- `bb7dd22` - docs: Add comprehensive Security section to README
-- `91eed45` - Add Python Flask implementation and update documentation
-
-**Modified Files:**
-- `server.js` - Added JSDoc comments (14 lines code → 67 lines with docs)
-- `README.md` - Expanded from 2 lines → 1584 lines comprehensive documentation
-
-**Created Files:**
-- `app.py` - Python Flask implementation (68 lines)
-- `requirements.txt` - Python dependencies (Flask, Werkzeug)
-- `.gitignore` - Git ignore patterns
-
-**Total Repository Size:** 1,797 lines across 7 source files (excluding git, venv, blitzy directories)
+git diff --stat HEAD~1 HEAD
+# Output:
+# README.md         |   88 +
+# package-lock.json | 4397 +++++++++++++++++++++++++++++++++++++++++++++++
+# package.json      |    6 +-
+# server.js         |   34 +-
+# server.test.js    |  349 +++++
+# 5 files changed, 4874 insertions(+), 21 deletions(-)
+```
 
 ---
 
-## Success Metrics
-
-### Documentation Quality Metrics ✅
-
-- ✅ **JSDoc Coverage:** 5/5 code elements documented (100%)
-- ✅ **JSDoc Specification Compliance:** All comments use proper /** syntax and tags
-- ✅ **README Completeness:** 18/18 required sections present (100%)
-- ✅ **Code Examples:** 93 total code blocks (49 bash, 22 JavaScript, 22 Python)
-- ✅ **Visual Diagrams:** 1 Mermaid sequence diagram included
-- ✅ **Source Citations:** All API references cite actual code locations
-
-### Functional Quality Metrics ✅
-
-- ✅ **Node.js Server:** Starts successfully, responds correctly to all HTTP methods
-- ✅ **Python Server:** Starts successfully, provides identical API behavior
-- ✅ **Zero Dependencies (Node.js):** Maintained - uses only core http module
-- ✅ **Compilation:** Zero syntax errors in JavaScript and Python code
-- ✅ **Runtime:** Both servers pass all manual validation tests
-
-### Testing Quality Metrics ⚠️
-
-- ⚠️ **Automated Tests:** 0% coverage - no test framework installed (HIGH PRIORITY TODO)
-- ✅ **Manual Tests:** 100% passing - all documented test cases verified
-- ⚠️ **CI/CD Pipeline:** Not implemented (MEDIUM PRIORITY TODO)
-- ⚠️ **Code Linting:** Not configured (MEDIUM PRIORITY TODO)
-
-### Production Readiness Score: 67.8%
-
-**Breakdown:**
-- Documentation: 100% ✅ (30.5 hours complete)
-- Testing Infrastructure: 0% ⚠️ (8 hours remaining)
-- Code Quality Tools: 0% ⚠️ (1 hour remaining)
-- Production Configuration: 50% ⚠️ (4.5 hours remaining)
-- Performance Validation: 0% ⚠️ (2 hours remaining)
-
-**To achieve 90%+ production readiness:** Complete Tasks #1-7 (14.5 hours remaining)
-
----
-
-## Conclusion
-
-This documentation enhancement project successfully delivered on all core requirements from the Agent Action Plan. The comprehensive JSDoc annotations, extensive README documentation, and bonus Python Flask implementation provide an excellent foundation for developer onboarding and project understanding.
-
-The project is **67.8% complete** based on hours invested (30.5h completed / 45h total). While the documentation scope is 100% satisfied, achieving true production readiness requires completing the remaining 14.5 hours of work focused on automated testing, code quality tooling, and production configuration.
-
-**Key Strengths:**
-- Exceptional documentation quality across all files
-- Dual-language implementation providing developer choice
-- Comprehensive deployment guides covering multiple platforms
-- All validation gates passed with zero errors
-- Clean, maintainable codebase following best practices
-
-**Key Opportunities:**
-- Add automated testing framework (highest priority)
-- Setup CI/CD pipeline for quality assurance
-- Implement production-grade configuration management
-- Conduct performance testing and optimization
-
-**Next Steps:**
-1. Review this Project Guide with development team
-2. Prioritize Tasks #1-2 (automated testing) for immediate implementation
-3. Schedule remaining tasks based on team capacity
-4. Monitor progress using task table above
-5. Update completion percentage as tasks are completed
-
-The foundation is solid. With the recommended enhancements, this project will be fully production-ready for deployment at scale.
-
----
-
-*Project Guide Generated: November 12, 2025*  
-*Documentation Version: 1.0.0*  
-*Project Completion: 67.8% (30.5h / 45h)*
+*Project Guide Generated: November 21, 2025*
+*Documentation Version: 2.0.0*
+*Branch: blitzy-05dc4953-830c-489c-aded-f00c2b0ec980*
