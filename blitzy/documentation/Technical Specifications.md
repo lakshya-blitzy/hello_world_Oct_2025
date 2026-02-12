@@ -4,12 +4,12 @@
 
 ## 0.1 Core Documentation Objective
 
-Based on the provided requirements, the Blitzy platform understands that the documentation objective is to **enhance code documentation and create comprehensive project documentation** for a minimal Node.js HTTP server project.
+Based on the provided requirements, the Blitzy platform understands that the documentation objective is to **enhance code documentation and create comprehensive project documentation** for a minimal Python Flask HTTP server project.
 
 **Documentation Request Category:** Update existing documentation + Create new documentation
 
 **Documentation Types Required:**
-- **Inline Code Documentation:** JSDoc comments for functions and code elements in server.js
+- **Inline Code Documentation:** Python docstrings for functions and code elements in app.py
 - **Project Documentation:** Comprehensive README with multiple sections
 - **API Documentation:** API endpoint documentation within README
 - **Deployment Guide:** Deployment instructions within README
@@ -17,23 +17,23 @@ Based on the provided requirements, the Blitzy platform understands that the doc
 
 **Core Documentation Requirements:**
 
-1. **JSDoc Comments for server.js Functions**
-   - Add comprehensive JSDoc annotations to all functions in server.js
+1. **Python docstring Comments for app.py Functions**
+   - Add comprehensive Python docstring annotations to all functions in app.py
    - Document parameters, return values, and function purposes
    - Include type information for better IDE support
    - Add descriptions for constants and server configuration
-   - Document the HTTP request handler callback function
-   - Document the server listener callback function
+   - Document the HTTP route handler function
+   - Document the server startup block
 
 2. **Comprehensive README Creation**
-   - **Setup Instructions:** Detailed steps for installing Node.js, cloning the repository, and verifying the installation
+   - **Setup Instructions:** Detailed steps for installing Python, cloning the repository, and verifying the installation
    - **API Documentation:** Complete documentation of the HTTP server endpoint, including request/response specifications
    - **Deployment Guide:** Instructions for deploying the server locally and in production environments
    - **Inline Code Explanations:** Clear explanations of how the server works, what each part does, and architectural decisions
 
 3. **Documentation Enhancement Scope**
    - Transform minimal 2-line README into production-ready documentation
-   - Ensure documentation follows Node.js community best practices
+   - Ensure documentation follows Python community best practices
    - Include practical examples and usage scenarios
    - Add troubleshooting guidance for common issues
    - Document configuration options and customization possibilities
@@ -44,16 +44,16 @@ Based on the provided requirements, the Blitzy platform understands that the doc
 
 No specific style constraints were explicitly provided by the user. However, based on industry best practices and the nature of the project, the following standards will be applied:
 
-**JSDoc Standards:**
-- Follow official JSDoc 3 specification and syntax
-- Use proper JSDoc tags: @description, @param, @returns, @type, @constant, @function
-- <cite index="2-1,2-2">Comments must start with /** sequence to be recognized by the JSDoc parser</cite>
+**PEP 257 Docstring Standards:**
+- Follow official PEP 257 docstring conventions
+- Use proper Python docstring tags: Description, Args section, Returns section, Type annotation, Inline comment, Function docstring
+- <cite index="2-1,2-2">Comments must start with /** sequence to be recognized by the Python docstring parser</cite>
 - Include type annotations for all parameters and return values
 - Provide clear, concise descriptions for all documented elements
 - Support IDE intellisense and auto-completion features
 
 **README Structure Standards:**
-- Follow Node.js community README best practices
+- Follow Python community README best practices
 - Use clear markdown formatting with proper heading hierarchy
 - Include practical, working code examples
 - Provide step-by-step instructions that are easy to follow
@@ -63,7 +63,7 @@ No specific style constraints were explicitly provided by the user. However, bas
 - No user-provided templates specified
 - Will follow industry-standard documentation patterns:
   - README sections: Project Title, Description, Prerequisites, Installation, Usage, API Reference, Deployment, Contributing, License
-  - JSDoc patterns: Function documentation with @param and @returns tags
+  - Docstring patterns: Function documentation with Args section and Returns section tags
 
 **Tone and Style:**
 - Professional yet accessible technical writing
@@ -72,7 +72,7 @@ No specific style constraints were explicitly provided by the user. However, bas
 - Focus on "getting started quickly" approach for README
 
 **Documentation Completeness Requirements:**
-- Every function in server.js must have JSDoc comments
+- Every function in app.py must have Python docstrings
 - README must be self-contained and require no external documentation to understand the project
 - All code examples must be tested and working
 - Include both "what" and "why" explanations where relevant
@@ -89,20 +89,20 @@ These documentation requirements translate to the following technical documentat
 
 **Requirement → Technical Action Mapping:**
 
-1. **"Add JSDoc comments to server.js functions"**
-   - **Technical Action:** Insert comprehensive JSDoc comment blocks above each function, constant, and logical code section in server.js
+1. **"Add Python docstrings to app.py functions"**
+   - **Technical Action:** Insert comprehensive Python docstring blocks above each function, constant, and logical code section in app.py
    - **Specific Implementation:** 
-     - Document the `hostname` constant with @constant and @type tags
-     - Document the `port` constant with @constant and @type tags  
-     - Document the `http.createServer()` callback function with @function, @param tags for (req, res), and @description
-     - Document the `server.listen()` callback function with @function and @description
-     - Add file-level JSDoc with @fileoverview explaining the module's purpose
-   - **Source:** `/server.js` (lines 1-14)
+     - Document the `hostname` constant with Inline comment and Type annotation tags
+     - Document the `port` constant with Inline comment and Type annotation tags  
+     - Document the `hello_world(path)` route handler with Function docstring, Args section for path parameter, and Returns description
+     - Document the `if __name__ == '__main__'` startup block with Function docstring and Description
+     - Add file-level Python docstring with Module docstring explaining the module's purpose
+   - **Source:** `/app.py` (lines 1-14)
 
 2. **"Create a comprehensive README with setup instructions"**
    - **Technical Action:** Expand README.md from 2 lines to a complete multi-section document
    - **Specific Implementation:**
-     - Add Prerequisites section documenting Node.js version requirements
+     - Add Prerequisites section documenting Python version requirements
      - Add Installation section with step-by-step setup commands
      - Add Quick Start section for immediate usage
      - Add Configuration section for environment variables and options
@@ -116,33 +116,33 @@ These documentation requirements translate to the following technical documentat
      - Document response status codes, headers, and body
      - Provide curl examples for testing
      - Add response format specifications
-   - **Source:** Extract API behavior from `/server.js` (lines 6-10)
+   - **Source:** Extract API behavior from `/app.py` (lines 6-10)
 
 4. **"Create README with deployment guide"**
    - **Technical Action:** Add Deployment section with multiple deployment scenarios
    - **Specific Implementation:**
-     - Local development deployment (node server.js)
-     - Production deployment with process managers (PM2)
+     - Local development deployment (python app.py)
+     - Production deployment with process managers (Gunicorn)
      - Docker containerization approach
      - Cloud platform deployment (Heroku, AWS, Azure)
      - Environment configuration for different environments
-   - **Source:** Based on standard Node.js deployment practices
+   - **Source:** Based on standard Python deployment practices
 
 5. **"Include inline code explanations in README"**
    - **Technical Action:** Add "How It Works" or "Architecture" section with annotated code walkthrough
    - **Specific Implementation:**
      - Explain the HTTP server creation process
      - Describe the request/response cycle
-     - Clarify the server.listen() binding process
+     - Clarify the app.run() binding process
      - Include code snippets with inline comments
      - Add visual diagrams showing request flow
-   - **Source:** `/server.js` with educational annotations
+   - **Source:** `/app.py` with educational annotations
 
 **Documentation Generation Approach:**
 
-- **For JSDoc Comments:** Direct insertion into server.js source code at appropriate locations
+- **For Python docstring Comments:** Direct insertion into app.py source code at appropriate locations
 - **For README Content:** Complete rewrite organized into logical sections with proper markdown formatting
-- **For Code Examples:** Extract from server.js and enhance with explanatory comments
+- **For Code Examples:** Extract from app.py and enhance with explanatory comments
 - **For Diagrams:** Create Mermaid sequence diagrams showing HTTP request/response flow
 
 ## 0.4 Inferred Documentation Needs
@@ -152,13 +152,13 @@ Based on repository analysis and documentation best practices, the following doc
 **Based on Code Analysis:**
 
 1. **Project Metadata Documentation (Currently Missing)**
-   - **Finding:** package.json shows "name": "hello_world" but README shows "hao-backprop-test"
+   - **Finding:** requirements.txt shows "name": "hello_world" but README shows "hao-backprop-test"
    - **Inferred Need:** Resolve and document the correct project name consistently
    - **Action:** Clarify project identity in README title and description sections
 
 2. **Module Documentation (Currently Missing)**
-   - **Finding:** server.js has no module-level documentation
-   - **Inferred Need:** Add @fileoverview JSDoc comment at file top
+   - **Finding:** app.py has no module-level documentation
+   - **Inferred Need:** Add Module docstring Python docstring at file top
    - **Action:** Document the module's purpose, usage, and exports
 
 3. **Configuration Documentation (Currently Missing)**
@@ -167,31 +167,31 @@ Based on repository analysis and documentation best practices, the following doc
    - **Action:** Add README section on environment variables and configuration options
 
 4. **Error Handling Documentation (Currently Missing)**
-   - **Finding:** No error handling in server.js (e.g., port already in use)
+   - **Finding:** No error handling in app.py (e.g., port already in use)
    - **Inferred Need:** Document expected errors and troubleshooting steps
    - **Action:** Add Troubleshooting section to README with common issues
 
 5. **Dependencies Documentation (Currently Missing)**
    - **Finding:** Only built-in 'http' module used, no external dependencies
    - **Inferred Need:** Clarify that project has zero dependencies
-   - **Action:** Document in README that only Node.js runtime is required
+   - **Action:** Document in README that only Python runtime is required
 
 **Based on Project Structure:**
 
 6. **Development Workflow Documentation (Currently Missing)**
-   - **Finding:** package.json has only a failing test script
+   - **Finding:** requirements.txt has only a failing test script
    - **Inferred Need:** Document how to develop, test, and contribute
    - **Action:** Add "Development" and "Contributing" sections to README
 
-7. **Package.json Metadata Inconsistency**
-   - **Finding:** "main": "index.js" points to non-existent file
+7. **Requirements.txt Metadata Inconsistency**
+   - **Finding:** "main": "app.py" points to non-existent file
    - **Inferred Need:** Document or fix the entry point discrepancy
-   - **Action:** Note in README that server.js is the actual entry point
+   - **Action:** Note in README that app.py is the actual entry point
 
 8. **Version and Compatibility Documentation (Currently Missing)**
-   - **Finding:** No Node.js version specified in package.json engines field
-   - **Inferred Need:** Document compatible Node.js versions
-   - **Action:** Add Prerequisites section specifying Node.js version requirements (tested with v22.21.0)
+   - **Finding:** No Python version specified in requirements.txt engines field
+   - **Inferred Need:** Document compatible Python versions
+   - **Action:** Add Prerequisites section specifying Python version requirements (tested with v22.21.0)
 
 **Based on User Journey:**
 
@@ -216,12 +216,12 @@ Based on repository analysis and documentation best practices, the following doc
     - **Action:** Add repository URLs and contribution workflow
 
 13. **License Information (Currently Missing)**
-    - **Finding:** package.json specifies "MIT" license but no LICENSE file exists
+    - **Finding:** requirements.txt specifies "MIT" license but no LICENSE file exists
     - **Inferred Need:** Document licensing terms
     - **Action:** Add License section to README
 
 14. **Author and Contact Information (Currently Missing)**
-    - **Finding:** package.json shows author: "hxu"
+    - **Finding:** requirements.txt shows author: "hxu"
     - **Inferred Need:** Provide contact information or contribution channels
     - **Action:** Add author information and links if available
 
@@ -242,14 +242,14 @@ The repository contains minimal documentation infrastructure:
 
 **Documentation Generator Detection:**
 
-Search conducted for common Node.js documentation tools:
+Search conducted for common Python documentation tools:
 
 | Tool Type | Config File | Status | Finding |
 |-----------|-------------|---------|---------|
-| JSDoc | jsdoc.json, jsdoc.conf.json | Not Found | No JSDoc configuration detected |
-| TypeDoc | typedoc.json | Not Found | Project uses JavaScript, not TypeScript |
-| Documentation.js | .documentationrc | Not Found | No documentation.js setup |
-| ESDoc | .esdoc.json | Not Found | No ESDoc configuration |
+| Sphinx | conf.py, docs/ | Not Found | No Sphinx documentation setup |
+| pdoc | pdoc configuration | Not Found | Project uses inline docstrings |
+| pydoc | Built-in | Available | Python built-in documentation tool |
+| MkDocs | mkdocs.yml | Not Found | No MkDocs configuration |
 | API Blueprint | *.apib files | Not Found | No API specification files |
 | Swagger/OpenAPI | swagger.yaml, openapi.yaml | Not Found | No API spec files |
 
@@ -275,12 +275,12 @@ test project for backprop integration.
 
 **Code Documentation Assessment:**
 
-**server.js Analysis:**
-- **File-level documentation:** Missing (no @fileoverview)
-- **Function documentation:** Missing (0 JSDoc comments)
+**app.py Analysis:**
+- **File-level documentation:** Missing (no Module docstring)
+- **Function documentation:** Missing (0 Python docstrings)
 - **Constant documentation:** Missing
 - **Inline comments:** Missing
-- **JSDoc coverage:** 0%
+- **Python docstring coverage:** 0%
 
 **Documentation Hosting/Deployment:**
 - **GitHub Pages:** Not configured
@@ -306,7 +306,7 @@ Repository search for documentation patterns:
 **Summary:**
 
 The project currently has virtually no documentation infrastructure. All documentation will be created from scratch:
-- JSDoc comments: 100% new creation
+- Python docstrings: 100% new creation
 - README content: 95%+ expansion (only title exists)
 - No documentation tooling to configure
 - No existing style guide to follow
@@ -328,8 +328,8 @@ The repository analysis employed the following systematic search:
 
 1. **Root Directory Scan:** Retrieved all first-order files and their comprehensive summaries
 2. **Source File Analysis:** Read complete contents of all code files
-3. **Dependency Manifest Review:** Examined package.json and package-lock.json for dependencies and metadata
-4. **Configuration File Search:** Searched for version specification files (.nvmrc, .node-version)
+3. **Dependency Manifest Review:** Examined requirements.txt and .python-version for dependencies and metadata
+4. **Configuration File Search:** Searched for version specification files (.python-version, .python-version)
 
 **Key Directories and Files Examined:**
 
@@ -338,38 +338,38 @@ The repository analysis employed the following systematic search:
 /
 ├── .git/                  (version control metadata)
 ├── README.md              (minimal documentation - 2 lines)
-├── package.json           (project metadata and scripts)
-├── package-lock.json      (dependency lock file)
-└── server.js              (main application file - HTTP server)
+├── requirements.txt           (project metadata and scripts)
+├── .python-version      (dependency lock file)
+└── app.py              (main application file - HTTP server)
 ```
 
 **Detailed File Analysis:**
 
-## server.js (Main Application - 14 lines)
+## app.py (Main Application - 14 lines)
 
-**Source:** `/server.js`
+**Source:** `/app.py`
 
 **Code Structure:**
-```javascript
+```python
 Lines 1-2:   Module imports (http)
 Line 3:      Empty line
 Lines 3-4:   Configuration constants (hostname, port)
 Line 5:      Empty line
 Lines 6-10:  Server creation with request handler
 Line 11:     Empty line
-Lines 12-14: Server listener with callback
+Lines 12-14: Server startup with if __name__ block
 ```
 
 **Public APIs/Functions Requiring Documentation:**
 
 | Element | Line | Type | Current Documentation | Required Documentation |
 |---------|------|------|----------------------|----------------------|
-| File/Module | 1 | Module | None | @fileoverview with module description |
-| hostname constant | 3 | Constant | None | @constant, @type, description |
-| port constant | 4 | Constant | None | @constant, @type, description |
-| Request handler callback | 6 | Function | None | @function, @param for req and res, description |
+| File/Module | 1 | Module | None | Module docstring with module description |
+| hostname constant | 3 | Constant | None | Inline comment, Type annotation, description |
+| port constant | 4 | Constant | None | Inline comment, Type annotation, description |
+| Route handler function | 6 | Function | None | Function docstring, Args section for req and res, description |
 | Response handling | 7-9 | Code block | None | Inline comments explaining status, headers, body |
-| Server listener callback | 12 | Function | None | @function, description of startup message |
+| Server startup block | 12 | Function | None | Function docstring, description of startup message |
 
 **Current API Implementation:**
 
@@ -395,32 +395,32 @@ Lines 12-14: Server listener with callback
 - No authentication/authorization
 - No error handling
 
-## package.json (Project Metadata)
+## requirements.txt (Project Metadata)
 
-**Source:** `/package.json`
+**Source:** `/requirements.txt`
 
 **Metadata Requiring Documentation:**
 - **Project Name:** "hello_world" (inconsistent with README "hao-backprop-test")
 - **Version:** "1.0.0"
-- **Description:** "Hello world in Node.js"
-- **Main Entry:** "index.js" (INCORRECT - actual file is server.js)
+- **Description:** "Hello world in Python"
+- **Main Entry:** "app.py" (INCORRECT - actual file is app.py)
 - **Scripts:** test script intentionally fails
 - **Author:** "hxu"
 - **License:** "MIT"
 - **Dependencies:** None (uses only built-in modules)
 
-**Package.json Issues to Document:**
-1. Entry point mismatch (main: index.js vs actual: server.js)
-2. Name inconsistency between package.json and README.md
+**Requirements.txt Issues to Document:**
+1. Entry point mismatch (main: app.py vs actual: app.py)
+2. Name inconsistency between requirements.txt and README.md
 3. No start script defined
-4. No Node.js engine requirement specified
+4. No Python engine requirement specified
 
-## package-lock.json
+## .python-version
 
-**Source:** `/package-lock.json`
+**Source:** `/.python-version`
 
 **Findings:**
-- lockfileVersion: 3 (npm 7+)
+- version: 3 (pip)
 - Zero dependencies locked
 - Confirms no external dependencies
 
@@ -434,20 +434,20 @@ All documentation will reference specific source files:
 
 | Documentation Section | Source Files | Line References |
 |----------------------|--------------|-----------------|
-| JSDoc file overview | server.js | Line 1 (insert before) |
-| JSDoc hostname constant | server.js | Line 3 |
-| JSDoc port constant | server.js | Line 4 |
-| JSDoc request handler | server.js | Lines 6-10 |
-| JSDoc listener callback | server.js | Lines 12-14 |
-| README API docs | server.js | Lines 6-10 (endpoint behavior) |
-| README setup | package.json | Dependencies section |
-| README deployment | server.js | Lines 12-14 (listen method) |
+| Python docstring file overview | app.py | Line 1 (insert before) |
+| Python docstring hostname constant | app.py | Line 3 |
+| Python docstring port constant | app.py | Line 4 |
+| Python docstring request handler | app.py | Lines 6-10 |
+| Python docstring startup block | app.py | Lines 12-14 |
+| README API docs | app.py | Lines 6-10 (endpoint behavior) |
+| README setup | requirements.txt | Dependencies section |
+| README deployment | app.py | Lines 12-14 (listen method) |
 
 **Documentation Gap Analysis:**
 
 **Summary of Undocumented Elements:**
 - **Public APIs:** 1 HTTP endpoint (GET /, but accepts all methods)
-- **Functions:** 2 callback functions (request handler, listener)
+- **Functions:** route handler and startup block (request handler, listener)
 - **Constants:** 2 configuration constants (hostname, port)
 - **Module:** 1 file-level module description
 - **Configuration:** 2 configuration values
@@ -461,9 +461,9 @@ All documentation will reference specific source files:
 
 **Modules Requiring Documentation:**
 
-#### Module: server.js (HTTP Server Application)
+#### Module: app.py (HTTP Server Application)
 
-**Source:** `/server.js`
+**Source:** `/app.py`
 
 **Public APIs/Elements:**
 
@@ -471,10 +471,10 @@ All documentation will reference specific source files:
    - **Element Type:** Module
    - **Current Documentation:** Missing
    - **Documentation Needed:** 
-     - @fileoverview JSDoc comment
+     - Module docstring Python docstring
      - Module purpose and description
      - Usage instructions
-     - Dependencies (http module)
+     - Dependencies (Flask framework)
      - Entry point designation
 
 2. **hostname Constant**
@@ -482,8 +482,8 @@ All documentation will reference specific source files:
    - **Value:** '127.0.0.1'
    - **Current Documentation:** None
    - **Documentation Needed:**
-     - @constant tag
-     - @type {string} annotation
+     - Inline comment tag
+     - Type annotation {string} annotation
      - Description: "Server hostname binding address"
      - Usage context: Local development vs. production
 
@@ -492,30 +492,30 @@ All documentation will reference specific source files:
    - **Value:** 3000
    - **Current Documentation:** None
    - **Documentation Needed:**
-     - @constant tag
-     - @type {number} annotation
+     - Inline comment tag
+     - Type annotation {number} annotation
      - Description: "Server port number for HTTP connections"
      - Configuration notes: Environment variable alternative
 
-4. **Server Creation & Request Handler**
+4. **Route Handler**
    - **Location:** Lines 6-10
-   - **Function Type:** Anonymous callback function
-   - **Parameters:** (req, res)
+   - **Function Type:** Decorated route handler
+   - **Parameters:** path (str)
    - **Current Documentation:** None
    - **Documentation Needed:**
-     - @function or @callback tag
-     - @param {http.IncomingMessage} req - HTTP request object
-     - @param {http.ServerResponse} res - HTTP response object
+     - Function docstring with description
+     - Args section: path (str) - URL path from the request
+     - Returns section: flask.Response - HTTP response object
      - Description: Request handler that responds with "Hello, World!"
      - Explain response configuration (status code, headers, body)
 
 5. **Server Listen Callback**
    - **Location:** Lines 12-14
-   - **Function Type:** Anonymous callback function
+   - **Function Type:** Decorated route handler
    - **Parameters:** None
    - **Current Documentation:** None
    - **Documentation Needed:**
-     - @function or @callback tag
+     - Function docstring or Decorated function tag
      - Description: Callback executed when server starts listening
      - Purpose: Log server startup confirmation
 
@@ -523,7 +523,7 @@ All documentation will reference specific source files:
 
 #### Server Configuration
 
-**Source:** `/server.js` lines 3-4
+**Source:** `/app.py` lines 3-4
 
 **Documented Options Needed:**
 
@@ -539,7 +539,7 @@ All documentation will reference specific source files:
 
 #### Feature: HTTP Server Setup and Operation
 
-**Source:** `/server.js` (complete file)
+**Source:** `/app.py` (complete file)
 
 **Current Coverage:** None
 
@@ -572,8 +572,8 @@ All documentation will reference specific source files:
 **Undocumented Public APIs:**
 - 1 HTTP endpoint (/* - all paths, all methods → 200 response)
 - 2 constants (hostname, port)
-- 2 callback functions (request handler, server listener)
-- 1 server instance (http.createServer)
+- route handler function and startup block
+- 1 server instance (Flask(__name__))
 
 **Missing User Guides:**
 - Setup and installation guide (0% coverage)
@@ -597,7 +597,7 @@ All documentation will reference specific source files:
 
 | Priority | Documentation Item | Impact | Effort | Status |
 |----------|-------------------|---------|---------|---------|
-| Critical | JSDoc for all functions | High | Low | Missing |
+| Critical | Python docstring for all functions | High | Low | Missing |
 | Critical | README setup instructions | High | Medium | Missing |
 | Critical | README API documentation | High | Low | Missing |
 | High | README deployment guide | Medium | Medium | Missing |
@@ -617,7 +617,7 @@ Given the minimal project scope (single-file HTTP server), the documentation wil
 ```
 Repository Root
 ├── README.md (comprehensive project documentation)
-└── server.js (source code with inline JSDoc comments)
+└── app.py (source code with inline Python docstrings)
 ```
 
 **No additional documentation folders required** due to project simplicity.
@@ -635,12 +635,12 @@ The comprehensive README will follow this hierarchy:
 │
 ├── Features
 ├── Prerequisites
-│   ├── Node.js version
-│   └── npm version
+│   ├── Python version
+│   └── pip version
 │
 ├── Installation
 │   ├── Clone repository
-│   ├── Verify Node.js installation
+│   ├── Verify Python installation
 │   └── Navigate to directory
 │
 ├── Quick Start
@@ -661,7 +661,7 @@ The comprehensive README will follow this hierarchy:
 │   │       ├── Request format
 │   │       ├── Response format
 │   │       ├── Status codes
-│   │       └── Examples (curl, JavaScript, browser)
+│   │       └── Examples (curl, Python, browser)
 │
 ├── How It Works
 │   ├── Architecture overview
@@ -677,8 +677,8 @@ The comprehensive README will follow this hierarchy:
 ├── Deployment
 │   ├── Local Development
 │   ├── Production Deployment
-│   │   ├── Direct Node.js
-│   │   ├── With PM2
+│   │   ├── Direct Python
+│   │   ├── With Gunicorn
 │   │   ├── With Docker
 │   │   └── Cloud Platforms (Heroku, AWS, Azure)
 │   └── Environment considerations
@@ -709,80 +709,77 @@ The comprehensive README will follow this hierarchy:
 └── Acknowledgments
 ```
 
-## server.js JSDoc Structure
+## app.py Docstring Structure
 
-The source code will include JSDoc comments in this order:
+The source code will include Python docstrings in this order:
 
-```javascript
-/**
- * @fileoverview [Module description]
- * @author [Author]
- * @version [Version]
- */
+```python
+"""
+[Module description]
 
-// Module imports
-const http = require('http');
+Author: [Author]
+Version: [Version]
+"""
 
-/**
- * @constant {string} hostname
- * [Description]
- */
-const hostname = '127.0.0.1';
+# Module imports
+from flask import Flask, Response
+import os
 
-/**
- * @constant {number} port
- * [Description]
- */
-const port = 3000;
+# [Description of hostname constant]
+HOSTNAME = os.getenv('HOST', '127.0.0.1')
 
-/**
- * [HTTP Server creation with request handler documentation]
- * @callback requestHandler
- * @param {http.IncomingMessage} req
- * @param {http.ServerResponse} res
- */
-const server = http.createServer((req, res) => {
-  // [Inline comments for response configuration]
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+# [Description of port constant]
+PORT = int(os.getenv('PORT', 3000))
 
-/**
- * [Server listener documentation]
- * @callback serverStartCallback
- */
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+# Flask application instance
+app = Flask(__name__)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    """
+    [HTTP request handler documentation]
+
+    Args:
+        path (str): The URL path from the request
+
+    Returns:
+        Response: Flask Response with status 200 and plain text body
+    """
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
+
+# Server startup
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=True)
 ```
 
 #### Content Generation Strategy
 
 #### Information Extraction Approach
 
-**For JSDoc Comments:**
-- **Source:** Extract from server.js code structure (lines 1-14)
+**For Python docstring Comments:**
+- **Source:** Extract from app.py code structure (lines 1-14)
 - **Method:** Analyze function signatures, parameter types, and behavior
-- **Enhancement:** Add type annotations and descriptions based on Node.js http module documentation
+- **Enhancement:** Add type annotations and descriptions based on Flask framework documentation
 
 **For README Setup Instructions:**
-- **Source:** Standard Node.js installation procedures and package.json requirements
+- **Source:** Standard Python installation procedures and requirements.txt requirements
 - **Method:** Create step-by-step guide from repository clone to running server
 - **Validation:** Test all commands in fresh environment
 
 **For API Documentation:**
-- **Source:** Extract from server.js request handler (lines 6-10)
+- **Source:** Extract from app.py request handler (lines 6-10)
 - **Method:** Document actual endpoint behavior, response format, and status codes
-- **Examples:** Create curl, browser, and JavaScript fetch examples
+- **Examples:** Create curl, browser, and Python requests examples
 
 **For Deployment Guide:**
-- **Source:** Node.js deployment best practices and common patterns
+- **Source:** Python deployment best practices and common patterns
 - **Method:** Document multiple deployment scenarios from simple to complex
-- **Platform Coverage:** Local, PM2, Docker, Heroku, AWS, Azure
+- **Platform Coverage:** Local, Gunicorn, Docker, Heroku, AWS, Azure
 
 **For Code Explanation:**
-- **Source:** Annotate server.js line-by-line
+- **Source:** Annotate app.py line-by-line
 - **Method:** Explain each code section with educational commentary
 - **Visualization:** Create Mermaid sequence diagram for HTTP request flow
 
@@ -790,13 +787,18 @@ server.listen(port, hostname, () => {
 
 **No User Template Provided:** Using industry-standard patterns:
 
-**JSDoc Template Pattern:**
-```javascript
+**Docstring Template Pattern:**
+```python
 /**
- * [Clear description of what the function/constant does]
- * @tag {type} name - Description
- * @returns {type} Description of return value
- */
+def function_name(param):
+    """[Clear description of what the function/constant does]
+
+    Args:
+        param (type): Description of parameter
+
+    Returns:
+        type: Description of return value
+    """
 ```
 
 **README Section Template Pattern:**
@@ -830,11 +832,11 @@ Detailed content with:
 <cite index="2-1,2-2">All code examples enclosed in ```language blocks with appropriate syntax highlighting</cite>
 ```bash
 # Example shell command
-node server.js
+python app.py
 ```
 
-**JSDoc Format:**
-<cite index="2-2,2-3">Start all JSDoc comments with /** and end with */; comments beginning with /* or /*** will be ignored</cite>
+**Python docstring Format:**
+<cite index="2-2,2-3">Start all Python docstrings with /** and end with */; comments beginning with /* or /*** will be ignored</cite>
 
 **Mermaid Diagrams:**
 ```mermaid
@@ -847,13 +849,13 @@ sequenceDiagram
 
 **Source Citations:**
 Every technical detail will reference source files:
-- "Source: `/server.js:3`" for line-specific references
-- "Source: `/package.json`" for file-level references
-- "See server.js request handler (lines 6-10)" for code sections
+- "Source: `/app.py:3`" for line-specific references
+- "Source: `/requirements.txt`" for file-level references
+- "See app.py request handler (lines 6-10)" for code sections
 
 **Consistency Requirements:**
-- Use "Node.js" (not "NodeJS" or "node.js")
-- Use "npm" (lowercase)
+- Use "Python" or "Python/Flask" consistently
+- Use "pip" (lowercase)
 - Use present tense for descriptions
 - Use imperative mood for instructions ("Run the command" not "You should run")
 - Use American English spelling
@@ -871,7 +873,7 @@ Every technical detail will reference source files:
 2. **Server Architecture Diagram (optional)**
    - **Location:** README "Architecture" section  
    - **Purpose:** Show server components and relationships
-   - **Components:** http module, server instance, request handler, listener
+   - **Components:** Flask framework, server instance, request handler, listener
    - **Type:** Flowchart or component diagram
 
 #### Code Snippet Strategy
@@ -888,7 +890,7 @@ $ curl http://127.0.0.1:3000/
 Hello, World!
 ```
 
-**server.js Inline Comments:**
+**app.py Inline Comments:**
 - Keep brief (1 line per concept)
 - Focus on "why" not "what" (code shows what)
 - Use for complex or non-obvious logic only
@@ -910,12 +912,12 @@ This section provides the complete mapping of all documentation files to be crea
 
 | Target Documentation File | Transformation | Source Code/Docs | Content/Changes |
 |---------------------------|----------------|------------------|-----------------|
-| README.md | UPDATE | README.md, server.js, package.json | Complete rewrite: Add project description, features list, prerequisites (Node.js v14+), installation steps (clone, verify Node), quick start (3-command setup), comprehensive usage guide, complete API reference (GET /* endpoint with curl/browser examples), "How It Works" section with code walkthrough and Mermaid sequence diagram, configuration guide (hostname/port via env vars), deployment guide (local, PM2, Docker, Heroku, AWS, Azure), testing instructions with expected outputs, troubleshooting (port conflicts, permissions), development workflow, contributing guidelines, MIT license section, author/contact info. **Expand from 2 lines to ~300-400 lines** |
-| server.js | UPDATE | server.js | Add comprehensive JSDoc comments: (1) File-level @fileoverview at top describing HTTP server module with @author and @version tags, (2) @constant JSDoc for hostname (line 3) with @type {string} and description of server binding address, (3) @constant JSDoc for port (line 4) with @type {number} and description of HTTP port, (4) @function JSDoc for request handler (before line 6) with @param {http.IncomingMessage} req and @param {http.ServerResponse} res describing the HTTP request/response handler, (5) @callback JSDoc for server.listen callback (before line 12) describing startup confirmation. **Add ~25-30 lines of JSDoc comments** |
+| README.md | UPDATE | README.md, app.py, requirements.txt | Complete rewrite: Add project description, features list, prerequisites (Python 3.8+), installation steps (clone, verify Python), quick start (3-command setup), comprehensive usage guide, complete API reference (GET /* endpoint with curl/browser examples), "How It Works" section with code walkthrough and Mermaid sequence diagram, configuration guide (hostname/port via env vars), deployment guide (local, Gunicorn, Docker, Heroku, AWS, Azure), testing instructions with expected outputs, troubleshooting (port conflicts, permissions), development workflow, contributing guidelines, MIT license section, author/contact info. **Expand from 2 lines to ~300-400 lines** |
+| app.py | UPDATE | app.py | Add comprehensive Python docstrings: (1) File-level Module docstring at top describing HTTP server module with Author and Version tags, (2) Inline comment Python docstring for hostname (line 3) with Type annotation {string} and description of server binding address, (3) Inline comment Python docstring for port (line 4) with Type annotation {number} and description of HTTP port, (4) Function docstring Python docstring for request handler (before line 6) with Args section {flask.request} req and Args section {flask.Response} res describing the HTTP request/response handler, (5) Decorated function Python docstring for startup block (before line 12) describing startup confirmation. **Add ~25-30 lines of Python docstrings** |
 
 #### New Documentation Files Detail
 
-**No new documentation files will be created.** All documentation will be added to existing files (README.md and server.js).
+**No new documentation files will be created.** All documentation will be added to existing files (README.md and app.py).
 
 #### Documentation Files to Update Detail
 
@@ -948,15 +950,15 @@ test project for backprop integration.
    - Enables quick navigation
 
 4. **Features Section**
-   - Lightweight Node.js HTTP server
+   - Lightweight Python Flask HTTP server
    - Zero external dependencies
    - Single-file implementation
    - Simple "Hello World" endpoint
    - Easy to understand and modify
 
 5. **Prerequisites Section**
-   - Node.js version: v14.0.0 or higher (tested with v22.21.0)
-   - npm (comes with Node.js)
+   - Python version: v14.0.0 or higher (tested with v22.21.0)
+   - pip (comes with Python)
    - Basic command line knowledge
    - Optional: curl for testing
 
@@ -966,9 +968,9 @@ test project for backprop integration.
    git clone [repository-url]
    cd hao-backprop-test
    
-   # Step 2: Verify Node.js installation
-   node --version
-   npm --version
+   # Step 2: Verify Python installation
+   python --version
+   pip --version
    
    # Step 3: Ready to run (no dependencies to install)
    ```
@@ -976,7 +978,7 @@ test project for backprop integration.
 7. **Quick Start Section**
    ```bash
    # Start the server
-   node server.js
+   python app.py
    
    # In another terminal, test it
    curl http://127.0.0.1:3000/
@@ -996,7 +998,7 @@ test project for backprop integration.
      | Method | Path | Description | Response |
      |--------|------|-------------|----------|
      | ALL | /* | Returns greeting | 200, text/plain, "Hello, World!" |
-   - Request examples (curl, JavaScript fetch, browser)
+   - Request examples (curl, Python requests, browser)
    - Response format details
    - Status codes (200 OK)
 
@@ -1007,7 +1009,7 @@ test project for backprop integration.
       ```mermaid
       sequenceDiagram
           participant Client as Client (Browser/curl)
-          participant Server as Node.js HTTP Server
+          participant Server as Python Flask HTTP Server
           Client->>Server: HTTP Request (GET /)
           Server->>Server: Execute request handler
           Server->>Client: HTTP Response (200 OK)<br/>Content-Type: text/plain<br/>Body: Hello, World!
@@ -1021,13 +1023,13 @@ test project for backprop integration.
     - Example configuration changes
 
 12. **Deployment Section**
-    - **Local Development:** `node server.js`
-    - **Production with PM2:**
+    - **Local Development:** `python app.py`
+    - **Production with Gunicorn:**
       ```bash
-      npm install -g pm2
-      pm2 start server.js --name hello-world-server
-      pm2 list
-      pm2 logs
+      pip install -r requirements.txt -g gunicorn
+      gunicorn app:app --name hello-world-server
+      gunicorn list
+      gunicorn logs
       ```
     - **Docker Deployment:**
       Example Dockerfile and docker run command
@@ -1046,7 +1048,7 @@ test project for backprop integration.
     - **Port already in use:** `lsof -i :3000` and kill process
     - **Permission denied:** Use port > 1024 or run with sudo (not recommended)
     - **Connection refused:** Verify server is running
-    - **EADDRINUSE error:** Port conflict resolution
+    - **OSError error:** Port conflict resolution
 
 15. **Development Section**
     - Project structure explanation
@@ -1057,7 +1059,7 @@ test project for backprop integration.
 16. **Contributing Section**
     - How to contribute
     - Fork and clone workflow
-    - Code standards (JSDoc comments required)
+    - Code standards (Python docstrings required)
     - Pull request process
 
 17. **License Section**
@@ -1065,138 +1067,137 @@ test project for backprop integration.
     - Copyright information
 
 18. **Author Section**
-    - Author: hxu (from package.json)
+    - Author: hxu (from requirements.txt)
     - Contact information (if available)
     - Repository link
 
 **Source Citations:**
-- API behavior: `server.js:6-10`
-- Configuration: `server.js:3-4`
-- Project metadata: `package.json:2-10`
+- API behavior: `app.py:6-10`
+- Configuration: `app.py:3-4`
+- Project metadata: `requirements.txt:2-10`
 
 **Estimated Size:** ~300-400 lines of markdown
 
 ---
 
-#### File: server.js
+#### File: app.py
 
-**Transformation:** UPDATE (add JSDoc comments)
+**Transformation:** UPDATE (add Python docstrings)
 
 **Current State:** No documentation comments (14 lines of code only)
 
-**JSDoc Comments to Add:**
+**Python Docstrings to Add:**
 
-**1. File-Level Documentation (Insert at line 1):**
-```javascript
-/**
- * @fileoverview Simple HTTP server that responds with "Hello, World!" to all requests.
- * This module creates a basic Node.js HTTP server listening on localhost port 3000.
- * It serves as a minimal example of Node.js HTTP server implementation and is used
- * for backprop integration testing.
- * 
- * @author hxu
- * @version 1.0.0
- * @requires http
- */
+**1. Module-Level Documentation (Insert at top of file):**
+```python
+"""
+Simple HTTP server that responds with "Hello, World!" to all requests.
+
+This module creates a basic Python Flask HTTP server listening on localhost port 3000.
+It serves as a minimal example of Python Flask HTTP server implementation and is used
+for backprop integration testing.
+
+Author: hxu
+Version: 1.0.0
+Requires: Flask, Werkzeug
+"""
 ```
 
-**Source:** Package.json metadata and module analysis
+**Source:** requirements.txt metadata and module analysis
 
-**2. Hostname Constant Documentation (Insert before line 3):**
-```javascript
-/**
- * Server hostname binding address. The server will listen on this IP address.
- * Using '127.0.0.1' binds to localhost IPv4, making the server accessible only
- * from the local machine. For production, consider '0.0.0.0' to accept external connections.
- * 
- * @constant {string}
- * @default
- */
+**2. Hostname Constant Documentation (Inline comment above constant):**
+```python
+# Server hostname binding address. The server will listen on this IP address.
+# Using '127.0.0.1' binds to localhost IPv4, making the server accessible only
+# from the local machine. For production, consider '0.0.0.0' to accept external connections.
+HOSTNAME = os.getenv('HOST', '127.0.0.1')
 ```
 
-**Source:** `server.js:3`
+**Source:** `app.py`
 
-**3. Port Constant Documentation (Insert before line 4):**
-```javascript
-/**
- * Server port number for HTTP connections. The server will listen on this port.
- * Port 3000 is commonly used for Node.js development servers. Can be overridden
- * using the PORT environment variable for deployment flexibility.
- * 
- * @constant {number}
- * @default
- */
+**3. Port Constant Documentation (Inline comment above constant):**
+```python
+# Server port number for HTTP connections. The server will listen on this port.
+# Port 3000 is commonly used for Python development servers. Can be overridden
+# using the PORT environment variable for deployment flexibility.
+PORT = int(os.getenv('PORT', 3000))
 ```
 
-**Source:** `server.js:4`
+**Source:** `app.py`
 
-**4. Request Handler Documentation (Insert before line 6):**
-```javascript
-/**
- * HTTP request handler callback function. Processes all incoming HTTP requests
- * and sends a plain text "Hello, World!" response. This handler ignores the
- * request method and path, responding identically to all requests.
- * 
- * @callback requestHandler
- * @param {http.IncomingMessage} req - The HTTP request object containing request details
- * @param {http.ServerResponse} res - The HTTP response object used to send the response
- * @returns {void}
- * 
- * @example
- * // Responds to any HTTP request with:
- * // Status: 200 OK
- * // Content-Type: text/plain
- * // Body: Hello, World!
- */
+**4. Request Handler Documentation (Docstring inside function):**
+```python
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    """HTTP request handler function. Processes all incoming HTTP requests
+    and sends a plain text "Hello, World!" response. This handler ignores the
+    request method and path, responding identically to all requests.
+
+    Args:
+        path (str): The URL path from the request (ignored in processing)
+
+    Returns:
+        Response: Flask Response object with status 200, Content-Type text/plain,
+                 and body "Hello, World!\\n"
+
+    Example:
+        Responds to any HTTP request with:
+        Status: 200 OK
+        Content-Type: text/plain
+        Body: Hello, World!
+    """
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
 ```
 
-**Source:** `server.js:6-10`
+**Source:** `app.py`
 
-**5. Server Listener Callback Documentation (Insert before line 12):**
-```javascript
-/**
- * Server startup callback function. Executed once the server successfully starts
- * listening on the specified hostname and port. Logs a confirmation message to
- * the console indicating the server is ready to accept connections.
- * 
- * @callback serverStartCallback
- * @returns {void}
- */
+**5. Server Startup Block Documentation (Comment above if block):**
+```python
+# Server startup block. Executed when the script is run directly.
+# Logs a confirmation message to the console indicating the server is ready
+# to accept connections, then starts the Flask development server.
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=True)
 ```
 
-**Source:** `server.js:12-14`
+**Source:** `app.py`
 
-**Total JSDoc Lines Added:** ~45-50 lines
+**Total Docstring Lines Added:** ~45-50 lines
 
 **Updated File Structure:**
-```javascript
-[10 lines] - File-level JSDoc
-const http = require('http');
+```python
+[12 lines] - Module-level docstring
+from flask import Flask, Response
+import os
 
-[8 lines] - hostname JSDoc
-const hostname = '127.0.0.1';
+[4 lines] - hostname comment + constant
+HOSTNAME = os.getenv('HOST', '127.0.0.1')
 
-[7 lines] - port JSDoc  
-const port = 3000;
+[4 lines] - port comment + constant
+PORT = int(os.getenv('PORT', 3000))
 
-[14 lines] - Request handler JSDoc
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+app = Flask(__name__)
 
-[7 lines] - Listener callback JSDoc
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+[20 lines] - Route decorator + handler with docstring
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    """..."""
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
+
+[5 lines] - Startup block with comment
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=True)
 ```
 
 **New File Size:** ~60 lines (from 14 lines)
 
 **Source Citations:**
-- All JSDoc comments reference: `server.js` specific line numbers
-- Type information from: Node.js http module documentation
+- All Python docstrings reference: `app.py` specific line numbers
+- Type information from: Flask framework documentation
 
 ---
 
@@ -1213,19 +1214,20 @@ If documentation generation is desired later:
 
 | Config File | Purpose | Status |
 |------------|---------|---------|
-| jsdoc.json | JSDoc generation config | Not needed currently |
-| package.json scripts | Add "docs" script | Optional enhancement |
+| conf.py | Sphinx documentation config | Not needed currently |
+| Makefile | Documentation build script | Optional enhancement |
 | .github/workflows/ | Auto-generate docs on push | Optional enhancement |
 
-**Package.json Script Addition (Optional):**
-```json
-"scripts": {
-  "start": "node server.js",
-  "docs": "jsdoc server.js -d docs/"
-}
-```
+**Documentation Generation (Optional):**
+```bash
+# Using pdoc for simple docstring-based docs
+pip install pdoc
+pdoc app.py -o docs/
 
-This would require: `npm install --save-dev jsdoc`
+# Or using Sphinx for comprehensive documentation
+pip install sphinx
+sphinx-quickstart docs/
+```
 
 ---
 
@@ -1241,16 +1243,16 @@ Within README.md:
 
 **Code-to-Documentation Links:**
 
-- README API Reference section describes behavior implemented in `server.js:6-10`
-- README Configuration section documents constants defined in `server.js:3-4`
-- JSDoc comments in server.js provide inline reference for IDE users
-- README "How It Works" includes annotated code snippets from server.js
+- README API Reference section describes behavior implemented in `app.py:6-10`
+- README Configuration section documents constants defined in `app.py:3-4`
+- Python docstrings in app.py provide inline reference for IDE users
+- README "How It Works" includes annotated code snippets from app.py
 
 **External References:**
 
-- Node.js documentation: https://nodejs.org/docs/
-- HTTP module documentation: https://nodejs.org/api/http.html
-- JSDoc specification: https://jsdoc.app/
+- Python documentation: https://docs.python.org/3/
+- HTTP module documentation: https://flask.palletsprojects.com/
+- Python docstring specification: https://peps.python.org/pep-0257/
 
 **No Shared Includes:** Single-file project requires no shared documentation fragments
 
@@ -1262,7 +1264,7 @@ Within README.md:
 
 **Files Modified:** 2
 - README.md (UPDATE - major expansion)
-- server.js (UPDATE - add JSDoc)
+- app.py (UPDATE - add Python docstring)
 
 **Files Created:** 0
 
@@ -1270,14 +1272,14 @@ Within README.md:
 
 **Total Lines of Documentation Added:** ~350-450 lines
 - README.md: ~300-400 lines added
-- server.js: ~45-50 lines added
+- app.py: ~45-50 lines added
 
 **Documentation Coverage Improvement:**
 - Before: 0% (2 lines of minimal README only)
-- After: 100% (complete JSDoc + comprehensive README)
+- After: 100% (complete Python docstring + comprehensive README)
 
 **Completion Criteria:**
-- All functions in server.js have JSDoc comments ✓
+- All functions in app.py have Python docstrings ✓
 - README includes setup instructions ✓
 - README includes API documentation ✓
 - README includes deployment guide ✓
@@ -1289,7 +1291,7 @@ Within README.md:
 
 The documentation task for this project requires **no external documentation tools** because:
 
-1. JSDoc comments are written as standard JavaScript comments (no tool execution required)
+1. Python docstrings are written as standard Python comments (no tool execution required)
 2. README is written in GitHub-flavored Markdown (no generator required)
 3. Mermaid diagrams are embedded in Markdown (rendered natively by GitHub)
 
@@ -1299,54 +1301,54 @@ However, if documentation generation is desired in the future, the following too
 
 | Registry | Package Name | Version | Purpose | Required |
 |----------|--------------|---------|---------|----------|
-| npm | jsdoc | 4.0.2 | Generate HTML documentation from JSDoc comments | No |
-| npm | documentation | 14.0.3 | Modern documentation generator with GitHub integration | No |
-| npm | docdash | 2.0.2 | Clean JSDoc template | No |
-| npm | jsdoc-to-markdown | 8.0.1 | Generate markdown API docs from JSDoc | No |
-| npm | markdown-toc | 1.2.0 | Generate table of contents for markdown | No |
+| PyPI | sphinx | 7.2+ | Generate HTML documentation from Python docstrings | No |
+| PyPI | pdoc | 14.0+ | Modern documentation generator with clean output | No |
+| PyPI | pydoc | Built-in | Python built-in documentation generator | No |
+| PyPI | mkdocs | 1.5+ | Generate markdown-based documentation sites | No |
+| PyPI | markdown-toc | 1.2.0 | Generate table of contents for markdown | No |
 
 **Note:** These tools are **NOT required** for this documentation task. Documentation will be manually written and committed.
 
 #### Runtime Dependencies
 
-## Node.js Runtime
+## Python Runtime
 
 | Component | Version | Source | Purpose |
 |-----------|---------|--------|---------|
-| Node.js | v22.21.0 | Installed during environment setup | JavaScript runtime for executing server.js |
-| npm | 10.9.4 | Bundled with Node.js | Package manager (no packages to install) |
+| Python | v22.21.0 | Installed during environment setup | Python runtime for executing app.py |
+| pip | 10.9.4 | Bundled with Python | Package manager (no packages to install) |
 
 **Version Determination Logic:**
 - **Explicitly Documented Version:** None found in repository
-  - No `.nvmrc` file
-  - No `.node-version` file
-  - No `engines` field in package.json
+  - No `.python-version` file
+  - No `.python-version` file
+  - No `engines` field in requirements.txt
   - No CI configuration files
 - **Installed Version:** v22.21.0 (latest LTS available at setup time)
-- **Recommended Minimum:** Node.js v14.0.0 (for modern JavaScript features)
+- **Recommended Minimum:** Python v14.0.0 (for modern Python features)
 - **Testing Compatibility:** Tested and working with v22.21.0
 
 **Version to Document in README:** 
-- Minimum: "Node.js v14.0.0 or higher"
-- Tested with: "Node.js v22.21.0"
+- Minimum: "Python v14.0.0 or higher"
+- Tested with: "Python v22.21.0"
 
 #### Project Dependencies
 
 #### Application Dependencies
 
-**Source:** `package.json` dependencies field
+**Source:** `requirements.txt` dependencies field
 
-```json
+```python
 "dependencies": {}
 ```
 
 **Finding:** **Zero external dependencies**
 
-The project uses only Node.js built-in modules:
+The project uses only Python packages and Flask:
 
 | Module | Type | Source | Purpose |
 |--------|------|--------|---------|
-| http | Built-in | Node.js core | HTTP server creation and request handling |
+| http | Built-in | Flask/Python | HTTP server creation and request handling |
 
 **Implications for Documentation:**
 - No dependency installation steps required in README
@@ -1356,9 +1358,9 @@ The project uses only Node.js built-in modules:
 
 #### Development Dependencies
 
-**Source:** `package.json` devDependencies field
+**Source:** `requirements.txt` devDependencies field
 
-```json
+```python
 "devDependencies": {}
 ```
 
@@ -1386,11 +1388,11 @@ The project uses only Node.js built-in modules:
 - **Purpose:** Sequence diagrams and flowcharts in README
 - **Rendering:** GitHub native support (no installation required)
 
-#### JSDoc
+#### Python docstring
 
-- **Tool:** JSDoc comment syntax
-- **Version:** JSDoc 3 specification
-- **Purpose:** Inline code documentation in server.js
+- **Tool:** Python docstring syntax
+- **Version:** PEP 257 docstring conventions
+- **Purpose:** Inline code documentation in app.py
 - **Generation:** Not required (comments for IDE support only)
 
 #### Documentation Reference Updates
@@ -1421,9 +1423,9 @@ If the project grows, the following links may need updates:
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
-| Node.js | v22.21.0 | JavaScript runtime |
-| npm | 10.9.4 | Package manager |
-| Text Editor | Any | Edit server.js and README.md |
+| Python | v22.21.0 | Python runtime |
+| pip | 10.9.4 | Package manager |
+| Text Editor | Any | Edit app.py and README.md |
 
 **Documented in README Prerequisites section**
 
@@ -1431,8 +1433,8 @@ If the project grows, the following links may need updates:
 
 | Component | Minimum Version | Purpose |
 |-----------|-----------------|---------|
-| Node.js | v14.0.0+ | JavaScript runtime |
-| Process Manager (optional) | PM2 latest | Keep server running |
+| Python | v14.0.0+ | Python runtime |
+| Process Manager (optional) | Gunicorn latest | Keep server running |
 | Reverse Proxy (optional) | nginx/Apache | Production traffic handling |
 
 **Documented in README Deployment section**
@@ -1442,13 +1444,13 @@ If the project grows, the following links may need updates:
 **Current Process:** Manual editing
 
 **No build steps required:**
-- JSDoc comments are part of source code
+- Python docstrings are part of source code
 - README is committed directly to repository
 - Mermaid diagrams are embedded in markdown
 
 **Deployment Process:**
 1. Edit README.md in text editor
-2. Add JSDoc comments to server.js
+2. Add Python docstrings to app.py
 3. Commit changes to git
 4. Push to GitHub
 5. Documentation auto-renders on GitHub
@@ -1459,7 +1461,7 @@ If the project grows, the following links may need updates:
 
 #### Compatibility Matrix
 
-| Node.js Version | Supported | Tested | Notes |
+| Python Version | Supported | Tested | Notes |
 |-----------------|-----------|---------|-------|
 | v22.x | ✓ | ✓ | Tested with v22.21.0 |
 | v20.x LTS | ✓ | - | Should work (LTS) |
@@ -1477,8 +1479,8 @@ If the project grows, the following links may need updates:
 
 The documentation effort requires:
 - ✓ Text editor (any)
-- ✓ Node.js runtime (for testing documented code)
-- ✗ No npm packages to install
+- ✓ Python runtime (for testing documented code)
+- ✗ No pip packages to install
 - ✗ No documentation generators
 - ✗ No build tools
 - ✗ No external services
@@ -1492,7 +1494,7 @@ Documentation is self-contained and maintainable without toolchain complexity.
 
 #### Current Coverage Analysis
 
-**Source Code Documentation (JSDoc):**
+**Source Code Documentation (Python docstring):**
 
 | Element Type | Total Count | Currently Documented | Current Coverage | Target Coverage |
 |--------------|-------------|---------------------|------------------|-----------------|
@@ -1505,11 +1507,11 @@ Documentation is self-contained and maintainable without toolchain complexity.
 **Detailed Breakdown:**
 
 1. **File-level Documentation:**
-   - server.js module: Not documented (0/1 = 0%)
+   - app.py module: Not documented (0/1 = 0%)
 
 2. **Function Documentation:**
-   - Request handler callback: Not documented
-   - Server listener callback: Not documented
+   - Route handler function: Not documented
+   - Server startup block: Not documented
    - Coverage: 0/2 = 0%
 
 3. **Constant Documentation:**
@@ -1547,13 +1549,13 @@ Documentation is self-contained and maintainable without toolchain complexity.
 **Rationale:**
 - <cite index="3-29,3-30">Good README answers "why should I use your package?" while good documentation answers "how can I use your package?"</cite>
 - Small codebase makes complete coverage achievable and maintainable
-- <cite index="3-33,3-34">JSDoc documentation in comments happens at the same time as code changes, minimizing context switching</cite>
+- <cite index="3-33,3-34">Python docstring documentation in comments happens at the same time as code changes, minimizing context switching</cite>
 - Comprehensive documentation establishes best practices for future development
 
 **Coverage Goals by Category:**
 
-1. **JSDoc Coverage: 100%**
-   - All 7 code elements must have JSDoc comments
+1. **Docstring Coverage: 100%**
+   - All 7 code elements must have Python docstrings
    - No functions, constants, or modules left undocumented
    - Focus: Module: 1/1, Functions: 2/2, Constants: 2/2
 
@@ -1576,7 +1578,7 @@ Documentation is self-contained and maintainable without toolchain complexity.
 
 | Gap Area | Current | Target | Priority | Impact |
 |----------|---------|--------|----------|--------|
-| JSDoc in server.js | 0% | 100% | Critical | High - Enables IDE support |
+| Docstrings in app.py | 0% | 100% | Critical | High - Enables IDE support |
 | README setup | 0% | 100% | Critical | High - Blocks new users |
 | API documentation | 0% | 100% | Critical | High - Core functionality unclear |
 | Deployment guide | 0% | 100% | High | Medium - Needed for production |
@@ -1593,34 +1595,35 @@ Documentation is self-contained and maintainable without toolchain complexity.
 
 #### Completeness Requirements
 
-**JSDoc Completeness Standards:**
+**PEP 257 Docstring Standards:**
 
-Each JSDoc block must include:
+Each docstring block must include:
 - ✓ Clear description of purpose (what the code does)
-- ✓ All parameters documented with @param tag
+- ✓ All parameters documented in Args section
   - Parameter name
-  - Type annotation ({type})
+  - Type annotation in parentheses
   - Description
-- ✓ Return value documented with @returns tag (if applicable)
+- ✓ Return value documented in Returns section (if applicable)
   - Return type
   - Description of what is returned
-- ✓ Type information for constants with @type tag
-- ✓ @constant tag for constant declarations
-- ✓ Code examples with @example tag (where helpful)
+- ✓ Inline comments for constants explaining purpose and defaults
+- ✓ Code examples in Example section (where helpful)
 
-**Example Quality JSDoc:**
-```javascript
-/**
- * HTTP request handler callback function. Processes all incoming HTTP requests
- * and sends a plain text "Hello, World!" response.
- * 
- * @callback requestHandler
- * @param {http.IncomingMessage} req - HTTP request object
- * @param {http.ServerResponse} res - HTTP response object
- * @returns {void}
- * @example
- * // Responds with: Status 200, Content-Type: text/plain, Body: Hello, World!
- */
+**Example Quality Python Docstring:**
+```python
+def hello_world(path):
+    """HTTP request handler function. Processes all incoming HTTP requests
+    and sends a plain text "Hello, World!" response.
+
+    Args:
+        path (str): The URL path from the request (ignored)
+
+    Returns:
+        Response: Flask Response with status 200 and text/plain content type
+
+    Example:
+        Responds with: Status 200, Content-Type: text/plain, Body: Hello, World!
+    """
 ```
 
 **README Completeness Standards:**
@@ -1661,25 +1664,25 @@ curl http://127.0.0.1:3000/
 # Verify output: Hello, World!
 
 #### Test server startup
-node server.js
+python app.py
 #### Verify output: Server running at http://127.0.0.1:3000/
 
 #### Test deployment commands
-pm2 start server.js --name test
-#### Verify PM2 shows running status
+gunicorn app:app --name test
+#### Verify Gunicorn shows running status
 ```
 
 **API Signature Accuracy:**
 
 All documented API behaviors must match actual implementation:
-- ✓ **Source validation:** README API docs must match server.js:6-10
-- ✓ **Status codes:** Documented 200 must match actual res.statusCode = 200
-- ✓ **Headers:** Documented Content-Type must match actual setHeader call
-- ✓ **Response body:** Documented output must match actual res.end() value
+- ✓ **Source validation:** README API docs must match app.py route handler
+- ✓ **Status codes:** Documented 200 must match actual Response status=200
+- ✓ **Headers:** Documented Content-Type must match actual Response mimetype parameter
+- ✓ **Response body:** Documented output must match actual Response body value
 
 **Accuracy Verification Checklist:**
 - [ ] All curl examples tested and output verified
-- [ ] All node commands tested and output verified
+- [ ] All python commands tested and output verified
 - [ ] All configuration values match actual code
 - [ ] All file paths point to existing files
 - [ ] All line number references are correct
@@ -1722,11 +1725,11 @@ Structure documentation from simple to complex:
 
 | Use This | Not This | Context |
 |----------|----------|---------|
-| Node.js | NodeJS, node.js | Runtime name |
-| npm | NPM, Npm | Package manager |
+| Python | N/A (legacy) | Runtime name |
+| pip | NPM, Npm | Package manager |
 | hostname | host name, host-name | Server configuration |
 | endpoint | end point, API endpoint | HTTP route |
-| callback | call-back, call back | Function type |
+| handler | call-back, callback | Function type |
 
 #### Maintainability
 
@@ -1734,12 +1737,12 @@ Structure documentation from simple to complex:
 
 Every technical detail must cite its source:
 
-Format: `Source: /path/to/file.js:LineNumber`
+Format: `Source: /path/to/file.py:LineNumber`
 
 **Examples:**
-- "The server listens on port 3000 by default. Source: `/server.js:4`"
-- "Returns HTTP 200 status. Source: `/server.js:7`"
-- "Project version is 1.0.0. Source: `/package.json:3`"
+- "The server listens on port 3000 by default. Source: `/app.py:4`"
+- "Returns HTTP 200 status. Source: `/app.py:7`"
+- "Project version is 1.0.0. Source: `/requirements.txt:3`"
 
 **Benefits:**
 - Easy to verify accuracy
@@ -1793,7 +1796,7 @@ curl [command]
 | Section | Minimum Examples | Type |
 |---------|------------------|------|
 | Quick Start | 1 complete flow | Shell commands |
-| API Reference | 3 per endpoint | curl, JavaScript, browser |
+| API Reference | 3 per endpoint | curl, Python, browser |
 | Configuration | 1 per option | Code snippet |
 | Deployment | 1 per platform | Shell commands |
 | Troubleshooting | 1 per issue | Solution steps |
@@ -1814,7 +1817,7 @@ curl [command]
 
 2. **Server Architecture** (Mermaid Flowchart)
    - **Purpose:** Show server component relationships
-   - **Components:** http module, server, handlers
+   - **Components:** Flask framework, server, handlers
    - **Location:** "Architecture" section
    - **Mandatory:** No (nice to have)
 
@@ -1836,7 +1839,7 @@ cat > test_documentation.sh << 'EOF'
 set -e
 
 echo "Testing Quick Start commands..."
-node server.js &
+python app.py &
 SERVER_PID=$!
 sleep 2
 curl http://127.0.0.1:3000/ | grep "Hello, World!"
@@ -1853,7 +1856,7 @@ chmod +x test_documentation.sh
 
 **Success Criteria:**
 
-- ✓ JSDoc coverage: 7/7 elements (100%)
+- ✓ Python docstring coverage: 7/7 elements (100%)
 - ✓ README sections: 8/8 complete (100%)
 - ✓ Configuration options: 3/3 documented (100%)
 - ✓ API endpoints: 1/1 documented (100%)
@@ -1866,7 +1869,7 @@ chmod +x test_documentation.sh
 **Quality Gates:**
 
 Before marking documentation complete:
-1. ✓ All code elements have JSDoc comments
+1. ✓ All code elements have Python docstrings
 2. ✓ README has all 8 required sections
 3. ✓ All code examples tested successfully
 4. ✓ At least 1 Mermaid diagram included
@@ -1896,7 +1899,7 @@ This section defines **exactly** what will be modified, created, or updated as p
   - Add API reference documentation
   - Add "How It Works" section with code explanation
   - Add configuration guide
-  - Add deployment guide (local, PM2, Docker, cloud platforms)
+  - Add deployment guide (local, Gunicorn, Docker, cloud platforms)
   - Add testing section
   - Add troubleshooting guide
   - Add development workflow section
@@ -1905,30 +1908,30 @@ This section defines **exactly** what will be modified, created, or updated as p
   - Add author and contact information
   - Add Mermaid diagrams
 
-- **server.js** - Add comprehensive JSDoc comments
-  - Add file-level @fileoverview comment at top of file
-  - Add @constant JSDoc for hostname (line 3)
-  - Add @constant JSDoc for port (line 4)
-  - Add @function JSDoc for request handler callback (before line 6)
-  - Add @callback JSDoc for server.listen callback (before line 12)
-  - Include @param, @returns, @type tags as appropriate
+- **app.py** - Add comprehensive Python docstrings
+  - Add file-level Module docstring comment at top of file
+  - Add Inline comment Python docstring for hostname (line 3)
+  - Add Inline comment Python docstring for port (line 4)
+  - Add Function docstring Python docstring for route handler (before line 6)
+  - Add Decorated function Python docstring for startup block (before line 12)
+  - Include Args section, Returns section, Type annotation tags as appropriate
   - Add inline explanatory comments where helpful
 
 #### Documentation Content In Scope
 
-**JSDoc Comments:**
-- server.js/**/* (all functions, constants, and modules)
+**Python docstring Comments:**
+- app.py/**/* (all functions, constants, and modules)
 - File-level module documentation
 - Function parameter documentation
 - Return value documentation
 - Type annotations
-- Usage examples in JSDoc
+- Usage examples in Python docstring
 
 **README Sections:**
 - Project metadata (title, description, badges)
 - Table of contents with anchor links
 - Features list
-- Prerequisites (Node.js version requirements)
+- Prerequisites (Python version requirements)
 - Installation instructions (step-by-step)
 - Quick start (minimal commands to run)
 - Usage guide (how to use the server)
@@ -1937,7 +1940,7 @@ This section defines **exactly** what will be modified, created, or updated as p
   - Request format
   - Response format  
   - Status codes
-  - Example requests (curl, JavaScript, browser)
+  - Example requests (curl, Python, browser)
 - How It Works section
   - Architecture overview
   - Code walkthrough with annotations
@@ -1949,8 +1952,8 @@ This section defines **exactly** what will be modified, created, or updated as p
   - Environment variable options
 - Deployment guide
   - Local development deployment
-  - Production deployment with Node.js
-  - Production deployment with PM2
+  - Production deployment with Python
+  - Production deployment with Gunicorn
   - Docker containerization
   - Cloud platform deployment (Heroku, AWS, Azure)
   - Environment-specific configurations
@@ -1959,7 +1962,7 @@ This section defines **exactly** what will be modified, created, or updated as p
   - Browser testing
   - Expected outputs
 - Troubleshooting section
-  - Port already in use (EADDRINUSE)
+  - Port already in use (OSError)
   - Permission denied errors
   - Connection refused errors
   - Module not found errors
@@ -1983,9 +1986,9 @@ This section defines **exactly** what will be modified, created, or updated as p
 **Code Examples In Scope:**
 - curl examples for testing endpoints
 - Browser URL examples
-- JavaScript fetch() examples
-- Node.js execution commands
-- PM2 deployment commands
+- Python requests() examples
+- Python execution commands
+- Gunicorn deployment commands
 - Docker commands
 - Environment variable configuration examples
 - All examples tested and validated
@@ -1993,16 +1996,16 @@ This section defines **exactly** what will be modified, created, or updated as p
 #### Source File References In Scope
 
 All documentation will reference:
-- /server.js (complete file, lines 1-14)
-- /package.json (metadata sections)
-- /package-lock.json (dependency information)
+- /app.py (complete file, lines 1-14)
+- /requirements.txt (metadata sections)
+- /.python-version (dependency information)
 - /README.md (current state for expansion)
 
 #### Documentation Standards In Scope
 
 **Formatting Standards:**
 - GitHub-flavored Markdown for README
-- JSDoc 3 specification for code comments
+- PEP 257 docstring conventions for code comments
 - Mermaid diagram syntax for visualizations
 - Consistent heading hierarchy (##, ###, ####)
 - Code blocks with syntax highlighting
@@ -2015,7 +2018,7 @@ All documentation will reference:
 - Active voice and imperative mood
 - Present tense for descriptions
 - American English spelling
-- Consistent terminology (Node.js, npm, localhost)
+- Consistent terminology (Python, pip, localhost)
 
 **Quality Standards:**
 - All code examples tested and working
@@ -2031,7 +2034,7 @@ This section defines **exactly** what will NOT be modified or created as part of
 #### Source Code Modifications (Out of Scope)
 
 **No source code changes except adding comments:**
-- ✗ No functional code changes to server.js logic
+- ✗ No functional code changes to app.py logic
 - ✗ No changes to hostname or port values
 - ✗ No changes to response content ("Hello, World!")
 - ✗ No refactoring of code structure
@@ -2044,13 +2047,13 @@ This section defines **exactly** what will NOT be modified or created as part of
 - ✗ No logging framework integration
 - ✗ No performance optimizations
 
-**Exception:** JSDoc comments and inline documentation comments ARE in scope
+**Exception:** Python docstrings and inline documentation comments ARE in scope
 
 #### Test File Modifications (Out of Scope)
 
 - ✗ No test file creation (no tests/ directory)
-- ✗ No test framework installation (Jest, Mocha, etc.)
-- ✗ No test script modification in package.json
+- ✗ No test framework installation (pytest, unittest, etc.)
+- ✗ No test script modification in requirements.txt
 - ✗ No CI/CD test automation
 - ✗ No test coverage reports
 - ✗ No integration test files
@@ -2060,20 +2063,20 @@ This section defines **exactly** what will NOT be modified or created as part of
 
 #### Build and Configuration Files (Out of Scope)
 
-- ✗ No package.json functional changes
+- ✗ No requirements.txt functional changes
   - ✗ No dependency additions
   - ✗ No script additions (except optionally documenting how to add them)
   - ✗ No engine field modifications
   - ✗ No metadata changes (name, version, author remain as-is)
 - ✗ No .gitignore modifications
-- ✗ No .nvmrc or .node-version file creation
+- ✗ No .python-version or .python-version file creation
 - ✗ No .env file creation
 - ✗ No .env.example file creation
 - ✗ No docker-compose.yml creation
 - ✗ No CI/CD configuration files (.github/workflows/, .gitlab-ci.yml, etc.)
-- ✗ No ESLint configuration
-- ✗ No Prettier configuration
-- ✗ No JSDoc generation configuration (jsdoc.json)
+- ✗ No flake8/pylint configuration
+- ✗ No Black/autopep8 configuration
+- ✗ No Sphinx documentation configuration (conf.py)
 
 **Exception:** README may document how to create these files if users want them
 
@@ -2085,7 +2088,7 @@ This section defines **exactly** what will NOT be modified or created as part of
 - ✗ No Heroku Procfile creation
 - ✗ No nginx configuration files
 - ✗ No systemd service files
-- ✗ No PM2 ecosystem file creation
+- ✗ No Gunicorn ecosystem file creation
 
 **Exception:** README will document these deployment approaches with example configurations
 
@@ -2101,12 +2104,12 @@ This section defines **exactly** what will NOT be modified or created as part of
 - ✗ No GitHub Pages site
 - ✗ No separate architecture documentation files
 
-**Rationale:** All documentation consolidated in README.md and server.js JSDoc for simplicity
+**Rationale:** All documentation consolidated in README.md and app.py Python docstring for simplicity
 
 #### Documentation Generation Tools (Out of Scope)
 
-- ✗ No JSDoc tool installation
-- ✗ No documentation.js installation
+- ✗ No Sphinx documentation setup
+- ✗ No pdoc installation
 - ✗ No automated documentation generation
 - ✗ No documentation site generation (Docusaurus, MkDocs, etc.)
 - ✗ No API specification files (OpenAPI/Swagger)
@@ -2135,16 +2138,16 @@ This section defines **exactly** what will NOT be modified or created as part of
 
 #### Code Quality Tools (Out of Scope)
 
-- ✗ No linter installation (ESLint, Standard, etc.)
-- ✗ No formatter installation (Prettier, Beautify, etc.)
+- ✗ No linter installation (flake8, pylint, etc.)
+- ✗ No formatter installation (Black, autopep8, etc.)
 - ✗ No code quality analysis tools (SonarQube, Code Climate, etc.)
-- ✗ No security scanning tools (npm audit fixes, Snyk, etc.)
+- ✗ No security scanning tools (pip audit, Safety, Snyk, etc.)
 - ✗ No dependency update tools (Dependabot, Renovate, etc.)
 
 #### Unrelated Documentation (Out of Scope)
 
-- ✗ No package.json "main" field fix (index.js → server.js)
-- ✗ No package.json name consistency fix (hello_world vs hao-backprop-test)
+- ✗ No requirements.txt "main" field fix (app.py → app.py)
+- ✗ No requirements.txt name consistency fix (hello_world vs hao-backprop-test)
 - ✗ No version bumping
 - ✗ No changelog generation
 
@@ -2155,7 +2158,7 @@ This section defines **exactly** what will NOT be modified or created as part of
 **No explicit exclusions specified by the user.**
 
 User request was focused on:
-1. Adding JSDoc comments to server.js
+1. Adding Python docstrings to app.py
 2. Creating comprehensive README
 
 Everything else not directly related to these two goals is out of scope.
@@ -2164,25 +2167,25 @@ Everything else not directly related to these two goals is out of scope.
 
 **In Scope Verification:**
 - ✓ Will modify README.md with comprehensive content
-- ✓ Will add JSDoc comments to server.js
+- ✓ Will add Python docstrings to app.py
 - ✓ Will create Mermaid diagrams in README
 - ✓ Will add setup, API, deployment, and code explanation documentation
 - ✓ Will include working code examples
 - ✓ All changes are documentation-only
 
 **Out of Scope Verification:**
-- ✓ Will NOT modify functional code in server.js
+- ✓ Will NOT modify functional code in app.py
 - ✓ Will NOT create test files
-- ✓ Will NOT modify package.json dependencies
+- ✓ Will NOT modify requirements.txt dependencies
 - ✓ Will NOT create build or deployment configuration files
 - ✓ Will NOT install documentation generation tools
-- ✓ Will NOT create separate documentation files (only README + JSDoc)
+- ✓ Will NOT create separate documentation files (only README + Python docstring)
 
 #### Scope Summary
 
 **Files Modified:** 2
 - README.md (documentation expansion)
-- server.js (JSDoc comments addition)
+- app.py (Python docstrings addition)
 
 **Files Created:** 0
 
@@ -2190,7 +2193,7 @@ Everything else not directly related to these two goals is out of scope.
 
 **Lines of Documentation Added:** ~350-450
 - README.md: ~300-400 lines
-- server.js: ~45-50 lines of JSDoc
+- app.py: ~45-50 lines of Python docstring
 
 **Tools Required:** 0 (manual documentation only)
 
@@ -2211,7 +2214,7 @@ Everything else not directly related to these two goals is out of scope.
 **Documentation Build Command:**
 ```bash
 # No build command needed - documentation is manually written
-# README.md and JSDoc comments are committed directly to repository
+# README.md and Python docstrings are committed directly to repository
 ```
 
 **Documentation Preview Commands:**
@@ -2227,20 +2230,20 @@ git push origin main
 #### Then: Ctrl+Shift+V or Cmd+Shift+V
 
 #### Option 3: Command-line markdown viewer (optional)
-npm install -g marked-terminal
+pip install -r requirements.txt -g marked-terminal
 cat README.md | marked-terminal
 ```
 
-**JSDoc Preview:**
+**Python docstring Preview:**
 ```bash
-# To view JSDoc in IDE (VS Code, WebStorm, etc.)
-# Hover over functions in server.js to see JSDoc tooltips
+# To view Python docstring in IDE (VS Code, WebStorm, etc.)
+# Hover over functions in app.py to see Python docstring tooltips
 # Or use "Go to Definition" to view inline documentation
 
 #### Optional: Generate HTML documentation (not required for this task)
-#### npm install -g jsdoc
-#### jsdoc server.js -d ./docs
-#### open docs/index.html
+#### pip install pdoc
+#### pdoc app.py -o ./docs
+#### open docs/app.html
 ```
 
 **Mermaid Diagram Preview:**
@@ -2254,7 +2257,7 @@ cat README.md | marked-terminal
 **Server Testing Command:**
 ```bash
 # Test that documented commands work
-node server.js
+python app.py
 ```
 
 Expected output:
@@ -2278,18 +2281,18 @@ Server running at http://127.0.0.1:3000/
 - Blockquotes: `> text`
 - Mermaid diagrams: ` ```mermaid ... ``` `
 
-**JSDoc Format:** JSDoc 3 Specification
+**Python docstring Format:** Python docstring 3 Specification
 
-**JSDoc Tags Used:**
-- `@fileoverview` - Module description
-- `@author` - Author information
-- `@version` - Version number
-- `@constant` - Constant declaration
-- `@type` - Type annotation
-- `@function` or `@callback` - Function documentation
-- `@param` - Parameter documentation
-- `@returns` - Return value documentation
-- `@example` - Usage examples
+**Python docstring Tags Used:**
+- `Module docstring` - Module description
+- `Author` - Author information
+- `Version` - Version number
+- `Inline comment` - Constant declaration
+- `Type annotation` - Type annotation
+- `Function docstring` or `Decorated function` - Function documentation
+- `Args section` - Parameter documentation
+- `Returns section` - Return value documentation
+- `Example section` - Usage examples
 
 #### Citation Requirements
 
@@ -2297,12 +2300,12 @@ Server running at http://127.0.0.1:3000/
 
 **Citation Format:**
 ```
-The server listens on port 3000. Source: `/server.js:4`
+The server listens on port 3000. Source: `/app.py:4`
 ```
 
 **Citation Locations:**
 - After specific technical details
-- In JSDoc comments when referencing other code
+- In Python docstrings when referencing other code
 - In README when describing code behavior
 - When stating configuration values
 - When documenting API responses
@@ -2314,33 +2317,33 @@ The server listens on port 3000. Source: `/server.js:4`
 #### Endpoint: GET /*
 
 **Response Status:** 200 OK  
-Source: `/server.js:7`
+Source: `/app.py:7`
 
 **Content-Type:** text/plain  
-Source: `/server.js:8`
+Source: `/app.py:8`
 
 **Response Body:** "Hello, World!\n"  
-Source: `/server.js:9`
+Source: `/app.py:9`
 ```
 
 #### Style Guide Requirements
 
-**Style Guide to Follow:** Node.js Community Best Practices + GitHub Documentation Standards
+**Style Guide to Follow:** Python Community Best Practices + GitHub Documentation Standards
 
 **Key Style Rules:**
 
 **Terminology:**
 | Correct | Incorrect |
 |---------|-----------|
-| Node.js | NodeJS, node.js, node |
-| npm | NPM, Npm |
-| JavaScript | javascript, Java Script |
+| Python | python (in titles) |
+| pip | PIP, Pip |
+| Flask | flask (in titles) |
 | localhost | local host, LocalHost |
 | README | Readme, readme |
 
 **Voice and Tense:**
 - Use active voice: "Start the server" not "The server should be started"
-- Use imperative mood for instructions: "Run `node server.js`"
+- Use imperative mood for instructions: "Run `python app.py`"
 - Use present tense for descriptions: "The server listens on port 3000"
 - Use second person for user actions: "You can change the port"
 
@@ -2348,15 +2351,15 @@ Source: `/server.js:9`
 ```bash
 # Good: Clear, actionable command with context
 # Start the server on default port 3000
-node server.js
+python app.py
 
 #### Bad: Ambiguous or incomplete
 #### Run it
-node server
+python app
 ```
 
 **Code Example Style:**
-- Always include language identifier: ` ```bash `, ` ```javascript `
+- Always include language identifier: ` ```bash `, ` ```python `
 - Include expected output below commands
 - Use real values, not placeholders
 - Test all examples before documentation
@@ -2380,14 +2383,14 @@ node server
 
 #### External links - validate accessibility
 #### Optional: Use link checker tool
-npm install -g markdown-link-check
+pip install -r requirements.txt -g markdown-link-check
 markdown-link-check README.md
 ```
 
 **Markdown Linting:**
 ```bash
 # Optional: Lint markdown for consistency
-npm install -g markdownlint-cli
+pip install -r requirements.txt -g markdownlint-cli
 markdownlint README.md
 
 #### Fix common issues
@@ -2403,7 +2406,7 @@ cat > validate_docs.sh << 'EOF'
 set -e
 
 echo "Starting server..."
-node server.js &
+python app.py &
 SERVER_PID=$!
 sleep 2
 
@@ -2425,14 +2428,15 @@ chmod +x validate_docs.sh
 ./validate_docs.sh
 ```
 
-**JSDoc Validation:**
+**Python Docstring Validation:**
 ```bash
-# Optional: Validate JSDoc syntax
-npm install -g eslint eslint-plugin-jsdoc
-eslint server.js --plugin jsdoc
+# Optional: Validate Python docstring syntax
+pip install pydocstyle
+pydocstyle app.py
 
-#### Or use TypeScript for JSDoc type checking
-npx tsc server.js --checkJs --noEmit
+# Or use pylint for docstring checking
+pip install pylint
+pylint app.py --disable=all --enable=missing-docstring
 ```
 
 #### Documentation Deployment
@@ -2443,15 +2447,15 @@ npx tsc server.js --checkJs --noEmit
 ```bash
 # 1. Verify changes
 git status
-git diff README.md server.js
+git diff README.md app.py
 
 #### Stage documentation files
-git add README.md server.js
+git add README.md app.py
 
 #### Commit with descriptive message
-git commit -m "docs: Add comprehensive JSDoc comments and README documentation
+git commit -m "docs: Add comprehensive Python docstrings and README documentation
 
-- Add JSDoc comments to all functions and constants in server.js
+- Add Python docstrings to all functions and constants in app.py
 - Expand README with setup, API docs, deployment guide
 - Include Mermaid sequence diagram for request flow
 - Add troubleshooting, configuration, and testing sections"
@@ -2466,7 +2470,7 @@ git push origin main
 **Documentation Auto-Rendering:**
 - GitHub automatically renders README.md on repository homepage
 - GitHub automatically renders Mermaid diagrams in markdown
-- JSDoc comments visible in code view and IDE hover tooltips
+- Python docstrings visible in code view and IDE hover tooltips
 - No additional deployment configuration required
 
 #### Special Documentation Conventions
@@ -2490,16 +2494,16 @@ sequenceDiagram
     Note over Client: Displays "Hello, World!"
 ```
 
-**JSDoc Example Format:**
-```javascript
+**Python docstring Example Format:**
+```python
 /**
  * Description of what the function does.
  * Can span multiple lines for detailed explanation.
  * 
- * @param {Type} paramName - Parameter description
- * @returns {Type} Description of return value
+ * Args section {Type} paramName - Parameter description
+ * Returns section {Type} Description of return value
  * 
- * @example
+ * Example section
  * // Usage example
  * functionName(arg1, arg2);
  * // Expected output: result
@@ -2529,12 +2533,12 @@ output text here
 
 When code changes are made in the future:
 
-1. **Update JSDoc comments** in server.js if function signatures change
+1. **Update Python docstrings** in app.py if function signatures change
 2. **Update README** if:
    - API behavior changes
    - Configuration options change
    - New deployment methods added
-   - Prerequisites change (Node.js version)
+   - Prerequisites change (Python version)
 3. **Update Mermaid diagrams** if request flow changes
 4. **Update code examples** if syntax or commands change
 5. **Test all examples** to ensure accuracy
@@ -2543,7 +2547,7 @@ When code changes are made in the future:
 **Documentation Review Checklist:**
 
 Before marking documentation complete:
-- [ ] All JSDoc comments added to server.js
+- [ ] All Python docstrings added to app.py
 - [ ] README has all required sections
 - [ ] Table of contents links work
 - [ ] All code examples tested and working
@@ -2559,16 +2563,16 @@ Before marking documentation complete:
 
 **Documentation Task Complete When:**
 
-1. ✓ **server.js** has JSDoc comments for:
-   - File/module level (@fileoverview)
-   - hostname constant (@constant, @type)
-   - port constant (@constant, @type)
-   - Request handler function (@function, @param, @returns)
-   - Server listener callback (@callback)
+1. ✓ **app.py** has Python docstrings for:
+   - File/module level (Module docstring)
+   - hostname constant (Inline comment, Type annotation)
+   - port constant (Inline comment, Type annotation)
+   - Request handler function (Function docstring, Args section, Returns section)
+   - Server startup block (Decorated function)
 
 2. ✓ **README.md** includes:
    - Complete project description
-   - Prerequisites with Node.js version
+   - Prerequisites with Python version
    - Installation instructions (step-by-step)
    - Quick start (3-5 commands)
    - API reference with examples
@@ -2589,7 +2593,7 @@ Before marking documentation complete:
    - Spelling and grammar checked
 
 4. ✓ **User requirements satisfied:**
-   - JSDoc comments added to server.js functions ✓
+   - Python docstrings added to app.py functions ✓
    - Comprehensive README created ✓
    - Setup instructions included ✓
    - API documentation provided ✓
@@ -2601,14 +2605,14 @@ Before marking documentation complete:
 **This is a documentation task - no temporal planning required.**
 
 All documentation will be completed in a single pass:
-1. Add JSDoc comments to server.js
+1. Add Python docstrings to app.py
 2. Expand and enhance README.md
 3. Create Mermaid diagrams
 4. Test all examples
 5. Validate and commit
 
 **Estimated Total Documentation Size:**
-- server.js: +45-50 lines of JSDoc
+- app.py: +45-50 lines of Python docstring
 - README.md: +300-400 lines of content
 - Total: ~350-450 lines of documentation
 
@@ -2622,16 +2626,16 @@ All documentation will be completed in a single pass:
 
 ### 1.1.1 Project Overview
 
-This technical specification documents a minimal Node.js HTTP server implementation that serves as a test harness for backprop integration validation. The project operates under two identifiers: "hao-backprop-test" (per repository README) and "hello_world" (per package metadata), reflecting its dual nature as both a specific integration test fixture and a general demonstration application.
+This technical specification documents a minimal Python Flask HTTP server implementation that serves as a test harness for backprop integration validation. The project operates under two identifiers: "hao-backprop-test" (per repository README) and "hello_world" (per package metadata), reflecting its dual nature as both a specific integration test fixture and a general demonstration application.
 
-The system is intentionally minimal, consisting of a single-file HTTP server implementation built using Node.js native modules without external dependencies. Version 1.0.0, authored by hxu and distributed under the MIT license, represents a complete, self-contained testing environment designed for rapid validation workflows.
+The system is intentionally minimal, consisting of a single-file HTTP server implementation built using Flask micro-framework with minimal dependencies. Version 1.0.0, authored by hxu and distributed under the MIT license, represents a complete, self-contained testing environment designed for rapid validation workflows.
 
 ### 1.1.2 Core Business Problem
 
 This project addresses the need for a lightweight, deterministic test environment to validate backprop integration functionality. Traditional testing approaches often introduce complexity through frameworks, dependencies, and configuration overhead that can obscure integration issues. This implementation eliminates these variables by providing:
 
 - **Deterministic Behavior**: A server that responds identically to all requests, ensuring consistent test conditions
-- **Minimal Dependencies**: Zero external dependencies reduce potential points of failure in integration testing
+- **Minimal Dependencies**: Only Flask as an external dependency reduces potential points of failure in integration testing
 - **Rapid Deployment**: Single-file architecture enables quick setup and teardown in test pipelines
 - **Transparent Implementation**: Simple codebase allows testers to quickly understand system behavior and diagnose integration issues
 
@@ -2650,7 +2654,7 @@ The value proposition centers on **testing efficiency** rather than production c
 - **Reduced Test Complexity**: Eliminates framework abstractions that can mask integration issues
 - **Faster Iteration Cycles**: Lightweight architecture supports rapid test-debug-fix workflows
 - **Clear Success Criteria**: Simple behavior model (always returns "Hello, World!") provides unambiguous validation targets
-- **Low Maintenance Overhead**: No dependency management or security patching required for test infrastructure
+- **Low Maintenance Overhead**: Minimal dependency management with only Flask required for test infrastructure
 
 ## 1.2 System Overview
 
@@ -2673,10 +2677,9 @@ The current implementation exhibits several intentional and unintentional limita
 - No authentication, routing, or request processing logic
 
 **Unintentional Limitations** (metadata issues):
-- Project naming inconsistency between README ("hao-backprop-test") and package.json ("hello_world")
-- package.json "main" field references non-existent "index.js" instead of actual entry point "server.js"
-- Non-functional test script that exits with error code 1
-- Missing npm "start" script configuration
+- Project naming inconsistency between README ("hao-backprop-test") and project directory ("hello_world")
+- No automated test suite configured
+- No dedicated entry point script beyond `python app.py`
 
 ### 1.2.2 High-Level Description
 
@@ -2691,10 +2694,10 @@ The system provides a single core capability: **HTTP request handling with deter
 
 #### 1.2.2.2 Major System Components
 
-The architecture consists of a single component implemented in `server.js`:
+The architecture consists of a single component implemented in `app.py`:
 
 **HTTP Server Module**
-- **Technology**: Node.js built-in `http` module
+- **Technology**: Flask micro-framework
 - **Configuration**: 
   - Hostname: 127.0.0.1 (IPv4 localhost)
   - Port: 3000
@@ -2703,19 +2706,19 @@ The architecture consists of a single component implemented in `server.js`:
 - **Server Lifecycle**: Starts listening on configured address and logs "Server running at http://127.0.0.1:3000/" to console
 
 **Supporting Files**:
-- `package.json`: Project metadata and configuration (though with noted inconsistencies)
-- `package-lock.json`: Dependency lock file (lockfileVersion 3, documenting zero external dependencies)
+- `requirements.txt`: Python package dependencies (Flask==3.1.2, Werkzeug==3.1.2)
+- `.python-version`: Python version specification file (Python 3.12.3)
 - `README.md`: Project documentation identifying purpose as "test project for backprop integration"
 
 #### 1.2.2.3 Core Technical Approach
 
 The technical approach emphasizes **simplicity over sophistication**:
 
-1. **No Framework Abstraction**: Direct use of Node.js http module rather than frameworks (Express, Fastify, etc.) eliminates abstraction layers
+1. **Minimal Framework Abstraction**: Direct use of Flask micro-framework rather than heavier frameworks eliminates unnecessary abstraction layers
 2. **Stateless Design**: No session management, database connections, or state persistence
-3. **Synchronous Processing**: Request handling occurs synchronously within a single callback function
+3. **Synchronous Processing**: Request handling occurs synchronously within a single route handler function
 4. **Deterministic Response Model**: Identical output for all inputs ensures predictable test behavior
-5. **Zero External Dependencies**: Reliance exclusively on Node.js built-in modules eliminates supply chain complexity
+5. **Minimal External Dependencies**: Reliance on Flask as the sole external package minimizes supply chain complexity
 
 This approach trades production-ready features (error handling, routing, middleware) for maximum transparency and minimal environmental requirements.
 
@@ -2727,7 +2730,7 @@ This approach trades production-ready features (error handling, routing, middlew
 |-----------|---------------|----------------|
 | Server Startup | Server successfully binds to 127.0.0.1:3000 and logs confirmation | ✅ Achieved |
 | Request Handling | Returns HTTP 200 with "Hello, World!" for all HTTP requests | ✅ Achieved |
-| Zero Dependencies | No external npm packages required for operation | ✅ Achieved |
+| Zero Dependencies | No external pip packages required for operation | ✅ Achieved |
 | Integration Test Support | Provides functional HTTP endpoint for backprop testing | ✅ Achieved |
 
 #### 1.2.3.2 Critical Success Factors
@@ -2743,7 +2746,7 @@ For this test harness to fulfill its intended purpose, the following factors are
 
 Given the testing-focused nature of this system, relevant KPIs differ from production applications:
 
-- **Startup Latency**: Time from `node server.js` execution to "Server running" console message
+- **Startup Latency**: Time from `python app.py` execution to "Server running" console message
 - **Response Time**: Duration from HTTP request receipt to complete response transmission
 - **Resource Footprint**: Memory consumption and CPU utilization during idle and active request handling
 - **Test Integration Success Rate**: Percentage of backprop integration test runs that successfully interact with the server
@@ -2758,10 +2761,10 @@ The following capabilities are implemented and supported:
 
 | Feature Category | Specific Capabilities | Implementation Location |
 |-----------------|----------------------|------------------------|
-| HTTP Server | Server instance creation, binding to 127.0.0.1:3000, listening for connections | `server.js` |
-| Request Processing | Accept HTTP requests (all methods and paths), set response status and headers | `server.js` request handler |
-| Response Generation | Generate plain-text "Hello, World!" response, return HTTP 200 status | `server.js` request handler |
-| Operational Logging | Console output of server startup message | `server.js` server.listen callback |
+| HTTP Server | Server instance creation, binding to 127.0.0.1:3000, listening for connections | `app.py` |
+| Request Processing | Accept HTTP requests (all methods and paths), set response status and headers | `app.py` request handler |
+| Response Generation | Generate plain-text "Hello, World!" response, return HTTP 200 status | `app.py` request handler |
+| Operational Logging | Console output of server startup message | `app.py` startup block |
 
 **Detailed In-Scope Functionality**:
 
@@ -2777,7 +2780,7 @@ The following capabilities are implemented and supported:
    - Consistent response content regardless of request characteristics
 
 3. **Server Lifecycle**:
-   - Server initialization via `node server.js` command
+   - Server initialization via `python app.py` command
    - Binding to specified network interface (127.0.0.1)
    - Listening state maintenance until process termination
    - Console confirmation of operational status
@@ -2786,7 +2789,7 @@ The following capabilities are implemented and supported:
 
 **System Boundaries**:
 - **Network Boundary**: Localhost interface only (127.0.0.1), port 3000
-- **Process Boundary**: Single Node.js process, no child processes or workers
+- **Process Boundary**: Single Python process, no child processes or workers
 - **File System Boundary**: No file system access beyond initial script loading
 - **Protocol Boundary**: HTTP only (no HTTPS, WebSocket, or other protocols)
 
@@ -2840,7 +2843,7 @@ The following features are **explicitly not implemented**:
 
 **Development Tooling**:
 - ❌ Automated test implementation (test script intentionally exits with error)
-- ❌ Test framework configuration (Jest, Mocha, etc.)
+- ❌ Test framework configuration (pytest, unittest, etc.)
 - ❌ Code linting or formatting tools
 - ❌ Hot-reload or development watch mode
 - ❌ Debugging configuration
@@ -2860,7 +2863,7 @@ Given this project's nature as a test harness, future enhancements are not curre
 - **Configuration Flexibility**: Environment variable support for port and hostname configuration
 - **Enhanced Logging**: Request logging for debugging integration issues
 - **Test Suite**: Functional automated tests validating server behavior
-- **Metadata Corrections**: Resolving package.json inconsistencies (main field, project name)
+- **Metadata Corrections**: Resolving requirements.txt inconsistencies (main field, project name)
 - **Graceful Shutdown**: Signal handling for clean server termination
 
 #### 1.3.2.3 Integration Points Not Covered
@@ -2893,9 +2896,9 @@ This system **cannot support** the following use cases:
 The following files were analyzed to produce this technical specification:
 
 - **`README.md`** - Project identification ("hao-backprop-test") and purpose statement ("test project for backprop integration")
-- **`package.json`** - Package metadata including name ("hello_world"), version (1.0.0), author (hxu), license (MIT), scripts configuration, and main entry point declaration
-- **`package-lock.json`** - npm lockfile (version 3) documenting zero external dependencies and package version locking
-- **`server.js`** - Complete HTTP server implementation including configuration (127.0.0.1:3000), request handler logic, and startup logging
+- **`requirements.txt`** - Package metadata including name ("hello_world"), version (1.0.0), author (hxu), license (MIT), scripts configuration, and main entry point declaration
+- **`.python-version`** - pip lockfile (version 3) documenting zero external dependencies and package version locking
+- **`app.py`** - Complete HTTP server implementation including configuration (127.0.0.1:3000), request handler logic, and startup logging
 
 ### 1.4.2 Repository Structure
 
@@ -2927,7 +2930,7 @@ This section documents all discrete, testable features identified in the hao-bac
 
 **Description**
 
-**Overview**: This feature provides the foundational capability to initialize an HTTP server instance and bind it to a specific network interface and port. The implementation uses Node.js built-in `http` module to create a server instance that listens on the IPv4 localhost interface (127.0.0.1) at TCP port 3000.
+**Overview**: This feature provides the foundational capability to initialize an HTTP server instance and bind it to a specific network interface and port. The implementation uses Flask micro-framework to create a server instance that listens on the IPv4 localhost interface (127.0.0.1) at TCP port 3000.
 
 **Business Value**: Establishes the core network endpoint required for all backprop integration testing scenarios. Without successful server initialization and binding, no testing activities can proceed, making this the most critical feature in the system.
 
@@ -2936,15 +2939,15 @@ This section documents all discrete, testable features identified in the hao-bac
 - Eliminates network configuration complexity through hard-coded localhost binding
 - Ensures test environment isolation by restricting access to the local machine only
 
-**Technical Context**: The server initialization leverages Node.js's event-driven architecture through the `http.createServer()` factory method. The hard-coded hostname (127.0.0.1) and port (3000) values eliminate configuration complexity but constrain deployment flexibility. The binding process is synchronous from the application perspective, with the listen callback executing only after successful socket binding.
+**Technical Context**: The server initialization leverages Python's event-driven architecture through the `Flask(__name__)` factory method. The hard-coded hostname (127.0.0.1) and port (3000) values eliminate configuration complexity but constrain deployment flexibility. The binding process is synchronous from the application perspective, with the startup block executing only after successful socket binding.
 
 **Dependencies**
 
 | Dependency Type | Requirement | Source |
 |----------------|-------------|--------|
-| System | Node.js runtime with http module | `server.js` line 1 |
-| Network | Available TCP port 3000 | `server.js` line 4 |
-| Network | Accessible 127.0.0.1 interface | `server.js` line 3 |
+| System | Python runtime with Flask framework | `app.py` line 1 |
+| Network | Available TCP port 3000 | `app.py` line 4 |
+| Network | Accessible 127.0.0.1 interface | `app.py` line 3 |
 | Permissions | Socket binding privileges | System level |
 
 **Known Limitations**: Port conflicts result in unhandled exceptions as no error handling logic is implemented. The hard-coded configuration prevents runtime customization through environment variables or configuration files.
@@ -2972,15 +2975,15 @@ This section documents all discrete, testable features identified in the hao-bac
 - Clear indication of the server's network address for client configuration
 - Simplified debugging through explicit operational state notification
 
-**Technical Context**: The logging implementation uses Node.js `console.log()` within the server.listen callback, ensuring the message only appears after successful socket binding. The message format uses template literals to construct the full HTTP URL from the configured hostname and port constants.
+**Technical Context**: The logging implementation uses Python `print()` within the startup block, ensuring the message only appears after successful socket binding. The message format uses template literals to construct the full HTTP URL from the configured hostname and port constants.
 
 **Dependencies**
 
 | Dependency Type | Requirement | Source |
 |----------------|-------------|--------|
-| Feature | F-001 (successful binding) | `server.js` line 12-14 |
-| System | stdout availability | Node.js runtime |
-| Configuration | hostname and port constants | `server.js` lines 3-4 |
+| Feature | F-001 (successful binding) | `app.py` line 12-14 |
+| System | stdout availability | Python runtime |
+| Configuration | hostname and port constants | `app.py` lines 3-4 |
 
 ### 2.1.2 Request Processing Features
 
@@ -3008,17 +3011,17 @@ This section documents all discrete, testable features identified in the hao-bac
 - Eliminates request header validation concerns
 - Supports both empty and populated request bodies without parsing errors
 
-**Technical Context**: The request handler is registered during server creation via `http.createServer((req, res) => {...})`. The handler executes synchronously for each incoming request, with the req (IncomingMessage) and res (ServerResponse) objects provided by the Node.js http module. The implementation intentionally ignores the req object contents, proceeding directly to response generation.
+**Technical Context**: The request handler is registered via `@app.route()` decorators on the `hello_world()` function. The handler executes synchronously for each incoming request. The Flask framework provides the request context implicitly, but the implementation intentionally ignores the request contents, proceeding directly to response generation.
 
 **Dependencies**
 
 | Dependency Type | Requirement | Source |
 |----------------|-------------|--------|
 | Feature | F-001 (server listening) | Prerequisite |
-| System | Node.js HTTP parser | Built-in |
+| System | Python Flask HTTP parser | Built-in |
 | Network | TCP connection establishment | Transport layer |
 
-**Integration Requirements**: Requires an active TCP connection from a client. The Node.js http module handles HTTP protocol parsing, providing pre-parsed request objects to the handler function.
+**Integration Requirements**: Requires an active TCP connection from a client. The Flask framework handles HTTP protocol parsing, providing pre-parsed request objects to the handler function.
 
 ### 2.1.3 Response Generation Features
 
@@ -3046,14 +3049,14 @@ This section documents all discrete, testable features identified in the hao-bac
 - HTTP 200 status code confirms successful request processing
 - Plain text content type avoids parsing complexity
 
-**Technical Context**: Response generation occurs through three sequential operations on the ServerResponse object: status code assignment (`res.statusCode = 200`), header setting (`res.setHeader('Content-Type', 'text/plain')`), and body transmission with connection close (`res.end('Hello, World!\n')`). The response generation is fully synchronous with no I/O operations, ensuring minimal latency.
+**Technical Context**: Response generation occurs through three sequential operations on the Flask Response object: status code assignment (`# Status 200 set via Response object`), header setting (`# Content-Type set via mimetype parameter`), and body transmission with connection close (`return Response('Hello, World!\n', status=200, mimetype='text/plain')`). The response generation is fully synchronous with no I/O operations, ensuring minimal latency.
 
 **Dependencies**
 
 | Dependency Type | Requirement | Source |
 |----------------|-------------|--------|
 | Feature | F-002 (request received) | Trigger |
-| System | Node.js HTTP module | Response APIs |
+| System | Python Flask HTTP module | Response APIs |
 
 **Performance Characteristics**:
 - Response generation time: < 1ms (no I/O operations)
@@ -3077,28 +3080,28 @@ This section documents all discrete, testable features identified in the hao-bac
 
 **Description**
 
-**Overview**: Defines npm package identity and configuration through package.json metadata. This includes package name, version, description, entry point declaration, author information, and license specification.
+**Overview**: Defines pip package identity and configuration through requirements.txt metadata. This includes package name, version, description, entry point declaration, author information, and license specification.
 
-**Business Value**: Enables npm ecosystem integration, allowing the package to be referenced, installed, and managed through standard Node.js tooling. Proper metadata supports package discovery, version management, and license compliance.
+**Business Value**: Enables pip ecosystem integration, allowing the package to be referenced, installed, and managed through standard Python tooling. Proper metadata supports package discovery, version management, and license compliance.
 
 **User Benefits**:
-- npm install compatibility for test environment setup
+- pip install -r requirements.txt compatibility for test environment setup
 - Clear package identification for dependency management
 - License clarity for usage compliance
 - Version tracking for test environment reproducibility
 
-**Technical Context**: The package.json file follows npm's package.json schema with standard fields. However, several configuration defects exist: the "main" field references non-existent "index.js" instead of actual entry point "server.js", the package name "hello_world" conflicts with README.md's "hao-backprop-test" identifier, and the test script intentionally exits with failure.
+**Technical Context**: The requirements.txt file follows pip's requirements.txt schema with standard fields. However, several configuration defects exist: the "main" field references non-existent "app.py" instead of actual entry point "app.py", the package name "hello_world" conflicts with README.md's "hao-backprop-test" identifier, and the test script intentionally exits with failure.
 
 **Dependencies**
 
 | Dependency Type | Requirement | Source |
 |----------------|-------------|--------|
-| System | npm package manager | Development environment |
-| External | None (zero dependencies) | package.json |
+| System | pip package manager | Development environment |
+| External | None (zero dependencies) | requirements.txt |
 
 **Known Defects**:
-1. **Main Field Mismatch**: Points to "index.js" which doesn't exist; should reference "server.js"
-2. **Name Inconsistency**: package.json declares "hello_world" while README.md uses "hao-backprop-test"
+1. **Main Field Mismatch**: Points to "app.py" which doesn't exist; should reference "app.py"
+2. **Name Inconsistency**: requirements.txt declares "hello_world" while README.md uses "hao-backprop-test"
 3. **Non-Functional Test Script**: Exits with error code 1, blocking CI/CD integration
 
 #### 2.1.4.2 Feature F-007: Dependency Management
@@ -3115,23 +3118,23 @@ This section documents all discrete, testable features identified in the hao-bac
 
 **Description**
 
-**Overview**: Implements a zero external dependency architecture where the system relies exclusively on Node.js built-in modules. This architectural decision is documented in package.json (empty dependencies object) and enforced through package-lock.json lockfile version 3.
+**Overview**: Implements a zero external dependency architecture where the system relies exclusively on Python packages and Flask. This architectural decision is documented in requirements.txt (empty dependencies object) and enforced through .python-version lockfile version 3.
 
-**Business Value**: Eliminates supply chain security risks, removes dependency maintenance overhead, and ensures maximum compatibility across Node.js versions. Zero dependencies guarantee reproducible builds and eliminate "dependency hell" scenarios.
+**Business Value**: Eliminates supply chain security risks, removes dependency maintenance overhead, and ensures maximum compatibility across Python versions. Zero dependencies guarantee reproducible builds and eliminate "dependency hell" scenarios.
 
 **User Benefits**:
-- No npm install delays (no packages to download)
+- No pip install -r requirements.txt delays (no packages to download)
 - No vulnerability scanning requirements for third-party code
-- Guaranteed compatibility with any Node.js version supporting http module
+- Guaranteed compatibility with any Python version supporting Flask framework
 - Simplified troubleshooting with no external code to debug
 
-**Technical Context**: The package-lock.json file documents this zero-dependency state with only a root package entry. This approach leverages Node.js's comprehensive built-in module library, specifically the http module for all server functionality.
+**Technical Context**: The .python-version file documents this zero-dependency state with only a root package entry. This approach leverages Python's comprehensive built-in module library, specifically the Flask framework for all server functionality.
 
 **Dependencies**
 
 | Dependency Type | Requirement | Source |
 |----------------|-------------|--------|
-| System | Node.js built-in modules only | `server.js` line 1 |
+| System | Python packages and Flask only | `app.py` line 1 |
 
 ## 2.2 Functional Requirements
 
@@ -3150,11 +3153,11 @@ This section details specific, testable requirements for each feature, organized
 | Complexity | Low |
 | Status | Implemented |
 
-**Description**: The system shall initialize an HTTP server instance using the Node.js built-in http module upon script execution.
+**Description**: The system shall initialize an HTTP server instance using the Flask micro-framework upon script execution.
 
 **Acceptance Criteria**:
-1. The `require('http')` statement successfully loads the http module
-2. The `http.createServer()` method returns a valid Server instance
+1. The `from flask import Flask, Response` statement successfully loads the Flask framework
+2. The `Flask(__name__)` method returns a valid Server instance
 3. No exceptions are thrown during server instance creation
 4. The server instance is assigned to a module-level constant
 
@@ -3165,14 +3168,14 @@ This section details specific, testable requirements for each feature, organized
 | Input Parameters | None |
 | Output | Server object instance |
 | Performance | < 50ms initialization time |
-| Source Location | `server.js` lines 1, 6 |
+| Source Location | `app.py` lines 1, 6 |
 
 **Validation Rules**:
-- Node.js runtime must include http module (all versions ≥0.10)
+- Python runtime must include Flask framework (all versions ≥0.10)
 - Server instance must support listen() method
 - Request handler function must be registered during creation
 
-**Test Verification**: Execute `node server.js` and verify no errors occur before listen() call. Validate server object type is http.Server.
+**Test Verification**: Execute `python app.py` and verify no errors occur before listen() call. Validate server object type is Flask app.
 
 ---
 
@@ -3191,7 +3194,7 @@ This section details specific, testable requirements for each feature, organized
 1. Server binds to hostname 127.0.0.1 (IPv4 localhost)
 2. Server listens on TCP port 3000
 3. Binding succeeds when port is available
-4. Listen callback executes after successful binding
+4. Startup block executes and calls app.run()
 5. Server refuses external network connections (not bound to 0.0.0.0)
 
 **Technical Specifications**
@@ -3201,7 +3204,7 @@ This section details specific, testable requirements for each feature, organized
 | Input Parameters | hostname='127.0.0.1', port=3000 |
 | Output | Listening server socket |
 | Performance | < 10ms binding time |
-| Source Location | `server.js` lines 3-4, 12 |
+| Source Location | `app.py` lines 3-4, 12 |
 
 **Validation Rules**:
 - Port 3000 must not be in use by another process
@@ -3209,7 +3212,7 @@ This section details specific, testable requirements for each feature, organized
 - Hostname must resolve to local loopback interface
 - No firewall rules blocking localhost port 3000
 
-**Data Requirements**: Configuration constants (hostname, port) must be defined before server.listen() invocation.
+**Data Requirements**: Configuration constants (hostname, port) must be defined before app.run() invocation.
 
 **Security Requirements**: Localhost-only binding prevents external network access, ensuring test environment isolation.
 
@@ -3228,8 +3231,8 @@ This section details specific, testable requirements for each feature, organized
 
 **Acceptance Criteria**:
 1. Message format matches: "Server running at http://127.0.0.1:3000/"
-2. Message outputs to stdout via console.log()
-3. Message appears only after successful binding (in listen callback)
+2. Message outputs to stdout via print()
+3. Message appears only after successful binding (in startup block)
 4. Message includes complete HTTP URL with protocol, hostname, and port
 5. Message terminates with newline character
 
@@ -3240,9 +3243,9 @@ This section details specific, testable requirements for each feature, organized
 | Input Parameters | hostname, port constants |
 | Output | Console log string |
 | Format | Template literal |
-| Source Location | `server.js` line 13 |
+| Source Location | `app.py` line 13 |
 
-**Performance Criteria**: Log message must appear within 100ms of server.listen() call completion.
+**Performance Criteria**: Log message must appear within 100ms of app.run() call completion.
 
 **Test Verification**: Capture stdout and verify exact message content matches expected format. Confirm message only appears once per server start.
 
@@ -3277,10 +3280,10 @@ This section details specific, testable requirements for each feature, organized
 | Input Parameters | HTTP request (any method, any path) |
 | Output | Request handler invocation |
 | Processing Model | Synchronous |
-| Source Location | `server.js` lines 6-10 |
+| Source Location | `app.py` lines 6-10 |
 
 **Validation Rules**:
-- Request must be valid HTTP protocol format (handled by Node.js parser)
+- Request must be valid HTTP protocol format (handled by Python parser)
 - TCP connection must be established
 - No application-level validation performed
 
@@ -3302,11 +3305,11 @@ This section details specific, testable requirements for each feature, organized
 | Complexity | Low |
 | Status | Implemented |
 
-**Description**: The system shall process each HTTP request synchronously within a single callback execution without asynchronous operations.
+**Description**: The system shall process each HTTP request synchronously within a single handler execution without asynchronous operations.
 
 **Acceptance Criteria**:
 1. Request handler executes synchronously (no await, callbacks, or promises)
-2. Response generation completes within single callback
+2. Response generation completes within single handler
 3. No asynchronous I/O operations performed
 4. No external service calls made
 5. Request processing does not block event loop for extended periods
@@ -3316,9 +3319,9 @@ This section details specific, testable requirements for each feature, organized
 | Specification | Details |
 |---------------|---------|
 | Processing Time | < 1ms per request |
-| Concurrency Model | Event loop (Node.js) |
+| Concurrency Model | Event loop (Python) |
 | Blocking Operations | None |
-| Source Location | `server.js` lines 7-9 |
+| Source Location | `app.py` lines 7-9 |
 
 **Performance Criteria**:
 - Handler execution time: < 1ms
@@ -3355,9 +3358,9 @@ This section details specific, testable requirements for each feature, organized
 | Input Parameters | None |
 | Output | HTTP status line |
 | Status Code | 200 (OK) |
-| Source Location | `server.js` line 7 |
+| Source Location | `app.py` line 7 |
 
-**Validation Rules**: Status code must be set before calling res.end() to ensure proper HTTP response formatting.
+**Validation Rules**: Status code must be set before creating the Response object to ensure proper HTTP response formatting.
 
 **Test Verification**: Send various HTTP requests (different methods, invalid paths) and verify all responses contain "200 OK" status line.
 
@@ -3388,10 +3391,10 @@ This section details specific, testable requirements for each feature, organized
 | Header Name | Content-Type |
 | Header Value | text/plain |
 | Character Set | UTF-8 (implicit) |
-| Source Location | `server.js` line 8 |
+| Source Location | `app.py` line 8 |
 
 **Validation Rules**:
-- Header must be set via res.setHeader() API
+- Header must be set via Flask Response mimetype parameter
 - Header must appear before response body in HTTP message
 - No additional content-type parameters (charset, boundary) included
 
@@ -3416,7 +3419,7 @@ This section details specific, testable requirements for each feature, organized
 3. Same content for all requests (no variation)
 4. UTF-8 encoding applied
 5. Response transmission terminated after body sent
-6. Content-Length implicitly set by res.end() call
+6. Content-Length implicitly set by Flask Response object
 
 **Technical Specifications**
 
@@ -3425,7 +3428,7 @@ This section details specific, testable requirements for each feature, organized
 | Response Content | "Hello, World!\n" |
 | Byte Size | 14 bytes |
 | Encoding | UTF-8 |
-| Source Location | `server.js` line 9 |
+| Source Location | `app.py` line 9 |
 
 **Performance Criteria**:
 - Static string (no dynamic generation)
@@ -3439,7 +3442,7 @@ This section details specific, testable requirements for each feature, organized
 
 ### 2.2.4 Package Configuration Requirements
 
-#### 2.2.4.1 NPM Package Metadata
+#### 2.2.4.1 Python Package Metadata
 
 **Requirement F-005-RQ-001: Package Identity Declaration**
 
@@ -3450,14 +3453,14 @@ This section details specific, testable requirements for each feature, organized
 | Complexity | Low |
 | Status | Implemented |
 
-**Description**: The system shall declare valid npm package metadata in package.json including name, version, description, and entry point.
+**Description**: The system shall declare valid pip package metadata in requirements.txt including name, version, description, and entry point.
 
 **Acceptance Criteria**:
-1. Valid JSON structure in package.json
+1. Valid JSON structure in requirements.txt
 2. Name field present: "hello_world"
 3. Version field present: "1.0.0" (semantic versioning format)
 4. Description field populated
-5. Main field declared (currently references non-existent index.js)
+5. Main field declared (currently references non-existent app.py)
 6. Author field present: "hxu"
 7. License field present: "MIT"
 
@@ -3467,17 +3470,17 @@ This section details specific, testable requirements for each feature, organized
 |---------------|---------|
 | Package Name | hello_world |
 | Version | 1.0.0 |
-| Main Entry | index.js (defect) |
-| Source Location | `package.json` lines 2-10 |
+| Main Entry | app.py (defect) |
+| Source Location | `requirements.txt` lines 2-10 |
 
 **Validation Rules**:
-- Package name must follow npm naming conventions (lowercase, no spaces)
+- Package name must follow pip naming conventions (lowercase, no spaces)
 - Version must follow semantic versioning (MAJOR.MINOR.PATCH)
-- JSON must be parseable by npm tooling
+- JSON must be parseable by pip tooling
 - Main field should reference existing file
 
 **Known Defects**:
-1. **Main Field Error**: References "index.js" which doesn't exist; should be "server.js"
+1. **Main Field Error**: References "app.py" which doesn't exist; should be "app.py"
 2. **Name Inconsistency**: Conflicts with README.md identifier "hao-backprop-test"
 
 ---
@@ -3491,14 +3494,14 @@ This section details specific, testable requirements for each feature, organized
 | Complexity | Low |
 | Status | Implemented |
 
-**Description**: The system shall operate without any external npm dependencies, relying exclusively on Node.js built-in modules.
+**Description**: The system shall operate without any external pip dependencies, relying exclusively on Python packages and Flask.
 
 **Acceptance Criteria**:
-1. No "dependencies" object in package.json (or empty object)
-2. No "devDependencies" object in package.json (or empty object)
-3. package-lock.json contains only root package entry
-4. npm install completes with zero additional packages downloaded
-5. node_modules directory remains empty after install
+1. No "dependencies" object in requirements.txt (or empty object)
+2. No "devDependencies" object in requirements.txt (or empty object)
+3. .python-version contains only root package entry
+4. pip install -r requirements.txt completes with zero additional packages downloaded
+5. venv directory remains empty after install
 
 **Technical Specifications**
 
@@ -3507,11 +3510,11 @@ This section details specific, testable requirements for each feature, organized
 | Dependencies | None |
 | Dev Dependencies | None |
 | Lock File Version | 3 |
-| Source Location | `package.json`, `package-lock.json` |
+| Source Location | `requirements.txt`, `.python-version` |
 
 **Security Requirements**:
 - No supply chain vulnerabilities from third-party code
-- No need for npm audit or dependency security scanning
+- No need for pip audit or dependency security scanning
 - Eliminates entire class of dependency-related security risks
 
 **Compliance Requirements**: MIT license applies to all code (no third-party license compatibility concerns).
@@ -3531,7 +3534,7 @@ This section details specific, testable requirements for each feature, organized
 
 **Acceptance Criteria**:
 1. License field value: "MIT"
-2. Consistent declaration across package.json and package-lock.json
+2. Consistent declaration across requirements.txt and .python-version
 3. SPDX license identifier format
 
 **Technical Specifications**
@@ -3540,7 +3543,7 @@ This section details specific, testable requirements for each feature, organized
 |---------------|---------|
 | License Type | MIT |
 | SPDX ID | MIT |
-| Source Location | `package.json` line 10 |
+| Source Location | `requirements.txt` line 10 |
 
 **Compliance Requirements**: Users must comply with MIT license terms (minimal restrictions - attribution required).
 
@@ -3560,7 +3563,7 @@ This section details specific, testable requirements for each feature, organized
 **Current State**:
 - Test command: `echo "Error: no test specified" && exit 1`
 - Exits with failure code regardless of system state
-- Breaks CI/CD pipelines that execute npm test
+- Breaks CI/CD pipelines that execute pip test
 
 **Acceptance Criteria for Fix**:
 1. Test script executes without error when system functions correctly
@@ -3575,14 +3578,14 @@ This section details specific, testable requirements for each feature, organized
 | Current Command | echo "Error..." && exit 1 |
 | Required Behavior | Functional test or success |
 | Impact | Blocks automation |
-| Source Location | `package.json` line 7 |
+| Source Location | `requirements.txt` line 7 |
 
 **Recommended Fix Options**:
 1. Implement functional test suite (e.g., start server and verify HTTP 200 response)
 2. Change to: `echo "No tests specified" && exit 0` (non-blocking)
-3. Remove test script entirely (npm test will indicate no tests)
+3. Remove test script entirely (pip test will indicate no tests)
 
-**Validation Rules**: After fix, `npm test` command must exit with code 0 when system is functional.
+**Validation Rules**: After fix, `pip test` command must exit with code 0 when system is functional.
 
 ## 2.3 Feature Relationships and Dependencies
 
@@ -3628,14 +3631,14 @@ graph TD
 
 3. **Configuration Dependencies** (Blue):
    - F-005 → F-001: Package metadata defines runtime environment
-   - F-005 → F-007: Package.json documents dependency architecture
+   - F-005 → F-007: Requirements.txt documents dependency architecture
    - Informational relationships; affect deployment but not runtime behavior
 
 ### 2.3.2 Integration Points
 
-#### 2.3.2.1 Node.js Runtime Integration
+#### 2.3.2.1 Python Runtime Integration
 
-**Integration Point**: Node.js Built-in Module System
+**Integration Point**: Python Built-in Module System
 
 | Attribute | Details |
 |-----------|---------|
@@ -3644,18 +3647,18 @@ graph TD
 | Version Constraints | None specified |
 | Affected Features | F-001, F-002, F-003 |
 
-**Description**: All server functionality depends on the Node.js built-in `http` module loaded via `require('http')`. This integration point provides HTTP protocol implementation, server creation APIs, request parsing, and response generation capabilities.
+**Description**: All server functionality depends on the Flask micro-framework loaded via `from flask import Flask, Response`. This integration point provides HTTP protocol implementation, server creation APIs, request parsing, and response generation capabilities.
 
 **Interface Contract**:
 - Input: Module name string 'http'
 - Output: Module object with createServer method
-- Error Handling: Throws exception if module unavailable (would indicate invalid Node.js installation)
+- Error Handling: Throws exception if module unavailable (would indicate invalid Python installation)
 
-**Evidence**: `server.js` line 1
+**Evidence**: `app.py` line 1
 
 ---
 
-**Integration Point**: Node.js Event Loop and Callback System
+**Integration Point**: Python Event Loop and Callback System
 
 | Attribute | Details |
 |-----------|---------|
@@ -3663,7 +3666,7 @@ graph TD
 | Event Model | Non-blocking I/O |
 | Affected Features | F-001, F-002, F-004 |
 
-**Description**: The server leverages Node.js's event-driven architecture for asynchronous server startup (listen callback) and concurrent request handling (request event callbacks).
+**Description**: The server leverages Python's event-driven architecture for asynchronous server startup (startup block) and concurrent request handling (request event callbacks).
 
 **Interface Contract**:
 - Server startup: Callback invoked after successful binding
@@ -3689,31 +3692,31 @@ graph TD
 - Data transmission: OS handles packet routing and delivery
 
 **Failure Modes**:
-- Port already in use: Binding fails with EADDRINUSE error
+- Port already in use: Binding fails with OSError error
 - Permission denied: Binding fails with EACCES error (ports < 1024 on Unix)
 - Network stack unavailable: Binding fails with system error
 
-**Evidence**: `server.js` lines 3-4, 12
+**Evidence**: `app.py` lines 3-4, 12
 
-#### 2.3.2.3 NPM Ecosystem Integration
+#### 2.3.2.3 Python Ecosystem Integration
 
-**Integration Point**: NPM Package Manager
+**Integration Point**: pip Package Manager
 
 | Attribute | Details |
 |-----------|---------|
 | Integration Type | Development Tooling |
-| Package Format | package.json (schema v2) |
-| Lock File | package-lock.json (v3) |
+| Package Format | requirements.txt |
+| Version File | .python-version |
 | Affected Features | F-005, F-007 |
 
-**Description**: Package metadata enables npm tooling to manage the project as an npm package, supporting installation, version tracking, and metadata queries.
+**Description**: Package metadata enables pip tooling to manage the project dependencies, supporting installation and version tracking.
 
 **Interface Contract**:
-- npm install: Reads package.json and package-lock.json to determine installation requirements
-- npm start: Executes command in "start" script field (not currently defined)
-- npm test: Executes command in "test" script field (currently returns error)
+- pip install -r requirements.txt: Reads requirements.txt to install Flask and other dependencies
+- python app.py: Executes the Flask application directly
+- python -m pytest: Executes test suite (if configured)
 
-**Evidence**: `package.json`, `package-lock.json`
+**Evidence**: `requirements.txt`, `.python-version`
 
 ### 2.3.3 Shared Components
 
@@ -3724,27 +3727,27 @@ graph TD
 | Attribute | Details |
 |-----------|---------|
 | Component Type | Module-level constants |
-| Scope | server.js module |
+| Scope | app.py module |
 | Mutability | Immutable |
 | Used By | F-001, F-004 |
 
 **Definition**:
 ```
-const hostname = '127.0.0.1';
-const port = 3000;
+HOSTNAME = os.getenv('HOST', '127.0.0.1');
+PORT = int(os.getenv('PORT', 3000));
 ```
 
 **Usage Context**:
-1. **F-001 (Server Binding)**: Values passed to server.listen(port, hostname, callback)
+1. **F-001 (Server Binding)**: Values passed to app.run(host=HOSTNAME, port=PORT)
 2. **F-004 (Startup Logging)**: Values interpolated into startup message template
 
 **Implications**: Hard-coded values create tight coupling but ensure deterministic behavior. Changes to these constants affect both server binding and logging output.
 
-**Evidence**: `server.js` lines 3-4
+**Evidence**: `app.py` lines 3-4
 
 #### 2.3.3.2 HTTP Module Instance
 
-**Component**: Node.js http Module
+**Component**: Python http Module
 
 | Attribute | Details |
 |-----------|---------|
@@ -3755,44 +3758,43 @@ const port = 3000;
 
 **Definition**:
 ```
-const http = require('http');
+from flask import Flask, Response
 ```
 
 **Usage Context**:
 1. **F-001 (Server Creation)**: Provides createServer() factory method
-2. **F-002 (Request Handling)**: Defines req (IncomingMessage) and res (ServerResponse) object types
+2. **F-002 (Request Handling)**: Defines req (Flask request) and res (Flask Response) object types
 
-**Interface**: Provides Server class, IncomingMessage class, ServerResponse class, and server creation utilities as documented in Node.js API documentation.
+**Interface**: Provides Server class, Flask request class, Flask Response class, and server creation utilities as documented in Flask API documentation.
 
-**Evidence**: `server.js` line 1
+**Evidence**: `app.py` line 1
 
 #### 2.3.3.3 Request Handler Function
 
-**Component**: HTTP Request Callback
+**Component**: HTTP Route Handler
 
 | Attribute | Details |
 |-----------|---------|
 | Component Type | Function |
-| Signature | (req, res) => void |
-| Lifecycle | Invoked per request |
+| Signature | `def hello_world(path) -> Response` |
+| Lifecycle | Invoked per request via `@app.route` decorator |
 | Used By | F-002, F-003 |
 
 **Definition**:
-```
-(req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-}
+```python
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
 ```
 
 **Usage Context**:
-1. **F-002 (Request Processing)**: Registered as callback during server creation; invoked for each request
+1. **F-002 (Request Processing)**: Registered via `@app.route` decorator; invoked for each request
 2. **F-003 (Response Generation)**: Encapsulates all response generation logic
 
 **Coupling**: Tight coupling between request reception and response generation. No separation of concerns or middleware architecture.
 
-**Evidence**: `server.js` lines 6-10
+**Evidence**: `app.py` route handler function
 
 ## 2.4 Implementation Considerations
 
@@ -3822,7 +3824,7 @@ This section documents technical constraints, performance requirements, security
 - Simplified debugging (single file to examine)
 - Ideal for understanding complete behavior
 
-**Evidence**: All functionality in `server.js`
+**Evidence**: All functionality in `app.py`
 
 ---
 
@@ -3846,9 +3848,9 @@ This section documents technical constraints, performance requirements, security
 - Eliminates configuration errors
 - Simplifies test automation (known values)
 
-**Recommendation**: For production use, externalize configuration through environment variables (process.env.PORT, process.env.HOST).
+**Recommendation**: For production use, externalize configuration through environment variables (os.getenv('PORT'), os.getenv('HOST')).
 
-**Evidence**: `server.js` lines 3-4
+**Evidence**: `app.py` lines 3-4
 
 ---
 
@@ -3862,18 +3864,18 @@ This section documents technical constraints, performance requirements, security
 
 **Implications**:
 - Port conflict causes process crash with stack trace
-- Network errors propagate to Node.js runtime
+- Network errors propagate to Python runtime
 - No graceful degradation
 - No custom error messages
 
 **Failure Scenarios**:
-1. Port 3000 already in use: `Error: listen EADDRINUSE: address already in use 127.0.0.1:3000`
+1. Port 3000 already in use: `Error: listen OSError: Address already in use 127.0.0.1:3000`
 2. Permission denied: `Error: listen EACCES: permission denied`
 3. Invalid hostname: `Error: getaddrinfo ENOTFOUND`
 
 **Recommendation**: Add error event listener to server.on('error', handler) for production deployments.
 
-**Evidence**: Absence of error handling logic in `server.js`
+**Evidence**: Absence of error handling logic in `app.py`
 
 #### 2.4.1.2 Network Constraints
 
@@ -3895,7 +3897,7 @@ This section documents technical constraints, performance requirements, security
 
 **Use Case Fit**: Ideal for local integration testing; unsuitable for distributed test environments.
 
-**Evidence**: `server.js` line 3
+**Evidence**: `app.py` line 3
 
 ### 2.4.2 Performance Requirements
 
@@ -3905,9 +3907,9 @@ This section documents technical constraints, performance requirements, security
 
 | Metric | Target | Measurement Method |
 |--------|--------|-------------------|
-| Process Start to Listening | < 100ms | Time from node execution to console log |
-| Module Load Time | < 50ms | Time for require('http') |
-| Socket Binding Time | < 10ms | Time for server.listen() |
+| Process Start to Listening | < 100ms | Time from python execution to log output |
+| Module Load Time | < 50ms | Time for from flask import Flask, Response |
+| Socket Binding Time | < 10ms | Time for app.run() |
 
 **Performance Characteristics**:
 - Minimal module loading (only http, built-in)
@@ -3916,10 +3918,10 @@ This section documents technical constraints, performance requirements, security
 - No external service health checks
 
 **Bottlenecks**:
-- Node.js module loading (unavoidable initialization cost)
+- Python module loading (unavoidable initialization cost)
 - Operating system socket allocation
 
-**Evidence**: Based on code analysis; no I/O operations in initialization path (`server.js` lines 1-14)
+**Evidence**: Based on code analysis; no I/O operations in initialization path (`app.py` lines 1-14)
 
 #### 2.4.2.2 Request Processing Performance
 
@@ -3938,13 +3940,13 @@ This section documents technical constraints, performance requirements, security
 - No file system access
 
 **Scalability Limits**:
-- Single Node.js process (no clustering)
+- Single Python process (no clustering)
 - Event loop concurrency (thousands of concurrent connections possible)
 - Limited by hardware and OS socket limits
 
 **Expected Throughput**: 1,000+ requests/second on modern hardware, though throughput optimization is not a design goal for this test harness.
 
-**Evidence**: `server.js` lines 7-9 (no I/O operations)
+**Evidence**: `app.py` lines 7-9 (no I/O operations)
 
 #### 2.4.2.3 Resource Footprint
 
@@ -3952,7 +3954,7 @@ This section documents technical constraints, performance requirements, security
 
 | Resource | Expected Usage | Rationale |
 |----------|---------------|-----------|
-| Base Memory | < 30 MB | Node.js runtime overhead |
+| Base Memory | < 30 MB | Python runtime overhead |
 | Per-Request Memory | < 1 KB | No state storage |
 | Memory Growth | None | No memory leaks |
 
@@ -3982,7 +3984,7 @@ This section documents technical constraints, performance requirements, security
 
 **Risk Mitigation**: Eliminates entire classes of network-based attacks (remote exploitation, DDoS, network sniffing).
 
-**Evidence**: `server.js` line 3 (127.0.0.1 binding)
+**Evidence**: `app.py` line 3 (127.0.0.1 binding)
 
 ---
 
@@ -3996,7 +3998,7 @@ This section documents technical constraints, performance requirements, security
 
 **Risk Mitigation**: Eliminates supply chain attacks, compromised packages, and dependency vulnerabilities.
 
-**Evidence**: `package.json` (no dependencies), `package-lock.json` (only root package)
+**Evidence**: `requirements.txt` (no dependencies), `.python-version` (only root package)
 
 #### 2.4.3.2 Security Limitations (Intentional)
 
@@ -4065,12 +4067,12 @@ This section documents technical constraints, performance requirements, security
 
 | Aspect | Effort | Frequency |
 |--------|--------|-----------|
-| npm package updates | None | N/A |
+| pip package updates | None | N/A |
 | Security patching | None | N/A |
 | Version compatibility | Minimal | As needed |
 
 **Maintenance Activities**:
-- Monitor Node.js LTS release schedule (no breaking changes expected)
+- Monitor Python LTS release schedule (no breaking changes expected)
 - No third-party dependency updates required
 - No vulnerability scanning required
 
@@ -4102,17 +4104,17 @@ This section documents technical constraints, performance requirements, security
 
 | Attribute | Details |
 |-----------|---------|
-| Current State | main: "index.js" (non-existent) |
-| Required Fix | main: "server.js" |
+| Current State | main: "app.py" (non-existent) |
+| Required Fix | main: "app.py" |
 | Impact | Breaks module import, packaging |
 | Effort | < 5 minutes |
 
 **Fix**:
-```json
-"main": "server.js"
+```python
+"main": "app.py"
 ```
 
-**Validation**: Run `npm pack` and verify package structure is correct.
+**Validation**: Run `pip pack` and verify package structure is correct.
 
 ---
 
@@ -4128,20 +4130,20 @@ This section documents technical constraints, performance requirements, security
 **Fix Options**:
 
 Option 1 - Implement functional test:
-```json
+```python
 "scripts": {
-  "test": "node test.js"
+  "test": "python -m pytest"
 }
 ```
 
 Option 2 - Non-blocking placeholder:
-```json
+```python
 "scripts": {
   "test": "echo 'No tests specified' && exit 0"
 }
 ```
 
-**Validation**: Run `npm test` and verify exit code 0.
+**Validation**: Run `pip test` and verify exit code 0.
 
 ---
 
@@ -4154,8 +4156,8 @@ Option 2 - Non-blocking placeholder:
 | Impact | Documentation confusion |
 | Effort | < 15 minutes |
 
-**Recommendation**: Update package.json to match README.md identifier:
-```json
+**Recommendation**: Update requirements.txt to match README.md identifier:
+```python
 "name": "hao-backprop-test"
 ```
 
@@ -4171,13 +4173,13 @@ The following table maps each feature to its requirements, source files, test cr
 
 | Feature ID | Requirements | Source Files | Test Criteria | Priority |
 |------------|--------------|--------------|---------------|----------|
-| F-001 | RQ-001, RQ-002, RQ-003 | server.js:1-4,12-14 | Server starts, binds to 127.0.0.1:3000, logs URL | Critical |
-| F-002 | RQ-001, RQ-002 | server.js:6-10 | All HTTP methods/paths accepted | Critical |
-| F-003 | RQ-001, RQ-002, RQ-003 | server.js:7-9 | Returns 200, text/plain, "Hello, World!\n" | Critical |
-| F-004 | (implicit) | server.js:13 | Console message appears | Medium |
-| F-005 | RQ-001, RQ-002, RQ-003 | package.json:1-11 | Valid metadata, correct fields | High |
-| F-006 | RQ-001 (defect) | package.json:6-8 | Test script functional (requires fix) | High |
-| F-007 | RQ-001, RQ-002 (defects) | package.json:5, README.md:1 | Consistent naming, correct main field | Medium |
+| F-001 | RQ-001, RQ-002, RQ-003 | app.py:1-4,12-14 | Server starts, binds to 127.0.0.1:3000, logs URL | Critical |
+| F-002 | RQ-001, RQ-002 | app.py:6-10 | All HTTP methods/paths accepted | Critical |
+| F-003 | RQ-001, RQ-002, RQ-003 | app.py:7-9 | Returns 200, text/plain, "Hello, World!\n" | Critical |
+| F-004 | (implicit) | app.py:13 | Console message appears | Medium |
+| F-005 | RQ-001, RQ-002, RQ-003 | requirements.txt:1-11 | Valid metadata, correct fields | High |
+| F-006 | RQ-001 (defect) | requirements.txt:6-8 | Test script functional (requires fix) | High |
+| F-007 | RQ-001, RQ-002 (defects) | requirements.txt:5, README.md:1 | Consistent naming, correct main field | Medium |
 
 **Traceability Legend**:
 - **Feature ID**: Unique feature identifier (F-XXX)
@@ -4206,16 +4208,16 @@ The following table maps each feature to its requirements, source files, test cr
 
 | Feature | Test Scenario | Expected Result | Verification Method |
 |---------|---------------|-----------------|---------------------|
-| F-005 | npm install | Succeeds with no dependencies | Check node_modules |
-| F-005 | Package metadata | Valid JSON, correct fields | npm pack validation |
-| F-007 | Dependency check | Zero dependencies | npm ls output |
+| F-005 | pip install -r requirements.txt | Succeeds with no dependencies | Check venv |
+| F-005 | Package metadata | Valid JSON, correct fields | pip pack validation |
+| F-007 | Dependency check | Zero dependencies | pip ls output |
 
 **Defect Verification (Regression Tests)**
 
 | Defect | Test Scenario | Expected Result | Status |
 |--------|---------------|-----------------|--------|
-| F-006 | npm test | Exits 0 (after fix) | Currently fails |
-| F-007 RQ-001 | require('hao-backprop-test') | Loads server.js | Currently fails |
+| F-006 | pip test | Exits 0 (after fix) | Currently fails |
+| F-007 RQ-001 | import app | Loads app.py | Currently fails |
 | F-007 RQ-002 | Documentation review | Consistent naming | Currently inconsistent |
 
 #### 2.5.2.2 Requirement-to-Source Traceability
@@ -4224,61 +4226,61 @@ The following table maps each feature to its requirements, source files, test cr
 
 ```
 F-001-RQ-001: Server Process Initialization
-  → server.js:1 (require http)
-  → server.js:6 (createServer)
+  → app.py:1 (require http)
+  → app.py:6 (createServer)
 
 F-001-RQ-002: Network Binding Configuration
-  → server.js:3 (hostname constant)
-  → server.js:4 (port constant)
-  → server.js:12 (server.listen call)
+  → app.py:3 (hostname constant)
+  → app.py:4 (port constant)
+  → app.py:12 (app.run call)
 
 F-001-RQ-003: Startup Confirmation Logging
-  → server.js:13 (console.log statement)
+  → app.py:13 (print statement)
 
 F-002-RQ-001: Multi-Method Request Handling
-  → server.js:6-10 (request handler function)
+  → app.py:6-10 (request handler function)
 
 F-002-RQ-002: Synchronous Request Processing
-  → server.js:7-9 (synchronous operations)
+  → app.py:7-9 (synchronous operations)
 
 F-003-RQ-001: HTTP 200 Status Code
-  → server.js:7 (res.statusCode = 200)
+  → app.py:7 (# Status 200 set via Response object)
 
 F-003-RQ-002: Content-Type Header Declaration
-  → server.js:8 (res.setHeader)
+  → app.py:8 (Response header)
 
 F-003-RQ-003: Static Response Body Generation
-  → server.js:9 (res.end with static string)
+  → app.py:9 (Response body with static string)
 
 F-005-RQ-001: Package Identity Declaration
-  → package.json:2-10 (metadata fields)
+  → requirements.txt:2-10 (metadata fields)
 
 F-005-RQ-002: Zero External Dependencies
-  → package.json (no dependencies)
-  → package-lock.json:6-12 (empty dependencies)
+  → requirements.txt (no dependencies)
+  → .python-version:6-12 (empty dependencies)
 
 F-005-RQ-003: MIT License Declaration
-  → package.json:10 (license field)
+  → requirements.txt:10 (license field)
 
 F-006-RQ-001: Test Script Implementation (Defect)
-  → package.json:7 (failing test command)
+  → requirements.txt:7 (failing test command)
 ```
 
 #### 2.5.2.3 Assumptions and Constraints Documentation
 
 **System Assumptions**:
 
-1. **Node.js Version**: Any modern Node.js version (≥12.x assumed)
-   - Rationale: No version specified in package.json; http module stable across versions
-   - Risk: None (http module is core functionality)
+1. **Python Version**: Any modern Python version (≥12.x assumed)
+   - Rationale: No version specified in requirements.txt; Flask framework stable across versions
+   - Risk: None (Flask framework is core functionality)
 
-2. **Operating System**: Any OS supporting Node.js
+2. **Operating System**: Any OS supporting Python
    - Rationale: No OS-specific code or dependencies
    - Supported: Linux, macOS, Windows
 
 3. **Port Availability**: Port 3000 not in use
    - Rationale: Hard-coded port value
-   - Failure Mode: EADDRINUSE error on startup
+   - Failure Mode: OSError error on startup
 
 4. **Network Configuration**: Localhost interface operational
    - Rationale: Binding to 127.0.0.1 requires loopback interface
@@ -4305,26 +4307,26 @@ F-006-RQ-001: Test Script Implementation (Defect)
 The following source files were analyzed to extract product requirements:
 
 **Primary Implementation Files**:
-- `server.js` (15 lines) - Complete HTTP server implementation
+- `app.py` (15 lines) - Complete HTTP server implementation
   - Features: F-001 (Server Initialization), F-002 (Request Processing), F-003 (Response Generation), F-004 (Startup Logging)
   - Requirements: F-001-RQ-001 through RQ-003, F-002-RQ-001 through RQ-002, F-003-RQ-001 through RQ-003
-  - Line references: 1 (http module import), 3-4 (configuration), 6-10 (request handler), 12-14 (server startup)
+  - Line references: 1 (Flask framework import), 3-4 (configuration), 6-10 (request handler), 12-14 (server startup)
 
 **Configuration Files**:
-- `package.json` (11 lines) - NPM package metadata
-  - Features: F-005 (Package Metadata), F-006 (Test Configuration - defect), F-007 (Dependency Management - partial)
-  - Requirements: F-005-RQ-001 through RQ-003, F-006-RQ-001, F-007-RQ-001
-  - Defects: Main field references non-existent index.js, test script fails, name inconsistency
+- `requirements.txt` - Python package dependencies
+  - Features: F-005 (Package Metadata), F-007 (Dependency Management)
+  - Requirements: F-005-RQ-001 through RQ-003, F-007-RQ-001
+  - Contents: Flask==3.1.2, Werkzeug==3.1.2
 
-- `package-lock.json` (14 lines) - Dependency lock file
+- `.python-version` - Python version specification file
   - Features: F-007 (Dependency Management)
-  - Requirements: F-005-RQ-002 (zero dependencies verification)
-  - Confirms: No external dependencies, lockfile version 3
+  - Requirements: F-005-RQ-002 (dependency verification)
+  - Confirms: Python 3.12.3 runtime version
 
 **Documentation Files**:
 - `README.md` (2 lines) - Project identification
   - Purpose: "test project for backprop integration"
-  - Project name: "hao-backprop-test" (conflicts with package.json "hello_world")
+  - Project name: "hao-backprop-test" (conflicts with requirements.txt "hello_world")
   - Contribution: F-007-RQ-002 (naming consistency defect identification)
 
 ### 2.6.2 Technical Specification Sections Referenced
@@ -4344,13 +4346,13 @@ The following external standards inform requirement definitions:
 - TCP/IP - Transport layer protocol for server socket binding
 
 **Package Standards**:
-- npm package.json schema - Package metadata format specification
+- pip requirements.txt schema - Package metadata format specification
 - Semantic Versioning (semver) - Version number format (1.0.0)
 - SPDX License Identifiers - License declaration format (MIT)
 
-**Node.js Standards**:
-- Node.js http module documentation - Server creation and request handling APIs
-- Node.js event loop specification - Asynchronous callback execution model
+**Python Standards**:
+- Flask framework documentation - Server creation and request handling APIs
+- WSGI server specification - WSGI request handling model
 
 ### 2.6.4 Repository Structure
 
@@ -4358,15 +4360,15 @@ Complete repository structure examined:
 
 ```
 / (root)
-├── server.js          (15 lines) - Main server implementation
-├── package.json       (11 lines) - Package metadata
-├── package-lock.json  (14 lines) - Dependency lock
+├── app.py          (15 lines) - Main server implementation
+├── requirements.txt       (11 lines) - Package metadata
+├── .python-version  (14 lines) - Dependency lock
 └── README.md          (2 lines)  - Project documentation
 ```
 
 **Total Files**: 4
-**Total Lines of Code**: 15 (server.js only)
-**Total Configuration Lines**: 25 (package.json + package-lock.json)
+**Total Lines of Code**: 15 (app.py only)
+**Total Configuration Lines**: 25 (requirements.txt + .python-version)
 **Coverage**: 100% of repository files analyzed
 
 ### 2.6.5 Research Methodology
@@ -4390,92 +4392,89 @@ Complete repository structure examined:
 
 # 3. Technology Stack
 
-This section documents the complete technology stack for the minimal Node.js HTTP server test harness. The stack reflects a deliberately minimalist approach optimized for integration testing reliability, with zero external dependencies and a single-file architecture. This documentation diverges significantly from typical production technology stacks due to the specialized test harness purpose of this system.
+This section documents the complete technology stack for the minimal Python Flask HTTP server test harness. The stack reflects a deliberately minimalist approach optimized for integration testing reliability, with zero external dependencies and a single-file architecture. This documentation diverges significantly from typical production technology stacks due to the specialized test harness purpose of this system.
 
 ## 3.1 Programming Languages
 
-### 3.1.1 JavaScript (Node.js Runtime Environment)
+### 3.1.1 Python (CPython Runtime Environment)
 
 #### 3.1.1.1 Language Selection and Justification
 
-**Primary Language**: JavaScript (ECMAScript)  
-**Runtime Environment**: Node.js  
-**Module System**: CommonJS  
-**Version Specification**: Unspecified (flexible)
+**Primary Language**: Python 3  
+**Runtime Environment**: CPython  
+**Module System**: Python module system  
+**Version Specification**: 3.12.3 (recommended)
 
-The project uses JavaScript executed in the Node.js runtime as its sole programming language. This selection is evidenced by the implementation in `server.js`, which uses CommonJS syntax (`require()` statements) and Node.js built-in APIs.
+The project uses Python executed in the CPython runtime as its sole programming language. This selection is evidenced by the implementation in `app.py`, which uses Python import syntax (`from flask import ...`) and the Flask micro-framework.
 
 **Selection Criteria and Justification**:
 
 | Criterion | Rationale |
 |-----------|-----------|
-| **Built-in HTTP Capabilities** | Node.js provides native HTTP server functionality through the `http` module, eliminating the need for external web server software |
-| **Event-Driven Architecture** | Node.js event loop naturally handles concurrent HTTP connections without complex threading logic |
-| **Minimal Footprint** | JavaScript runtime with no compilation step provides instant execution suitable for rapid test iteration |
-| **Cross-Platform Compatibility** | Node.js runs consistently across Linux, macOS, and Windows, supporting diverse test environments |
+| **Flask Micro-Framework** | Flask provides lightweight HTTP server functionality with minimal overhead, ideal for simple test harnesses |
+| **WSGI Architecture** | Werkzeug WSGI server naturally handles concurrent HTTP connections without complex threading logic |
+| **Minimal Footprint** | Python runtime with no compilation step provides instant execution suitable for rapid test iteration |
+| **Cross-Platform Compatibility** | Python runs consistently across Linux, macOS, and Windows, supporting diverse test environments |
 | **Zero Compilation Overhead** | Direct execution without build steps reduces test environment complexity |
 
-**Evidence**: `server.js` line 1 demonstrates CommonJS module loading:
-```javascript
-const http = require('http');
+**Evidence**: `app.py` line 1 demonstrates Python module loading:
+```python
+from flask import Flask, Response
 ```
 
 #### 3.1.1.2 Version Constraints and Dependencies
 
-**Node.js Version Requirements**:
+**Python Version Requirements**:
 
 | Constraint Type | Specification | Source |
 |----------------|---------------|--------|
-| **Explicit Version** | None specified | No `engines` field in package.json |
-| **Minimum Version (Implied)** | Node.js ≥12.x | Based on package-lock.json lockfileVersion 3 |
-| **Recommended Version** | Node.js LTS 16.x or higher | Best practice for stability |
+| **Explicit Version** | 3.12.3 | `.python-version` file |
+| **Minimum Version (Implied)** | Python ≥ 3.8 | Based on Flask 3.x requirements |
+| **Recommended Version** | Python 3.12.x or higher | Best practice for stability |
 | **Maximum Version** | None | No known compatibility limits |
 
 **Compatibility Analysis**:
-- The `http` module has been stable since Node.js 0.10.x, providing broad version compatibility
-- Package-lock.json lockfileVersion 3 indicates the project was initialized with npm 7+, which shipped with Node.js 15+
-- No ES6+ features that would restrict compatibility (uses `const` declarations, supported since Node.js 4.x)
-- Recommendation: Specify Node.js version constraint in package.json for reproducible test environments
+- Flask 3.x requires Python 3.8 or higher, providing broad version compatibility
+- The `.python-version` file specifies 3.12.3 for version manager compatibility
+- Python features used (f-strings, type hints) are supported since Python 3.6+
+- Recommendation: Specify Python version in `.python-version` for reproducible test environments
 
-**Example Recommended Addition to package.json**:
-```json
-"engines": {
-  "node": ">=16.0.0",
-  "npm": ">=7.0.0"
-}
+**Example `.python-version` File**:
+```
+3.12.3
 ```
 
 #### 3.1.1.3 Language Features Utilized
 
-**JavaScript Language Features in Use**:
-- `const` declarations for immutable bindings (ES6 feature)
-- Arrow function syntax for request handler (ES6 feature)
-- Template literals in console output (ES6 feature)
-- CommonJS module system (`require()`, implicit exports)
+**Python Language Features in Use**:
+- Module-level constants with UPPER_CASE naming convention
+- f-string formatting for server startup message (Python 3.6+)
+- `os.getenv()` for environment variable access
+- Python module system (`import`, `from...import`)
 
-**Node.js API Features in Use**:
-- `http.createServer()` - Server instantiation
-- `server.listen()` - Socket binding and connection acceptance
-- `ServerResponse` object - HTTP response generation
-- `IncomingMessage` object - HTTP request handling (received but unused)
+**Flask API Features in Use**:
+- `Flask(__name__)` - Application instantiation
+- `app.run()` - Development server startup and socket binding
+- `Response` object - HTTP response generation
+- `@app.route()` decorator - URL route registration
 
 **Notable Omissions** (intentional design decisions):
-- No asynchronous patterns (Promises, async/await) - synchronous response generation sufficient
+- No asynchronous patterns (async/await) - synchronous response generation sufficient
 - No stream processing - static response requires no streaming
 - No buffer manipulation - simple string response
 - No error handling - allows unhandled exceptions to propagate for test visibility
 
 ### 3.1.2 Language Alternatives Not Selected
 
-The following language alternatives were implicitly rejected in favor of JavaScript/Node.js:
+The following language alternatives were implicitly rejected in favor of Python/Flask:
 
 | Language | Reason for Non-Selection |
 |----------|-------------------------|
-| **Python** | Would require Flask/Django framework, increasing dependency count |
+| **JavaScript/Node.js** | Would require either Express.js framework or raw http module; Python/Flask provides equivalent simplicity |
 | **Go** | Requires compilation step, reducing iteration speed for test harness |
 | **Java** | Heavy runtime footprint inappropriate for minimal test fixture |
 | **Rust** | Compilation overhead and systems programming complexity unnecessary |
-| **TypeScript** | Transpilation step adds build complexity without benefit for 15-line implementation |
+| **TypeScript** | Transpilation step adds build complexity without benefit for minimal implementation |
 
 ## 3.2 Frameworks & Libraries
 
@@ -4483,66 +4482,65 @@ The following language alternatives were implicitly rejected in favor of JavaScr
 
 #### 3.2.1.1 Framework Selection Decision
 
-**Selected Framework**: None - Native Node.js API Only
+**Selected Framework**: Flask - Minimal micro-framework
 
-This project explicitly **does not use any HTTP framework**, instead relying exclusively on Node.js built-in modules. This represents a fundamental architectural decision that distinguishes this test harness from typical web applications.
+This project uses **Flask as a minimal micro-framework** for HTTP server functionality. Flask was selected for its simplicity and minimal dependency footprint, keeping the implementation close to a zero-dependency philosophy.
 
 **Evidence**: 
-- `package.json` contains zero dependencies in `dependencies` or `devDependencies` fields
-- `package-lock.json` shows only the root package with no nested dependencies
-- `server.js` imports only the built-in `http` module
+- `requirements.txt` lists Flask==3.1.2 and Werkzeug==3.1.2 as the only dependencies
+- `app.py` imports Flask and Response from the flask package
+- No additional frameworks or heavy middleware are used
 
 #### 3.2.1.2 Frameworks Explicitly Not Used
 
 | Framework | Typical Benefits | Reason for Exclusion |
 |-----------|-----------------|---------------------|
-| **Express.js** | Routing, middleware, request parsing | Adds 50+ transitive dependencies; unnecessary abstraction for single-route test harness |
-| **Fastify** | Performance optimization, schema validation | Performance not a priority; validation unnecessary for test fixture |
-| **Koa** | Modern async/await patterns, minimalist middleware | Additional dependency unjustified for 15-line implementation |
-| **Hapi** | Enterprise features, plugin architecture | Excessive complexity for deterministic test responses |
-| **NestJS** | TypeScript, dependency injection, decorators | Framework overhead contradicts minimalist design goals |
+| **Django** | Full-stack web framework, ORM, admin panel | Massive framework overhead; unnecessary for single-route test harness |
+| **FastAPI** | Async support, automatic OpenAPI docs, validation | Async complexity and additional dependencies unjustified for test fixture |
+| **Bottle** | Single-file micro-framework | Flask provides better ecosystem support with comparable simplicity |
+| **Tornado** | Async networking, WebSocket support | Async features unnecessary for simple synchronous responses |
+| **Pyramid** | Flexible configuration, traversal routing | Enterprise features excessive for deterministic test responses |
 
-**Justification for Zero-Framework Approach**:
+**Justification for Flask Minimal Approach**:
 
-1. **Transparency**: Entire request-response logic visible in 15 lines without framework abstractions
-2. **Dependency Minimization**: Eliminates 50-100+ transitive dependencies that frameworks introduce
-3. **Test Reliability**: No framework bugs or version incompatibilities can interfere with test validation
-4. **Maintenance Simplicity**: No framework upgrades or security patches required
-5. **Learning Curve Elimination**: Any developer familiar with Node.js can understand implementation instantly
+1. **Transparency**: Entire request-response logic visible in minimal code without heavy framework abstractions
+2. **Dependency Minimization**: Flask adds only a handful of well-audited dependencies (Werkzeug, Jinja2, itsdangerous, click, blinker)
+3. **Test Reliability**: Minimal framework surface area reduces potential interference with test validation
+4. **Maintenance Simplicity**: Flask has a stable API with predictable upgrade paths
+5. **Learning Curve Elimination**: Any developer familiar with Python can understand Flask implementation instantly
 
-This approach trades production conveniences (routing, middleware, error handling) for maximum test environment stability and transparency.
+This approach trades production conveniences (ORM, admin, complex middleware) for maximum test environment stability and transparency.
 
-### 3.2.2 Node.js Built-in Modules
+### 3.2.2 Python Packages
 
-#### 3.2.2.1 HTTP Module
+#### 3.2.2.1 Flask Framework
 
-**Module**: `http` (Node.js core module)  
-**Version**: Ships with Node.js runtime (version-coupled)  
+**Package**: `Flask` (PyPI package)  
+**Version**: 3.1.2  
 **Purpose**: HTTP server creation and request/response handling  
-**Documentation**: https://nodejs.org/api/http.html
+**Documentation**: https://flask.palletsprojects.com/
 
 **APIs Utilized**:
 
-| API Method/Object | Purpose | Usage in server.js |
+| API Method/Object | Purpose | Usage in app.py |
 |-------------------|---------|-------------------|
-| `http.createServer(requestListener)` | Creates HTTP server instance | Line 7: Server instantiation with arrow function handler |
-| `server.listen(port, hostname, callback)` | Binds server to network interface | Line 13: Binds to 127.0.0.1:3000 |
-| `ServerResponse.statusCode` | Sets HTTP response status | Line 8: Sets status to 200 |
-| `ServerResponse.setHeader(name, value)` | Sets HTTP response headers | Line 9: Sets Content-Type to text/plain |
-| `ServerResponse.end(data)` | Completes response with data | Line 10: Sends "Hello, World!\n" |
+| `Flask(__name__)` | Creates Flask application instance | Application instantiation |
+| `@app.route()` | Registers URL route handlers | Route decorator for catch-all handler |
+| `Response(body, status, mimetype)` | Creates HTTP response | Returns response with status 200 and text/plain |
+| `app.run(host, port, debug)` | Starts development server | Binds to 127.0.0.1:3000 |
 
-**Module Stability**: The `http` module is marked as "Stable" in Node.js documentation, indicating no breaking changes expected across Node.js versions.
+**Package Stability**: Flask 3.x is actively maintained with stable APIs, ensuring no breaking changes within the major version.
 
-**Integration Requirements**: None - native Node.js module requires no installation or configuration.
+**Integration Requirements**: Install via `pip install -r requirements.txt`.
 
-#### 3.2.2.2 Implicit Built-in Modules
+#### 3.2.2.2 Standard Library Modules
 
-The following Node.js built-in modules are used implicitly through the runtime environment:
+The following Python standard library modules are used:
 
 | Module | Usage | Evidence |
 |--------|-------|----------|
-| **console** | Logging server startup message | Line 14: `console.log()` call |
-| **process** | Implicit process lifecycle management | Server runs in Node.js process context |
+| **os** | Environment variable access for configuration | `os.getenv('HOST', ...)` and `os.getenv('PORT', ...)` |
+| **builtins (print)** | Logging server startup message | `print()` call for startup confirmation |
 
 ### 3.2.3 Testing Libraries
 
@@ -4550,10 +4548,7 @@ The following Node.js built-in modules are used implicitly through the runtime e
 
 **Testing Framework**: None implemented
 
-**Current State**: The `package.json` test script is configured to exit with an error:
-```json
-"test": "echo \"Error: no test specified\" && exit 1"
-```
+**Current State**: No test suite is configured for the project. Testing can be performed manually via `curl` commands.
 
 This represents a **known defect** (identified as F-006-RQ-001 in Implementation Considerations) that blocks CI/CD integration.
 
@@ -4561,53 +4556,35 @@ This represents a **known defect** (identified as F-006-RQ-001 in Implementation
 
 | Framework | Suitability | Installation Command |
 |-----------|-------------|---------------------|
-| **Jest** | High - Popular, batteries-included | `npm install --save-dev jest` |
-| **Mocha** | Medium - Flexible, requires assertion library | `npm install --save-dev mocha chai` |
-| **Node Test Runner** | High - Built-in to Node.js 18+ | No installation required |
-| **Tap** | Medium - Testing protocol-based | `npm install --save-dev tap` |
+| **pytest** | High - Popular, batteries-included | `pip install pytest` |
+| **unittest** | High - Built-in to Python standard library | No installation required |
+| **nose2** | Medium - Flexible, extends unittest | `pip install nose2` |
+| **Flask testing client** | High - Built-in to Flask | Already available with Flask |
 
-**Recommendation**: For maintaining zero-dependency principle, use Node.js built-in test runner (available in Node.js 18+) which requires no package installation.
+**Recommendation**: For maintaining minimal dependency principle, use Python's built-in `unittest` module or Flask's built-in test client which requires no additional package installation.
 
 ## 3.3 Open Source Dependencies
 
-### 3.3.1 Dependency Philosophy: Zero External Dependencies
+### 3.3.1 Dependency Philosophy: Minimal External Dependencies
 
 #### 3.3.1.1 Dependency Count and Justification
 
-**Total External Dependencies**: 0  
+**Total External Dependencies**: 2 (Flask, Werkzeug)  
 **Development Dependencies**: 0  
-**Optional Dependencies**: 0  
-**Peer Dependencies**: 0
+**Optional Dependencies**: 0
 
-**Evidence from package.json**:
-```json
-{
-  "name": "hello_world",
-  "version": "1.0.0",
-  "description": "Hello world in Node.js",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "hxu",
-  "license": "MIT"
-}
+**Evidence from requirements.txt**:
+```
+Flask==3.1.2
+Werkzeug==3.1.2
 ```
 
-**Evidence from package-lock.json** (lockfileVersion 3):
-```json
-{
-  "packages": {
-    "": {
-      "name": "hello_world",
-      "version": "1.0.0",
-      "license": "MIT"
-    }
-  }
-}
+**Evidence from .python-version**:
+```
+3.12.3
 ```
 
-The `packages` object contains only the root package entry with no nested dependencies, confirming zero external package usage.
+The `requirements.txt` file lists only Flask and Werkzeug (Flask's WSGI dependency), confirming minimal external package usage.
 
 #### 3.3.1.2 Security and Maintenance Implications
 
@@ -4615,76 +4592,76 @@ The `packages` object contains only the root package entry with no nested depend
 
 | Security Aspect | Benefit | Impact |
 |----------------|---------|--------|
-| **Supply Chain Attack Surface** | Zero third-party code | Eliminates malicious package injection risk |
-| **Vulnerability Exposure** | No CVE-affected dependencies | No npm audit warnings or security patches required |
-| **License Compliance** | Only Node.js and code licenses apply | No dependency license conflict risk |
-| **Code Provenance** | 100% first-party code | Complete control over all executed code |
+| **Supply Chain Attack Surface** | Minimal third-party code (well-audited Flask) | Minimal risk from trusted, widely-used packages |
+| **Vulnerability Exposure** | Only Flask/Werkzeug to monitor | Manageable security patch surface |
+| **License Compliance** | Flask uses BSD license, compatible with MIT | No dependency license conflict risk |
+| **Code Provenance** | Flask is a widely-trusted open-source project | Well-maintained with active security response |
 
 **Maintenance Benefits**:
 
 | Maintenance Aspect | Benefit | Impact |
 |-------------------|---------|--------|
 | **Dependency Updates** | None required | Zero time spent on dependency maintenance |
-| **Breaking Changes** | Only Node.js API changes matter | Predictable upgrade path |
-| **Version Conflicts** | Impossible | No dependency resolution complexity |
-| **Security Patching** | No third-party patches | Maintenance effort reduced to Node.js runtime updates only |
+| **Breaking Changes** | Only Flask API changes matter | Predictable upgrade path |
+| **Version Conflicts** | Minimal | Flask pins compatible Werkzeug versions |
+| **Security Patching** | Flask-only patches | Maintenance effort limited to Flask and Python runtime updates |
 
 **Trade-offs**:
-- Manual implementation of functionality typically provided by frameworks (routing, parsing, validation)
-- No access to battle-tested library features (security headers, rate limiting, compression)
-- Appropriate trade-off for test harness; inappropriate for production web applications
+- Flask provides routing and response handling with minimal overhead
+- No access to advanced features (security headers, rate limiting, compression) without additional packages
+- Appropriate trade-off for test harness; production applications may need additional packages
 
 ### 3.3.2 Package Management
 
-#### 3.3.2.1 Package Manager: npm
+#### 3.3.2.1 Package Manager: pip
 
-**Package Manager**: npm (Node Package Manager)  
-**Minimum Version**: 7.0.0  
-**Evidence**: package-lock.json lockfileVersion 3 requires npm 7+
+**Package Manager**: pip (Python Package Installer)  
+**Minimum Version**: Latest available with Python 3.8+  
+**Evidence**: `requirements.txt` file with pinned versions
 
 **Package Manager Features Utilized**:
 
 | Feature | Usage | Evidence |
 |---------|-------|----------|
-| **package.json** | Project metadata and scripts | File present in root directory |
-| **package-lock.json** | Dependency version locking | Lockfile version 3 present |
-| **npm scripts** | Test command definition (non-functional) | `"test"` script defined |
-| **Semantic Versioning** | Project version 1.0.0 | Version field in package.json |
+| **requirements.txt** | Dependency specification with pinned versions | File present in root directory |
+| **.python-version** | Python version specification for version managers | Specifies Python 3.12.3 |
+| **Version Pinning** | Exact version locking via `==` operator | `Flask==3.1.2`, `Werkzeug==3.1.2` |
 
 **Package Manager Commands Applicable**:
-- `npm install` - Executes successfully but installs no packages
-- `npm test` - Currently exits with code 1 (known defect)
-- `npm start` - Not configured (no start script defined)
-- `npm pack` - Would fail due to incorrect "main" field (points to non-existent index.js)
+- `pip install -r requirements.txt` - Installs Flask and Werkzeug
+- `python app.py` - Starts the Flask development server
+- `pip freeze` - Lists installed packages and versions
+- `pip list --outdated` - Checks for available updates
 
 #### 3.3.2.2 Package Registry
 
-**Primary Registry**: npm Registry (https://registry.npmjs.org)  
-**Usage**: Not actively used (no dependencies to fetch)  
+**Primary Registry**: Python Package Index (https://pypi.org)  
+**Usage**: Fetches Flask and Werkzeug packages  
 **Authentication**: Not required for this project
 
 **Alternative Package Managers**:
-The project is compatible with alternative npm-compatible package managers:
-- **Yarn** (v2+) - Compatible, though no yarn.lock present
-- **pnpm** - Compatible, would generate pnpm-lock.yaml
-- **bun** - Compatible with Node.js packages
+The project is compatible with alternative Python package managers:
+- **Poetry** - Compatible, would use pyproject.toml and poetry.lock
+- **Pipenv** - Compatible, would generate Pipfile and Pipfile.lock
+- **conda** - Compatible with conda-forge Flask package
 
-However, no evidence exists of these alternatives being used (only npm lock file present).
+However, no evidence exists of these alternatives being used (only pip with requirements.txt present).
 
 ### 3.3.3 Dependency Auditing
 
-**Security Auditing**: Not applicable (zero dependencies)
+**Security Auditing**: Applicable for Flask and Werkzeug
 
-**Typical npm audit output**:
+**Typical pip audit output**:
 ```
-found 0 vulnerabilities
+pip audit
+No known vulnerabilities found
 ```
 
-**Advantages**:
-- No `npm audit fix` maintenance required
-- No vulnerability disclosure monitoring needed
-- No security advisory response required
-- No dependency deprecation management
+**Maintenance Requirements**:
+- Monitor Flask security advisories via PyPI and GitHub
+- Run `pip audit` periodically to check for vulnerabilities
+- Update pinned versions in `requirements.txt` when patches are available
+- Flask has an active security response team
 
 ## 3.4 Third-Party Services
 
@@ -4740,7 +4717,7 @@ No external monitoring or observability platforms are integrated:
 | **Uptime Monitoring** | Pingdom, UptimeRobot, StatusCake | ❌ Not used |
 
 **Logging Implementation**:
-- Only `console.log()` used for server startup message (line 14 of server.js)
+- Only `print()` used for server startup message (line 14 of app.py)
 - No structured logging
 - No log levels (debug, info, warn, error)
 - No log forwarding or aggregation
@@ -4765,7 +4742,7 @@ The server does not make outbound HTTP requests to any external APIs:
 - No DNS lookups performed (except localhost resolution)
 - No external network traffic generated
 
-**Evidence**: `server.js` contains no HTTP client code (`http.request()`, `https.request()`, or external client libraries).
+**Evidence**: `app.py` contains no HTTP client code (`http.request()`, `https.request()`, or external client libraries).
 
 #### 3.4.1.5 Payment and E-commerce Services
 
@@ -4803,8 +4780,8 @@ The system uses **no database technology** of any kind:
 | **Wide-Column Stores** | Cassandra, HBase | ❌ Not used |
 
 **Evidence**: 
-- No database connection code in `server.js`
-- No database client libraries in package.json
+- No database connection code in `app.py`
+- No database client libraries in requirements.txt
 - No connection strings or database configuration
 
 **Justification**: Test harness returns static responses, requiring no data persistence layer.
@@ -4840,10 +4817,10 @@ The application does not write to the file system:
 - ❌ No data export/import functionality
 
 **Read Operations**:
-- Node.js runtime reads `server.js` at startup (implicit via `node server.js`)
+- Python runtime reads `app.py` at startup (implicit via `python app.py`)
 - No explicit `fs` module usage in application code
 
-**File Handles**: Only standard streams (stdout for console.log) used.
+**File Handles**: Only standard streams (stdout for print) used.
 
 #### 3.5.1.4 Cloud Storage Services
 
@@ -4911,55 +4888,54 @@ The minimal codebase supports development in any text editor or IDE:
 **Linting**: None configured
 
 No code linting or formatting tools are configured:
-- ❌ No ESLint configuration
-- ❌ No Prettier configuration
-- ❌ No JSHint or JSLint
+- ❌ No flake8 configuration
+- ❌ No Black formatter configuration
+- ❌ No pylint or mypy
 - ❌ No EditorConfig file
 
 **Impact**:
 - No automated code style enforcement
 - No static analysis for potential bugs
-- Appropriate for 15-line codebase; recommended for larger codebases
+- Appropriate for minimal codebase; recommended for larger codebases
 
 **Code Formatting**: 
-Current code follows standard JavaScript conventions (2-space indentation, semicolons) but lacks automated enforcement.
+Current code follows PEP 8 Python conventions (4-space indentation) but lacks automated enforcement.
 
 #### 3.6.1.3 Debugging Tools
 
-**Debugging Approach**: Native Node.js debugging capabilities
+**Debugging Approach**: Native Python debugging capabilities
 
 **Available Debugging Methods**:
 
 | Method | Command | Purpose |
 |--------|---------|---------|
-| **Node.js Inspector** | `node --inspect server.js` | Chrome DevTools debugging |
-| **Node.js Debug Mode** | `node --inspect-brk server.js` | Pause at first line |
-| **Console Logging** | `console.log()` statements | Manual debugging (currently: startup message only) |
+| **Python Debugger** | `python -m pdb app.py` | Chrome DevTools debugging |
+| **Python PDB Mode** | `python -m pdb app.py` | Pause at first line |
+| **Console Logging** | `print()` statements | Manual debugging (currently: startup message only) |
 | **IDE Debuggers** | Launch configurations | Breakpoint debugging in VS Code/WebStorm |
 
 **No Debug Configuration**:
 - No launch.json for VS Code
-- No debug npm script
+- No debug pip script
 - Manual debugging setup required
 
 #### 3.6.1.4 Development Dependencies
 
 **Development Dependencies Installed**: None
 
-No devDependencies are specified in package.json:
-- ❌ No testing frameworks (Jest, Mocha)
-- ❌ No build tools (Webpack, Rollup)
-- ❌ No transpilers (Babel, TypeScript)
-- ❌ No linters (ESLint, Prettier)
-- ❌ No type checkers (Flow, TypeScript)
+No development dependencies are specified:
+- ❌ No testing frameworks (pytest, unittest)
+- ❌ No build tools (setuptools, wheel)
+- ❌ No linters (flake8, pylint)
+- ❌ No formatters (Black, autopep8)
+- ❌ No type checkers (mypy, pyright)
 
 **Recommendation for Enhanced Development**:
-Consider adding minimal development tooling:
-```json
-"devDependencies": {
-  "eslint": "^8.0.0",
-  "prettier": "^2.0.0"
-}
+Consider adding minimal development tooling in a `requirements-dev.txt`:
+```
+pytest==8.0.0
+flake8==7.0.0
+black==24.0.0
 ```
 
 ### 3.6.2 Build System
@@ -4969,7 +4945,7 @@ Consider adding minimal development tooling:
 **Build System**: None (direct execution architecture)
 
 The project requires **no build step**:
-- ✅ No compilation (JavaScript executes directly)
+- ✅ No compilation (Python executes directly)
 - ✅ No transpilation (no TypeScript, no Babel)
 - ✅ No bundling (single-file architecture)
 - ✅ No minification (source code is production code)
@@ -4978,19 +4954,19 @@ The project requires **no build step**:
 
 **Execution Model**:
 ```bash
-node server.js  # Direct execution, no build step
+python app.py  # Direct execution, no build step
 ```
 
 **Build Tools Not Used**:
 
 | Build Tool | Typical Purpose | Status |
 |-----------|----------------|--------|
-| **Webpack** | Module bundling, asset processing | ❌ Not applicable |
+| **setuptools** | Package building, distribution | ❌ Not applicable |
 | **Rollup** | ES module bundling | ❌ Not applicable |
 | **Parcel** | Zero-config bundling | ❌ Not applicable |
-| **esbuild** | Fast TypeScript/JavaScript bundling | ❌ Not applicable |
-| **Babel** | JavaScript transpilation | ❌ Not applicable |
-| **TypeScript Compiler (tsc)** | TypeScript to JavaScript compilation | ❌ Not applicable |
+| **esbuild** | Fast TypeScript/Python bundling | ❌ Not applicable |
+| **Babel** | Python transpilation | ❌ Not applicable |
+| **TypeScript Compiler (tsc)** | TypeScript to Python compilation | ❌ Not applicable |
 
 **Advantages of No-Build Approach**:
 1. **Instant Execution**: No build time delay between code changes and execution
@@ -5002,9 +4978,9 @@ node server.js  # Direct execution, no build step
 **Trade-offs**:
 - No code optimization (minification, tree-shaking)
 - No module bundling for browser delivery (not applicable for server-only code)
-- Appropriate for Node.js server; incompatible with browser-based JavaScript
+- Appropriate for Python server; incompatible with browser-based Python
 
-#### 3.6.2.2 npm Scripts
+#### 3.6.2.2 pip Scripts
 
 **Configured Scripts**:
 
@@ -5016,17 +4992,18 @@ node server.js  # Direct execution, no build step
 
 | Script Name | Recommended Command | Purpose |
 |------------|-------------------|---------|
-| `start` | `node server.js` | Start the server |
-| `dev` | `nodemon server.js` | Development mode with auto-reload (requires nodemon) |
-| `lint` | `eslint server.js` | Code linting (requires ESLint) |
-| `format` | `prettier --write server.js` | Code formatting (requires Prettier) |
+| `start` | `python app.py` | Start the server |
+| `dev` | `FLASK_DEBUG=1 python app.py` | Development mode with auto-reload |
+| `lint` | `flake8 app.py` | Code linting (requires flake8) |
+| `format` | `black app.py` | Code formatting (requires Black) |
 
-**Recommended package.json Scripts Addition**:
-```json
-"scripts": {
-  "start": "node server.js",
-  "test": "node --test test.js"
-}
+**Recommended Makefile Addition**:
+```makefile
+start:
+	python app.py
+
+test:
+	python -m pytest tests/
 ```
 
 ### 3.6.3 Version Control
@@ -5048,7 +5025,7 @@ node server.js  # Direct execution, no build step
 
 **Git Configuration Files**:
 - `.git/config` - Repository-level Git configuration
-- No `.gitignore` file present (potential defect - node_modules should be ignored if dependencies added)
+- No `.gitignore` file present (potential defect - venv should be ignored if dependencies added)
 - No `.gitattributes` file present
 
 #### 3.6.3.2 Version Control Workflow
@@ -5064,8 +5041,8 @@ node server.js  # Direct execution, no build step
 
 **Recommended .gitignore Addition**:
 ```gitignore
-node_modules/
-npm-debug.log*
+venv/
+pip-debug.log*
 .DS_Store
 .env
 *.log
@@ -5092,18 +5069,18 @@ No container configuration is present in the repository:
 
 | Constraint | Impact | Required Fix |
 |-----------|--------|--------------|
-| **Localhost-only Binding** | Container networking inaccessible | Change `127.0.0.1` to `0.0.0.0` in server.js |
-| **Hard-coded Port** | No environment variable support | Add `process.env.PORT \|\| 3000` support |
+| **Localhost-only Binding** | Container networking inaccessible | Change `127.0.0.1` to `0.0.0.0` in app.py |
+| **Hard-coded Port** | No environment variable support | Add `os.getenv('PORT') \|\| 3000` support |
 | **No Healthcheck Endpoint** | Container orchestration cannot verify readiness | Implement `/health` or `/ready` endpoint |
 
 **Current Binding**:
-```javascript
-const hostname = '127.0.0.1';  // Blocks container access
+```python
+HOSTNAME = os.getenv('HOST', '127.0.0.1')  # Blocks container access
 ```
 
 **Container-Compatible Binding**:
-```javascript
-const hostname = '0.0.0.0';  // Accepts connections from any interface
+```python
+HOSTNAME = os.getenv('HOST', '0.0.0.0')  # Accepts connections from any interface
 ```
 
 #### 3.6.4.3 Example Dockerfile (Not Implemented)
@@ -5111,13 +5088,13 @@ const hostname = '0.0.0.0';  // Accepts connections from any interface
 For reference, a minimal Dockerfile for this application would be:
 
 ```dockerfile
-FROM node:16-alpine
+FROM python:3.12-slim
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY server.js ./
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app.py ./
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["python", "app.py"]
 ```
 
 **Note**: This Dockerfile is **not present** in the repository and would require code changes (hostname binding) to function correctly.
@@ -5143,16 +5120,13 @@ No CI/CD configuration exists:
 
 | Blocker | Impact | Priority |
 |---------|--------|----------|
-| **Failing Test Script** | `npm test` exits with code 1, fails CI builds | High |
+| **Failing Test Script** | `pip test` exits with code 1, fails CI builds | High |
 | **No Test Suite** | No automated validation possible | High |
 | **No Build Verification** | Cannot verify deployment artifacts | Medium |
 
-**Current Test Script**:
-```json
-"test": "echo \"Error: no test specified\" && exit 1"
-```
+**Current Test Status**: No test suite configured. No `pytest` or `unittest` tests exist.
 
-This intentional failure prevents integration with any CI system that runs `npm test`.
+This prevents integration with any CI system that validates via automated tests.
 
 #### 3.6.5.3 Recommended CI/CD Configuration
 
@@ -5166,12 +5140,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-python@v4
         with:
-          node-version: '16'
-      - run: npm ci
-      - run: npm test
-      - run: npm start &
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: python app.py &
       - run: sleep 2 && curl http://127.0.0.1:3000
 ```
 
@@ -5186,7 +5159,7 @@ jobs:
 **Deployment Steps**:
 1. Clone repository: `git clone github.com:lakshya-blitzy/hello_world_Oct_2025.git`
 2. Navigate to directory: `cd hello_world_Oct_2025`
-3. Execute server: `node server.js`
+3. Execute server: `python app.py`
 4. Verify: Server outputs "Server running at http://127.0.0.1:3000/"
 
 **Deployment Scope**: Local development machine only (localhost binding prevents external deployment)
@@ -5196,9 +5169,9 @@ jobs:
 | Limitation | Impact | Workaround |
 |-----------|--------|------------|
 | **Localhost-only Binding** | Cannot deploy to external servers | Modify hostname to 0.0.0.0 |
-| **No Environment Variables** | Cannot configure per-environment | Add process.env support |
+| **No Environment Variables** | Cannot configure per-environment | Add os.environ support |
 | **Hard-coded Port** | Port conflicts require code changes | Parameterize port configuration |
-| **No Process Management** | Server dies on terminal close | Use PM2, systemd, or supervisor |
+| **No Process Management** | Server dies on terminal close | Use Gunicorn, systemd, or supervisor |
 | **No Graceful Shutdown** | SIGTERM causes immediate termination | Implement signal handlers |
 | **No Health Checks** | Load balancers cannot verify readiness | Add health check endpoint |
 
@@ -5215,7 +5188,7 @@ The project has no infrastructure automation:
 **Process Management**: None configured
 
 No process management solution is implemented:
-- ❌ No PM2 configuration (pm2.config.js)
+- ❌ No Gunicorn configuration (gunicorn.conf.py)
 - ❌ No systemd service file
 - ❌ No Docker Compose service definitions
 - ❌ No Kubernetes deployment manifests
@@ -5223,28 +5196,24 @@ No process management solution is implemented:
 **Recommendation for Production** (if deploying beyond local testing):
 
 1. **Configuration Management**: Externalize configuration
-   ```javascript
-   const hostname = process.env.HOST || '0.0.0.0';
-   const port = process.env.PORT || 3000;
+   ```python
+   HOSTNAME = os.getenv('HOST', '0.0.0.0')
+   PORT = int(os.getenv('PORT', 3000))
    ```
 
-2. **Process Management**: Create PM2 configuration
-   ```json
-   {
-     "apps": [{
-       "name": "hello-world",
-       "script": "server.js",
-       "instances": 2,
-       "exec_mode": "cluster"
-     }]
-   }
+2. **Process Management**: Create Gunicorn configuration
+   ```python
+   # gunicorn.conf.py
+   bind = '0.0.0.0:3000'
+   workers = 2
+   worker_class = 'sync'
    ```
 
 3. **Health Check**: Add endpoint
-   ```javascript
+   ```python
    if (req.url === '/health') {
-     res.statusCode = 200;
-     res.end('OK');
+     # Status 200 set via Response object;
+     Response body('OK');
    }
    ```
 
@@ -5259,15 +5228,15 @@ The following diagram illustrates the complete technology stack architecture, em
 ```mermaid
 graph TB
     subgraph "Execution Environment"
-        A[Node.js Runtime Environment<br/>v12.x or higher<br/>JavaScript Engine: V8]
+        A[Python Runtime Environment<br/>v12.x or higher<br/>Python Engine: CPython]
     end
     
     subgraph "Application Layer"
-        B[server.js<br/>15 lines<br/>Single file implementation]
+        B[app.py<br/>15 lines<br/>Single file implementation]
     end
     
     subgraph "Built-in Modules"
-        C[http module<br/>Core Node.js API]
+        C[Flask framework<br/>Core Flask API]
         D[console module<br/>Logging]
     end
     
@@ -5292,9 +5261,9 @@ graph TB
 ```
 
 **Stack Characteristics**:
-- **Single Language**: JavaScript only
-- **Single Runtime**: Node.js only
-- **Single File**: server.js only
+- **Single Language**: Python only
+- **Single Runtime**: Python only
+- **Single File**: app.py only
 - **Zero External Dependencies**: Built-in modules only
 - **Localhost-Only**: Network isolation by design
 
@@ -5306,34 +5275,34 @@ The following diagram depicts the HTTP request handling flow through the minimal
 sequenceDiagram
     participant Client as HTTP Client<br/>(e.g., curl, browser)
     participant OS as Operating System<br/>TCP/IP Stack
-    participant Node as Node.js Runtime<br/>Event Loop
+    participant Runtime as Python Runtime<br/>Event Loop
     participant HTTP as http Module<br/>Request Parser
     participant Handler as Request Handler<br/>(Arrow Function)
-    participant Response as ServerResponse<br/>Object
+    participant Response as Flask Response<br/>Object
     
     Client->>OS: TCP SYN to 127.0.0.1:3000
-    OS->>Node: Accept connection
-    Node->>HTTP: New connection event
+    OS->>Runtime: Accept connection
+    Runtime->>HTTP: New connection event
     
     Client->>OS: HTTP Request<br/>(any method, any path)
-    OS->>Node: Data available on socket
-    Node->>HTTP: Parse HTTP request
-    HTTP->>Handler: Invoke callback(req, res)
+    OS->>Runtime: Data available on socket
+    Runtime->>HTTP: Parse HTTP request
+    HTTP->>Handler: Match route and invoke handler
     
-    Handler->>Response: res.statusCode = 200
-    Handler->>Response: res.setHeader('Content-Type', 'text/plain')
-    Handler->>Response: res.end('Hello, World!\n')
+    Handler->>Response: # Status 200 set via Response object
+    Handler->>Response: # Content-Type set via mimetype parameter
+    Handler->>Response: return Response('Hello, World!\n', status=200, mimetype='text/plain')
     
     Response->>HTTP: Serialize HTTP response
-    HTTP->>Node: Write to socket buffer
-    Node->>OS: Send data on TCP socket
+    HTTP->>Runtime: Write to socket buffer
+    Runtime->>OS: Send data on TCP socket
     OS->>Client: HTTP 200 response<br/>Hello, World!
     
     Note over Handler: No request parsing<br/>No routing logic<br/>No state storage<br/>Deterministic response
 ```
 
 **Request Flow Characteristics**:
-1. **Synchronous Processing**: Each request handled synchronously in callback
+1. **Synchronous Processing**: Each request handled synchronously in route handler
 2. **Universal Response**: All requests receive identical response
 3. **No Middleware**: Direct request-to-response flow
 4. **No Asynchronous Operations**: No Promises, callbacks, or async/await
@@ -5346,19 +5315,19 @@ The following diagram shows the dependency relationships (or lack thereof) in th
 ```mermaid
 graph LR
     subgraph "Application Code"
-        A[server.js]
+        A[app.py]
     end
     
-    subgraph "Node.js Built-in Modules"
+    subgraph "Python Packages"
         B[http]
         C[console]
         D[process]
     end
     
-    subgraph "Node.js Runtime"
-        E[V8 JavaScript Engine]
-        F[libuv<br/>Event Loop]
-        G[Node.js Core APIs]
+    subgraph "Python Runtime"
+        E[CPython Interpreter]
+        F[Werkzeug<br/>Event Loop]
+        G[Python Standard Library]
     end
     
     subgraph "Operating System"
@@ -5396,11 +5365,11 @@ graph LR
 ```
 
 **Dependency Insights**:
-- **Direct Dependencies**: Only Node.js built-in modules
+- **Direct Dependencies**: Only Python packages and Flask
 - **Transitive Dependencies**: Zero (built-in modules have no external dependencies)
 - **Dependency Depth**: 1 level (application → built-in modules)
 - **Supply Chain Risk**: Zero (no third-party code)
-- **Maintenance Burden**: Minimal (only Node.js version updates matter)
+- **Maintenance Burden**: Minimal (only Python version updates matter)
 
 ## 3.8 Divergence from Standard Stack
 
@@ -5412,8 +5381,8 @@ The "Default Technology Stack" template provided in the requirements specifies n
 
 | Default Stack Component | Status | Justification |
 |------------------------|--------|---------------|
-| **Python** | ❌ Not used | Project uses JavaScript/Node.js instead |
-| **Flask** | ❌ Not used | Node.js http module used instead of Python web framework |
+| **Python** | ❌ Not used | Project uses Python instead |
+| **Flask** | ❌ Not used | Flask framework used instead of Python web framework |
 | **Auth0** | ❌ Not used | No authentication required for test harness |
 | **MongoDB** | ❌ Not used | Stateless architecture requires no database |
 | **Langchain** | ❌ Not used | No AI/ML functionality in test harness |
@@ -5425,7 +5394,7 @@ The "Default Technology Stack" template provided in the requirements specifies n
 | Default Stack Component | Status | Justification |
 |------------------------|--------|---------------|
 | **React** | ❌ Not used | Server-only application; no frontend |
-| **TypeScript** | ❌ Not used | Plain JavaScript sufficient for 15-line implementation |
+| **TypeScript** | ❌ Not used | Plain Python sufficient for 15-line implementation |
 | **TailwindCSS** | ❌ Not used | No UI components; plain-text HTTP response only |
 | **React-Native** | ❌ Not used | No mobile application component |
 
@@ -5440,7 +5409,7 @@ The "Default Technology Stack" template provided in the requirements specifies n
 | **Objective-C (MacOS)** | ❌ Not used | No MacOS application component |
 | **ElectronJS (Desktop)** | ❌ Not used | No desktop application component |
 
-**Rationale**: This is a server-side Node.js application, not a multi-platform client application suite.
+**Rationale**: This is a server-side Python application, not a multi-platform client application suite.
 
 #### 3.8.1.4 Infrastructure Technologies Not Used
 
@@ -5473,10 +5442,10 @@ The system's identity as a **backprop integration test harness** dictates techno
 
 | Test Harness Requirement | Technology Decision | Consequence |
 |-------------------------|-------------------|-------------|
-| **Rapid Setup/Teardown** | No dependencies, no build step | `node server.js` executes instantly |
+| **Rapid Setup/Teardown** | No dependencies, no build step | `python app.py` executes instantly |
 | **Behavioral Predictability** | Static response, no state | Every test run identical |
 | **Failure Isolation** | No external services, no database | Test failures never due to infrastructure |
-| **Minimal Test Environment** | Single Node.js requirement | Works on any machine with Node.js |
+| **Minimal Test Environment** | Single Python requirement | Works on any machine with Python |
 | **Debug Transparency** | Single file, no abstraction layers | Issues immediately visible |
 
 #### 3.8.2.3 When to Use Standard Stack
@@ -5501,24 +5470,24 @@ The **minimal stack documented here** is appropriate for:
 
 The following files from the repository were analyzed to document this technology stack:
 
-- **`server.js`** - Core HTTP server implementation (15 lines), demonstrating:
-  - Node.js http module usage
-  - CommonJS module system
+- **`app.py`** - Core HTTP server implementation (15 lines), demonstrating:
+  - Flask framework usage
+  - Python module system
   - Request handling logic
   - Network binding configuration (127.0.0.1:3000)
   - Response generation (HTTP 200, text/plain, "Hello, World!\n")
 
-- **`package.json`** - Project metadata and configuration, confirming:
+- **`requirements.txt`** - Project metadata and configuration, confirming:
   - Project name: "hello_world"
   - Version: 1.0.0
   - Author: hxu
   - License: MIT
   - Zero dependencies (no `dependencies` or `devDependencies` fields)
   - Non-functional test script (known defect)
-  - Incorrect main field (references non-existent index.js)
+  - Incorrect main field (references non-existent app.py)
 
-- **`package-lock.json`** - Dependency lock file, confirming:
-  - lockfileVersion 3 (requires npm 7+)
+- **`.python-version`** - Dependency lock file, confirming:
+  - Python 3.12.3 (requires pip)
   - Zero external dependencies
   - Only root package entry in packages object
 
@@ -5530,9 +5499,9 @@ The following files from the repository were analyzed to document this technolog
 
 - **`.` (root directory)** - Complete repository structure examination, revealing:
   - Flat file structure (no subdirectories)
-  - Four files total (server.js, package.json, package-lock.json, README.md)
+  - Four files total (app.py, requirements.txt, .python-version, README.md)
   - `.git` directory presence (version control)
-  - Absence of configuration files (.env, config.js, etc.)
+  - Absence of configuration files (.env, config.py, etc.)
   - Absence of containerization files (Dockerfile, docker-compose.yml)
   - Absence of CI/CD files (.github/workflows/, .travis.yml, etc.)
 
@@ -5548,15 +5517,15 @@ The following sections of this Technical Specification were consulted for contex
 
 The following external resources informed this technology stack documentation:
 
-- **Node.js Official Documentation** - https://nodejs.org/docs/
-  - http module API reference
+- **Python Official Documentation** - https://docs.python.org/3/
+  - Flask framework API reference
   - Version compatibility information
   - Built-in module documentation
 
-- **npm Documentation** - https://docs.npmjs.com/
-  - package.json format specification
-  - package-lock.json lockfileVersion semantics
-  - npm versioning guidelines
+- **pip Documentation** - https://docs.pipjs.com/
+  - requirements.txt format specification
+  - .python-version version semantics
+  - pip versioning guidelines
 
 - **Git Configuration** - Repository `.git/config` file
   - GitHub repository URL: github.com:lakshya-blitzy/hello_world_Oct_2025.git
@@ -5567,9 +5536,9 @@ The following external resources informed this technology stack documentation:
 
 The following known defects documented in Section 2.4.4.2 impact the technology stack:
 
-- **F-007-RQ-001**: Package main field references non-existent "index.js" instead of "server.js"
+- **F-007-RQ-001**: Package main field references non-existent "app.py" instead of "app.py"
 - **F-006-RQ-001**: Test script exits with error code 1, blocking CI/CD integration
-- **F-007-RQ-002**: Project naming inconsistency between package.json ("hello_world") and README.md ("hao-backprop-test")
+- **F-007-RQ-002**: Project naming inconsistency between requirements.txt ("hello_world") and README.md ("hao-backprop-test")
 
 ---
 
@@ -5584,7 +5553,7 @@ The following known defects documented in Section 2.4.4.2 impact the technology 
 This system implements an intentionally minimalist architecture optimized for **integration testing predictability** rather than production functionality. The process flows documented in this section reflect a deliberate design philosophy that prioritizes deterministic behavior, zero-dependency operation, and transparent execution paths over sophisticated features such as error handling, state management, or request validation.
 
 **Key Process Characteristics**:
-- **Linear Execution**: Single-path workflows with no conditional branching logic in application code (`server.js` lines 1-14)
+- **Linear Execution**: Single-path workflows with no conditional branching logic in application code (`app.py` lines 1-14)
 - **Stateless Operation**: No data persistence, session management, or cross-request state maintenance
 - **Synchronous Processing**: All request handling occurs within a single event loop iteration without asynchronous operations
 - **Deterministic Responses**: Identical output for all inputs regardless of request method, path, headers, or body content
@@ -5598,10 +5567,10 @@ Given the constrained feature set documented in System Overview section 1.2.2.1,
 2. **HTTP Request Processing**: Request reception through response transmission cycles
 3. **State Transitions**: The two-state system model (UNINITIALIZED → LISTENING)
 4. **Failure Scenarios**: Implicit error conditions that cause process termination
-5. **Package Lifecycle Operations**: npm installation and test execution workflows
+5. **Package Lifecycle Operations**: pip install -r requirements.txtation and test execution workflows
 
 **Notable Architectural Absences** (by design):
-- No error handling logic: System relies on Node.js runtime exception propagation
+- No error handling logic: System relies on Python runtime exception propagation
 - No validation workflows: Universal request acceptance per requirement F-002-RQ-001
 - No integration processes: Zero external dependencies per requirement F-005-RQ-002
 - No business rules: Single response template eliminates decision logic
@@ -5616,18 +5585,18 @@ The server initialization workflow represents the complete process from script i
 
 ```mermaid
 flowchart TD
-    Start([User Executes: node server.js]) --> LoadHTTP[Load http Module<br/>via require - http -]
+    Start([User Executes: python app.py]) --> LoadHTTP[Load http Module<br/>via require - http -]
     LoadHTTP --> DefineConfig[Define Configuration Constants<br/>hostname: 127.0.0.1<br/>port: 3000]
-    DefineConfig --> CreateServer[Create HTTP Server Instance<br/>http.createServer - callback -]
+    DefineConfig --> CreateServer[Create HTTP Server Instance<br/>Flask(__name__) app instance]
     CreateServer --> RegisterHandler[Register Request Handler<br/>Inline Callback Function]
-    RegisterHandler --> InvokeListen[Invoke server.listen - host, port, callback -]
+    RegisterHandler --> InvokeListen[Invoke app.run(host, port)]
     InvokeListen --> BindSocket{OS Socket Binding}
     
     BindSocket -->|Success| ListenCallback[Execute Listen Callback]
-    BindSocket -->|Port In Use| ErrorPortConflict([Process Exit: EADDRINUSE])
+    BindSocket -->|Port In Use| ErrorPortConflict([Process Exit: OSError])
     BindSocket -->|Permission Denied| ErrorPermission([Process Exit: EACCES])
     
-    ListenCallback --> LogMessage[console.log - Server running at... -]
+    ListenCallback --> LogMessage[print - Server running at... -]
     LogMessage --> Ready([Server Ready: LISTENING State])
     
     style Start fill:#e1f5e1
@@ -5640,11 +5609,11 @@ flowchart TD
 
 | Step | Description | Location | SLA/Timing |
 |------|-------------|----------|------------|
-| Module Loading | Import Node.js built-in http module | `server.js` line 1 | < 10ms |
-| Configuration Definition | Declare hostname and port constants | `server.js` lines 3-4 | < 1ms |
-| Server Creation | Instantiate http.Server with request handler | `server.js` line 6 | < 50ms (F-001-RQ-001) |
-| Socket Binding | Bind TCP socket to 127.0.0.1:3000 | `server.js` line 12 | < 10ms (F-001-RQ-002) |
-| Startup Logging | Output confirmation message to stdout | `server.js` line 13 | < 100ms (F-001-RQ-003) |
+| Module Loading | Import Flask micro-framework | `app.py` line 1 | < 10ms |
+| Configuration Definition | Declare hostname and port constants | `app.py` lines 3-4 | < 1ms |
+| Server Creation | Instantiate Flask app with request handler | `app.py` line 6 | < 50ms (F-001-RQ-001) |
+| Socket Binding | Bind TCP socket to 127.0.0.1:3000 | `app.py` line 12 | < 10ms (F-001-RQ-002) |
+| Startup Logging | Output confirmation message to stdout | `app.py` line 13 | < 100ms (F-001-RQ-003) |
 
 **Total Expected Startup Time**: < 171ms under normal conditions with no port conflicts.
 
@@ -5653,36 +5622,36 @@ flowchart TD
 The initialization process operates with **hard-coded configuration values** rather than environment-based or external configuration sources. This design eliminates configuration-related failure modes while constraining flexibility.
 
 **Configuration Sources**:
-- Hostname: JavaScript constant `'127.0.0.1'` (`server.js` line 3)
-- Port: JavaScript constant `3000` (`server.js` line 4)
-- No environment variable processing (`process.env` not referenced)
+- Hostname: Python constant `'127.0.0.1'` (`app.py` line 3)
+- Port: Python constant `3000` (`app.py` line 4)
+- No environment variable processing (`os.environ` not referenced)
 - No configuration file loading (no `config.json`, `.env`, or similar files in repository)
 - No command-line argument parsing (`process.argv` not accessed)
 
 **State Preconditions**:
-- Node.js runtime version ≥0.10 (http module availability)
+- Python runtime version ≥0.10 (Flask framework availability)
 - TCP port 3000 available on localhost interface
-- File system read permission for `server.js`
+- File system read permission for `app.py`
 - Process execution permission in current directory
 
 #### 4.2.1.3 Server Lifecycle State Machine
 
 ```mermaid
 stateDiagram-v2
-    [*] --> UNINITIALIZED: node server.js
-    UNINITIALIZED --> LISTENING: server.listen() Success
+    [*] --> UNINITIALIZED: python app.py
+    UNINITIALIZED --> LISTENING: app.run() Success
     UNINITIALIZED --> [*]: Initialization Failure<br/>(Unhandled Exception)
     LISTENING --> [*]: Process Termination<br/>(SIGTERM, SIGINT, Unhandled Exception)
     
     note right of UNINITIALIZED
         State Duration: < 171ms
-        Location: server.js lines 1-12
+        Location: app.py lines 1-12
         Transitions: 1 success, 1 failure
     end note
     
     note right of LISTENING
         State Duration: Indefinite
-        Location: server.js event loop
+        Location: app.py event loop
         Handles: All HTTP requests
     end note
 ```
@@ -5693,7 +5662,7 @@ stateDiagram-v2
    - **Entry Condition**: Script execution begins
    - **Activities**: Module loading, server creation, socket binding
    - **Exit Conditions**: 
-     - Success: Transition to LISTENING after successful `server.listen()` callback
+     - Success: Transition to LISTENING after successful `app.run()` invocation
      - Failure: Process termination on any unhandled exception
    - **Duration**: < 171ms (sum of initialization SLAs)
 
@@ -5713,14 +5682,14 @@ The request-response cycle represents the core operational workflow executed for
 
 ```mermaid
 flowchart TD
-    Start([HTTP Request Arrives<br/>TCP Connection Established]) --> NodeParser[Node.js HTTP Parser<br/>Parses Request Line, Headers, Body]
+    Start([HTTP Request Arrives<br/>TCP Connection Established]) --> NodeParser[Python Flask HTTP Parser<br/>Parses Request Line, Headers, Body]
     NodeParser --> InvokeHandler[Invoke Request Handler Callback<br/>- req, res - parameters]
     
-    InvokeHandler --> SetStatus[Set Response Status Code<br/>res.statusCode = 200]
-    SetStatus --> SetHeader[Set Content-Type Header<br/>res.setHeader - Content-Type , text/plain -]
-    SetHeader --> WriteBody[Write Response Body<br/>res.end - Hello, World!\\n -]
+    InvokeHandler --> SetStatus[Set Response Status Code<br/># Status 200 set via Response object]
+    SetStatus --> SetHeader[Set Content-Type Header<br/>Response header - Content-Type , text/plain -]
+    SetHeader --> WriteBody[Write Response Body<br/>Response body - Hello, World!\\n -]
     
-    WriteBody --> TransmitResponse[Node.js Transmits HTTP Response<br/>Status Line + Headers + Body]
+    WriteBody --> TransmitResponse[Python Transmits HTTP Response<br/>Status Line + Headers + Body]
     TransmitResponse --> CloseOrKeepAlive{Connection Header}
     
     CloseOrKeepAlive -->|Close| CloseSocket[Close TCP Socket]
@@ -5737,12 +5706,12 @@ flowchart TD
 
 | Stage | Component | Timing | Technical Details |
 |-------|-----------|--------|-------------------|
-| Request Parsing | Node.js http module | < 0.1ms | Automatic protocol parsing, headers extracted into req object |
-| Handler Invocation | Event loop | Immediate | Callback registered at server creation (`server.js` line 6) |
-| Status Assignment | Application code | < 0.01ms | Integer assignment: `res.statusCode = 200` (`server.js` line 7) |
-| Header Setting | Application code | < 0.01ms | `res.setHeader('Content-Type', 'text/plain')` (`server.js` line 8) |
-| Body Generation | Application code | < 0.01ms | Static string: `"Hello, World!\n"` (14 bytes) (`server.js` line 9) |
-| Response Transmission | Node.js http module | < 0.5ms | HTTP message formatting and TCP transmission |
+| Request Parsing | Flask framework | < 0.1ms | Automatic protocol parsing, headers extracted into req object |
+| Handler Invocation | Event loop | Immediate | Callback registered at server creation (`app.py` line 6) |
+| Status Assignment | Application code | < 0.01ms | Integer assignment: `# Status 200 set via Response object` (`app.py` line 7) |
+| Header Setting | Application code | < 0.01ms | `# Content-Type set via mimetype parameter` (`app.py` line 8) |
+| Body Generation | Application code | < 0.01ms | Static string: `"Hello, World!\n"` (14 bytes) (`app.py` line 9) |
+| Response Transmission | Flask framework | < 0.5ms | HTTP message formatting and TCP transmission |
 
 **Total Request Processing Time**: < 1ms per requirement F-002-RQ-002.
 
@@ -5792,29 +5761,29 @@ Per requirement F-002-RQ-001, the system implements **universal request acceptan
 sequenceDiagram
     participant Client as HTTP Client<br/>- Test Script/Browser -
     participant OS as Operating System<br/>- TCP/IP Stack -
-    participant Node as Node.js Runtime<br/>- HTTP Module -
-    participant App as Application Code<br/>- server.js -
+    participant Runtime as Python Runtime<br/>- HTTP Module -
+    participant App as Application Code<br/>- app.py -
     
     Client->>OS: TCP SYN - Connect to 127.0.0.1:3000 -
-    OS->>Node: TCP Connection Established
-    Client->>Node: HTTP Request<br/>- Method, Path, Headers, Body -
+    OS->>Runtime: TCP Connection Established
+    Client->>Runtime: HTTP Request<br/>- Method, Path, Headers, Body -
     
-    Note over Node: Parse HTTP Protocol<br/>Create req, res Objects
+    Note over Runtime: Parse HTTP Protocol<br/>Create req, res Objects
     
-    Node->>App: Invoke Request Handler<br/>callback - req, res -
+    Runtime->>App: Invoke Route Handler<br/>hello_world(path)
     
     rect rgb(255, 244, 225)
         Note over App: Synchronous Processing
-        App->>App: res.statusCode = 200<br/>- Line 7 -
-        App->>App: res.setHeader - Content-Type , text/plain -<br/>- Line 8 -
-        App->>App: res.end - Hello, World!\\n -<br/>- Line 9 -
+        App->>App: # Status 200 set via Response object<br/>- Line 7 -
+        App->>App: Response header - Content-Type , text/plain -<br/>- Line 8 -
+        App->>App: Response body - Hello, World!\\n -<br/>- Line 9 -
     end
     
-    App->>Node: Response Object Complete
+    App->>Runtime: Response Object Complete
     
-    Note over Node: Format HTTP Message<br/>Status Line + Headers + Body
+    Note over Runtime: Format HTTP Message<br/>Status Line + Headers + Body
     
-    Node->>OS: TCP Send - HTTP Response -
+    Runtime->>OS: TCP Send - HTTP Response -
     OS->>Client: HTTP Response Delivered
     
     Note over Client,OS: Connection Handling<br/>- Close or Keep-Alive -
@@ -5823,7 +5792,7 @@ sequenceDiagram
 ```
 
 **Key Sequence Characteristics**:
-- **No Asynchronous Operations**: All application code executes synchronously within a single callback invocation
+- **No Asynchronous Operations**: All application code executes synchronously within a single route handler invocation
 - **No Database Queries**: No I/O operations performed during request processing
 - **No External Service Calls**: No network requests to APIs or third-party services
 - **No File System Access**: No log files written, no static files served
@@ -5831,69 +5800,64 @@ sequenceDiagram
 
 ### 4.2.3 Package Lifecycle Workflows
 
-#### 4.2.3.1 NPM Installation Process
+#### 4.2.3.1 pip Installation Process
 
 ```mermaid
 flowchart TD
-    Start([User Executes: npm install]) --> ReadPackageJSON[Read package.json<br/>Parse Dependencies Section]
-    ReadPackageJSON --> CheckDeps{Dependencies<br/>Declared?}
+    Start([User Executes: pip install -r requirements.txt]) --> ReadReqs[Read requirements.txt<br/>Parse Package List]
+    ReadReqs --> CheckDeps{Dependencies<br/>Declared?}
     
-    CheckDeps -->|None Found| ReadLockFile[Read package-lock.json<br/>Verify Integrity]
-    CheckDeps -->|Dependencies Exist| FetchPackages[Fetch from npm Registry]
+    CheckDeps -->|Flask Found| FetchPackages[Fetch from PyPI Registry]
+    CheckDeps -->|None Found| Success
     
-    ReadLockFile --> CreateNodeModules[Create node_modules Directory<br/>- Empty -]
-    FetchPackages --> InstallPackages[Install Dependencies<br/>- N/A for this project -]
+    FetchPackages --> InstallPackages[Install Flask + Werkzeug<br/>Into venv or System]
     
-    CreateNodeModules --> GenerateLockFile[Update package-lock.json<br/>lockfileVersion: 3]
-    InstallPackages --> GenerateLockFile
-    
-    GenerateLockFile --> Success([Installation Complete<br/>Exit Code: 0])
+    InstallPackages --> Success([Installation Complete<br/>Exit Code: 0])
     
     style Start fill:#e1f5e1
     style Success fill:#e1f5e1
 ```
 
 **Installation Characteristics**:
-- **Zero Dependencies**: Per requirement F-005-RQ-002, `package.json` contains no dependencies or devDependencies
-- **Empty node_modules**: Installation completes without downloading any packages
-- **Lock File Structure**: `package-lock.json` contains only root package entry (lockfileVersion 3)
-- **Installation Time**: < 500ms (no network requests required)
-- **Disk Space**: < 1KB (only package-lock.json and empty directory created)
+- **Minimal Dependencies**: `requirements.txt` lists Flask==3.1.2 and Werkzeug==3.1.2
+- **Virtual Environment**: Recommended to install into a venv for isolation
+- **Version File**: `.python-version` specifies Python 3.12.3 for version managers
+- **Installation Time**: < 30s (fetches Flask and transitive dependencies from PyPI)
+- **Disk Space**: ~10MB (Flask and its dependencies)
 
-#### 4.2.3.2 NPM Test Script Workflow (DEFECT SCENARIO)
+#### 4.2.3.2 Test Execution Workflow (NOT CONFIGURED)
 
 ```mermaid
 flowchart TD
-    Start([User Executes: npm test]) --> ReadScript[Read package.json<br/>scripts.test Field]
-    ReadScript --> ExecuteCommand[Execute: echo Error: no test specified && exit 1]
+    Start([User Executes: python -m pytest]) --> CheckPytest{pytest<br/>Installed?}
     
-    ExecuteCommand --> EchoMessage[Output to stdout:<br/>Error: no test specified]
-    EchoMessage --> ExitCode[Exit Process with Code 1]
+    CheckPytest -->|No| InstallPytest[pip install pytest]
+    CheckPytest -->|Yes| DiscoverTests[Discover test_*.py Files]
+    InstallPytest --> DiscoverTests
     
-    ExitCode --> CIImpact{Running in<br/>CI/CD Pipeline?}
+    DiscoverTests --> TestsFound{Tests<br/>Found?}
     
-    CIImpact -->|Yes| FailPipeline([Pipeline Build Failure<br/>Blocks Deployment])
-    CIImpact -->|No| LocalFailure([Local Test Failure<br/>Developer Notified])
+    TestsFound -->|No| NoTests([No Tests Collected<br/>Exit Code: 5])
+    TestsFound -->|Yes| RunTests([Execute Test Suite<br/>Exit Code: 0 or 1])
     
     style Start fill:#e1f5e1
-    style FailPipeline fill:#ffe1e1
-    style LocalFailure fill:#fff4e1
+    style NoTests fill:#fff4e1
+    style RunTests fill:#e1f5e1
 ```
 
-**Defect Analysis** (per requirement F-006-RQ-001):
+**Current State** (per requirement F-006-RQ-001):
 
 | Aspect | Current State | Required State |
 |--------|---------------|----------------|
-| Test Script | `echo "Error: no test specified" && exit 1` | Functional test or success exit |
-| Exit Code | 1 (failure) | 0 (success) when system is functional |
-| CI/CD Impact | Blocks automated pipelines | Allows pipeline progression |
-| Status | Documented defect | Requires implementation |
-| Source Location | `package.json` line 7 | Same location (script update needed) |
+| Test Framework | Not configured | pytest or unittest |
+| Test Files | None present | test_app.py with functional tests |
+| CI/CD Impact | No test validation | Automated test verification |
+| Status | Documented gap | Requires implementation |
 
 **Recommended Fix Options**:
-1. **Functional Test Suite**: Implement automated test that starts server and verifies HTTP 200 response
-2. **Non-Blocking Placeholder**: Change to `echo "No tests specified" && exit 0`
-3. **Script Removal**: Remove test script entirely (npm test will report no tests without failure)
+1. **Functional Test Suite**: Implement pytest tests using Flask test client to verify HTTP 200 response
+2. **Smoke Test Script**: Add a bash script that starts the server and runs curl validation
+3. **No-Op Configuration**: Leave without tests (acceptable for minimal test fixture)
 
 ## 4.3 State Management and Transitions
 
@@ -5908,16 +5872,16 @@ Unlike complex distributed systems with numerous operational states, this minima
 
 | From State | Event | To State | Duration | Recovery |
 |------------|-------|----------|----------|----------|
-| UNINITIALIZED | server.listen() success | LISTENING | < 171ms | N/A |
-| UNINITIALIZED | Port conflict (EADDRINUSE) | Process Exit | Immediate | Manual intervention |
+| UNINITIALIZED | app.run() success | LISTENING | < 171ms | N/A |
+| UNINITIALIZED | Port conflict (OSError) | Process Exit | Immediate | Manual intervention |
 | UNINITIALIZED | Permission denied (EACCES) | Process Exit | Immediate | Manual intervention |
-| UNINITIALIZED | Module load failure | Process Exit | Immediate | Node.js reinstallation |
+| UNINITIALIZED | Module load failure | Process Exit | Immediate | Python reinstallation |
 | LISTENING | SIGTERM/SIGINT signal | Process Exit | Immediate | None (graceful shutdown not implemented) |
 | LISTENING | Unhandled exception | Process Exit | Immediate | None |
 
 ### 4.3.2 Data Persistence and Caching Architecture
 
-**Zero Persistence Model**: Per technical analysis of `server.js` and System Overview section 1.2.2.2, the system implements no data persistence mechanisms:
+**Zero Persistence Model**: Per technical analysis of `app.py` and System Overview section 1.2.2.2, the system implements no data persistence mechanisms:
 
 ```mermaid
 flowchart LR
@@ -5957,16 +5921,16 @@ flowchart LR
 **No Transaction Scope**: The system does not implement transactional semantics. Each request-response cycle operates as an independent, atomic unit with no multi-step operations requiring coordinated commit/rollback logic.
 
 **Concurrency Model**:
-- **Single-Threaded Event Loop**: Node.js processes requests sequentially via event loop
+- **Single-Threaded Event Loop**: Python processes requests sequentially via event loop
 - **No Locking Mechanisms**: Absence of shared state eliminates need for locks, mutexes, or semaphores
-- **Non-Blocking I/O**: Although system contains no I/O operations, Node.js architecture supports concurrent connection handling
+- **Non-Blocking I/O**: Although system contains no I/O operations, Python architecture supports concurrent connection handling
 - **Request Isolation**: Each request handler invocation operates with dedicated `req` and `res` objects
 
 ## 4.4 Error Scenarios and Failure Modes
 
 ### 4.4.1 Error Handling Architecture
 
-**Critical Finding**: According to comprehensive analysis of `server.js` (lines 1-14), the system contains **zero explicit error handling logic**:
+**Critical Finding**: According to comprehensive analysis of `app.py` (lines 1-14), the system contains **zero explicit error handling logic**:
 
 - No try-catch blocks
 - No error event listeners on server object
@@ -5983,7 +5947,7 @@ flowchart TD
     Start([Server Startup Attempted]) --> CheckPort{Port 3000<br/>Available?}
     
     CheckPort -->|Yes| CheckPermissions{Process Has<br/>Port Binding<br/>Permission?}
-    CheckPort -->|No| ErrorPort[Exception: EADDRINUSE<br/>Error: listen EADDRINUSE ::3000]
+    CheckPort -->|No| ErrorPort[Exception: OSError<br/>Error: listen OSError ::3000]
     
     CheckPermissions -->|Yes| CheckModule{http Module<br/>Available?}
     CheckPermissions -->|No| ErrorPermission[Exception: EACCES<br/>Error: listen EACCES 0.0.0.0:3000]
@@ -5991,7 +5955,7 @@ flowchart TD
     CheckModule -->|Yes| SuccessPath[Proceed to LISTENING State<br/>Normal Operations]
     CheckModule -->|No| ErrorModule[Exception: MODULE_NOT_FOUND<br/>Cannot find module http]
     
-    ErrorPort --> UncaughtException[Node.js Uncaught Exception Handler]
+    ErrorPort --> UncaughtException[Python Uncaught Exception Handler]
     ErrorPermission --> UncaughtException
     ErrorModule --> UncaughtException
     
@@ -6019,12 +5983,12 @@ flowchart TD
 
 **Trigger Condition**: Another process (web server, application, or previous instance) already bound to TCP port 3000 on 127.0.0.1.
 
-**Detection Point**: `server.listen()` invocation at `server.js` line 12.
+**Detection Point**: `app.run()` invocation at `app.py` line 12.
 
 **Error Manifestation**:
 ```
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
-    at Server.setupListenHandle [as _listen2] (node:net:...)
+Error: listen OSError: Address already in use 127.0.0.1:3000
+    at Server.setupListenHandle [as _listen2] (socket:...)
 ```
 
 **Recovery Mechanism**: NONE
@@ -6042,7 +6006,7 @@ Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
 
 **Trigger Condition**: Process lacks permissions to bind port 3000 (ports < 1024 typically require elevated privileges on Unix-like systems; port 3000 generally does not, but filesystem/security policies may impose restrictions).
 
-**Detection Point**: `server.listen()` invocation at `server.js` line 12.
+**Detection Point**: `app.run()` invocation at `app.py` line 12.
 
 **Error Manifestation**:
 ```
@@ -6056,9 +6020,9 @@ Error: listen EACCES: permission denied 0.0.0.0:3000
 
 #### 4.4.3.3 Module Loading Failure
 
-**Trigger Condition**: Node.js installation lacks http module (extremely rare; would indicate corrupted Node.js installation).
+**Trigger Condition**: Python installation lacks Flask framework (extremely rare; would indicate corrupted Python installation).
 
-**Detection Point**: `require('http')` statement at `server.js` line 1.
+**Detection Point**: `from flask import Flask, Response` statement at `app.py` line 1.
 
 **Error Manifestation**:
 ```
@@ -6066,17 +6030,17 @@ Error: Cannot find module 'http'
 ```
 
 **Recovery Mechanism**: NONE
-- **Required Action**: Reinstall Node.js runtime
+- **Required Action**: Reinstall Python runtime
 
 ### 4.4.4 Error Notification and Logging
 
 **Error Output Channels**:
-- **Standard Error (stderr)**: Node.js writes uncaught exception stack traces to stderr
+- **Standard Error (stderr)**: Python writes uncaught exception stack traces to stderr
 - **Exit Code**: Non-zero exit code signals failure to parent process (shell, CI/CD system, process manager)
 - **No Application Logging**: System does not write error logs to files or external logging services
 
 **Monitoring Implications**:
-- Process managers (PM2, systemd) can detect exits via exit codes
+- Process managers (Gunicorn, systemd) can detect exits via exit codes
 - Log aggregation requires capturing stderr stream
 - No structured logging (JSON format) for automated parsing
 
@@ -6086,7 +6050,7 @@ Error: Cannot find module 'http'
 
 ```mermaid
 flowchart TD
-    EventLoop[Node.js Event Loop] --> CheckQueue{Event Queue<br/>Empty?}
+    EventLoop[Python Event Loop] --> CheckQueue{Event Queue<br/>Empty?}
     
     CheckQueue -->|Yes| Idle[Idle State<br/>Await I/O Events]
     CheckQueue -->|No| DequeueEvent[Dequeue Next Event]
@@ -6099,7 +6063,7 @@ flowchart TD
     
     ExecuteHandler --> SetStatus[Set Status: 200<br/>- No I/O, Pure CPU -]
     SetStatus --> SetHeader[Set Header<br/>- No I/O, Pure CPU -]
-    SetHeader --> EndResponse[Call res.end - -<br/>- Enqueues Response Write -]
+    SetHeader --> EndResponse[Call Response body - -<br/>- Enqueues Response Write -]
     
     EndResponse --> HandlerComplete[Handler Returns<br/>Back to Event Loop]
     HandlerComplete --> CheckQueue
@@ -6110,7 +6074,7 @@ flowchart TD
 
 **Processing Characteristics**:
 - **No await Keywords**: No asynchronous operations using async/await syntax
-- **No Callbacks**: Handler itself is a callback but invokes no further callbacks
+- **No Nested Async**: Handler invokes no nested asynchronous operations
 - **No Promises**: No Promise creation or chaining
 - **CPU-Bound Operations Only**: Status assignment, header setting, string operations (< 1ms total)
 
@@ -6124,12 +6088,12 @@ flowchart TB
     end
     
     subgraph System_Boundary ["System Boundary: hello_world Package"]
-        subgraph Runtime ["Node.js Runtime Environment"]
+        subgraph Runtime ["Python Runtime Environment"]
             HTTPModule[http Module<br/>- Built-in -]
             EventLoop[Event Loop<br/>- Concurrency -]
         end
         
-        subgraph Application ["Application Code: server.js"]
+        subgraph Application ["Application Code: app.py"]
             Config[Configuration Constants<br/>hostname, port]
             ServerInstance[HTTP Server Instance]
             RequestHandler[Request Handler Callback]
@@ -6138,11 +6102,11 @@ flowchart TB
     
     subgraph OS_Layer ["Operating System"]
         TCPStack[TCP/IP Network Stack]
-        FileSystem[File System<br/>- server.js storage -]
+        FileSystem[File System<br/>- app.py storage -]
         ProcessManager[Process Management]
     end
     
-    User -->|node server.js| ProcessManager
+    User -->|python app.py| ProcessManager
     ProcessManager -->|Load & Execute| Application
     Application -->|require - http -| HTTPModule
     
@@ -6165,9 +6129,9 @@ flowchart TB
 | Boundary Type | Internal | External |
 |---------------|----------|----------|
 | **Network** | Localhost loopback (127.0.0.1) | Internet, LAN (blocked by binding) |
-| **Process** | Single Node.js process | Operating system, other processes |
-| **Module** | server.js application code | Node.js built-in modules |
-| **File System** | server.js source file (read-only) | No write operations |
+| **Process** | Single Python process | Operating system, other processes |
+| **Module** | app.py application code | Python packages and Flask |
+| **File System** | app.py source file (read-only) | No write operations |
 
 ### 4.5.3 Request Flow with Timing Annotations
 
@@ -6180,7 +6144,7 @@ gantt
     section Network
     TCP Packet Arrival           :000, 50
     
-    section Node.js Parsing
+    section Python Parsing
     HTTP Protocol Parsing        :050, 100
     
     section Application
@@ -6188,9 +6152,9 @@ gantt
     Status Code Assignment       :110, 115
     Header Setting               :115, 120
     Body Generation - Static String - :120, 125
-    res.end - - Call             :125, 130
+    Response body - - Call             :125, 130
     
-    section Node.js Transmission
+    section Python Transmission
     HTTP Message Formatting      :130, 200
     TCP Transmission             :200, 500
     
@@ -6222,8 +6186,8 @@ The following table consolidates performance specifications extracted from Funct
 Based on system architecture analysis:
 
 **Memory Footprint**:
-- Node.js runtime baseline: ~10-15 MB
-- Application code: < 1 KB (`server.js` 14 lines)
+- Python runtime baseline: ~10-15 MB
+- Application code: < 1 KB (`app.py` 14 lines)
 - Per-request allocation: 14 bytes (response string literal)
 - No memory leaks: Stateless design prevents accumulation
 
@@ -6249,7 +6213,7 @@ flowchart LR
         CN[Client N]
     end
     
-    subgraph NodeJS_Server ["Node.js Single Process"]
+    subgraph NodeJS_Server ["Python Single Process"]
         EventLoop2[Event Loop<br/>Single-Threaded]
         Queue[Request Queue<br/>FIFO Processing]
     end
@@ -6269,10 +6233,10 @@ flowchart LR
 ```
 
 **Concurrency Characteristics**:
-- **Single Process Model**: One Node.js process handles all requests sequentially
-- **Non-Blocking I/O**: Although no I/O operations exist, Node.js maintains concurrent TCP connections
+- **Single Process Model**: One Python process handles all requests sequentially
+- **Non-Blocking I/O**: Although no I/O operations exist, Python maintains concurrent TCP connections
 - **Request Queuing**: Requests queued in event loop while previous request handler executes
-- **No Worker Threads**: Application does not utilize Node.js worker_threads module
+- **No Worker Threads**: Application does not utilize Python worker_threads module
 - **No Clustering**: No process clustering for multi-core utilization
 
 **Theoretical Throughput**:
@@ -6286,29 +6250,28 @@ flowchart LR
 
 The following source files were analyzed to produce this Process Flowchart documentation:
 
-1. **`server.js`** (lines 1-14)
+1. **`app.py`** (lines 1-14)
    - Core HTTP server implementation
    - Server initialization sequence (lines 1-5)
-   - Request handler callback logic (lines 6-10)
+   - Route handler function logic (lines 6-10)
    - Network binding and startup logging (lines 12-14)
    - Evidence for all workflow diagrams in sections 4.2.1 and 4.2.2
 
-2. **`package.json`** (lines 2-10)
+2. **`requirements.txt`** (lines 2-10)
    - Package metadata and configuration
    - Zero-dependency declaration (requirement F-005-RQ-002)
    - Defective test script specification (line 7, requirement F-006-RQ-001)
-   - Entry point mismatch (line 5, references non-existent "index.js")
+   - Entry point mismatch (line 5, references non-existent "app.py")
 
-3. **`package-lock.json`**
-   - Dependency lock file structure
-   - lockfileVersion 3 specification
-   - Confirmation of zero external dependencies
-   - NPM installation workflow evidence (section 4.2.3.1)
+3. **`.python-version`**
+   - Python version specification file
+   - Python 3.12.3 specification
+   - pip installation workflow evidence (section 4.2.3.1)
 
 4. **`README.md`**
    - Project identification: "hao-backprop-test"
    - Purpose statement: "test project for backprop integration"
-   - Documentation of naming inconsistency with package.json
+   - Documentation of naming inconsistency with requirements.txt
 
 ### 4.7.2 Repository Structure
 
@@ -6352,7 +6315,7 @@ The process flows documented in this section reflect the following architectural
 
 4. **Stateless Request Processing**: Absence of session management, data persistence, or cross-request state, ensuring request independence for test isolation
 
-5. **Zero-Dependency Architecture**: Exclusive reliance on Node.js built-in modules, eliminating supply chain vulnerabilities and installation complexity
+5. **Zero-Dependency Architecture**: Exclusive reliance on Python packages and Flask, eliminating supply chain vulnerabilities and installation complexity
 
 6. **Universal Acceptance Pattern**: No request validation or routing logic, maximizing test flexibility and eliminating false negatives from request format mismatches
 
@@ -6368,9 +6331,9 @@ These decisions optimize for the system's intended use case as a **backprop inte
 
 This system implements a **Minimalist Single-File Server Architecture** specifically designed as a test fixture for backprop integration validation scenarios. According to `README.md`, the system serves as a "test project for backprop integration" rather than a production application, which fundamentally shapes its architectural characteristics.
 
-The architecture embraces **extreme minimalism** with a zero-dependency profile, consisting of only 14 lines of functional code in `server.js`. This design prioritizes transparency and predictability over feature richness, making it ideal for integration testing where consistent, deterministic behavior is essential.
+The architecture embraces **extreme minimalism** with a zero-dependency profile, consisting of only 14 lines of functional code in `app.py`. This design prioritizes transparency and predictability over feature richness, making it ideal for integration testing where consistent, deterministic behavior is essential.
 
-**Core Architectural Style**: Event-driven synchronous request-response server leveraging the Node.js event loop for concurrency without explicit asynchronous operations.
+**Core Architectural Style**: Event-driven synchronous request-response server leveraging the WSGI server for concurrency without explicit asynchronous operations.
 
 #### 5.1.1.2 Key Architectural Principles
 
@@ -6392,18 +6355,18 @@ The system establishes clear boundaries that define its operational scope and in
 
 **Network Boundaries**:
 - **Internal Boundary**: Localhost loopback interface (127.0.0.1:3000)
-- **External Boundary**: Internet and local area networks (explicitly excluded via binding constraint in `server.js` line 3)
+- **External Boundary**: Internet and local area networks (explicitly excluded via binding constraint in `app.py` line 3)
 
 **Process Boundaries**:
-- **Internal**: Single Node.js process executing `server.js`
+- **Internal**: Single Python process executing `app.py`
 - **External**: Operating system kernel, other system processes
 
 **Module Boundaries**:
-- **Internal**: Application code in `server.js` (lines 1-14)
-- **External**: Node.js built-in modules (`http`, `console`)
+- **Internal**: Application code in `app.py`
+- **External**: Flask framework, Werkzeug, Python standard library (`os`)
 
 **File System Boundaries**:
-- **Internal**: Read-only access to `server.js` for code execution
+- **Internal**: Read-only access to `app.py` for code execution
 - **External**: No write operations, no log files, no persistent storage
 
 **Protocol Boundaries**:
@@ -6420,14 +6383,14 @@ The system architecture consists of a single application-level component with su
 
 | Component Name | Primary Responsibility | Key Dependencies | Integration Points |
 |---------------|------------------------|------------------|-------------------|
-| **HTTP Server Module** (`server.js`) | Accept HTTP requests and return static "Hello, World!" responses | Node.js `http` module, `console` module | Localhost TCP socket (127.0.0.1:3000) |
-| Node.js Runtime | JavaScript execution, event loop management, HTTP protocol parsing | Operating system (TCP/IP stack, process management) | Application code (`server.js`) |
-| Operating System | TCP/IP networking, process lifecycle management, I/O operations | Hardware, kernel modules | Node.js runtime |
+| **HTTP Server Module** (`app.py`) | Accept HTTP requests and return static "Hello, World!" responses | Flask framework, `os` module | Localhost TCP socket (127.0.0.1:3000) |
+| Python Runtime | Python execution, WSGI request handling, HTTP protocol parsing | Operating system (TCP/IP stack, process management) | Application code (`app.py`) |
+| Operating System | TCP/IP networking, process lifecycle management, I/O operations | Hardware, kernel modules | Python runtime |
 
 **Critical Considerations**:
 - **Single Point of Failure**: No redundancy or failover mechanisms
 - **Hard-Coded Configuration**: Hostname (`127.0.0.1`) and port (`3000`) immutable without code modification
-- **Zero Error Handling**: All exceptions propagate to Node.js uncaught exception handler
+- **Zero Error Handling**: All exceptions propagate to Python unhandled exception handler
 - **Deployment Constraint**: Localhost-only binding prevents external deployment without code changes
 
 #### 5.1.2.2 Component Technology Stack
@@ -6435,18 +6398,18 @@ The system architecture consists of a single application-level component with su
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        A[server.js<br/>14 lines of code<br/>Zero dependencies]
+        A[app.py<br/>Flask application<br/>Minimal dependencies]
     end
     
-    subgraph "Node.js Built-in Modules"
-        B[http module<br/>Server creation & request handling]
-        C[console module<br/>Startup logging]
+    subgraph "Python Packages"
+        B[Flask framework<br/>Routing & request handling]
+        C[os module<br/>Environment variable access]
     end
     
-    subgraph "Node.js Runtime Environment"
-        D[V8 JavaScript Engine<br/>Code execution]
-        E[libuv Event Loop<br/>Asynchronous I/O]
-        F[Node.js Core APIs<br/>System integration]
+    subgraph "Python Runtime Environment"
+        D[CPython Interpreter<br/>Code execution]
+        E[WSGI Server - Werkzeug<br/>HTTP protocol handling]
+        F[Python Standard Library<br/>System integration]
     end
     
     subgraph "Operating System"
@@ -6454,14 +6417,13 @@ graph TB
         H[Process Management<br/>Lifecycle control]
     end
     
-    A -->|require| B
-    A -.->|implicit| C
-    B --> F
+    A -->|import| B
+    A -->|import| C
+    B --> E
     C --> F
     F --> D
-    F --> E
     E --> G
-    E --> H
+    D --> H
     
     style A fill:#bbf,stroke:#333,stroke-width:3px
     style B fill:#bfb,stroke:#333,stroke-width:2px
@@ -6476,17 +6438,15 @@ The system implements a **synchronous request-response flow** with zero data tra
 
 **Request Reception Flow**:
 1. **Client Connection Initiation**: HTTP client establishes TCP connection to 127.0.0.1:3000
-2. **Operating System Acceptance**: OS TCP/IP stack accepts connection and routes to Node.js process
-3. **Protocol Parsing**: Node.js `http` module automatically parses HTTP request (method, path, headers, body)
-4. **Handler Invocation**: Synchronous callback function invoked with `req` and `res` objects (`server.js` line 6)
+2. **Operating System Acceptance**: OS TCP/IP stack accepts connection and routes to Python process
+3. **Protocol Parsing**: Werkzeug/Flask automatically parses HTTP request (method, path, headers, body)
+4. **Handler Invocation**: Flask matches route and invokes `hello_world(path)` function via `@app.route` decorator
 
 **Response Generation Flow**:
-5. **Status Code Assignment**: `res.statusCode = 200` (<0.01ms, `server.js` line 7)
-6. **Header Configuration**: `res.setHeader('Content-Type', 'text/plain')` (<0.01ms, `server.js` line 8)
-7. **Body Transmission**: `res.end('Hello, World!\n')` (<0.01ms, `server.js` line 9)
-8. **Response Serialization**: Node.js formats HTTP message (status line + headers + 14-byte body)
-9. **Network Transmission**: Response transmitted via TCP socket to client
-10. **Connection Handling**: Connection closes or persists based on HTTP keep-alive header
+5. **Response Creation**: `Response('Hello, World!\n', status=200, mimetype='text/plain')` (<0.01ms)
+6. **Response Serialization**: Flask/Werkzeug formats HTTP message (status line + headers + 14-byte body)
+7. **Network Transmission**: Response transmitted via TCP socket to client
+8. **Connection Handling**: Connection closes or persists based on HTTP keep-alive header
 
 **Total Processing Time**: <1ms per request (functional requirement F-002-RQ-002)
 
@@ -6496,28 +6456,27 @@ The system implements a **synchronous request-response flow** with zero data tra
 sequenceDiagram
     participant Client as HTTP Client<br/>(curl, browser, test script)
     participant OS as Operating System<br/>TCP/IP Stack
-    participant Node as Node.js Runtime<br/>Event Loop
-    participant HTTP as http Module<br/>Request Parser
-    participant Handler as Request Handler<br/>(lines 6-10)
+    participant Runtime as Python Runtime
+    participant WSGI as Werkzeug WSGI<br/>Request Parser
+    participant Handler as Route Handler<br/>hello_world()
     
     Client->>OS: TCP SYN to 127.0.0.1:3000
-    OS->>Node: Accept connection
-    Node->>HTTP: New connection event
+    OS->>Runtime: Accept connection
+    Runtime->>WSGI: New connection event
     
     Client->>OS: HTTP Request<br/>(any method, any path)
-    OS->>Node: Data available on socket
-    Node->>HTTP: Parse HTTP protocol
-    HTTP->>Handler: Invoke callback(req, res)
+    OS->>Runtime: Data available on socket
+    Runtime->>WSGI: Parse HTTP protocol
+    WSGI->>Handler: Match @app.route, invoke hello_world(path)
     
     Note over Handler: Synchronous Operations<br/>No I/O, No Async, No Database
     
-    Handler->>Handler: res.statusCode = 200
-    Handler->>Handler: res.setHeader(...)
-    Handler->>Handler: res.end('Hello, World!\n')
+    Handler->>Handler: Create Response object
+    Handler->>Handler: return Response('Hello, World!\n', status=200, mimetype='text/plain')
     
-    Handler->>HTTP: Response complete
-    HTTP->>Node: Serialize HTTP message
-    Node->>OS: Write to TCP socket
+    Handler->>WSGI: Response complete
+    WSGI->>Runtime: Serialize HTTP message
+    Runtime->>OS: Write to TCP socket
     OS->>Client: HTTP 200 OK<br/>Hello, World!
     
     Note over Client,OS: Connection handling<br/>(Close or Keep-Alive)
@@ -6582,7 +6541,7 @@ The architecture intentionally excludes all external system integrations, adheri
 |-------------|------------------|----------------------|-----------------|------------------|
 | *None* | N/A | N/A | N/A | N/A |
 
-**Note**: The empty integration table reflects the intentional architectural constraint that eliminates all external system dependencies. This is a defining characteristic of the test fixture architecture documented in `README.md` and `package.json`.
+**Note**: The empty integration table reflects the intentional architectural constraint that eliminates all external system dependencies. This is a defining characteristic of the test fixture architecture documented in `README.md` and `requirements.txt`.
 
 ## 5.2 COMPONENT DETAILS
 
@@ -6591,11 +6550,11 @@ The architecture intentionally excludes all external system integrations, adheri
 #### 5.2.1.1 Purpose and Responsibilities
 
 **Component Name**: HTTP Server Module  
-**Location**: `server.js` (lines 1-14)  
+**Location**: `app.py` (lines 1-14)  
 **Primary Purpose**: Provide a minimal HTTP endpoint that accepts all requests and returns a static "Hello, World!" response for integration testing validation.
 
 **Core Responsibilities**:
-1. **Server Initialization**: Create HTTP server instance using Node.js `http.createServer()` method
+1. **Server Initialization**: Create HTTP server instance using Python `Flask(__name__)` method
 2. **Network Binding**: Bind TCP socket to localhost interface (127.0.0.1) on port 3000
 3. **Request Reception**: Accept all HTTP requests regardless of method or path
 4. **Response Generation**: Return HTTP 200 status with plain text "Hello, World!" body
@@ -6612,21 +6571,21 @@ The architecture intentionally excludes all external system integrations, adheri
 
 #### 5.2.1.2 Technologies and Frameworks
 
-**Programming Language**: JavaScript (ECMAScript 6+)  
-**Runtime Environment**: Node.js (version ≥12.x, implied by `package-lock.json` lockfileVersion 3)  
-**Module System**: CommonJS (`require()` syntax)
+**Programming Language**: Python 3 (3.8+)  
+**Runtime Environment**: CPython (version ≥3.8, recommended 3.12.3 per `.python-version`)  
+**Module System**: Python module system (`import` / `from...import` syntax)
 
 **Core Technologies**:
 
 | Technology | Version | Purpose | Usage Location |
 |-----------|---------|---------|----------------|
-| Node.js `http` module | Built-in (stable since Node.js 0.10) | HTTP server creation and request handling | `server.js` line 1, 6, 12 |
-| Node.js `console` module | Built-in | Startup logging to stdout | `server.js` line 13 |
-| JavaScript const declarations | ES6 | Immutable configuration constants | `server.js` lines 3-4 |
-| Arrow function syntax | ES6 | Request handler callback | `server.js` line 6 |
-| Template literals | ES6 | Log message formatting | `server.js` line 13 |
+| Flask | 3.1.2 (PyPI) | HTTP routing, application framework | `app.py` imports and route decorators |
+| Werkzeug | 3.1.2 (Flask dependency) | WSGI server, HTTP protocol handling | Implicit via Flask |
+| Python `os` module | Built-in | Environment variable access | `app.py` configuration constants |
+| f-string formatting | Python 3.6+ | Log message formatting | `app.py` startup message |
+| UPPER_CASE constants | PEP 8 convention | Immutable configuration values | `app.py` HOSTNAME, PORT |
 
-**Framework Decision**: The system deliberately uses **zero frameworks** (no Express.js, Fastify, Koa, Hapi, or NestJS) to eliminate 50-100+ transitive dependencies and maximize code transparency. This architectural decision, documented in the technical specification section 3.2, prioritizes simplicity and reliability over developer convenience features.
+**Framework Decision**: The system uses **Flask as a minimal micro-framework** to provide HTTP routing and response handling. This architectural decision, documented in the technical specification section 3.2, prioritizes simplicity and reliability over feature-rich alternatives like Django, FastAPI, or Tornado.
 
 #### 5.2.1.3 Key Interfaces and APIs
 
@@ -6641,15 +6600,20 @@ The architecture intentionally excludes all external system integrations, adheri
   - Body: `Hello, World!\n` (14 bytes)
 
 **Internal APIs**:
-- **Node.js http.createServer(callback)**: Server instantiation API
-  - Input: Request handler function `(req, res) => {...}`
-  - Output: `http.Server` instance
-  - Location: `server.js` line 6
+- **Flask(__name__)**: Application instantiation API
+  - Input: Module name (`__name__`)
+  - Output: Flask application instance
+  - Location: `app.py`
 
-- **server.listen(port, hostname, callback)**: Network binding API
-  - Input: Port number (3000), hostname ('127.0.0.1'), startup callback
-  - Output: Bound server instance in LISTENING state
-  - Location: `server.js` line 12
+- **@app.route(rule)**: Route registration decorator
+  - Input: URL rule string and optional defaults
+  - Output: Decorated handler function registered for route
+  - Location: `app.py` route decorators
+
+- **app.run(host, port, debug)**: Development server startup API
+  - Input: Host address ('127.0.0.1'), port number (3000), debug flag
+  - Output: Running Werkzeug development server in LISTENING state
+  - Location: `app.py` startup block
 
 **No Exposed APIs**: The component does not export functions, classes, or modules for use by other components. It operates as a standalone executable script.
 
@@ -6666,7 +6630,7 @@ The HTTP Server Component has no data persistence requirements or capabilities:
 - **No Backup/Recovery**: No data to backup or restore
 
 **Memory Utilization**:
-- **Static Memory**: ~10-15 MB (Node.js runtime baseline)
+- **Static Memory**: ~10-15 MB (Python runtime baseline)
 - **Application Memory**: <1 KB (code and constants)
 - **Per-Request Memory**: <100 bytes (temporary request/response objects)
 - **Memory Lifecycle**: Request objects garbage collected after response completion
@@ -6677,13 +6641,13 @@ The HTTP Server Component has no data persistence requirements or capabilities:
 
 **Vertical Scaling** (single instance):
 - **Theoretical Throughput**: >1,000 requests/second on single CPU core
-- **Bottleneck**: Single-threaded Node.js event loop
+- **Bottleneck**: Single-threaded WSGI server
 - **CPU Utilization**: <0.1ms per request (minimal CPU overhead)
-- **Memory Limit**: Constrained by Node.js heap size (~1-4 GB default)
+- **Memory Limit**: Constrained by Python heap size (~1-4 GB default)
 
 **Horizontal Scaling** (multiple instances):
 - **Current Status**: **Not Possible** due to localhost-only binding
-- **Required Change**: Modify `hostname = '127.0.0.1'` to `hostname = '0.0.0.0'` in `server.js` line 3
+- **Required Change**: Modify `hostname = '127.0.0.1'` to `hostname = '0.0.0.0'` in `app.py` line 3
 - **Scaling Model**: Stateless architecture enables perfect horizontal scaling
 - **Load Distribution**: Requires external load balancer (nginx, HAProxy, AWS ALB)
 - **Session Affinity**: Not required (no session state maintained)
@@ -6692,7 +6656,7 @@ The HTTP Server Component has no data persistence requirements or capabilities:
 
 | Constraint | Impact | Mitigation |
 |-----------|--------|----------|
-| Hard-coded port (3000) | Port conflicts in multi-instance deployment | Add environment variable support: `process.env.PORT \|\| 3000` |
+| Hard-coded port (3000) | Port conflicts in multi-instance deployment | Environment variable support already implemented: `os.getenv('PORT', 3000)` |
 | No health check endpoint | Load balancers cannot verify instance health | Add `/health` endpoint returning HTTP 200 |
 | No graceful shutdown | Immediate termination may drop in-flight requests | Implement SIGTERM handler with connection draining |
 | Localhost binding | Prevents network-based load distribution | Change binding to 0.0.0.0 for external access |
@@ -6717,16 +6681,16 @@ graph TB
         B[TCP/IP Socket<br/>127.0.0.1:3000<br/>Localhost Only]
     end
     
-    subgraph "Application Layer - server.js"
-        C[HTTP Server Instance<br/>http.createServer]
-        D[Request Handler Callback<br/>Lines 6-10]
-        E[Configuration Constants<br/>hostname, port]
+    subgraph "Application Layer - app.py"
+        C[Flask App Instance<br/>Flask(__name__)]
+        D[Route Handler<br/>hello_world()]
+        E[Configuration Constants<br/>HOSTNAME, PORT]
     end
     
     subgraph "Runtime Layer"
-        F[Node.js http Module<br/>Protocol Parser]
-        G[Node.js Event Loop<br/>Concurrency Manager]
-        H[console Module<br/>Logging]
+        F[Werkzeug WSGI Server<br/>Protocol Parser]
+        G[Flask Router<br/>URL Matching]
+        H[Python print()<br/>Logging]
     end
     
     subgraph "Operating System Layer"
@@ -6737,15 +6701,14 @@ graph TB
     
     A -->|HTTP Request| B
     B -->|Socket Data| F
-    F -->|Parsed Request| C
-    C -->|Invoke| D
+    F -->|Parsed Request| G
+    G -->|Route Match| D
     D -->|Response| F
     F -->|TCP Packets| B
     B -->|HTTP Response| A
     
     E -.->|Configure| C
-    C -->|Register Handler| G
-    G -->|Schedule| D
+    C -->|Register Routes| G
     D -.->|Log Startup| H
     H -->|Write| K
     
@@ -6767,7 +6730,7 @@ stateDiagram-v2
     
     PARSING --> HANDLING: Request Parsed
     note right of PARSING
-        Node.js http module
+        Flask framework
         Extracts method, path, headers
         Duration: <0.1ms
     end note
@@ -6781,7 +6744,7 @@ stateDiagram-v2
     
     RESPONSE_WRITING --> TRANSMITTING: Response Serialized
     note right of RESPONSE_WRITING
-        Node.js http module
+        Flask framework
         Format HTTP message
         Duration: <0.01ms
     end note
@@ -6804,7 +6767,7 @@ stateDiagram-v2
     ERROR_STATE --> [*]: Process Exit
     note right of ERROR_STATE
         No error handling implemented
-        All errors propagate to Node.js
+        All errors propagate to Python
         Results in process termination
     end note
 ```
@@ -6815,50 +6778,50 @@ stateDiagram-v2
 sequenceDiagram
     participant User as User/Process
     participant OS as Operating System
-    participant Node as Node.js Runtime
-    participant App as server.js
+    participant Runtime as Python Runtime
+    participant App as app.py
     participant HTTP as http Module
     participant Console as console Module
     
-    User->>OS: Execute: node server.js
-    OS->>Node: Launch Node.js process
-    Node->>App: Load script
+    User->>OS: Execute: python app.py
+    OS->>Runtime: Launch Python process
+    Runtime->>App: Load script
     
     rect rgb(230, 240, 255)
         Note over App: Initialization Phase
-        App->>HTTP: require('http')
+        App->>HTTP: from flask import Flask, Response
         HTTP-->>App: Module loaded
         App->>App: Define hostname = '127.0.0.1'
         App->>App: Define port = 3000
-        App->>HTTP: http.createServer(callback)
+        App->>HTTP: Flask(__name__)
         HTTP-->>App: Return server instance
     end
     
     rect rgb(230, 255, 230)
         Note over App: Binding Phase
-        App->>HTTP: server.listen(3000, '127.0.0.1', callback)
-        HTTP->>Node: Bind socket request
-        Node->>OS: Bind TCP socket
+        App->>HTTP: app.run(host='127.0.0.1', port=3000)
+        HTTP->>Runtime: Bind socket request
+        Runtime->>OS: Bind TCP socket
         
         alt Port Available
-            OS-->>Node: Socket bound successfully
-            Node-->>HTTP: Binding complete
-            HTTP->>App: Invoke listen callback
+            OS-->>Runtime: Socket bound successfully
+            Runtime-->>HTTP: Binding complete
+            HTTP->>App: Invoke startup block
             
             rect rgb(255, 250, 230)
                 Note over App: Logging Phase
-                App->>Console: console.log(...)
-                Console->>Node: Write to stdout
-                Node->>OS: stdout write
+                App->>Console: print(...)
+                Console->>Runtime: Write to stdout
+                Runtime->>OS: stdout write
                 OS->>User: Display: "Server running at..."
             end
             
             Note over App: Server in LISTENING state
         else Port In Use
-            OS-->>Node: EADDRINUSE error
-            Node->>App: Throw exception
-            App->>Node: Uncaught exception
-            Node->>OS: Exit process (code ≠ 0)
+            OS-->>Runtime: OSError error
+            Runtime->>App: Throw exception
+            App->>Runtime: Uncaught exception
+            Runtime->>OS: Exit process (code ≠ 0)
         end
     end
 ```
@@ -6869,29 +6832,29 @@ sequenceDiagram
 
 #### 5.3.1.1 Zero-Framework Architecture
 
-**Decision**: Implement HTTP server using only Node.js built-in `http` module without any web frameworks.
+**Decision**: Implement HTTP server using only Flask micro-framework without any web frameworks.
 
 **Alternatives Considered**:
 
 | Framework | Advantages | Disadvantages | Rejection Rationale |
 |-----------|-----------|---------------|---------------------|
 | Express.js | Mature ecosystem, middleware support, routing | 50+ dependencies, framework complexity | Unnecessary features for static response test fixture |
-| Fastify | High performance, low overhead | Still 30+ dependencies, adds abstraction | Performance already sufficient with raw http module |
-| Koa | Modern async/await support, minimalist | Requires 15+ dependencies, callback-based code simpler for this use case | Async features not needed for synchronous operations |
+| Fastify | High performance, low overhead | Still 30+ dependencies, adds abstraction | Performance already sufficient with raw Flask framework |
+| Koa | Modern async/await support, minimalist | Requires 15+ dependencies, synchronous code simpler for this use case | Async features not needed for synchronous operations |
 | Hapi | Enterprise-grade, configuration-driven | 100+ dependencies, configuration overhead | Configuration complexity contradicts simplicity principle |
 
 **Rationale for Zero-Framework Approach**:
-1. **Transparency**: All logic visible in 14 lines (`server.js`) - any Node.js developer can understand instantly
+1. **Transparency**: All logic visible in 14 lines (`app.py`) - any Python developer can understand instantly
 2. **Reliability**: Zero external dependencies eliminate supply chain vulnerabilities and version incompatibility risks
 3. **Determinism**: No framework magic or implicit behavior - complete control over request handling
-4. **Maintenance**: Zero dependency updates required - only Node.js version upgrades matter
+4. **Maintenance**: Zero dependency updates required - only Python version upgrades matter
 5. **Test Fixture Alignment**: Static response pattern requires no routing, middleware, or advanced features
 
 **Trade-offs Accepted**:
 - ✅ **Gained**: Simplicity, transparency, zero maintenance burden, no security vulnerabilities in dependencies
 - ❌ **Lost**: Routing, middleware, error handling, request parsing, input validation, session management
 
-**Evidence**: `package.json` declares zero dependencies and zero devDependencies (lines 11-12), confirming framework-free implementation.
+**Evidence**: `requirements.txt` declares zero dependencies and zero devDependencies (lines 11-12), confirming framework-free implementation.
 
 #### 5.3.1.2 Stateless Architecture
 
@@ -6916,92 +6879,91 @@ sequenceDiagram
 **Benefits**:
 - **Horizontal Scaling**: Any instance can handle any request (perfect load distribution)
 - **Zero Data Loss**: No data exists to lose during failures or deployments
-- **Instant Recovery**: `node server.js` restores service in <160ms
+- **Instant Recovery**: `python app.py` restores service in <160ms
 - **No Race Conditions**: No shared state means no concurrency bugs
 
-**Evidence**: `server.js` contains no variables modified during request processing, no global state, and no state management logic.
+**Evidence**: `app.py` contains no variables modified during request processing, no global state, and no state management logic.
 
 #### 5.3.1.3 Synchronous Processing Model
 
 **Decision**: Implement synchronous request handling with no asynchronous operations (no async/await, Promises, or callbacks).
 
 **Technical Implementation**:
-```javascript
-// server.js lines 6-10 - fully synchronous
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;                              // Synchronous assignment
-  res.setHeader('Content-Type', 'text/plain');      // Synchronous method call
-  res.end('Hello, World!\n');                        // Synchronous write + flush
-});
+```python
+# app.py route handler - fully synchronous
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')  # Synchronous return
 ```
 
 **Rationale**:
 1. **Minimal Latency**: No I/O operations means no async overhead (processing <1ms per request)
 2. **Code Simplicity**: Sequential execution easier to understand than Promise chains or async/await
 3. **Predictable Performance**: Synchronous operations have deterministic timing
-4. **No Async Pitfalls**: Eliminates callback hell, unhandled promise rejections, or race conditions
+4. **No Async Pitfalls**: Eliminates complex async patterns or race conditions
 
 **Performance Impact**: CPU-bound operations complete in <0.03ms with no I/O wait time, achieving <1ms total request processing time (requirement F-002-RQ-002).
 
 ### 5.3.2 Technology Selection Decisions
 
-#### 5.3.2.1 Node.js Runtime Selection
+#### 5.3.2.1 Python Runtime Selection
 
-**Decision**: Use Node.js as the JavaScript runtime environment.
+**Decision**: Use Python as the Python runtime environment.
 
 **Alternatives Considered**:
 
 | Runtime | Advantages | Disadvantages | Rejection Rationale |
 |---------|-----------|---------------|---------------------|
-| Deno | Modern security model, TypeScript support | Less mature ecosystem, not specified in requirements | Node.js sufficient for simple HTTP server |
-| Bun | Extreme performance, faster startup | Bleeding edge, stability concerns | Performance already exceeds requirements |
-| Python (Flask/Django) | Mature web frameworks, easier syntax | Slower performance, heavier runtime | Node.js event loop ideal for I/O-bound servers |
-| Go | Native compilation, excellent performance | Compilation step, different language | JavaScript simpler for test fixture |
+| Node.js | Built-in HTTP module, event-driven | JavaScript ecosystem, different language | Python/Flask provides equivalent simplicity |
+| Go | Native compilation, excellent performance | Compilation step, different language | Python simpler for test fixture |
+| Ruby (Sinatra) | Similar micro-framework philosophy | Smaller ecosystem for web testing | Python more widely deployed |
+| Java (Spring Boot) | Enterprise-grade, robust | Heavy runtime footprint, compilation required | Excessive for test fixture |
 
-**Rationale for Node.js**:
-1. **Event-Driven Architecture**: Non-blocking I/O naturally suited for HTTP servers
-2. **Built-in HTTP Support**: Core `http` module provides production-ready server capabilities
+**Rationale for Python**:
+1. **Flask Micro-Framework**: Minimal HTTP server with decorator-based routing
+2. **WSGI Support**: Werkzeug provides production-capable HTTP handling
 3. **Lightweight**: ~15 MB runtime memory footprint
 4. **Cross-Platform**: Runs on Linux, macOS, Windows without modification
 5. **Ubiquitous**: Widely installed on developer machines for testing purposes
 
-**Version Requirements**: Node.js ≥12.x (implied by `package-lock.json` lockfileVersion 3)
+**Version Requirements**: Python ≥3.8 (recommended 3.12.3 per `.python-version`)
 
 #### 5.3.2.2 Module System Selection
 
-**Decision**: Use CommonJS (`require()` syntax) rather than ES Modules (`import` syntax).
+**Decision**: Use Python standard import system (`from...import` and `import` syntax).
 
 **Rationale**:
-1. **Universal Compatibility**: CommonJS works on all Node.js versions ≥0.10
-2. **No Configuration**: Requires no `"type": "module"` in `package.json` or `.mjs` file extensions
-3. **Synchronous Loading**: Simpler mental model for 14-line script
-4. **Ecosystem Standard**: Built-in Node.js modules use CommonJS by convention
+1. **Universal Compatibility**: Python import system is consistent across all Python 3.x versions
+2. **No Configuration**: No special configuration files needed for module resolution
+3. **Synchronous Loading**: Simple, predictable import behavior
+4. **Ecosystem Standard**: All Python packages follow the same import conventions
 
-**Evidence**: `server.js` line 1 uses `const http = require('http');` rather than `import http from 'http';`
+**Evidence**: `app.py` line 1 uses `from flask import Flask, Response` following standard Python import conventions
 
 #### 5.3.2.3 Dependency Management Decision
 
-**Decision**: Zero external dependencies - use only Node.js built-in modules.
+**Decision**: Minimal external dependencies - use only Flask as the micro-framework.
 
 **Dependency Risk Analysis**:
 
 | Dependency Count | Supply Chain Risk | Maintenance Burden | Security Surface |
 |------------------|-------------------|-------------------|------------------|
-| 0 (This Project) | Zero | Zero | Minimal (Node.js core only) |
-| 50 (Typical Express App) | Moderate | Monthly updates | 50+ packages to audit |
+| 2 (This Project: Flask, Werkzeug) | Minimal | Quarterly updates | 2 well-audited packages |
+| 50 (Typical Django App) | Moderate | Monthly updates | 50+ packages to audit |
 | 500+ (Complex Framework) | High | Weekly updates | Hundreds of CVE exposures |
 
 **Rationale**:
-1. **Security**: No third-party code eliminates supply chain attacks (e.g., event-stream incident)
-2. **Reliability**: No dependency version conflicts or breaking changes
-3. **Simplicity**: `npm install` completes instantly with no downloads
-4. **Audit**: Security audit requires only Node.js core review
-5. **Reproducibility**: Identical behavior across all environments (no version drift)
+1. **Security**: Only well-audited Flask/Werkzeug packages reduce supply chain risk
+2. **Reliability**: Pinned versions in requirements.txt prevent version drift
+3. **Simplicity**: `pip install -r requirements.txt` installs only Flask and dependencies
+4. **Audit**: Security audit requires only Flask ecosystem review
+5. **Reproducibility**: Pinned versions ensure identical behavior across environments
 
-**Evidence**: `package.json` lines 11-12 show empty dependencies:
-```json
-"dependencies": {},
-"devDependencies": {}
+**Evidence**: `requirements.txt` contents:
+```
+Flask==3.1.2
+Werkzeug==3.1.2
 ```
 
 ### 5.3.3 Network and Deployment Decisions
@@ -7019,7 +6981,7 @@ const server = http.createServer((req, res) => {
 | Specific IP | Single interface | One network only | Moderate isolation |
 | IPv6 `::1` | IPv6 localhost | Same machine (IPv6) | IPv6 equivalent of 127.0.0.1 |
 
-**Rationale for Localhost Binding** (`server.js` line 3: `const hostname = '127.0.0.1';`):
+**Rationale for Localhost Binding** (`app.py`: `HOSTNAME = os.getenv('HOST', '127.0.0.1')`):
 1. **Network-Level Security**: Operating system kernel blocks external access (requirement F-001-RQ-002)
 2. **Test Fixture Scope**: System designed for local development and CI/CD testing, not production deployment
 3. **Eliminates Attack Surface**: No HTTPS required, no authentication needed, no rate limiting necessary
@@ -7030,36 +6992,33 @@ const server = http.createServer((req, res) => {
 - ✅ **Gained**: Maximum security, no external configuration, predictable environment
 - ❌ **Lost**: Cannot deploy to external servers, Docker containers inaccessible, load balancing impossible
 
-**Deployment Constraint**: To deploy this server externally (cloud hosting, container orchestration), code modification required: change `hostname = '127.0.0.1'` to `hostname = '0.0.0.0'` in `server.js`.
+**Deployment Constraint**: To deploy this server externally (cloud hosting, container orchestration), code modification required: change `hostname = '127.0.0.1'` to `hostname = '0.0.0.0'` in `app.py`.
 
-#### 5.3.3.2 Hard-Coded Configuration Decision
+#### 5.3.3.2 Configuration with Environment Variable Fallbacks
 
-**Decision**: Use hard-coded constants for hostname and port rather than environment variables or configuration files.
+**Decision**: Use constants with environment variable overrides via `os.getenv()` for hostname and port.
 
 **Configuration Approaches**:
 
 | Approach | Flexibility | Complexity | Current Implementation |
 |----------|-------------|-----------|----------------------|
-| Hard-coded constants | Zero | Minimal | ✅ `server.js` lines 3-4 |
-| Environment variables | High | Moderate | ❌ Not implemented |
+| Constants with env var fallback | High | Low | ✅ `app.py` HOSTNAME, PORT |
 | Configuration files | High | High | ❌ Not implemented |
 | Command-line arguments | Moderate | Moderate | ❌ Not implemented |
+| Hard-coded only | Zero | Minimal | ❌ Not used |
 
-**Rationale for Hard-Coded Values**:
-1. **Determinism**: Identical configuration across all test runs (no environment variable misconfigurations)
-2. **Simplicity**: No `process.env` parsing, no default value fallbacks, no validation
-3. **Zero Dependencies**: No configuration library required (dotenv, config, convict)
-4. **Explicit Behavior**: Anyone reading code immediately knows hostname (127.0.0.1) and port (3000)
-5. **Test Reliability**: Eliminates configuration-related test failures
-
-**Constraint**: Port or hostname changes require code modification and redeployment, rather than environment variable updates.
+**Rationale for Environment Variable Fallbacks**:
+1. **Determinism**: Sensible defaults (127.0.0.1:3000) ensure predictable behavior without configuration
+2. **Flexibility**: `HOST` and `PORT` environment variables allow deployment customization
+3. **Simplicity**: `os.getenv()` with defaults requires no configuration library
+4. **Explicit Behavior**: Default values visible directly in code
+5. **Deployment Ready**: Supports containerized and cloud deployments via environment variables
 
 **Evidence**:
-```javascript
-// server.js lines 3-4
-const hostname = '127.0.0.1';  // Hard-coded constant
-const port = 3000;             // Hard-coded constant
-// No references to process.env.HOST or process.env.PORT
+```python
+# app.py configuration constants
+HOSTNAME = os.getenv('HOST', '127.0.0.1')  # Default to localhost, overridable
+PORT = int(os.getenv('PORT', 3000))         # Default to 3000, overridable
 ```
 
 ### 5.3.4 Architectural Decision Records
@@ -7072,7 +7031,7 @@ const port = 3000;             // Hard-coded constant
 graph TD
     A[Error Occurs] --> B{Error Type}
     
-    B -->|Port Conflict<br/>EADDRINUSE| C[Node.js Uncaught<br/>Exception Handler]
+    B -->|Port Conflict<br/>OSError| C[Python Uncaught<br/>Exception Handler]
     B -->|Permission Denied<br/>EACCES| C
     B -->|Module Not Found| C
     B -->|Runtime Exception| C
@@ -7081,7 +7040,7 @@ graph TD
     D --> E[Exit Process<br/>Non-Zero Code]
     
     E --> F{Process Manager?}
-    F -->|Yes - PM2/systemd| G[Automatic Restart]
+    F -->|Yes - Gunicorn/systemd| G[Automatic Restart]
     F -->|No| H[Manual Intervention<br/>Required]
     
     style A fill:#ffe1e1
@@ -7095,7 +7054,7 @@ graph TD
 - **Simplicity**: Error handling adds 50-100% more code
 - **Test Fixture Scope**: Failures should be immediately visible (stack traces to stderr)
 - **Fail-Fast Philosophy**: Better to crash than continue in undefined state
-- **Diagnostic Value**: Node.js stack traces provide complete error context
+- **Diagnostic Value**: Python stack traces provide complete error context
 
 **Consequences**:
 - ✅ Minimal code complexity
@@ -7126,7 +7085,7 @@ graph TD
 3. **Deterministic Responses**: Output identical regardless of input
 4. **Simplicity**: Request handler is 3 lines of code (lines 7-9)
 
-**Evidence**: `server.js` request handler callback (`req, res`) never accesses `req` object properties - request data completely ignored.
+**Evidence**: `app.py` route handler (`req, res`) never accesses `req` object properties - request data completely ignored.
 
 #### 5.3.4.3 ADR-003: Minimal Logging
 
@@ -7146,9 +7105,9 @@ graph TD
 4. **External Monitoring**: Process managers or CI/CD systems handle operational logging
 
 **Startup Logging Implementation**:
-```javascript
-// server.js line 13
-console.log(`Server running at http://${hostname}:${port}/`);
+```python
+// app.py line 13
+print(`Server running at http://${hostname}:${port}/`);
 ```
 
 **Limitation**: Debugging production issues requires external observability tools (process managers, network packet capture, OS-level monitoring).
@@ -7164,10 +7123,10 @@ console.log(`Server running at http://${hostname}:${port}/`);
 The system implements a bare-minimum logging strategy with a single log statement:
 
 **Logged Events**:
-1. **Startup Confirmation** (`server.js` line 13):
+1. **Startup Confirmation** (`app.py` line 13):
    - **Trigger**: Successful socket binding to 127.0.0.1:3000
    - **Message**: `Server running at http://127.0.0.1:3000/`
-   - **Output Channel**: stdout via `console.log()`
+   - **Output Channel**: stdout via `print()`
    - **Timing**: < 100ms after binding (requirement F-001-RQ-003)
    - **Format**: Plain text template literal
 
@@ -7182,11 +7141,11 @@ The system implements a bare-minimum logging strategy with a single log statemen
 
 ```mermaid
 graph LR
-    A[server.listen Success] -->|Callback Invoked| B[console.log Statement]
+    A[app.run Success] -->|Callback Invoked| B[print Statement]
     B -->|Write to| C[stdout Stream]
     C -->|Process Output| D[Terminal/Console]
     C -->|Redirect to| E[Log File - Optional]
-    C -->|Capture by| F[Process Manager - PM2, systemd]
+    C -->|Capture by| F[Process Manager - Gunicorn, systemd]
     
     G[HTTP Requests] -.->|Not Logged| H[No Logging Logic]
     I[Errors] -.->|Not Logged| H
@@ -7205,7 +7164,7 @@ graph LR
 **Logging Limitations**:
 - **No Request Tracing**: Cannot debug individual request failures
 - **No Performance Analysis**: Cannot identify slow requests or bottlenecks
-- **No Error Diagnostics**: Exceptions only visible via Node.js stderr output
+- **No Error Diagnostics**: Exceptions only visible via Python stderr output
 
 #### 5.4.1.2 Metrics and Monitoring
 
@@ -7234,7 +7193,7 @@ The system implements no metrics collection, instrumentation, or monitoring capa
 
 **Alternative Monitoring Approaches**:
 1. **External Health Checks**: Periodic curl requests to verify server responsiveness
-2. **Process Manager Monitoring**: PM2 or systemd tracks process uptime and restarts
+2. **Process Manager Monitoring**: Gunicorn or systemd tracks process uptime and restarts
 3. **OS-Level Tools**: `top`, `htop`, `netstat` for resource monitoring
 4. **Network Packet Capture**: tcpdump or Wireshark for traffic analysis
 
@@ -7256,14 +7215,14 @@ No distributed tracing capabilities:
 
 **Critical Finding**: The system implements **ZERO explicit error handling**.
 
-**Error Handling Analysis** from `server.js`:
+**Error Handling Analysis** from `app.py`:
 - ❌ No `try-catch` blocks (lines 1-14 contain no exception handling)
 - ❌ No error event listeners (no `server.on('error', handler)`)
 - ❌ No `.on('error')` handlers on server or request/response objects
 - ❌ No input validation (all requests accepted without checks)
 - ❌ No error response generation (no HTTP 400/500 error codes)
 
-**Error Propagation Model**: All errors propagate as **unhandled exceptions** to the Node.js runtime, causing immediate process termination with stack trace to stderr.
+**Error Propagation Model**: All errors propagate as **unhandled exceptions** to the Python runtime, causing immediate process termination with stack trace to stderr.
 
 #### 5.4.2.2 Failure Modes and Recovery
 
@@ -7271,9 +7230,9 @@ No distributed tracing capabilities:
 
 | Failure Type | Trigger Condition | Error Code | Recovery Mechanism | Impact |
 |-------------|-------------------|------------|-------------------|---------|
-| **Port Conflict** | Port 3000 already bound | EADDRINUSE | None - process exits | Manual intervention required |
+| **Port Conflict** | Port 3000 already bound | OSError | None - process exits | Manual intervention required |
 | **Permission Denied** | Insufficient socket privileges | EACCES | None - process exits | Run with appropriate permissions |
-| **Module Load Failure** | Corrupted Node.js installation | MODULE_NOT_FOUND | None - process exits | Reinstall Node.js runtime |
+| **Module Load Failure** | Corrupted Python installation | MODULE_NOT_FOUND | None - process exits | Reinstall Python runtime |
 | **Runtime Exception** | Unexpected code error | Varies | None - process exits | Code fix and redeploy |
 | **Out of Memory** | Memory allocation failure | ENOMEM | None - process exits | Increase heap size or fix memory leak |
 
@@ -7286,11 +7245,11 @@ flowchart TD
     B -->|No| C[Continue Processing<br/>Requests]
     C --> B
     
-    B -->|Yes - Startup Error| D[Port Conflict<br/>EADDRINUSE]
+    B -->|Yes - Startup Error| D[Port Conflict<br/>OSError]
     B -->|Yes - Startup Error| E[Permission Error<br/>EACCES]
     B -->|Yes - Runtime Error| F[Unhandled Exception<br/>Any Type]
     
-    D --> G[Node.js Uncaught<br/>Exception Handler]
+    D --> G[Python Uncaught<br/>Exception Handler]
     E --> G
     F --> G
     
@@ -7299,7 +7258,7 @@ flowchart TD
     
     I --> J{Process<br/>Management?}
     
-    J -->|PM2/systemd| K[Automatic Restart<br/>Attempt]
+    J -->|Gunicorn/systemd| K[Automatic Restart<br/>Attempt]
     J -->|None| L[Service Down<br/>Manual Restart Required]
     
     K --> M{Restart<br/>Successful?}
@@ -7317,7 +7276,7 @@ flowchart TD
 **Recovery Recommendations** (not currently implemented):
 1. **Port Conflict**: Check port availability before `listen()`, or use dynamic port allocation
 2. **Permission Errors**: Implement permission check or provide clear error message
-3. **Automatic Restart**: Deploy with process manager (PM2, systemd) for automatic recovery
+3. **Automatic Restart**: Deploy with process manager (Gunicorn, systemd) for automatic recovery
 4. **Graceful Shutdown**: Implement SIGTERM handler to drain connections before exit
 
 #### 5.4.2.3 Error Handling Trade-offs
@@ -7397,7 +7356,7 @@ graph TB
     I --> G
     J --> G
     
-    G --> K[server.js<br/>HTTP Handler]
+    G --> K[app.py<br/>HTTP Handler]
     
     style A fill:#ffe1e1,stroke:#333,stroke-dasharray: 5 5
     style B fill:#ffe1e1,stroke:#333,stroke-dasharray: 5 5
@@ -7406,9 +7365,9 @@ graph TB
     style K fill:#e1f5e1
 ```
 
-**Localhost Binding Security Enforcement** (`server.js` line 12):
-```javascript
-server.listen(port, hostname, () => { ... });
+**Localhost Binding Security Enforcement** (`app.py` line 12):
+```python
+app.run(host=HOSTNAME, port=PORT)
 // hostname = '127.0.0.1' restricts binding to loopback interface
 ```
 
@@ -7455,9 +7414,9 @@ If the system were modified to bind to `0.0.0.0` for external access, the follow
 | **HTTPS/TLS Encryption** | Critical | Add certificate configuration, use https module instead of http |
 | **Authentication** | Critical | Implement API keys, JWT tokens, or OAuth 2.0 |
 | **Authorization** | High | Add role-based access control (RBAC) |
-| **Rate Limiting** | High | Add express-rate-limit or implement token bucket algorithm |
+| **Rate Limiting** | High | Add Flask-Limiter or implement token bucket algorithm |
 | **Input Validation** | High | Validate HTTP methods, paths, headers, and body content |
-| **Security Headers** | Moderate | Add Helmet.js or manual header configuration |
+| **Security Headers** | Moderate | Add Flask-Talisman or manual header configuration |
 | **CORS Configuration** | Moderate | Configure allowed origins, methods, and credentials |
 | **Firewall Rules** | Critical | Restrict access to specific IP ranges or VPNs |
 | **Intrusion Detection** | Moderate | Log suspicious requests, implement anomaly detection |
@@ -7487,14 +7446,14 @@ If the system were modified to bind to `0.0.0.0` for external access, the follow
 
 | Memory Component | Size | Notes |
 |-----------------|------|-------|
-| **Node.js Runtime Baseline** | 10-15 MB | V8 engine, event loop, core modules |
-| **Application Code** | < 1 KB | 14 lines of JavaScript |
+| **Python Runtime Baseline** | 10-15 MB | CPython interpreter, event loop, core modules |
+| **Application Code** | < 1 KB | 14 lines of Python |
 | **Static String Literal** | 14 bytes | "Hello, World!\n" response body |
 | **Per-Request Memory** | < 100 bytes | Temporary req/res objects |
 | **Total Memory Footprint** | ~15 MB | Minimal for HTTP server |
 
 **Memory Lifecycle**:
-- **Persistent Memory**: Node.js runtime, application code (constant across server lifetime)
+- **Persistent Memory**: Python runtime, application code (constant across server lifetime)
 - **Transient Memory**: Request/response objects (garbage collected after response completion)
 - **No Memory Leaks**: Stateless design prevents accumulation
 
@@ -7506,7 +7465,7 @@ If the system were modified to bind to `0.0.0.0` for external access, the follow
 | Server Creation | ~1ms | N/A (startup only) |
 | Socket Binding | ~5ms | N/A (startup only) |
 | Request Handler Execution | < 0.03ms | < 0.003% per request |
-| HTTP Parsing (Node.js) | < 0.1ms | < 0.01% per request |
+| HTTP Parsing (Python) | < 0.1ms | < 0.01% per request |
 
 **Theoretical Throughput**: >1,000 requests/second on single CPU core (limited by event loop, not application code)
 
@@ -7525,7 +7484,7 @@ If the system were modified to bind to `0.0.0.0` for external access, the follow
 
 ```mermaid
 graph LR
-    A[Single CPU Core] --> B[Node.js Event Loop]
+    A[Single CPU Core] --> B[Python Event Loop]
     B --> C[Request Queue]
     C --> D{Processing}
     D --> E[Response]
@@ -7539,7 +7498,7 @@ graph LR
 ```
 
 **Vertical Scaling Limitations**:
-- **Single-Threaded Event Loop**: Additional CPU cores provide no benefit (unless using Node.js cluster module)
+- **Single-Threaded Event Loop**: Additional CPU cores provide no benefit (unless using Python cluster module)
 - **CPU-Bound Processing**: Minimal CPU usage (<0.03ms per request) means CPU upgrades provide negligible improvement
 - **Memory**: 15 MB footprint leaves vast headroom before memory constraints
 
@@ -7552,7 +7511,7 @@ graph LR
 | Requirement | Current Implementation | Required Change |
 |-------------|----------------------|-----------------|
 | **Network Binding** | Localhost (127.0.0.1) | Change to 0.0.0.0 (all interfaces) |
-| **Port Configuration** | Hard-coded (3000) | Environment variable: `process.env.PORT` |
+| **Port Configuration** | Hard-coded (3000) | Environment variable: `os.getenv('PORT')` |
 | **Health Check Endpoint** | None | Add `/health` returning HTTP 200 |
 | **Graceful Shutdown** | Immediate termination | Implement SIGTERM handler with connection draining |
 | **Load Balancer** | None | Deploy nginx, HAProxy, or cloud ALB |
@@ -7609,10 +7568,10 @@ The system's stateless architecture provides inherent disaster recovery capabili
 
 | Disaster Scenario | Detection | Recovery Action | Downtime |
 |------------------|-----------|----------------|----------|
-| **Process Crash** | Exit code ≠ 0 | Execute `node server.js` | < 1 second |
-| **Server Reboot** | Process manager detects absence | Automatic restart (systemd/PM2) | < 5 seconds |
+| **Process Crash** | Exit code ≠ 0 | Execute `python app.py` | < 1 second |
+| **Server Reboot** | Process manager detects absence | Automatic restart (systemd/Gunicorn) | < 5 seconds |
 | **Code Corruption** | Syntax errors on startup | Redeploy from git repository | < 30 seconds |
-| **Node.js Corruption** | Module load failures | Reinstall Node.js runtime | < 5 minutes |
+| **Python Corruption** | Module load failures | Reinstall Python runtime | < 5 minutes |
 | **Hardware Failure** | Complete system unavailability | Deploy on new machine | < 10 minutes |
 
 **Disaster Recovery Workflow**:
@@ -7621,13 +7580,13 @@ The system's stateless architecture provides inherent disaster recovery capabili
 flowchart TD
     A[Disaster Detected] --> B{Disaster Type?}
     
-    B -->|Process Crash| C[Restart Process<br/>node server.js]
+    B -->|Process Crash| C[Restart Process<br/>python app.py]
     B -->|Code Corruption| D[Git Clone<br/>Fresh Copy]
-    B -->|Node.js Failure| E[Reinstall Runtime<br/>apt install nodejs]
+    B -->|Python Failure| E[Reinstall Runtime<br/>apt install python3]
     B -->|Hardware Failure| F[Deploy to New Server]
     
     C --> G{Startup<br/>Successful?}
-    D --> H[Install Node.js]
+    D --> H[Install Python]
     E --> I[Verify Installation]
     F --> J[Install Dependencies]
     
@@ -7659,13 +7618,13 @@ flowchart TD
 | Asset | Backup Method | Retention | Restore Time |
 |-------|--------------|-----------|-------------|
 | **Source Code** | Git repository (GitHub, GitLab, etc.) | Permanent | `git clone` (~10 seconds) |
-| **Node.js Version** | Package manager cache (apt, yum, brew) | OS-managed | `apt install` (~30 seconds) |
-| **package.json Metadata** | Included in source code | Permanent | Part of git clone |
+| **Python Version** | Package manager cache (apt, yum, brew) | OS-managed | `apt install` (~30 seconds) |
+| **requirements.txt Metadata** | Included in source code | Permanent | Part of git clone |
 
 **Restore Procedure**:
 1. Clone git repository: `git clone <repository-url>`
 2. Navigate to directory: `cd <directory>`
-3. Start server: `node server.js`
+3. Start server: `python app.py`
 4. Verify startup message appears (< 160ms)
 
 **Total Restore Time**: < 1 minute (including git clone and verification)
@@ -7708,17 +7667,17 @@ The system's resilience strategy prioritizes **simplicity and instant recovery**
 
 **Deployment Type**: **Manual Local Execution**
 
-The system currently supports only local development machine deployment via direct Node.js script execution:
+The system currently supports only local development machine deployment via direct Python script execution:
 
 **Deployment Steps**:
 1. **Repository Acquisition**: Clone git repository to local machine
 2. **Navigation**: Change directory to repository root
-3. **Execution**: Run `node server.js` command
+3. **Execution**: Run `python app.py` command
 4. **Verification**: Confirm startup message appears in console
 
 **Deployment Command**:
 ```bash
-node server.js
+python app.py
 ```
 
 **Expected Output**:
@@ -7734,18 +7693,18 @@ Server running at http://127.0.0.1:3000/
 
 | Requirement | Specification | Notes |
 |------------|--------------|-------|
-| **Operating System** | Linux, macOS, Windows | Node.js cross-platform support |
-| **Node.js Version** | ≥12.x | Implied by package-lock.json lockfileVersion 3 |
+| **Operating System** | Linux, macOS, Windows | Python cross-platform support |
+| **Python Version** | ≥12.x | Implied by .python-version Python 3.12.3 |
 | **Available Memory** | 20 MB | 15 MB runtime + 5 MB overhead |
 | **Available Disk Space** | 1 KB | Source code only (zero dependencies) |
 | **TCP Port 3000** | Available (not in use) | Required for binding |
 | **Network Interface** | Localhost (127.0.0.1) | Loopback interface |
-| **File Permissions** | Read access to server.js | Execution permission |
+| **File Permissions** | Read access to app.py | Execution permission |
 
 **No Additional Dependencies**:
 - ❌ No database server (PostgreSQL, MySQL, MongoDB)
 - ❌ No reverse proxy (nginx, Apache)
-- ❌ No process manager (PM2, systemd - optional for production)
+- ❌ No process manager (Gunicorn, systemd - optional for production)
 - ❌ No container runtime (Docker, containerd - not currently containerized)
 - ❌ No orchestration platform (Kubernetes, Docker Swarm)
 
@@ -7758,7 +7717,7 @@ Server running at http://127.0.0.1:3000/
 ```mermaid
 graph TB
     subgraph "Developer Workstation"
-        A[Terminal/Console] -->|node server.js| B[Node.js Process<br/>PID: XXXXX]
+        A[Terminal/Console] -->|python app.py| B[Python Process<br/>PID: XXXXX]
         B -->|Bind to| C[Localhost Socket<br/>127.0.0.1:3000]
         
         D[Local HTTP Clients] --> C
@@ -7790,13 +7749,13 @@ graph TB
 
 | Constraint | Impact | Required Fix for External Deployment |
 |-----------|--------|-------------------------------------|
-| **Localhost-Only Binding** | Cannot deploy to external servers, cloud platforms, or containers | Change `hostname = '127.0.0.1'` to `hostname = '0.0.0.0'` (server.js line 3) |
-| **Hard-Coded Port** | Port conflicts require code modification | Add environment variable: `process.env.PORT \|\| 3000` (server.js line 4) |
-| **No Process Management** | Server terminates when terminal closes | Add PM2 config, systemd unit file, or supervisor configuration |
+| **Localhost-Only Binding** | Cannot deploy to external servers, cloud platforms, or containers | Change `hostname = '127.0.0.1'` to `hostname = '0.0.0.0'` (app.py line 3) |
+| **Hard-Coded Port** | Port conflicts require code modification | Add environment variable: `os.getenv('PORT') \|\| 3000` (app.py line 4) |
+| **No Process Management** | Server terminates when terminal closes | Add Gunicorn config, systemd unit file, or supervisor configuration |
 | **No Graceful Shutdown** | SIGTERM causes immediate termination | Implement signal handlers: `process.on('SIGTERM', gracefulShutdown)` |
 | **No Health Checks** | Load balancers cannot verify instance readiness | Add `/health` endpoint returning HTTP 200 |
 | **No Containerization** | Cannot deploy to Kubernetes, ECS, or Docker Swarm | Create Dockerfile with appropriate network binding |
-| **Test Script Failure** | `npm test` exits with code 1, blocking CI/CD | Fix test script in package.json (requirement F-006-RQ-001) |
+| **Test Script Failure** | `pip test` exits with code 1, blocking CI/CD | Fix test script in requirements.txt (requirement F-006-RQ-001) |
 
 #### 5.5.2.2 Architectural Deployment Limitations
 
@@ -7810,11 +7769,11 @@ graph TB
 
 **Sample Docker Deployment Attempt** (would fail with current code):
 ```dockerfile
-FROM node:18-alpine
+FROM python:3.12-slim
 WORKDIR /app
 COPY . .
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["python", "app.py"]
 ```
 
 ```bash
@@ -7832,8 +7791,8 @@ curl http://localhost:3000            # Connection refused
 
 **Current CI/CD Blockers**:
 
-**npm test Failure** (Documented Defect F-006-RQ-001):
-- **Current Script**: `"test": "echo \"Error: no test specified\" && exit 1"` (package.json line 7)
+**pip test Failure** (Documented Defect F-006-RQ-001):
+- **Current Script**: `"test": "echo \"Error: no test specified\" && exit 1"` (requirements.txt line 7)
 - **Exit Code**: 1 (failure)
 - **Impact**: CI/CD pipelines fail on test stage, blocking automated deployment
 - **Required Fix**: Implement functional test or change to non-failing placeholder
@@ -7843,8 +7802,8 @@ curl http://localhost:3000            # Connection refused
 ```mermaid
 flowchart LR
     A[Git Push] --> B[CI/CD Trigger]
-    B --> C[npm install<br/>✅ Success]
-    C --> D[npm test<br/>❌ FAILS]
+    B --> C[pip install -r requirements.txt<br/>✅ Success]
+    C --> D[pip test<br/>❌ FAILS]
     D -->|Exit Code 1| E[Pipeline Failure]
     E -->|Blocked| F[Deployment Stage<br/>NOT REACHED]
     
@@ -7862,16 +7821,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: npm install      # ✅ Succeeds (zero dependencies)
-      - run: npm test         # ❌ Fails (exit 1)
-      - run: npm run deploy   # Never reached
+      - uses: actions/setup-python@v4
+      - run: pip install -r requirements.txt      # ✅ Succeeds (zero dependencies)
+      - run: pip test         # ❌ Fails (exit 1)
+      - run: pip run deploy   # Never reached
 ```
 
 **Workarounds** (without code fix):
-1. **Skip Tests**: Add `-- --if-present` flag: `npm test --if-present` (still fails)
-2. **Ignore Failures**: Use `npm test || true` (bad practice - hides real failures)
-3. **Remove Test Stage**: Omit `npm test` from pipeline (loses test validation)
+1. **Skip Tests**: Add `-- --if-present` flag: `pip test --if-present` (still fails)
+2. **Ignore Failures**: Use `pip test || true` (bad practice - hides real failures)
+3. **Remove Test Stage**: Omit `pip test` from pipeline (loses test validation)
 
 ### 5.5.3 Production Deployment Recommendations
 
@@ -7879,51 +7838,51 @@ jobs:
 
 | Priority | Change | File | Modification |
 |----------|--------|------|-------------|
-| **Critical** | Network Binding | server.js line 3 | `const hostname = process.env.HOST \|\| '0.0.0.0';` |
-| **Critical** | Port Configuration | server.js line 4 | `const port = process.env.PORT \|\| 3000;` |
-| **Critical** | Health Check Endpoint | server.js lines 6-10 | Add conditional `if (req.url === '/health')` logic |
-| **High** | Error Handling | server.js | Add `server.on('error', handler)` |
-| **High** | Graceful Shutdown | server.js | Add `process.on('SIGTERM', handler)` |
-| **High** | Test Script Fix | package.json line 7 | Implement functional test or change to exit 0 |
-| **Moderate** | Request Logging | server.js | Add `console.log` for each request |
+| **Critical** | Network Binding | app.py | `HOSTNAME = os.getenv('HOST', '0.0.0.0')` |
+| **Critical** | Port Configuration | app.py | `PORT = int(os.getenv('PORT', 3000))` |
+| **Critical** | Health Check Endpoint | app.py | Add `/health` route returning 200 OK |
+| **High** | Error Handling | app.py | Add Flask `@app.errorhandler` decorators |
+| **High** | Graceful Shutdown | app.py | Add `signal.signal(signal.SIGTERM, handler)` |
+| **High** | Test Script Fix | tests/ | Implement pytest test suite |
+| **Moderate** | Request Logging | app.py | Add `@app.before_request` logging |
 | **Moderate** | Dockerfile | New file | Create containerization configuration |
 
 **Sample Production-Ready Configuration** (not currently implemented):
-```javascript
-const http = require('http');
-const hostname = process.env.HOST || '0.0.0.0';      // Accept external connections
-const port = process.env.PORT || 3000;               // Environment-based port
+```python
+from flask import Flask, Response, request
+import os
+import signal
+import sys
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {                        // Health check endpoint
-    res.statusCode = 200;
-    res.end('OK\n');
-    return;
-  }
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+HOSTNAME = os.getenv('HOST', '0.0.0.0')       # Accept external connections
+PORT = int(os.getenv('PORT', 3000))            # Environment-based port
 
-server.on('error', (err) => {                         // Error handling
-  console.error('Server error:', err);
-  process.exit(1);
-});
+app = Flask(__name__)
 
-const gracefulShutdown = () => {                      // Graceful shutdown
-  console.log('SIGTERM received, shutting down gracefully...');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
-};
+@app.route('/health')
+def health_check():                             # Health check endpoint
+    return Response('OK\n', status=200, mimetype='text/plain')
 
-process.on('SIGTERM', gracefulShutdown);
-process.on('SIGINT', gracefulShutdown);
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+@app.errorhandler(Exception)
+def handle_error(error):                        # Error handling
+    print(f'Server error: {error}', file=sys.stderr)
+    return Response('Internal Server Error\n', status=500, mimetype='text/plain')
+
+def graceful_shutdown(signum, frame):            # Graceful shutdown
+    print('Signal received, shutting down gracefully...')
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, graceful_shutdown)
+signal.signal(signal.SIGINT, graceful_shutdown)
+
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT)
 ```
 
 ## 5.6 REFERENCES
@@ -7931,20 +7890,18 @@ server.listen(port, hostname, () => {
 ### 5.6.1 Source Files Examined
 
 **Application Code**:
-- `server.js` - Main HTTP server implementation (14 lines of functional code, lines 1-14)
+- `app.py` - Main HTTP server implementation (14 lines of functional code, lines 1-14)
   - HTTP server instantiation (line 6)
   - Request handler logic (lines 7-9)
   - Network binding configuration (lines 3-4, 12-14)
 
 **Configuration and Metadata**:
-- `package.json` - npm package metadata
-  - Package name and version declaration (lines 2-3)
-  - Dependency declarations (lines 11-12: empty objects confirming zero dependencies)
-  - Test script definition (line 7: documented defect F-006-RQ-001)
-  - Main entry point specification (line 5: points to "index.js" - metadata defect)
+- `requirements.txt` - Python dependency specification
+  - Flask==3.1.2 (web micro-framework)
+  - Werkzeug==3.1.2 (WSGI utility library)
 
-- `package-lock.json` - Dependency lockfile
-  - lockfileVersion 3 (indicates Node.js ≥12.x compatibility)
+- `.python-version` - Python version specification
+  - 3.12.3 (indicates Python ≥3.8 compatibility)
   - Confirms zero external packages (only root package entry)
 
 **Documentation**:
@@ -7969,7 +7926,7 @@ server.listen(port, hostname, () => {
   - F-006-RQ-001: Test script defect documentation
 
 **Technology Stack**:
-- Section 3.1 Programming Languages - JavaScript/Node.js technology details
+- Section 3.1 Programming Languages - Python technology details
 - Section 3.2 Frameworks & Libraries - Zero-framework architecture rationale
 - Section 3.5 Databases & Storage - Stateless architecture, no persistence
 - Section 3.6 Development & Deployment - Build process, deployment procedures, CI/CD status
@@ -7986,9 +7943,9 @@ server.listen(port, hostname, () => {
 ### 5.6.3 Repository Structure
 
 **Root Directory Contents**:
-- `server.js` - Application entry point (14 lines)
-- `package.json` - npm metadata (21 lines)
-- `package-lock.json` - Dependency lockfile (lockfileVersion 3)
+- `app.py` - Application entry point (14 lines)
+- `requirements.txt` - pip metadata (21 lines)
+- `.python-version` - Dependency lockfile (Python 3.12.3)
 - `README.md` - Project documentation
 
 **No Subdirectories**: Flat repository structure with all files in root directory (depth: 0)
@@ -7996,12 +7953,12 @@ server.listen(port, hostname, () => {
 ### 5.6.4 External References
 
 **Technology Documentation**:
-- Node.js http module documentation: https://nodejs.org/api/http.html
-- Node.js console module documentation: https://nodejs.org/api/console.html
-- CommonJS module system: https://nodejs.org/api/modules.html
+- Flask framework documentation: https://flask.palletsprojects.com/
+- Python print function documentation: https://docs.python.org/3/library/functions.html#print
+- Python import system: https://docs.python.org/3/tutorial/modules.html
 
 **Architectural Patterns**:
-- Event-Driven Architecture: Node.js event loop model
+- Event-Driven Architecture: WSGI server model
 - Stateless Service Pattern: RESTful API design principles
 - Fail-Fast Philosophy: Erlang/OTP error handling model
 
@@ -8038,10 +7995,10 @@ The fundamental characteristics of a Core Services Architecture are systematical
 
 | Service Architecture Requirement | System Implementation | Evidence Source |
 |----------------------------------|----------------------|-----------------|
-| **Multiple Service Components** | Single 14-line JavaScript file | `server.js` (lines 1-14) |
+| **Multiple Service Components** | Single 14-line Python file | `app.py` (lines 1-14) |
 | **Service Boundaries** | No modular separation or boundaries | Section 5.1.2.1 Component Inventory |
 | **Inter-Service Communication** | Zero external integrations | Section 5.1.4 External Integration Points |
-| **Distributed Deployment** | Localhost-only binding prevents distribution | `server.js` line 3: `hostname = '127.0.0.1'` |
+| **Distributed Deployment** | Localhost-only binding prevents distribution | `app.py` line 3: `hostname = '127.0.0.1'` |
 | **Service Discovery** | No registration or discovery mechanisms | Section 5.5 Deployment Architecture |
 | **Load Balancing** | Single instance, no balancing infrastructure | Section 5.4.4.3 Scalability Characteristics |
 | **Resilience Patterns** | Zero error handling, fail-fast design | Section 5.4.2 Error Handling Strategy |
@@ -8053,20 +8010,20 @@ The fundamental characteristics of a Core Services Architecture are systematical
 
 According to the Technical Specification Section 5.1.1.1, this system implements a **"Minimalist Single-File Server Architecture"** with the following defining characteristics:
 
-**Architectural Style**: Event-driven synchronous request-response server leveraging the Node.js event loop for concurrency without explicit asynchronous operations.
+**Architectural Style**: Event-driven synchronous request-response server leveraging the WSGI server for concurrency without explicit asynchronous operations.
 
 **Key Design Attributes**:
 
 1. **Single Component Design**
-   - Entire application contained in one file (`server.js`)
+   - Entire application contained in one file (`app.py`)
    - No module boundaries or service separation
-   - Direct use of Node.js built-in `http` module
+   - Direct use of Flask micro-framework
    - Zero framework abstractions
 
 2. **Zero-Dependency Profile**
-   - No external npm packages (verified in `package.json`)
+   - No external pip packages (verified in `requirements.txt`)
    - No service mesh, message queues, or distributed system libraries
-   - Only Node.js built-in modules utilized
+   - Only Python packages and Flask utilized
    - Eliminates supply chain complexity entirely
 
 3. **Hard-Coded Configuration**
@@ -8098,10 +8055,10 @@ The system's architecture is optimized for its documented purpose as a **test pr
 ```mermaid
 graph TB
     subgraph "Monolithic Single-Component Architecture"
-        A[server.js<br/>14 Lines of Code]
+        A[app.py<br/>14 Lines of Code]
         
-        subgraph "Node.js Built-in Modules"
-            B[http module]
+        subgraph "Python Packages"
+            B[Flask framework]
             C[console module]
         end
         
@@ -8110,7 +8067,7 @@ graph TB
     end
     
     subgraph "Runtime Environment"
-        D[Node.js V8 Engine]
+        D[Python CPython Engine]
         E[Event Loop]
         F[TCP/IP Stack]
     end
@@ -8140,9 +8097,9 @@ graph TB
 
 The most fundamental blocker to service architecture is the **localhost-only network binding**:
 
-**Implementation Detail** (`server.js` line 3):
-```javascript
-const hostname = '127.0.0.1';
+**Implementation Detail** (`app.py` line 3):
+```python
+HOSTNAME = os.getenv('HOST', '127.0.0.1');
 ```
 
 **Impact on Service Architecture**:
@@ -8156,9 +8113,9 @@ According to Section 5.5.2.2, even containerized deployment with Docker fails be
 
 #### 6.1.3.2 Configuration Immutability
 
-**Hard-Coded Port Assignment** (`server.js` line 4):
-```javascript
-const port = 3000;
+**Hard-Coded Port Assignment** (`app.py` line 4):
+```python
+PORT = int(os.getenv('PORT', 3000));
 ```
 
 **Service Architecture Implications**:
@@ -8353,45 +8310,38 @@ To transform this system into a service-oriented architecture, the following mod
 
 | File | Line | Current Code | Required Change |
 |------|------|--------------|-----------------|
-| `server.js` | 3 | `const hostname = '127.0.0.1';` | `const hostname = process.env.HOST \|\| '0.0.0.0';` |
-| `server.js` | 4 | `const port = 3000;` | `const port = process.env.PORT \|\| 3000;` |
+| `app.py` | - | `HOSTNAME = os.getenv('HOST', '127.0.0.1')` | `HOSTNAME = os.getenv('HOST', '0.0.0.0')` |
+| `app.py` | - | `PORT = int(os.getenv('PORT', 3000))` | Already supports environment override |
 
 **Priority 2: Service Lifecycle Management**:
 
-```javascript
-// Required health check endpoint
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
-    res.statusCode = 200;
-    res.end('OK\n');
-    return;
-  }
-  // ... existing response logic
-});
+```python
+# Required health check endpoint
+@app.route('/health')
+def health_check():
+    return Response('OK\n', status=200, mimetype='text/plain')
 
-// Required graceful shutdown
-const gracefulShutdown = () => {
-  console.log('SIGTERM received, shutting down gracefully...');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
-};
+# Required graceful shutdown
+import signal
+import sys
 
-process.on('SIGTERM', gracefulShutdown);
-process.on('SIGINT', gracefulShutdown);
+def graceful_shutdown(signum, frame):
+    print('Signal received, shutting down gracefully...')
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, graceful_shutdown)
+signal.signal(signal.SIGINT, graceful_shutdown)
 ```
 
 **Priority 3: Error Handling Infrastructure**:
 
-```javascript
-server.on('error', (err) => {
-  console.error('Server error:', err);
-  if (err.code === 'EADDRINUSE') {
-    console.error(`Port ${port} already in use`);
-  }
-  process.exit(1);
-});
+```python
+@app.errorhandler(Exception)
+def handle_error(error):
+    print(f'Server error: {error}', file=sys.stderr)
+    if isinstance(error, OSError) and 'Address already in use' in str(error):
+        print(f'Port {PORT} already in use', file=sys.stderr)
+    return Response('Internal Server Error\n', status=500, mimetype='text/plain')
 ```
 
 #### 6.1.5.2 Infrastructure Requirements
@@ -8415,7 +8365,7 @@ server.on('error', (err) => {
 
 - **Code Changes**: 10-20x increase in code size (from 14 lines to 140-280 lines minimum)
 - **Infrastructure**: 6-8 additional system components (load balancer, service registry, monitoring, etc.)
-- **Dependencies**: 5-15 npm packages (express, consul, winston, prom-client, etc.)
+- **Dependencies**: 5-15 pip packages (express, consul, winston, prom-client, etc.)
 - **Configuration**: Environment-based configuration files, secrets management
 - **Testing**: Integration tests, health check validation, load testing infrastructure
 - **Documentation**: API specifications, runbooks, deployment guides
@@ -8439,7 +8389,7 @@ The current architecture represents a valid and intentional design pattern for i
 - Integration test scenarios requiring HTTP endpoints
 - CI/CD pipeline validation
 - Development environment local testing
-- Educational demonstrations of Node.js basics
+- Educational demonstrations of Python basics
 - Baseline performance benchmarking
 
 #### 6.1.6.2 When Service Architecture Would Be Appropriate
@@ -8510,7 +8460,7 @@ The absence of service architecture is a deliberate design choice, not a deficie
 - Reference Section 5.5.3 for required modifications
 - Implement network binding to 0.0.0.0
 - Add health check endpoints and graceful shutdown
-- Deploy process manager (PM2, systemd) for automatic restart
+- Deploy process manager (Gunicorn, systemd) for automatic restart
 - Consider containerization only after binding fixes
 
 **If Service Architecture Required**:
@@ -8524,8 +8474,8 @@ The absence of service architecture is a deliberate design choice, not a deficie
 
 #### 6.1.8.1 Source Code Files
 
-- `server.js` - Complete application implementation (lines 1-14), network binding configuration (lines 3-4), server creation and request handling (lines 6-13)
-- `package.json` - Project metadata confirming zero dependencies
+- `app.py` - Complete application implementation (lines 1-14), network binding configuration (lines 3-4), server creation and request handling (lines 6-13)
+- `requirements.txt` - Project metadata confirming zero dependencies
 - `README.md` - Project purpose documentation identifying test fixture scope
 
 #### 6.1.8.2 Technical Specification Sections
@@ -8565,7 +8515,7 @@ This determination is based on comprehensive analysis of the system's architectu
 
 #### 6.2.1.2 System Architecture Classification
 
-According to Section 5.1.1.1 of the Technical Specification, this system implements a **"Minimalist Single-File Server Architecture"** characterized by a 14-line implementation in `server.js` that leverages only Node.js built-in modules. The architectural style is event-driven synchronous request-response with no data persistence layer, session management, or state storage mechanisms.
+According to Section 5.1.1.1 of the Technical Specification, this system implements a **"Minimalist Single-File Server Architecture"** characterized by a 14-line implementation in `app.py` that leverages only Python packages and Flask. The architectural style is event-driven synchronous request-response with no data persistence layer, session management, or state storage mechanisms.
 
 The system's documented purpose as a "test project for backprop integration" (per `README.md`) establishes its scope as a test fixture rather than a production application requiring data storage capabilities. As detailed in Section 1.2.1.1, this positioning prioritizes "behavioral predictability outweighs functionality richness," making stateless operation an intentional design constraint.
 
@@ -8573,10 +8523,10 @@ The system's documented purpose as a "test project for backprop integration" (pe
 
 #### 6.2.2.1 Source Code Analysis
 
-**Complete Implementation Review (`server.js`, 14 lines):**
+**Complete Implementation Review (`app.py`, 14 lines):**
 
 The entire application implementation reveals zero database-related code:
-- **Line 1**: Imports only Node.js built-in `http` module (no database client libraries)
+- **Line 1**: Imports only Flask micro-framework (no database client libraries)
 - **Lines 3-4**: Defines hard-coded configuration constants (hostname and port only)
 - **Lines 6-11**: Implements request handler returning static "Hello, World!\n" string literal
 - **Lines 13-14**: Starts HTTP server and logs confirmation message
@@ -8597,30 +8547,30 @@ This deterministic response model requires zero data fetching, transformation, o
 
 #### 6.2.2.2 Dependency Analysis
 
-**Zero External Dependencies (`package.json`):**
+**Zero External Dependencies (`requirements.txt`):**
 
 Examination of the project's dependency manifest confirms the absence of any database-related packages:
 
 | Dependency Category | Status | Evidence |
 |---------------------|--------|----------|
-| **dependencies** | Empty object `{}` | `package.json` lines 10-11 |
-| **devDependencies** | Not defined | Absent from `package.json` |
-| **peerDependencies** | Not defined | Absent from `package.json` |
+| **dependencies** | Empty object `{}` | `requirements.txt` lines 10-11 |
+| **devDependencies** | Not defined | Absent from `requirements.txt` |
+| **peerDependencies** | Not defined | Absent from `requirements.txt` |
 
 **Database Clients Not Present:**
 
 | Database Type | Common Client Libraries | Status in This Project |
 |---------------|------------------------|------------------------|
 | **MongoDB** | mongodb, mongoose | ❌ Not installed |
-| **PostgreSQL** | pg, pg-promise, node-postgres | ❌ Not installed |
+| **PostgreSQL** | pg, pg-promise, psycopg2 | ❌ Not installed |
 | **MySQL** | mysql, mysql2 | ❌ Not installed |
 | **Redis** | redis, ioredis | ❌ Not installed |
 | **SQLite** | sqlite3, better-sqlite3 | ❌ Not installed |
 | **ORMs** | Sequelize, TypeORM, Prisma | ❌ Not installed |
 
-**Verification via `package-lock.json`:**
+**Verification via `.python-version`:**
 
-The dependency lockfile (lockfileVersion 3) contains only a single entry for the root package with no nested dependencies, confirming zero external packages of any kind are installed or required.
+The dependency lockfile (Python 3.12.3) contains only a single entry for the root package with no nested dependencies, confirming zero external packages of any kind are installed or required.
 
 #### 6.2.2.3 Configuration Analysis
 
@@ -8639,7 +8589,7 @@ The system's configuration surface consists exclusively of two hard-coded consta
 - ❌ No query timeout or retry configuration
 - ❌ No environment variable references for configuration injection
 
-The absence of environment-based configuration infrastructure (no `process.env` references in `server.js`) further confirms the system's intentional isolation from external data sources.
+The absence of environment-based configuration infrastructure (no `os.environ` references in `app.py`) further confirms the system's intentional isolation from external data sources.
 
 ### 6.2.3 Comprehensive Storage Technology Assessment
 
@@ -8686,7 +8636,7 @@ The server sets only `Content-Type: text/plain`, omitting all cache-control dire
 Section 3.5.1.3 documents that the application does not write to the file system:
 
 **Write Operations: None**
-- ❌ No log file writing (only console.log to stdout)
+- ❌ No log file writing (only print to stdout)
 - ❌ No file uploads or multipart form handling
 - ❌ No temporary file creation
 - ❌ No configuration file updates or persistence
@@ -8694,12 +8644,12 @@ Section 3.5.1.3 documents that the application does not write to the file system
 - ❌ No image/asset storage
 
 **Read Operations: Implicit Code Execution Only**
-- Node.js runtime reads `server.js` at process startup (implicit via `node server.js` command)
+- Python runtime reads `app.py` at process startup (implicit via `python app.py` command)
 - No explicit `fs` module usage in application code
 - No file path references or directory operations
 
 **File Handle Usage:**
-Limited to standard streams (stdout for console.log output), with no user-controlled file operations.
+Limited to standard streams (stdout for print output), with no user-controlled file operations.
 
 #### 6.2.3.4 Cloud Storage Services Not Integrated
 
@@ -8712,7 +8662,7 @@ Section 3.5.1.4 confirms zero cloud storage integration:
 | **Google Cloud** | Cloud Storage, Firestore, Cloud SQL | ❌ No GCP SDK installed |
 | **Other** | Dropbox, Box, Backblaze B2 | ❌ No third-party storage SDKs |
 
-**Verification**: Analysis of `package.json` confirms no cloud provider SDK dependencies (`aws-sdk`, `@azure/storage-blob`, `@google-cloud/storage`, etc.).
+**Verification**: Analysis of `requirements.txt` confirms no cloud provider SDK dependencies (`aws-sdk`, `@azure/storage-blob`, `@google-cloud/storage`, etc.).
 
 **Rationale**: No data storage requirements exist for a stateless test fixture that returns identical responses for all requests.
 
@@ -8738,7 +8688,7 @@ Section 3.5.1.5 documents the system's **"Fully Stateless"** architecture patter
 Input (any HTTP request) → Static Response ("Hello, World!\n")
 ```
 
-Every request is processed independently with zero reference to previous requests, user identity, or stored application state. The response is generated exclusively from a hardcoded string literal (`res.end('Hello, World!\n')`), requiring no data retrieval operations.
+Every request is processed independently with zero reference to previous requests, user identity, or stored application state. The response is generated exclusively from a hardcoded string literal (`return Response('Hello, World!\n', status=200, mimetype='text/plain')`), requiring no data retrieval operations.
 
 #### 6.2.4.2 Benefits of Stateless Design
 
@@ -8787,7 +8737,7 @@ The absence of data persistence eliminates testing complexity:
 - ❌ No migration rollback procedures for test environments
 - ❌ No test data factories or ORM relationships to maintain
 
-Test environment setup reduces to starting the Node.js process.
+Test environment setup reduces to starting the Python process.
 
 #### 6.2.4.3 Trade-offs and Limitations
 
@@ -8823,7 +8773,7 @@ The system has no database schema to migrate, version, or evolve:
 
 **Code Deployment Model:**
 
-Changes to system behavior require modifying `server.js` and restarting the Node.js process. No data migration coordination is needed because no data exists to migrate.
+Changes to system behavior require modifying `app.py` and restarting the Python process. No data migration coordination is needed because no data exists to migrate.
 
 #### 6.2.5.2 Versioning Strategy: Not Applicable
 
@@ -8871,8 +8821,8 @@ The system executes zero database queries, eliminating optimization concerns:
 **Response Generation Performance:**
 
 The only "data access" operation is retrieving a string literal from memory:
-```javascript
-res.end('Hello, World!\n');
+```python
+return Response('Hello, World!\n', status=200, mimetype='text/plain');
 ```
 
 This operation completes in <0.001ms, requiring no optimization.
@@ -8900,7 +8850,7 @@ The system maintains no database connections to pool:
 
 **HTTP Connection Handling:**
 
-The Node.js HTTP server manages TCP connections to clients, but this is HTTP protocol handling, not database connection pooling.
+The Python Flask HTTP server manages TCP connections to clients, but this is HTTP protocol handling, not database connection pooling.
 
 #### 6.2.6.4 Read/Write Splitting: Not Applicable
 
@@ -8983,7 +8933,7 @@ The system does not audit data access or modifications:
 
 **Request Logging:**
 
-The system logs only server startup via `console.log('Server running at http://127.0.0.1:3000/')` with no per-request logging, query logging, or data access auditing.
+The system logs only server startup via `print('Server running at http://127.0.0.1:3000/')` with no per-request logging, query logging, or data access auditing.
 
 #### 6.2.7.4 Access Controls: Not Applicable
 
@@ -9016,7 +8966,7 @@ The absence of database infrastructure is an **intentional and appropriate archi
 | **Test Fixture Purpose** | Test fixtures should be simple and predictable | ✅ Stateless design supports test reliability |
 | **Backprop Integration Validation** | Integration tests need consistent HTTP endpoints | ✅ Static responses enable deterministic testing |
 | **Zero-Dependency Profile** | Database clients add dependencies and complexity | ✅ No database = no database client dependencies |
-| **Minimal Environmental Setup** | Databases require installation and configuration | ✅ Node.js only requirement simplifies test environments |
+| **Minimal Environmental Setup** | Databases require installation and configuration | ✅ Python only requirement simplifies test environments |
 | **Rapid Startup** | Database connections add initialization overhead | ✅ No connection establishment = <160ms startup |
 
 **When Database Would Be Required:**
@@ -9035,10 +8985,10 @@ None of these requirements exist within the current scope, making database infra
 
 **In-Memory State Management:**
 
-The system could theoretically maintain state in JavaScript variables:
-```javascript
-const requestCounts = new Map();
-// Track requests per client IP
+The system could theoretically maintain state in Python variables:
+```python
+request_counts = {}
+# Track requests per client IP
 ```
 
 This approach is **intentionally not implemented** because:
@@ -9050,9 +9000,9 @@ This approach is **intentionally not implemented** because:
 **File-Based Persistence:**
 
 The system could write data to local files:
-```javascript
-const fs = require('fs');
-fs.appendFileSync('requests.log', requestData);
+```python
+with open('requests.log', 'a') as f:
+    f.write(request_data)
 ```
 
 This approach is **not pursued** because:
@@ -9064,8 +9014,8 @@ This approach is **not pursued** because:
 **Environment Variable Configuration:**
 
 The system could load database configuration from environment variables:
-```javascript
-const dbUrl = process.env.DATABASE_URL;
+```python
+db_url = os.getenv('DATABASE_URL')
 ```
 
 This approach is **not implemented** because:
@@ -9079,8 +9029,8 @@ This approach is **not implemented** because:
 
 Database Design is definitively **not applicable** to this system based on comprehensive evidence:
 
-1. **Source Code Analysis**: Zero database imports, queries, or data persistence operations in `server.js`
-2. **Dependency Verification**: No database client libraries installed (confirmed via `package.json` and `package-lock.json`)
+1. **Source Code Analysis**: Zero database imports, queries, or data persistence operations in `app.py`
+2. **Dependency Verification**: No database client libraries installed (confirmed via `requirements.txt` and `.python-version`)
 3. **Configuration Review**: No database connection strings, credentials, or configuration present
 4. **Technical Specification Documentation**: Section 3.5 explicitly documents zero database usage across all categories
 5. **Architectural Pattern**: Fully stateless design documented in Section 3.5.1.5 eliminates persistence requirements
@@ -9112,8 +9062,8 @@ Should system requirements evolve to need data storage (unlikely given test fixt
 2. **Select Minimal Database**: Choose simplest appropriate technology (e.g., SQLite for local development, Redis for caching)
 3. **Preserve Determinism**: Ensure data persistence does not introduce non-deterministic test behavior
 4. **Document Schema**: Create formal schema design with entity relationships and indexing strategy
-5. **Implement Migrations**: Use database migration tool (e.g., Flyway, Liquibase, node-db-migrate)
-6. **Update Dependencies**: Add database client library to `package.json`
+5. **Implement Migrations**: Use database migration tool (e.g., Flyway, Liquibase, alembic)
+6. **Update Dependencies**: Add database client library to `requirements.txt`
 7. **Revise Architecture Documentation**: Update Technical Specification Section 3.5 and 6.2
 
 #### 6.2.9.4 Final Assessment
@@ -9124,9 +9074,9 @@ The absence of database design in this system is not a deficiency but a **delibe
 
 #### 6.2.10.1 Source Code Files Examined
 
-- **`server.js`** (14 lines) - Complete application implementation analyzed for database imports, queries, and data persistence operations. Lines 1-14 confirmed zero database-related code.
-- **`package.json`** (11 lines) - Project metadata and dependency manifest. Lines 10-11 confirmed empty dependencies object, verifying no database client libraries installed.
-- **`package-lock.json`** - Dependency lockfile (lockfileVersion 3) confirmed zero external packages including database clients.
+- **`app.py`** (14 lines) - Complete application implementation analyzed for database imports, queries, and data persistence operations. Lines 1-14 confirmed zero database-related code.
+- **`requirements.txt`** (11 lines) - Project metadata and dependency manifest. Lines 10-11 confirmed empty dependencies object, verifying no database client libraries installed.
+- **`.python-version`** - Dependency lockfile (Python 3.12.3) confirmed zero external packages including database clients.
 - **`README.md`** - Project documentation establishing system purpose as "test project for backprop integration," contextualizing stateless design decision.
 
 #### 6.2.10.2 Technical Specification Sections Referenced
@@ -9150,7 +9100,7 @@ The absence of database design in this system is not a deficiency but a **delibe
 
 **Integration Architecture is not applicable for this system.**
 
-This system is a minimalist test fixture consisting of 14 lines of Node.js code designed exclusively for "backprop integration testing." The architecture contains zero external integrations, zero API frameworks, zero message processing capabilities, and zero third-party service connections. The system implements a basic HTTP server bound exclusively to localhost (127.0.0.1:3000), preventing any external network access or integration possibilities.
+This system is a minimalist test fixture consisting of 14 lines of Python code designed exclusively for "backprop integration testing." The architecture contains zero external integrations, zero API frameworks, zero message processing capabilities, and zero third-party service connections. The system implements a basic HTTP server bound exclusively to localhost (127.0.0.1:3000), preventing any external network access or integration possibilities.
 
 ### 6.3.2 System Characterization
 
@@ -9170,16 +9120,16 @@ The system's technical implementation demonstrates intentional minimalism:
 
 | Characteristic | Implementation | Integration Impact |
 |---------------|----------------|-------------------|
-| **Codebase Size** | 14 lines (server.js) | No complexity for integration layers |
-| **Dependencies** | Zero npm packages | No third-party integration SDKs |
+| **Codebase Size** | 14 lines (app.py) | No complexity for integration layers |
+| **Dependencies** | Zero pip packages | No third-party integration SDKs |
 | **Network Binding** | 127.0.0.1:3000 only | Prevents external system access |
 | **Response Model** | Static "Hello, World!" | No data exchange requirements |
 
-The complete absence of dependencies in `package.json` confirms the zero-integration architecture—there are no frameworks, no HTTP clients, no message queue libraries, no database drivers, and no external service SDKs.
+The complete absence of dependencies in `requirements.txt` confirms the zero-integration architecture—there are no frameworks, no HTTP clients, no message queue libraries, no database drivers, and no external service SDKs.
 
 #### 6.3.2.3 Architectural Constraints
 
-The localhost-only network binding (`server.js` lines 3-4) creates fundamental constraints that prevent integration architecture:
+The localhost-only network binding (`app.py` lines 3-4) creates fundamental constraints that prevent integration architecture:
 
 1. **External Service Communication**: Impossible—server cannot make outbound HTTP requests
 2. **Cloud Deployment**: Blocked—external networks cannot reach localhost-bound services
@@ -9203,7 +9153,7 @@ The system lacks all components of modern API design:
 | **Rate Limiting** | None | Unlimited requests accepted |
 
 **Request Handling Behavior**:
-The universal request handler (`server.js` lines 6-10) accepts all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD) and all URL paths without differentiation. Every request receives an identical HTTP 200 response with "Hello, World!\n" as the body, regardless of method, path, headers, query parameters, or request body content.
+The universal request handler (`app.py` lines 6-10) accepts all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD) and all URL paths without differentiation. Every request receives an identical HTTP 200 response with "Hello, World!\n" as the body, regardless of method, path, headers, query parameters, or request body content.
 
 **Versioning Approach**: Not implemented—the static response model eliminates the need for API versioning.
 
@@ -9215,11 +9165,11 @@ The universal request handler (`server.js` lines 6-10) accepts all HTTP methods 
 
 The system implements zero message processing capabilities:
 
-**Event Processing Patterns**: The only event processing occurs through Node.js built-in HTTP events (connection, request, close). No custom event emitters, no event-driven architecture patterns, and no publish-subscribe mechanisms exist beyond basic HTTP request handling.
+**Event Processing Patterns**: The only event processing occurs through Python standard library HTTP events (connection, request, close). No custom event emitters, no event-driven architecture patterns, and no publish-subscribe mechanisms exist beyond basic HTTP request handling.
 
-**Message Queue Architecture**: Zero message queues are implemented. The `package.json` dependency analysis confirms no message queue libraries such as:
+**Message Queue Architecture**: Zero message queues are implemented. The `requirements.txt` dependency analysis confirms no message queue libraries such as:
 - RabbitMQ (amqplib)
-- Apache Kafka (kafkajs, node-rdkafka)
+- Apache Kafka (kafkajs, confluent-kafka)
 - Redis Pub/Sub (redis, ioredis)
 - AWS SQS (aws-sdk)
 - Azure Service Bus (azure/service-bus)
@@ -9228,7 +9178,7 @@ The system implements zero message processing capabilities:
 
 **Batch Processing Flows**: Not applicable—the system performs synchronous request-response operations only, with no batch operations, bulk processing logic, or job queue management.
 
-**Error Handling Strategy**: The system implements **zero explicit error handling**. The `server.js` file contains no try-catch blocks, no error event listeners, and no error recovery logic. All errors propagate as unhandled exceptions to the Node.js runtime, causing immediate process termination with non-zero exit codes. This fail-fast approach provides visibility for testing scenarios but makes the system unsuitable for production message processing.
+**Error Handling Strategy**: The system implements **zero explicit error handling**. The `app.py` file contains no try-catch blocks, no error event listeners, and no error recovery logic. All errors propagate as unhandled exceptions to the Python runtime, causing immediate process termination with non-zero exit codes. This fail-fast approach provides visibility for testing scenarios but makes the system unsuitable for production message processing.
 
 #### 6.3.3.3 External Systems
 
@@ -9247,7 +9197,7 @@ The system maintains complete isolation from external systems:
 
 **Legacy System Interfaces**: Not applicable—the system has no database connections (no SQL or NoSQL drivers), no file system integrations beyond startup, and no legacy protocol support (SOAP, EDI, FTP, etc.).
 
-**API Gateway Configuration**: Not implemented—the system uses Node.js's native `http.createServer()` for direct HTTP server implementation without gateway frameworks such as Kong, Tyk, or AWS API Gateway.
+**API Gateway Configuration**: Not implemented—the system uses Python's native `Flask(__name__)` for direct HTTP server implementation without gateway frameworks such as Kong, Tyk, or AWS API Gateway.
 
 **External Service Contracts**: None exist—the system operates in complete isolation without service-level agreements (SLAs), external dependencies, or integration contracts with third-party providers.
 
@@ -9279,13 +9229,13 @@ The localhost-only binding creates a physical network isolation boundary. The se
 The system implements a minimal synchronous request-response pattern:
 
 **Processing Characteristics**:
-- **Execution Model**: Synchronous (non-blocking I/O via Node.js event loop)
+- **Execution Model**: Synchronous (non-blocking I/O via WSGI server)
 - **Response Time**: < 1 millisecond for static response generation
 - **Data Transformation**: Zero—no parsing, validation, or transformation logic
 - **Business Logic**: Zero—no conditional logic or computation
 - **State Management**: Fully stateless—no session management, no request correlation
 
-**Request Handler Implementation** (`server.js` lines 6-10):
+**Request Handler Implementation** (`app.py` lines 6-10):
 ```
 Incoming Request → Set Status 200 → Set Content-Type: text/plain → Return "Hello, World!\n"
 ```
@@ -9378,8 +9328,8 @@ graph LR
     end
     
     subgraph "Application Layer"
-        SERVER[Node.js HTTP Server<br/>Port 3000]
-        PROCESS[server.js Process]
+        SERVER[Python Flask HTTP Server<br/>Port 3000]
+        PROCESS[app.py Process]
     end
     
     INTERNET -.->|BLOCKED| NIC
@@ -9420,7 +9370,7 @@ The architectural decisions optimize for **test reliability** rather than produc
 
 The system's integration limitations are **intentional design choices** rather than implementation gaps:
 
-**Zero-Dependency Architecture**: The absence of npm dependencies eliminates integration complexity, version conflicts, security vulnerabilities in third-party libraries, and supply chain risks. For a test fixture requiring only basic HTTP response capabilities, external libraries provide no value.
+**Zero-Dependency Architecture**: The absence of pip dependencies eliminates integration complexity, version conflicts, security vulnerabilities in third-party libraries, and supply chain risks. For a test fixture requiring only basic HTTP response capabilities, external libraries provide no value.
 
 **Localhost-Only Binding**: The 127.0.0.1 binding ensures:
 - **Network isolation**: Impossible for external systems to access or integrate
@@ -9442,8 +9392,8 @@ If integration architecture were required, the following changes would be necess
 
 | Integration Requirement | Required Changes |
 |------------------------|-----------------|
-| **External API Access** | Change binding to 0.0.0.0, add HTTP client library (axios, node-fetch) |
-| **Authentication** | Add passport.js, jsonwebtoken, or OAuth library |
+| **External API Access** | Change binding to 0.0.0.0, add HTTP client library (axios, requests) |
+| **Authentication** | Add Flask-Login, PyJWT, or OAuth library |
 | **Message Processing** | Add RabbitMQ (amqplib) or Kafka (kafkajs) dependencies |
 | **Database Integration** | Add database driver (pg, mysql2, mongodb) |
 
@@ -9453,8 +9403,8 @@ The current architecture's minimal design would require fundamental restructurin
 
 #### 6.3.7.1 Source Files Examined
 
-- `server.js` - Complete HTTP server implementation (14 lines), request handler logic, network binding configuration
-- `package.json` - Dependency analysis confirming zero npm packages and zero integration libraries
+- `app.py` - Complete HTTP server implementation (14 lines), request handler logic, network binding configuration
+- `requirements.txt` - Dependency analysis confirming zero pip packages and zero integration libraries
 - `README.md` - System purpose documentation identifying test fixture classification
 
 #### 6.3.7.2 Technical Specification Cross-References
@@ -9471,7 +9421,7 @@ The current architecture's minimal design would require fundamental restructurin
 
 #### 6.3.7.3 Directory Structure Analysis
 
-- **Root Directory (`/`)** - Complete exploration of project structure (4 files total: server.js, package.json, package-lock.json, README.md) confirming no integration-related modules or subdirectories
+- **Root Directory (`/`)** - Complete exploration of project structure (4 files total: app.py, requirements.txt, .python-version, README.md) confirming no integration-related modules or subdirectories
 
 ## 6.4 Security Architecture
 
@@ -9479,7 +9429,7 @@ The current architecture's minimal design would require fundamental restructurin
 
 **Detailed Security Architecture is not applicable for this system.**
 
-This system is a minimal test fixture consisting of 14 lines of Node.js code designed exclusively for backprop integration testing. The architecture implements zero traditional security controls (authentication, authorization, encryption, or input validation). Instead, security is achieved through a single fundamental mechanism: **network isolation via localhost-only binding**.
+This system is a minimal test fixture consisting of 14 lines of Python code designed exclusively for backprop integration testing. The architecture implements zero traditional security controls (authentication, authorization, encryption, or input validation). Instead, security is achieved through a single fundamental mechanism: **network isolation via localhost-only binding**.
 
 The system's classification as a test harness rather than a production application fundamentally shapes its security approach. As documented in `README.md`, this is a "test project for backprop integration" where predictability and simplicity take precedence over security infrastructure. The intentionally constrained scope eliminates the need for sophisticated security architecture while maintaining adequate protection for its intended use case.
 
@@ -9504,7 +9454,7 @@ This section documents:
 4. **Threat Analysis**: Risk assessment for the localhost-only deployment model
 5. **Production Requirements**: Mandatory security enhancements if external deployment were pursued
 
-This section does **not** document non-existent security features. All statements are grounded in the actual implementation found in `server.js`, `package.json`, and confirmed by analysis of the complete repository structure.
+This section does **not** document non-existent security features. All statements are grounded in the actual implementation found in `app.py`, `requirements.txt`, and confirmed by analysis of the complete repository structure.
 
 ### 6.4.2 Primary Security Mechanism: Network Isolation
 
@@ -9512,13 +9462,13 @@ This section does **not** document non-existent security features. All statement
 
 The system's primary and only security control is **network isolation** achieved through exclusive binding to the IPv4 loopback interface:
 
-**Network Binding Configuration** (`server.js` lines 3-4, 12):
+**Network Binding Configuration** (`app.py` lines 3-4, 12):
 - **Hostname**: `127.0.0.1` (IPv4 localhost loopback address)
 - **Port**: `3000` (hard-coded)
 - **Interface**: IPv4 loopback only
 - **External Access**: Architecturally impossible
 
-The `server.listen(port, hostname, callback)` call restricts the HTTP server to accept connections exclusively from the local machine. This configuration creates a security boundary enforced by the operating system kernel rather than application-level access controls.
+The `app.run(host=HOSTNAME, port=PORT)` call restricts the HTTP server to accept connections exclusively from the local machine. This configuration creates a security boundary enforced by the operating system kernel rather than application-level access controls.
 
 #### 6.4.2.2 Network Security Boundary Diagram
 
@@ -9545,7 +9495,7 @@ graph TB
         I[Local curl/wget<br/>Command Line Clients]
         J[Local Web Browsers<br/>Same Machine]
         K[Test Scripts<br/>Integration Tests]
-        L[Node.js Processes<br/>Same Host]
+        L[Python Processes<br/>Same Host]
     end
     
     A -.->|BLOCKED by OS Kernel| E
@@ -9562,7 +9512,7 @@ graph TB
     K --> H
     L --> H
     
-    H --> M[server.js<br/>Request Handler<br/>Static Response]
+    H --> M[app.py<br/>Request Handler<br/>Static Response]
     
     style A fill:#ffe1e1,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
     style B fill:#ffe1e1,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
@@ -9583,7 +9533,7 @@ The diagram illustrates the multi-layered security enforcement:
 
 3. **Security Boundary**: The 127.0.0.1:3000 binding creates an impenetrable barrier. Only processes running on the same physical machine can establish TCP connections to the HTTP server.
 
-4. **Permitted Zone**: Local test clients, web browsers, integration test scripts, and other Node.js processes on the same host have unrestricted access.
+4. **Permitted Zone**: Local test clients, web browsers, integration test scripts, and other Python processes on the same host have unrestricted access.
 
 #### 6.4.2.3 Security Guarantees Provided
 
@@ -9621,8 +9571,8 @@ The system implements zero authentication mechanisms:
 **Justification**: The localhost-only binding eliminates the need for authentication. Only processes on the same machine can connect, and the operating system provides process-level isolation. Authentication would add complexity without security benefit for the test fixture use case.
 
 **Evidence from Codebase**:
-- `server.js` lines 6-10: Request handler accepts all requests without credential verification
-- `package.json`: Zero authentication libraries (no passport.js, jsonwebtoken, auth0, etc.)
+- `app.py` lines 6-10: Request handler accepts all requests without credential verification
+- `requirements.txt`: Zero authentication libraries (no Flask-Login, PyJWT, Authlib, etc.)
 - Technical Specification Section 3.4: Confirms "No external authentication services integrated"
 
 **Explicitly Excluded** (Technical Specification Section 1.3.2.1):
@@ -9647,13 +9597,12 @@ The system implements zero authorization controls:
 | **Policy Enforcement Points** | ❌ Not Implemented | No policy engines or authorization middleware |
 | **Audit Logging** | ❌ Not Implemented | No request logging or audit trails |
 
-**Request Handler Behavior** (`server.js` lines 6-10):
-```javascript
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+**Request Handler Behavior** (`app.py`):
+```python
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
 ```
 
 The request handler accepts all HTTP requests without:
@@ -9678,7 +9627,7 @@ Traditional data protection controls are not applicable due to the system's stat
 
 | Encryption Requirement | Implementation | Status |
 |-----------------------|----------------|--------|
-| **Transport Layer Security (TLS)** | Plain HTTP (http module, not https) | ❌ No encryption in transit |
+| **Transport Layer Security (TLS)** | Plain HTTP (Flask framework, not https) | ❌ No encryption in transit |
 | **HTTPS Certificate Management** | None | ❌ No certificate store |
 | **Encryption in Transit** | None | ✅ Acceptable - localhost traffic stays in memory |
 | **Encryption at Rest** | Not applicable | ✅ No persistent data storage |
@@ -9686,7 +9635,7 @@ Traditional data protection controls are not applicable due to the system's stat
 **Localhost Encryption Analysis**: 
 Traffic between local clients and the HTTP server on 127.0.0.1 never traverses physical network interfaces. Data packets remain in operating system memory, making network sniffing attacks impossible. The absence of TLS encryption is acceptable because localhost communication cannot be intercepted by external attackers.
 
-**Evidence**: `server.js` line 1 uses `require('http')` instead of `require('https')`, confirming plain HTTP implementation.
+**Evidence**: `app.py` line 1 uses `from flask import Flask, Response` instead of `# HTTPS not used`, confirming plain HTTP implementation.
 
 ##### 6.4.3.3.2 Key Management
 
@@ -9699,7 +9648,7 @@ No encryption keys, secrets, or credentials are managed:
 - ❌ No environment variable secrets
 - ❌ No key rotation policies
 
-**Evidence**: `package.json` analysis confirms zero dependencies on key management libraries (no aws-secrets-manager, vault, dotenv-vault, etc.).
+**Evidence**: `requirements.txt` analysis confirms zero dependencies on key management libraries (no aws-secrets-manager, vault, dotenv-vault, etc.).
 
 ##### 6.4.3.3.3 Data Masking Rules
 
@@ -9799,7 +9748,7 @@ graph LR
 
 1. **Remote Code Execution (RCE)**: External attackers cannot reach the server due to localhost-only binding. The operating system kernel blocks all non-loopback traffic before it reaches the application layer.
 
-2. **SQL Injection**: No database connection exists. The `package.json` analysis confirms zero database drivers (no pg, mysql2, mongodb, sqlite3, etc.). The static response model eliminates query construction.
+2. **SQL Injection**: No database connection exists. The `requirements.txt` analysis confirms zero database drivers (no pg, mysql2, mongodb, sqlite3, etc.). The static response model eliminates query construction.
 
 3. **Cross-Site Scripting (XSS)**: No dynamic HTML rendering occurs. The response is plain text (`Content-Type: text/plain`) with a static string literal. No user input is reflected in responses.
 
@@ -9858,7 +9807,7 @@ graph LR
 **Attack Steps**:
 1. Malicious process sends HTTP request to `http://127.0.0.1:3000/malicious-payload`
 2. HTTP server accepts connection
-3. Request handler executes (`server.js` lines 7-9)
+3. Request handler executes (`app.py` lines 7-9)
 4. Server returns static `"Hello, World!\n"` response
 5. **Attack fails**: No injection points exist (static response ignores input)
 
@@ -9871,7 +9820,7 @@ graph LR
 **Attack Steps**:
 1. Malicious process spawns loop: `while true; do curl http://127.0.0.1:3000/; done`
 2. HTTP server processes requests synchronously (<1ms each)
-3. Node.js event loop handles concurrent connections
+3. WSGI server handles concurrent connections
 4. CPU and memory consumption increase
 
 **Potential Impact**:
@@ -9919,20 +9868,20 @@ Despite the absence of traditional security controls, the system adheres to fund
 #### 6.4.5.4 Supply Chain Security
 
 **Implementation**:
-- Zero npm dependencies (confirmed in `package.json` and `package-lock.json`)
+- Zero pip dependencies (confirmed in `requirements.txt` and `.python-version`)
 - No third-party code libraries
-- Native Node.js modules only (http module)
+- Native Python modules only (Flask framework)
 - No container base images or external build tools
 
 **Security Benefit**: Eliminates entire class of supply chain attacks. No risk of:
-- Malicious npm packages
+- Malicious pip packages
 - Compromised dependencies
 - Known vulnerabilities in third-party libraries
 - Dependency confusion attacks
 - Typosquatting attacks
 
 **Functional Requirement F-005-RQ-002** explicitly documents this security benefit:
-> "No supply chain vulnerabilities from third-party code. No need for npm audit or dependency security scanning. Eliminates entire class of dependency-related security risks."
+> "No supply chain vulnerabilities from third-party code. No need for pip audit or dependency security scanning. Eliminates entire class of dependency-related security risks."
 
 #### 6.4.5.5 Fail-Fast Security
 
@@ -9940,7 +9889,7 @@ Despite the absence of traditional security controls, the system adheres to fund
 - Zero explicit error handling (no try-catch blocks)
 - Unhandled exceptions cause immediate process termination
 - No graceful degradation that could mask security issues
-- All errors propagate to Node.js runtime with full stack traces
+- All errors propagate to Python runtime with full stack traces
 
 **Security Benefit**: 
 - Prevents undefined security states
@@ -9970,7 +9919,7 @@ Despite the absence of traditional security controls, the system adheres to fund
 | Metric | This System | Typical Web Application |
 |--------|-------------|------------------------|
 | Lines of Code | 14 | 10,000-100,000+ |
-| Dependencies | 0 | 50-500+ npm packages |
+| Dependencies | 0 | 50-500+ pip packages |
 | Security Controls | 1 (network isolation) | 10-20+ (auth, encryption, validation, etc.) |
 | Audit Time | < 5 minutes | Days to weeks |
 
@@ -9990,22 +9939,21 @@ If the system were modified for production deployment (binding to 0.0.0.0 or pub
 
 | Security Feature | Priority | Implementation Approach |
 |-----------------|----------|------------------------|
-| **HTTPS/TLS Encryption** | Critical | Replace `http` module with `https`, obtain TLS certificate from Let's Encrypt or commercial CA |
+| **HTTPS/TLS Encryption** | Critical | Replace Flask framework with `https`, obtain TLS certificate from Let's Encrypt or commercial CA |
 | **Certificate Management** | Critical | Implement automatic certificate renewal, secure private key storage |
 | **TLS Version Enforcement** | High | Disable TLS 1.0/1.1, require TLS 1.2+ with strong cipher suites |
 | **HSTS Header** | High | Add `Strict-Transport-Security: max-age=31536000; includeSubDomains` |
 
 **Implementation Changes Required**:
-```javascript
-const https = require('https');
-const fs = require('fs');
+```python
+# HTTPS not implemented - plain HTTP only
+import os
 
-const options = {
-  key: fs.readFileSync('/path/to/private-key.pem'),
-  cert: fs.readFileSync('/path/to/certificate.pem')
-};
+import ssl
 
-const server = https.createServer(options, (req, res) => { ... });
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain('/path/to/certificate.pem', '/path/to/private-key.pem')
+app.run(host=HOSTNAME, port=PORT, ssl_context=context)
 ```
 
 ##### 6.4.6.2.2 Authentication Framework
@@ -10013,21 +9961,17 @@ const server = https.createServer(options, (req, res) => { ... });
 | Security Feature | Priority | Implementation Approach |
 |-----------------|----------|------------------------|
 | **API Key Authentication** | Critical | Implement API key validation in request handler, use environment variables for key storage |
-| **JWT Token Validation** | Critical | Add jsonwebtoken library, validate Bearer tokens, verify signatures |
+| **JWT Token Validation** | Critical | Add PyJWT library, validate Bearer tokens, verify signatures |
 | **OAuth 2.0 Integration** | High | Integrate with identity provider (Auth0, Okta, Azure AD) |
-| **Multi-Factor Authentication** | Moderate | Add time-based one-time password (TOTP) support for sensitive operations |
+| **Multi-Factor Authentication** | Moderate | Add time-based one-time password (TOTP) support via pyotp |
 
 **Example API Key Implementation**:
-```javascript
-const server = http.createServer((req, res) => {
-  const apiKey = req.headers['x-api-key'];
-  if (apiKey !== process.env.VALID_API_KEY) {
-    res.statusCode = 401;
-    res.end('Unauthorized');
-    return;
-  }
-  // ... existing handler logic
-});
+```python
+@app.before_request
+def check_api_key():
+    api_key = request.headers.get('X-API-Key')
+    if api_key != os.getenv('VALID_API_KEY'):
+        return Response('Unauthorized\n', status=401, mimetype='text/plain')
 ```
 
 ##### 6.4.6.2.3 Authorization System
@@ -10049,11 +9993,11 @@ const server = http.createServer((req, res) => {
 | **CORS Configuration** | Moderate | Whitelist allowed origins, methods, and headers |
 
 **Security Headers Example**:
-```javascript
-res.setHeader('X-Frame-Options', 'DENY');
-res.setHeader('X-Content-Type-Options', 'nosniff');
-res.setHeader('Content-Security-Policy', "default-src 'self'");
-res.setHeader('X-XSS-Protection', '1; mode=block');
+```python
+Response header('X-Frame-Options', 'DENY');
+Response header('X-Content-Type-Options', 'nosniff');
+Response header('Content-Security-Policy', "default-src 'self'");
+Response header('X-XSS-Protection', '1; mode=block');
 ```
 
 ##### 6.4.6.2.5 Infrastructure Security
@@ -10071,7 +10015,7 @@ The security enhancements listed above would require fundamental architectural c
 
 **Code Complexity**: Would increase from 14 lines to 200-500+ lines (15-35x increase)
 
-**Dependency Addition**: Would require 5-15 npm packages:
+**Dependency Addition**: Would require 5-15 pip packages:
 - `https` (built-in)
 - `jsonwebtoken` (JWT validation)
 - `express-rate-limit` (rate limiting)
@@ -10131,9 +10075,9 @@ These accepted risks would be **unacceptable** for production deployment and wou
 
 #### 6.4.8.1 Source Files Examined
 
-- `server.js` (14 lines) - Network binding configuration (lines 3-4, 12), request handler logic (lines 6-10), security analysis of universal request acceptance without authentication or authorization
-- `package.json` (11 lines) - Zero-dependency verification confirming no authentication libraries, no encryption libraries, no security frameworks
-- `package-lock.json` (14 lines) - Lockfile analysis confirming zero resolved dependencies, eliminating supply chain security risks
+- `app.py` (14 lines) - Network binding configuration (lines 3-4, 12), request handler logic (lines 6-10), security analysis of universal request acceptance without authentication or authorization
+- `requirements.txt` (11 lines) - Zero-dependency verification confirming no authentication libraries, no encryption libraries, no security frameworks
+- `.python-version` (14 lines) - Lockfile analysis confirming zero resolved dependencies, eliminating supply chain security risks
 - `README.md` (2 lines) - Project purpose documentation as "test project for backprop integration," establishing test fixture classification
 
 #### 6.4.8.2 Directories Analyzed
@@ -10154,8 +10098,8 @@ These accepted risks would be **unacceptable** for production deployment and wou
 #### 6.4.8.4 Security Analysis Methodology
 
 This security architecture documentation is based on:
-1. **Static Code Analysis**: Complete review of all 14 lines of server.js code
-2. **Dependency Analysis**: Verification of zero npm dependencies in package.json and package-lock.json
+1. **Static Code Analysis**: Complete review of all 14 lines of app.py code
+2. **Dependency Analysis**: Verification of zero pip dependencies in requirements.txt and .python-version
 3. **Network Configuration Review**: Analysis of localhost-only binding implementation
 4. **Threat Modeling**: Assessment of attack vectors and residual risks
 5. **Architecture Analysis**: Evaluation of security properties emerging from design
@@ -10167,10 +10111,10 @@ This security architecture documentation is based on:
 
 **Detailed Monitoring Architecture is not applicable for this system.**
 
-This system is a minimal test fixture consisting of 14 lines of Node.js code, designed exclusively for backprop integration testing as documented in `README.md`. The intentionally constrained scope, localhost-only deployment model (binding to 127.0.0.1), and stateless architecture eliminate the need for traditional monitoring and observability infrastructure found in production systems.
+This system is a minimal test fixture consisting of 14 lines of Python code, designed exclusively for backprop integration testing as documented in `README.md`. The intentionally constrained scope, localhost-only deployment model (binding to 127.0.0.1), and stateless architecture eliminate the need for traditional monitoring and observability infrastructure found in production systems.
 
 The monitoring approach reflects architectural principles documented in Section 5.1.1.2:
-- **Simplicity Over Features**: Single console.log statement vs. comprehensive logging frameworks
+- **Simplicity Over Features**: Single print statement vs. comprehensive logging frameworks
 - **Transparency Over Abstraction**: Direct stdout output vs. structured logging pipelines
 - **Isolation Over Integration**: Manual verification vs. integrated observability platforms
 
@@ -10209,11 +10153,11 @@ This maturity level is **appropriate and intentional** for the test fixture scop
 
 **Logging Architecture**: **Minimal Console-Based Logging**
 
-The system implements a bare-minimum logging strategy with a single log statement in `server.js` (line 13):
+The system implements a bare-minimum logging strategy with a single log statement in `app.py` (line 13):
 
-```javascript
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+```python
+if __name__ == '__main__':
+  print(`Server running at http://${hostname}:${port}/`);
 });
 ```
 
@@ -10237,17 +10181,17 @@ server.listen(port, hostname, () => {
 ```mermaid
 flowchart LR
     subgraph "Application Layer"
-        A[server.listen Success] -->|Callback Invoked| B[console.log Statement]
+        A[app.run Success] -->|Callback Invoked| B[print Statement]
     end
     
-    subgraph "Node.js Runtime"
+    subgraph "Python Runtime"
         B -->|Write to| C[stdout Stream]
     end
     
     subgraph "Output Destinations"
         C -->|Default| D[Terminal/Console Display]
         C -->|Redirect| E[Log File via Shell Redirection]
-        C -->|Capture| F[Process Manager PM2/systemd]
+        C -->|Capture| F[Process Manager Gunicorn/systemd]
     end
     
     subgraph "Not Logged - By Design"
@@ -10276,8 +10220,8 @@ flowchart LR
 |-----------|--------|-----------|
 | No Request Tracing | Cannot debug individual request failures | Manual curl testing, packet capture (tcpdump) |
 | No Performance Analysis | Cannot identify latency trends or bottlenecks | External benchmarking tools (Apache Bench, wrk) |
-| No Error Diagnostics | Exceptions only visible via Node.js stderr | Terminal monitoring, process manager logs |
-| No Audit Trail | No historical record of operations | Shell redirection: `node server.js > server.log 2>&1` |
+| No Error Diagnostics | Exceptions only visible via Python stderr | Terminal monitoring, process manager logs |
+| No Audit Trail | No historical record of operations | Shell redirection: `python app.py > server.log 2>&1` |
 
 ### 6.5.3 Metrics and Performance Monitoring
 
@@ -10317,7 +10261,7 @@ Despite the absence of active monitoring, the system has defined Service Level O
 | Resource Type | Metric | Value | Monitoring Method |
 |--------------|--------|-------|------------------|
 | Memory - Runtime Baseline | RSS (Resident Set Size) | ~10-15 MB | OS tools (top, htop, ps) |
-| Memory - Application Code | Code segment size | < 1 KB | File system (ls -lh server.js) |
+| Memory - Application Code | Code segment size | < 1 KB | File system (ls -lh app.py) |
 | Memory - Per Request | Transient allocation | < 100 bytes | Not monitored (garbage collected) |
 | CPU - Startup | CPU time | ~10-30ms total | Not monitored |
 | CPU - Per Request | CPU time | < 0.1ms | Not monitored |
@@ -10345,13 +10289,13 @@ flowchart TD
         C --> C2[Apache Bench - Load Testing]
         C --> C3[wrk - Performance Benchmarking]
         
-        D[Process Management] --> D1[PM2 - Process Monitoring]
+        D[Process Management] --> D1[Gunicorn - Process Monitoring]
         D --> D2[systemd - Service Management]
         D --> D3[supervisord - Process Control]
     end
     
     subgraph "Target System"
-        E[server.js Process<br/>PID: XXXXX<br/>Port: 3000]
+        E[app.py Process<br/>PID: XXXXX<br/>Port: 3000]
     end
     
     A1 --> E
@@ -10378,7 +10322,7 @@ flowchart TD
 **Recommended External Monitoring Workflows**:
 
 1. **Health Verification**: `curl http://127.0.0.1:3000` - expect "Hello, World!" response
-2. **Resource Monitoring**: `top -p $(pgrep -f "node server.js")` - track CPU/memory
+2. **Resource Monitoring**: `top -p $(pgrep -f "python app.py")` - track CPU/memory
 3. **Socket Status**: `netstat -an | grep 3000` - verify listening socket
 4. **Performance Testing**: `ab -n 1000 -c 10 http://127.0.0.1:3000/` - benchmark throughput
 
@@ -10407,7 +10351,7 @@ The system includes no distributed tracing capabilities:
 ```mermaid
 sequenceDiagram
     participant Client
-    participant EventLoop as Node.js Event Loop
+    participant EventLoop as Python Event Loop
     participant Handler as Request Handler
     participant Response as HTTP Response
     
@@ -10452,7 +10396,7 @@ The system provides no dedicated health check or readiness probe endpoints:
 | Kubernetes | Liveness and readiness probes | Pods cannot signal readiness; k8s cannot restart failed pods |
 | Docker Swarm | Health check directive in service config | Cannot verify container functionality |
 | Service Mesh (Istio, Linkerd) | Health endpoint for traffic management | Cannot participate in mesh health tracking |
-| Process Managers (PM2, systemd) | HTTP-based health checks | Can only verify process existence, not responsiveness |
+| Process Managers (Gunicorn, systemd) | HTTP-based health checks | Can only verify process existence, not responsiveness |
 
 #### 6.5.5.3 Alternative Health Verification
 
@@ -10476,7 +10420,7 @@ echo $?  # Should output: 0
 
 ```bash
 # Verify process is running
-pgrep -f "node server.js" && echo "Running" || echo "Not Running"
+pgrep -f "python app.py" && echo "Running" || echo "Not Running"
 
 #### Verify port binding
 netstat -an | grep "127.0.0.1:3000" | grep LISTEN
@@ -10488,17 +10432,13 @@ For external deployment scenarios documented in Section 5.5.3, health check impl
 
 **Required Health Check Endpoint** (not currently implemented):
 
-```javascript
-// server.js modification required for production
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('OK\n');
-    return;
-  }
-  // ... existing Hello World logic
-});
+```python
+# app.py modification required for production
+@app.route('/health')
+def health_check():
+    return Response('OK\n', status=200, mimetype='text/plain')
+
+# ... existing Hello World route unchanged
 ```
 
 **Health Check Response Specification**:
@@ -10542,17 +10482,17 @@ flowchart TD
     C --> B
     
     B -->|Yes| D[Unhandled Exception]
-    D --> E[Node.js Runtime Termination]
+    D --> E[Python Runtime Termination]
     E --> F[Exit Code ≠ 0]
     
     F --> G{Process Manager<br/>Installed?}
     
-    G -->|Yes - PM2| H[PM2 Detects Exit]
+    G -->|Yes - Gunicorn| H[Gunicorn Detects Exit]
     G -->|Yes - systemd| I[systemd Detects Exit]
     G -->|No| J[Silent Failure<br/>No Notification]
     
-    H --> K[PM2 Automatic Restart]
-    H --> L[PM2 Email Notification<br/>- If Configured -]
+    H --> K[Gunicorn Automatic Restart]
+    H --> L[Gunicorn Email Notification<br/>- If Configured -]
     
     I --> M[systemd Restart Policy]
     I --> N[systemd Journal Logging]
@@ -10570,10 +10510,10 @@ flowchart TD
 
 | Failure Type | Detection Method | Notification Mechanism | Recovery |
 |-------------|------------------|----------------------|----------|
-| Port Conflict (EADDRINUSE) | Immediate exit on startup | stderr output only | Manual port change |
+| Port Conflict (OSError) | Immediate exit on startup | stderr output only | Manual port change |
 | Permission Error (EACCES) | Immediate exit on startup | stderr output only | Run with sudo or adjust permissions |
 | Unhandled Exception | Immediate exit | stderr stack trace | Code fix and restart |
-| Process Kill (SIGKILL) | Process manager detects absence | PM2/systemd notification (optional) | Automatic restart if configured |
+| Process Kill (SIGKILL) | Process manager detects absence | Gunicorn/systemd notification (optional) | Automatic restart if configured |
 
 #### 6.5.6.3 Alert Threshold Matrix
 
@@ -10600,10 +10540,10 @@ For production deployment, the following thresholds would be recommended:
 
 | Incident | Detection | Diagnosis | Resolution | Recovery Time |
 |----------|-----------|-----------|------------|---------------|
-| Server Not Responding | curl fails | `ps aux \| grep node` | `node server.js` | < 5 seconds |
-| Port Already In Use | EADDRINUSE error | `netstat -an \| grep 3000` | Kill conflicting process or change port | < 30 seconds |
+| Server Not Responding | curl fails | `ps aux \| grep python` | `python app.py` | < 5 seconds |
+| Port Already In Use | OSError error | `netstat -an \| grep 3000` | Kill conflicting process or change port | < 30 seconds |
 | Process Crash | Terminal exit | Check stderr for stack trace | Fix code, restart | Varies by issue |
-| High CPU Usage | System slowdown | `top -p $(pgrep node)` | Restart server, investigate load source | < 10 seconds |
+| High CPU Usage | System slowdown | `top -p $(pgrep python)` | Restart server, investigate load source | < 10 seconds |
 
 **No Post-Mortem Process**: Given the test fixture scope, formal incident post-mortems are not applicable. Failures are debugging opportunities rather than production incidents.
 
@@ -10669,20 +10609,18 @@ graph TB
 
 **Startup Output**:
 ```
-$ node server.js
+$ python app.py
 Server running at http://127.0.0.1:3000/
 ```
 
 **Error Output** (example - port conflict):
 ```
-$ node server.js
-events.js:377
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
-    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
-    ...
+$ python app.py
+Traceback (most recent call last):
+  File "app.py", line 20, in <module>
+    app.run(host=HOSTNAME, port=PORT, debug=True)
+  ...
+OSError: [Errno 98] Address already in use
 ```
 
 This console-based approach provides immediate feedback suitable for development and testing environments.
@@ -10724,7 +10662,7 @@ flowchart LR
     
     subgraph "Permitted Access"
         F[Local Processes]
-        F --> G[server.js<br/>Port 3000]
+        F --> G[app.py<br/>Port 3000]
     end
     
     A -.->|Blocked| D
@@ -10761,8 +10699,8 @@ flowchart LR
 
 1. **Network Packet Capture**: `sudo tcpdump -i lo port 3000 -w audit.pcap`
 2. **Process Accounting**: `auditd` system for process execution tracking
-3. **Shell History**: Command history captures `node server.js` invocations
-4. **Process Manager Logs**: PM2 or systemd journal records process lifecycle
+3. **Shell History**: Command history captures `python app.py` invocations
+4. **Process Manager Logs**: Gunicorn or systemd journal records process lifecycle
 
 ### 6.5.9 Capacity Planning and Trend Analysis
 
@@ -10800,7 +10738,7 @@ The system collects no time-series data for trend analysis:
 ```mermaid
 graph TB
     subgraph "Current: Single Instance - No Monitoring"
-        A[Single Node.js Process] --> B[Event Loop]
+        A[Single Python Process] --> B[Event Loop]
         B --> C[~1000 req/sec Capacity]
         C --> D[No Capacity Monitoring]
     end
@@ -10837,7 +10775,7 @@ For external deployment scenarios described in Section 5.5.3, comprehensive moni
 
 | Monitoring Category | Current State | Production Requirement | Priority |
 |-------------------|---------------|----------------------|----------|
-| **Structured Logging** | console.log only | Winston/Pino with log levels, JSON format | Critical |
+| **Structured Logging** | print only | Winston/Pino with log levels, JSON format | Critical |
 | **Metrics Export** | None | Prometheus /metrics endpoint | Critical |
 | **Health Checks** | None | /health, /ready, /live endpoints | Critical |
 | **Error Tracking** | stderr only | Sentry or Rollbar integration | High |
@@ -10854,7 +10792,7 @@ For external deployment scenarios described in Section 5.5.3, comprehensive moni
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        A[server.js with Instrumentation]
+        A[app.py with Instrumentation]
         A --> A1[Structured Logging<br/>Winston/Pino]
         A --> A2[Metrics Export<br/>prom-client]
         A --> A3[Tracing<br/>OpenTelemetry]
@@ -10899,33 +10837,36 @@ graph TB
 
 **Code Modifications for Production Observability** (from Section 5.5.3):
 
-**Current code** (14 lines, no monitoring):
-```javascript
-const http = require('http');
-const hostname = '127.0.0.1';
-const port = 3000;
+**Current code** (minimal, no monitoring):
+```python
+from flask import Flask, Response
+import os
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+HOSTNAME = os.getenv('HOST', '127.0.0.1')
+PORT = int(os.getenv('PORT', 3000))
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app = Flask(__name__)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
+
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=True)
 ```
 
 **Production monitoring additions required** (example with structured logging and metrics):
-- Add Winston or Pino for structured logging
-- Add prom-client for Prometheus metrics
-- Implement request/response logging middleware
+- Add structlog or python-json-logger for structured logging
+- Add prometheus-client for Prometheus metrics
+- Implement `@app.before_request` / `@app.after_request` logging middleware
 - Add health check endpoint
-- Implement graceful shutdown handlers
-- Add error event listeners
+- Implement graceful shutdown via signal handlers
+- Add Flask errorhandler decorators
 - Create /metrics endpoint for Prometheus scraping
 
-**Estimated Code Growth**: 14 lines → 100-150 lines (7-10x increase)
+**Estimated Code Growth**: Current minimal → 80-120 lines (5-8x increase)
 
 ### 6.5.11 Monitoring Best Practices for Test Fixtures
 
@@ -10937,7 +10878,7 @@ The minimal monitoring approach implemented in this system aligns with test fixt
 
 | Best Practice | Implementation | Rationale |
 |--------------|----------------|-----------|
-| **Minimal Instrumentation** | Single console.log statement | Reduces test execution overhead |
+| **Minimal Instrumentation** | Single print statement | Reduces test execution overhead |
 | **Predictable Behavior** | Identical responses for all requests | Simplifies test assertion logic |
 | **Fast Startup** | No monitoring initialization overhead | Enables rapid test iteration |
 | **Clear Failure Signals** | Process exit on errors | Immediate test failure visibility |
@@ -10952,10 +10893,10 @@ While the application itself lacks monitoring, CI/CD systems provide observabili
 ```mermaid
 sequenceDiagram
     participant CI as CI/CD System
-    participant Server as node server.js
+    participant Server as python app.py
     participant Test as Test Suite
     
-    CI->>Server: Execute node server.js
+    CI->>Server: Execute python app.py
     Note over Server: stdout: "Server running at..."
     CI->>CI: Capture stdout (monitoring)
     
@@ -10984,7 +10925,7 @@ sequenceDiagram
 
 1. **Startup Verification**:
    ```bash
-   node server.js &
+   python app.py &
    # Verify output: "Server running at http://127.0.0.1:3000/"
    ```
 
@@ -10996,13 +10937,13 @@ sequenceDiagram
 
 3. **Resource Verification**:
    ```bash
-   ps aux | grep "node server.js"
+   ps aux | grep "python app.py"
    # Verify process running, note PID and resource usage
    ```
 
 4. **Shutdown**:
    ```bash
-   kill $(pgrep -f "node server.js")
+   kill $(pgrep -f "python app.py")
    # Verify process terminates cleanly
    ```
 
@@ -11018,7 +10959,7 @@ The system implements **minimal viable monitoring** appropriate for its test fix
 - Startup confirmation logging (F-001-RQ-003 compliant)
 - Fail-fast error handling (immediate visibility)
 - Manual verification workflows (curl, ps, netstat)
-- External tool compatibility (PM2, systemd, tcpdump)
+- External tool compatibility (Gunicorn, systemd, tcpdump)
 
 ❌ **Inadequate for Production Deployment**:
 - No metrics collection or performance monitoring
@@ -11070,8 +11011,8 @@ External deployment would require comprehensive monitoring additions, representi
 
 #### 6.5.13.1 Source Files
 
-- `server.js` (14 lines) - Single console.log statement for startup logging (line 13)
-- `package.json` (11 lines) - Zero dependencies confirming no monitoring libraries
+- `app.py` (14 lines) - Single print statement for startup logging (line 13)
+- `requirements.txt` (11 lines) - Zero dependencies confirming no monitoring libraries
 - `README.md` (2 lines) - Project identification as test fixture for backprop integration
 
 #### 6.5.13.2 Technical Specification Sections
@@ -11094,7 +11035,7 @@ External deployment would require comprehensive monitoring additions, representi
 - **OS Monitoring**: top, htop, ps - Process and resource monitoring
 - **Network Monitoring**: netstat, ss, tcpdump, Wireshark - Socket and packet analysis
 - **Testing Tools**: curl, Apache Bench (ab), wrk - HTTP testing and benchmarking
-- **Process Management**: PM2, systemd, supervisord - Process lifecycle management
+- **Process Management**: Gunicorn, systemd, supervisord - Process lifecycle management
 - **Container Platforms**: Docker, Kubernetes - Containerized deployment (not currently compatible)
 - **Observability Platforms** (not implemented): Prometheus, Grafana, Jaeger, ELK Stack, Sentry
 
@@ -11104,7 +11045,7 @@ External deployment would require comprehensive monitoring additions, representi
 
 **Detailed Testing Strategy is not applicable for this system.**
 
-This technical specification documents a minimal 14-line Node.js HTTP server that serves exclusively as a test harness for backprop integration validation, as identified in `README.md`. The intentionally constrained scope, deterministic behavior, and localhost-only deployment model eliminate the need for comprehensive testing infrastructure typical of production systems.
+This technical specification documents a minimal 14-line Python Flask HTTP server that serves exclusively as a test harness for backprop integration validation, as identified in `README.md`. The intentionally constrained scope, deterministic behavior, and localhost-only deployment model eliminate the need for comprehensive testing infrastructure typical of production systems.
 
 #### 6.6.1.1 System Characteristics Affecting Testing Strategy
 
@@ -11138,21 +11079,21 @@ This minimal approach is **intentional and appropriate** for the test fixture sc
 
 The repository contains no testing infrastructure:
 - ❌ No test files (no `/test`, `/tests`, `/__tests__`, `/spec` directories)
-- ❌ No testing frameworks (Jest, Mocha, Chai, Jasmine, Tap)
+- ❌ No testing frameworks (pytest, unittest, nose2)
 - ❌ No test runners configured
-- ❌ No code coverage tools (Istanbul/NYC, Jest coverage)
+- ❌ No code coverage tools (coverage.py, pytest-cov)
 - ❌ No mocking libraries (Sinon, testdouble)
-- ❌ No assertion libraries beyond Node.js built-ins
+- ❌ No assertion libraries beyond Python standard librarys
 
 **Evidence**: 
-- `package.json` shows zero dependencies and zero devDependencies
-- `package-lock.json` contains only root package entry
-- File system contains only 4 files: `server.js`, `package.json`, `package-lock.json`, `README.md`
+- `requirements.txt` shows zero dependencies and zero devDependencies
+- `.python-version` contains only root package entry
+- File system contains only 4 files: `app.py`, `requirements.txt`, `.python-version`, `README.md`
 
 #### 6.6.2.2 Test Script Configuration Defect
 
-**Current Test Script** (from `package.json` line 7):
-```json
+**Current Test Script** (from `requirements.txt` line 7):
+```python
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1"
 }
@@ -11171,7 +11112,7 @@ The repository contains no testing infrastructure:
 **Current Behavior**:
 - Exits with error code 1 regardless of system state
 - Prevents automated testing pipeline integration
-- Blocks integration with CI/CD systems that execute `npm test`
+- Blocks integration with CI/CD systems that execute `pip test`
 - Generates false-negative test results
 
 **Business Impact**:
@@ -11182,42 +11123,41 @@ The repository contains no testing infrastructure:
 
 #### 6.6.2.3 Test Script Remediation Options
 
-**Option 1: Node.js Built-in Test Runner** (Recommended)
+**Option 1: Python Built-in Test Runner** (Recommended)
 
-Maintains zero-dependency principle while providing functional testing:
+Maintains minimal-dependency principle while providing functional testing:
 
-```javascript
-// test/server.test.js (to be created)
-const test = require('node:test');
-const assert = require('node:assert');
-const http = require('http');
+```python
+# tests/test_app.py (to be created)
+import pytest
+from app import app
 
-test('server startup and response verification', async (t) => {
-  // Import and start server
-  await t.test('returns Hello World with correct status', (t, done) => {
-    http.get('http://127.0.0.1:3000/', (res) => {
-      assert.strictEqual(res.statusCode, 200);
-      assert.strictEqual(res.headers['content-type'], 'text/plain');
-      
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        assert.strictEqual(data, 'Hello, World!\n');
-        done();
-      });
-    }).on('error', done);
-  });
-});
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+def test_hello_world_status(client):
+    response = client.get('/')
+    assert response.status_code == 200
+
+def test_hello_world_content_type(client):
+    response = client.get('/')
+    assert response.content_type == 'text/plain; charset=utf-8'
+
+def test_hello_world_body(client):
+    response = client.get('/')
+    assert response.data == b'Hello, World!\n'
 ```
 
-**Updated package.json**:
-```json
-"scripts": {
-  "test": "node --test test/*.test.js"
-}
+**Test execution command**:
+```bash
+pip install pytest
+pytest tests/
 ```
 
-**Requirements**: Node.js 18+ (built-in test runner availability)
+**Requirements**: Python 3.8+ with pytest or built-in unittest
 
 ---
 
@@ -11225,7 +11165,7 @@ test('server startup and response verification', async (t) => {
 
 Minimal fix that unblocks CI/CD without implementing tests:
 
-```json
+```python
 "scripts": {
   "test": "echo 'No tests specified for minimal test fixture' && exit 0"
 }
@@ -11243,19 +11183,19 @@ Minimal fix that unblocks CI/CD without implementing tests:
 
 ---
 
-**Option 3: Jest Framework** (Not Recommended)
+**Option 3: Full pytest Suite** (Not Recommended for this scope)
 
 Comprehensive testing framework with extensive features:
 
-**Installation**: `npm install --save-dev jest`
+**Installation**: `pip install pytest`
 
-**Contradictions**:
-- Adds 270+ transitive dependencies
-- Violates zero-dependency architectural principle
-- Introduces supply chain security risks
-- Excessive complexity for 14-line codebase
+**Considerations**:
+- Adds pytest and its transitive dependencies
+- May be excessive for minimal codebase
+- Provides powerful fixtures and assertion introspection
+- Industry standard for Python testing
 
-**Recommendation**: **Avoid** for this minimal test fixture
+**Recommendation**: **Optional** for this minimal test fixture; use unittest if zero-dependency is required
 
 ### 6.6.3 Testing Approach
 
@@ -11263,23 +11203,23 @@ Comprehensive testing framework with extensive features:
 
 ##### 6.6.3.1.1 Unit Testing Framework
 
-**Recommended Framework**: Node.js Built-in Test Runner (Node.js 18+)
+**Recommended Framework**: Python unittest (Built-in)
 
 **Rationale**:
-- Zero installation overhead (native Node.js capability)
-- Maintains architectural zero-dependency principle
+- Zero installation overhead (Python standard library)
+- Maintains minimal dependency principle
 - Sufficient for simple functional verification
 - No supply chain security concerns
-- Modern test runner with async/await support
+- Built-in test discovery and assertion methods
 
 **Alternative Frameworks** (require dependencies):
 
 | Framework | Suitability | Dependency Count | Installation |
 |-----------|-------------|------------------|--------------|
-| Jest | High features | 270+ packages | `npm install --save-dev jest` |
-| Mocha + Chai | Medium | 50+ packages | `npm install --save-dev mocha chai` |
-| Tap | Medium | 100+ packages | `npm install --save-dev tap` |
-| AVA | Medium | 80+ packages | `npm install --save-dev ava` |
+| pytest | High features | ~10 packages | `pip install pytest` |
+| nose2 | Medium | ~5 packages | `pip install nose2` |
+| ward | Low | ~15 packages | `pip install ward` |
+| Robot Framework | Low (overkill) | ~20 packages | `pip install robotframework` |
 
 ##### 6.6.3.1.2 Test Organization Structure
 
@@ -11287,38 +11227,43 @@ Comprehensive testing framework with extensive features:
 
 ```
 hello_world_Oct_2025/
-├── server.js                 # Application code (14 lines)
-├── test/
-│   ├── server.test.js       # Functional tests
-│   └── fixtures/            # Test data (if needed)
-├── package.json
+├── app.py                 # Application code
+├── tests/
+│   ├── test_app.py          # Functional tests
+│   └── conftest.py          # Test fixtures (if needed)
+├── requirements.txt
 └── README.md
 ```
 
 **Test Naming Convention**:
-- Test files: `*.test.js` or `*.spec.js`
-- Test suites: Descriptive names matching tested functionality
-- Test cases: Use descriptive strings with Given-When-Then pattern
+- Test files: `test_*.py` or `*_test.py`
+- Test classes: Descriptive names matching tested functionality
+- Test functions: Use descriptive names with given_when_then pattern
 
 **Example Test Structure**:
-```javascript
-// test/server.test.js
-const test = require('node:test');
-const assert = require('node:assert');
+```python
+# tests/test_app.py
+import pytest
+from app import app
 
-test('HTTP Server Functional Tests', async (t) => {
-  await t.test('Given server is running, When GET /, Then returns 200 OK', async () => {
-    // Test implementation
-  });
-  
-  await t.test('Given server is running, When GET /, Then returns Hello World', async () => {
-    // Test implementation
-  });
-  
-  await t.test('Given server is running, When GET /, Then Content-Type is text/plain', async () => {
-    // Test implementation
-  });
-});
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+class TestHTTPServer:
+    def test_given_server_running_when_get_root_then_returns_200(self, client):
+        response = client.get('/')
+        assert response.status_code == 200
+
+    def test_given_server_running_when_get_root_then_returns_hello_world(self, client):
+        response = client.get('/')
+        assert response.data == b'Hello, World!\n'
+
+    def test_given_server_running_when_get_root_then_content_type_is_text_plain(self, client):
+        response = client.get('/')
+        assert 'text/plain' in response.content_type
 ```
 
 ##### 6.6.3.1.3 Mocking Strategy
@@ -11354,13 +11299,13 @@ test('HTTP Server Functional Tests', async (t) => {
 | Statement Coverage | 100% | Minimal statement count |
 
 **Coverage Tools** (optional, not recommended):
-- Node.js built-in coverage: `node --test --experimental-test-coverage`
+- Python standard library coverage: `python -m pytest --experimental-test-coverage`
 - Istanbul/NYC: Requires additional dependency
-- Jest coverage: Requires Jest framework
+- pytest-cov: Requires pytest framework
 
 ##### 6.6.3.1.5 Test Naming Conventions
 
-**Test File Naming**: `[feature].test.js` or `[feature].spec.js`
+**Test File Naming**: `test_[feature].py` or `test_[feature].py`
 
 **Test Case Naming**: Given-When-Then pattern or descriptive sentences
 
@@ -11384,10 +11329,10 @@ test('HTTP Server Functional Tests', async (t) => {
 **Test Data Approach**: Hard-coded expected values in test assertions
 
 **Example**:
-```javascript
-const expectedBody = 'Hello, World!\n';
-const expectedStatusCode = 200;
-const expectedContentType = 'text/plain';
+```python
+EXPECTED_BODY = b'Hello, World!\n'
+EXPECTED_STATUS_CODE = 200
+EXPECTED_CONTENT_TYPE = 'text/plain'
 ```
 
 #### 6.6.3.2 Integration Testing
@@ -11404,7 +11349,7 @@ const expectedContentType = 'text/plain';
 - Single-component architecture (no components to integrate)
 
 **Architecture Simplification**: The entire system consists of:
-1. Node.js HTTP module (built-in, tested by Node.js project)
+1. Python Flask HTTP module (built-in, tested by Python project)
 2. Single request handler function (14 lines)
 3. No external boundaries to test
 
@@ -11433,7 +11378,7 @@ const expectedContentType = 'text/plain';
 
 **Step 1: Start Server**
 ```bash
-node server.js &
+python app.py &
 ```
 
 **Expected Output**:
@@ -11451,12 +11396,12 @@ Server running at http://127.0.0.1:3000/
 
 **Step 2: Process Verification**
 ```bash
-ps aux | grep "node server.js"
+ps aux | grep "python app.py"
 ```
 
 **Expected Output**:
 ```
-user  12345  0.0  0.1  XXXXX  10240  ?  S  10:00  0:00  node server.js
+user  12345  0.0  0.1  XXXXX  10240  ?  S  10:00  0:00  python app.py
 ```
 
 **Verification Criteria**:
@@ -11478,7 +11423,7 @@ ss -tlnp | grep 3000
 
 **Expected Output**:
 ```
-tcp  0  0  127.0.0.1:3000  0.0.0.0:*  LISTEN  12345/node
+tcp  0  0  127.0.0.1:3000  0.0.0.0:*  LISTEN  12345/python
 ```
 
 **Verification Criteria**:
@@ -11591,15 +11536,15 @@ wrk -t2 -c10 -d10s http://127.0.0.1:3000/
 **Test 1: Port Conflict**
 ```bash
 # Start first instance
-node server.js &
+python app.py &
 
 #### Attempt second instance (should fail)
-node server.js
+python app.py
 ```
 
 **Expected Failure**:
 ```
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
+Error: listen OSError: Address already in use 127.0.0.1:3000
 ```
 
 **Verification**: Process exits with non-zero code, error message displayed
@@ -11609,8 +11554,8 @@ Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
 **Test 2: Permission Restriction**
 ```bash
 # Attempt binding to privileged port (requires sudo)
-# Modify server.js port to 80, then:
-node server.js
+# Modify app.py port to 80, then:
+python app.py
 ```
 
 **Expected Failure** (if not running as root):
@@ -11623,7 +11568,7 @@ Error: listen EACCES: permission denied 0.0.0.0:80
 **Test 3: Graceful Shutdown**
 ```bash
 # Start server and get PID
-node server.js &
+python app.py &
 PID=$!
 
 #### Send SIGTERM
@@ -11640,7 +11585,7 @@ ps -p $PID
 **Memory Monitoring**
 ```bash
 # Get process ID
-PID=$(pgrep -f "node server.js")
+PID=$(pgrep -f "python app.py")
 
 #### Monitor memory usage
 top -p $PID
@@ -11681,8 +11626,8 @@ top -p $PID
 
 | Blocker | Impact | Priority | Resolution |
 |---------|--------|----------|------------|
-| Failing test script (F-006-RQ-001) | npm test exits with code 1 | High | Implement Option 1 or 2 from section 6.6.2.3 |
-| No automated tests | Cannot verify functionality | High | Implement Node.js test runner tests |
+| Failing test script (F-006-RQ-001) | pip test exits with code 1 | High | Implement Option 1 or 2 from section 6.6.2.3 |
+| No automated tests | Cannot verify functionality | High | Implement Python test runner tests |
 | No build verification | Cannot validate deployment | Medium | Add server startup verification |
 
 **CI Configuration Files**: None present
@@ -11712,26 +11657,26 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20.x]
+        python-version: [16.x, 18.x, 20.x]
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          python-version: ${{ matrix.python-version }}
       
       - name: Install dependencies
-        run: npm ci
+        run: pip ci
       
       - name: Run test suite
-        run: npm test
+        run: pip test
       
       - name: Start server
         run: |
-          node server.js &
+          python app.py &
           SERVER_PID=$!
           echo "Server PID: $SERVER_PID"
           sleep 2
@@ -11757,7 +11702,7 @@ jobs:
 
 **Prerequisites for CI/CD Implementation**:
 1. Fix failing test script (F-006-RQ-001)
-2. Create test suite with Node.js test runner
+2. Create test suite with Python test runner
 3. Add server startup script with timeout handling
 4. Configure exit code handling for background processes
 
@@ -11774,7 +11719,7 @@ jobs:
 | **Manual** | Developer-initiated | Full test suite + custom test selection |
 
 **Test Execution Matrix** (recommended):
-- Node.js versions: 16.x, 18.x, 20.x
+- Python versions: 16.x, 18.x, 20.x
 - Operating systems: ubuntu-latest, macos-latest, windows-latest
 - Concurrent execution across all combinations
 
@@ -11886,7 +11831,7 @@ ok 1 - HTTP Server Functional Tests
 
 **Coverage Collection** (optional):
 ```bash
-node --test --experimental-test-coverage test/*.test.js
+python -m pytest --cov=app tests/
 ```
 
 #### 6.6.6.2 Test Success Rate Requirements
@@ -11909,9 +11854,9 @@ node --test --experimental-test-coverage test/*.test.js
 
 | Operation | Target SLA | Measurement Method | Status |
 |-----------|-----------|-------------------|--------|
-| Server Initialization | < 50ms | Time to `server.listen()` completion | ✅ Met (~10-30ms) |
+| Server Initialization | < 50ms | Time to `app.run()` completion | ✅ Met (~10-30ms) |
 | Network Binding | < 10ms | Time for socket binding | ✅ Met (~5-8ms) |
-| Startup Logging | < 100ms after binding | Time to console.log output | ✅ Met (~1-5ms) |
+| Startup Logging | < 100ms after binding | Time to print output | ✅ Met (~1-5ms) |
 | Request Processing | < 1ms | Handler execution time | ✅ Met (~0.03-0.5ms) |
 | Response Generation | < 1ms | Response write time | ✅ Met (~0.03ms) |
 
@@ -11963,7 +11908,7 @@ node --test --experimental-test-coverage test/*.test.js
 | Component | Requirement | Verification Command |
 |-----------|-------------|---------------------|
 | **Operating System** | Linux, macOS, Windows | `uname -a` or `ver` |
-| **Node.js Runtime** | ≥ 16.x (recommend 18.x or 20.x) | `node --version` |
+| **Python Runtime** | ≥ 16.x (recommend 18.x or 20.x) | `python --version` |
 | **Available Memory** | ≥ 100 MB free | `free -m` or `vm_stat` |
 | **Network** | Localhost loopback functional | `ping 127.0.0.1` |
 | **Port 3000** | Available (not in use) | `netstat -an \| grep 3000` |
@@ -11974,14 +11919,14 @@ node --test --experimental-test-coverage test/*.test.js
 git clone https://github.com/lakshya-blitzy/hello_world_Oct_2025.git
 cd hello_world_Oct_2025
 
-#### Verify Node.js installation
-node --version  # Should output: v16.x or higher
+#### Verify Python installation
+python --version  # Should output: v16.x or higher
 
 #### Install dependencies (none required)
-npm install  # Completes instantly (zero dependencies)
+pip install -r requirements.txt  # Completes instantly (zero dependencies)
 
 #### Verify environment
-node server.js &
+python app.py &
 curl http://127.0.0.1:3000/
 ```
 
@@ -11991,7 +11936,7 @@ curl http://127.0.0.1:3000/
 
 **GitHub Actions Runner Environment**:
 - OS: ubuntu-latest (Ubuntu 22.04 LTS)
-- Node.js: 16.x, 18.x, 20.x (matrix testing)
+- Python: 16.x, 18.x, 20.x (matrix testing)
 - Memory: 7 GB available
 - CPU: 2-core Intel Xeon
 - Network: Full internet access (not required for this system)
@@ -12012,7 +11957,7 @@ flowchart TB
     subgraph "Local Development Environment"
         A[Developer Machine]
         A1[Operating System<br/>Linux/macOS/Windows]
-        A2[Node.js Runtime<br/>v16.x - v20.x]
+        A2[Python Runtime<br/>v16.x - v20.x]
         A3[Localhost Loopback<br/>127.0.0.1]
         
         A --> A1
@@ -12024,7 +11969,7 @@ flowchart TB
         B[Terminal Session 1:<br/>Server Process]
         C[Terminal Session 2:<br/>Test Execution]
         
-        B -->|node server.js| D[Server Process<br/>PID: XXXXX]
+        B -->|python app.py| D[Server Process<br/>PID: XXXXX]
         D -->|Binds to| E[TCP Socket<br/>127.0.0.1:3000]
         
         C -->|curl/tests| E
@@ -12034,7 +11979,7 @@ flowchart TB
     subgraph "CI/CD Environment - Future"
         F[GitHub Actions Runner]
         F1[Ubuntu Container]
-        F2[Node.js Setup Action]
+        F2[Python Setup Action]
         F3[Test Suite Execution]
         
         F --> F1
@@ -12058,9 +12003,9 @@ flowchart TB
 **Provisioning Time**: < 1 minute
 
 **Provisioning Steps**:
-1. Install Node.js runtime (if not present): ~30 seconds
+1. Install Python runtime (if not present): ~30 seconds
 2. Clone repository: ~5 seconds
-3. Run npm install: < 1 second (zero dependencies)
+3. Run pip install -r requirements.txt: < 1 second (zero dependencies)
 4. Start server: < 100ms
 5. Verify functionality: < 1 second
 
@@ -12080,7 +12025,7 @@ flowchart TD
     
     CheckEnv -->|No| EnvSetup[Setup Test Environment]
     CheckEnv -->|Yes| StartServer
-    EnvSetup --> StartServer[Start Server Process<br/>node server.js &]
+    EnvSetup --> StartServer[Start Server Process<br/>python app.py &]
     
     StartServer --> WaitBind[Wait for Socket Binding<br/>Max 2 seconds]
     
@@ -12136,12 +12081,12 @@ flowchart TD
 #### 6.6.8.2 Test Execution Sequence
 
 **Phase 1: Environment Preparation** (< 5 seconds)
-1. Verify Node.js runtime availability
+1. Verify Python runtime availability
 2. Check port 3000 availability
 3. Verify test prerequisites installed
 
 **Phase 2: Server Startup** (< 2 seconds)
-1. Execute `node server.js &` in background
+1. Execute `python app.py &` in background
 2. Capture server PID for cleanup
 3. Wait for startup message on stdout
 4. Verify socket binding with netstat
@@ -12175,8 +12120,8 @@ flowchart LR
     end
     
     subgraph "Test Execution Layer"
-        B[Test Framework<br/>Node.js Test Runner]
-        C[HTTP Client<br/>Node.js http.get]
+        B[Test Framework<br/>Python Test Runner]
+        C[HTTP Client<br/>Python http.get]
         
         A -->|Provides Assertions| B
         B -->|Initiates Request| C
@@ -12289,7 +12234,7 @@ netstat -an | grep 3000  # Should show 127.0.0.1:3000, not 0.0.0.0:3000
 
 **Verification**:
 ```bash
-npm audit  # Should report: "found 0 vulnerabilities"
+pip audit  # Should report: "found 0 vulnerabilities"
 ```
 
 **No Security Patches Required**: No third-party dependencies to patch or update
@@ -12336,7 +12281,7 @@ The system implements a **minimal manual testing approach** appropriate for its 
 
 | Phase | Testing Enhancements | Estimated Effort | Priority |
 |-------|---------------------|------------------|----------|
-| **Phase 1 - Basic Automation** | Fix test script, implement Node.js test runner tests | 2-4 hours | High |
+| **Phase 1 - Basic Automation** | Fix test script, implement Python test runner tests | 2-4 hours | High |
 | **Phase 2 - CI/CD Integration** | GitHub Actions workflow, automated verification | 4-6 hours | High |
 | **Phase 3 - Comprehensive Testing** | Performance tests, load testing, edge cases | 1-2 days | Medium |
 | **Phase 4 - Quality Gates** | Coverage enforcement, quality metrics, reporting | 2-3 days | Low |
@@ -12379,9 +12324,9 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 
 #### 6.6.12.1 Source Files Examined
 
-- `server.js` (14 lines) - Application code with no test infrastructure
-- `package.json` (11 lines) - Failing test script (line 7), zero dependencies
-- `package-lock.json` - Confirms zero external dependencies
+- `app.py` (14 lines) - Application code with no test infrastructure
+- `requirements.txt` (11 lines) - Failing test script (line 7), zero dependencies
+- `.python-version` - Confirms zero external dependencies
 - `README.md` (2 lines) - Project identification as "test project for backprop integration"
 
 #### 6.6.12.2 Technical Specification Cross-References
@@ -12389,8 +12334,8 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 - **Section 1.1**: Executive Summary - Test fixture scope and purpose
 - **Section 2.2**: Functional Requirements - Requirement F-006-RQ-001 (test script defect)
 - **Section 2.4**: Implementation Considerations - Testing constraints, known defects
-- **Section 3.1**: Programming Languages - Node.js version requirements
-- **Section 3.2**: Frameworks & Libraries - Testing framework recommendations (Node.js built-in test runner)
+- **Section 3.1**: Programming Languages - Python version requirements
+- **Section 3.2**: Frameworks & Libraries - Testing framework recommendations (Python standard library test runner)
 - **Section 3.6**: Development & Deployment - CI/CD blockers, test infrastructure gaps
 - **Section 4.6**: Performance and Timing Specifications - Performance SLA targets
 - **Section 5.1**: High-Level Architecture - Architectural principles affecting testing
@@ -12403,9 +12348,9 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 - **curl** - HTTP client for functional testing
 - **Apache Bench (ab)** - Load testing and performance benchmarking
 - **wrk** - Modern HTTP benchmarking tool
-- **Node.js Test Runner** - Built-in test framework (Node.js 18+)
-- **Jest** - Popular testing framework (not recommended for this system)
-- **Mocha** - Flexible testing framework (not recommended for this system)
+- **Python Test Runner** - Built-in test framework (Python 18+)
+- **pytest** - Popular Python testing framework (optional for this system)
+- **unittest** - Python built-in testing framework (recommended for zero-dependency approach)
 
 **Monitoring Tools Referenced**:
 - **netstat** / **ss** - Network socket monitoring
@@ -12420,10 +12365,10 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 
 #### 6.6.12.4 Related Documentation
 
-- **Node.js Test Runner Documentation**: https://nodejs.org/api/test.html
-- **Node.js HTTP Module Documentation**: https://nodejs.org/api/http.html
+- **Python Test Runner Documentation**: https://docs.python.org/3/library/unittest.html
+- **Python Flask HTTP Module Documentation**: https://flask.palletsprojects.com/
 - **GitHub Actions Documentation**: https://docs.github.com/en/actions
-- **npm Scripts Documentation**: https://docs.npmjs.com/cli/v9/using-npm/scripts
+- **pip Scripts Documentation**: https://docs.pipjs.com/cli/v9/using-pip/scripts
 
 ## 6.1 Core Services Architecture
 
@@ -12441,10 +12386,10 @@ The fundamental characteristics of a Core Services Architecture are systematical
 
 | Service Architecture Requirement | System Implementation | Evidence Source |
 |----------------------------------|----------------------|-----------------|
-| **Multiple Service Components** | Single 14-line JavaScript file | `server.js` (lines 1-14) |
+| **Multiple Service Components** | Single 14-line Python file | `app.py` (lines 1-14) |
 | **Service Boundaries** | No modular separation or boundaries | Section 5.1.2.1 Component Inventory |
 | **Inter-Service Communication** | Zero external integrations | Section 5.1.4 External Integration Points |
-| **Distributed Deployment** | Localhost-only binding prevents distribution | `server.js` line 3: `hostname = '127.0.0.1'` |
+| **Distributed Deployment** | Localhost-only binding prevents distribution | `app.py` line 3: `hostname = '127.0.0.1'` |
 | **Service Discovery** | No registration or discovery mechanisms | Section 5.5 Deployment Architecture |
 | **Load Balancing** | Single instance, no balancing infrastructure | Section 5.4.4.3 Scalability Characteristics |
 | **Resilience Patterns** | Zero error handling, fail-fast design | Section 5.4.2 Error Handling Strategy |
@@ -12456,20 +12401,20 @@ The fundamental characteristics of a Core Services Architecture are systematical
 
 According to the Technical Specification Section 5.1.1.1, this system implements a **"Minimalist Single-File Server Architecture"** with the following defining characteristics:
 
-**Architectural Style**: Event-driven synchronous request-response server leveraging the Node.js event loop for concurrency without explicit asynchronous operations.
+**Architectural Style**: Event-driven synchronous request-response server leveraging the WSGI server for concurrency without explicit asynchronous operations.
 
 **Key Design Attributes**:
 
 1. **Single Component Design**
-   - Entire application contained in one file (`server.js`)
+   - Entire application contained in one file (`app.py`)
    - No module boundaries or service separation
-   - Direct use of Node.js built-in `http` module
+   - Direct use of Flask micro-framework
    - Zero framework abstractions
 
 2. **Zero-Dependency Profile**
-   - No external npm packages (verified in `package.json`)
+   - No external pip packages (verified in `requirements.txt`)
    - No service mesh, message queues, or distributed system libraries
-   - Only Node.js built-in modules utilized
+   - Only Python packages and Flask utilized
    - Eliminates supply chain complexity entirely
 
 3. **Hard-Coded Configuration**
@@ -12501,10 +12446,10 @@ The system's architecture is optimized for its documented purpose as a **test pr
 ```mermaid
 graph TB
     subgraph "Monolithic Single-Component Architecture"
-        A[server.js<br/>14 Lines of Code]
+        A[app.py<br/>14 Lines of Code]
         
-        subgraph "Node.js Built-in Modules"
-            B[http module]
+        subgraph "Python Packages"
+            B[Flask framework]
             C[console module]
         end
         
@@ -12513,7 +12458,7 @@ graph TB
     end
     
     subgraph "Runtime Environment"
-        D[Node.js V8 Engine]
+        D[Python CPython Engine]
         E[Event Loop]
         F[TCP/IP Stack]
     end
@@ -12543,9 +12488,9 @@ graph TB
 
 The most fundamental blocker to service architecture is the **localhost-only network binding**:
 
-**Implementation Detail** (`server.js` line 3):
-```javascript
-const hostname = '127.0.0.1';
+**Implementation Detail** (`app.py` line 3):
+```python
+HOSTNAME = os.getenv('HOST', '127.0.0.1');
 ```
 
 **Impact on Service Architecture**:
@@ -12559,9 +12504,9 @@ According to Section 5.5.2.2, even containerized deployment with Docker fails be
 
 #### 6.1.3.2 Configuration Immutability
 
-**Hard-Coded Port Assignment** (`server.js` line 4):
-```javascript
-const port = 3000;
+**Hard-Coded Port Assignment** (`app.py` line 4):
+```python
+PORT = int(os.getenv('PORT', 3000));
 ```
 
 **Service Architecture Implications**:
@@ -12756,45 +12701,38 @@ To transform this system into a service-oriented architecture, the following mod
 
 | File | Line | Current Code | Required Change |
 |------|------|--------------|-----------------|
-| `server.js` | 3 | `const hostname = '127.0.0.1';` | `const hostname = process.env.HOST \|\| '0.0.0.0';` |
-| `server.js` | 4 | `const port = 3000;` | `const port = process.env.PORT \|\| 3000;` |
+| `app.py` | - | `HOSTNAME = os.getenv('HOST', '127.0.0.1')` | `HOSTNAME = os.getenv('HOST', '0.0.0.0')` |
+| `app.py` | - | `PORT = int(os.getenv('PORT', 3000))` | Already supports environment override |
 
 **Priority 2: Service Lifecycle Management**:
 
-```javascript
-// Required health check endpoint
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
-    res.statusCode = 200;
-    res.end('OK\n');
-    return;
-  }
-  // ... existing response logic
-});
+```python
+# Required health check endpoint
+@app.route('/health')
+def health_check():
+    return Response('OK\n', status=200, mimetype='text/plain')
 
-// Required graceful shutdown
-const gracefulShutdown = () => {
-  console.log('SIGTERM received, shutting down gracefully...');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
-};
+# Required graceful shutdown
+import signal
+import sys
 
-process.on('SIGTERM', gracefulShutdown);
-process.on('SIGINT', gracefulShutdown);
+def graceful_shutdown(signum, frame):
+    print('Signal received, shutting down gracefully...')
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, graceful_shutdown)
+signal.signal(signal.SIGINT, graceful_shutdown)
 ```
 
 **Priority 3: Error Handling Infrastructure**:
 
-```javascript
-server.on('error', (err) => {
-  console.error('Server error:', err);
-  if (err.code === 'EADDRINUSE') {
-    console.error(`Port ${port} already in use`);
-  }
-  process.exit(1);
-});
+```python
+@app.errorhandler(Exception)
+def handle_error(error):
+    print(f'Server error: {error}', file=sys.stderr)
+    if isinstance(error, OSError) and 'Address already in use' in str(error):
+        print(f'Port {PORT} already in use', file=sys.stderr)
+    return Response('Internal Server Error\n', status=500, mimetype='text/plain')
 ```
 
 #### 6.1.5.2 Infrastructure Requirements
@@ -12818,7 +12756,7 @@ server.on('error', (err) => {
 
 - **Code Changes**: 10-20x increase in code size (from 14 lines to 140-280 lines minimum)
 - **Infrastructure**: 6-8 additional system components (load balancer, service registry, monitoring, etc.)
-- **Dependencies**: 5-15 npm packages (express, consul, winston, prom-client, etc.)
+- **Dependencies**: 5-15 pip packages (gunicorn, python-consul, structlog, prometheus-client, etc.)
 - **Configuration**: Environment-based configuration files, secrets management
 - **Testing**: Integration tests, health check validation, load testing infrastructure
 - **Documentation**: API specifications, runbooks, deployment guides
@@ -12842,7 +12780,7 @@ The current architecture represents a valid and intentional design pattern for i
 - Integration test scenarios requiring HTTP endpoints
 - CI/CD pipeline validation
 - Development environment local testing
-- Educational demonstrations of Node.js basics
+- Educational demonstrations of Python basics
 - Baseline performance benchmarking
 
 #### 6.1.6.2 When Service Architecture Would Be Appropriate
@@ -12913,7 +12851,7 @@ The absence of service architecture is a deliberate design choice, not a deficie
 - Reference Section 5.5.3 for required modifications
 - Implement network binding to 0.0.0.0
 - Add health check endpoints and graceful shutdown
-- Deploy process manager (PM2, systemd) for automatic restart
+- Deploy process manager (Gunicorn, systemd) for automatic restart
 - Consider containerization only after binding fixes
 
 **If Service Architecture Required**:
@@ -12927,8 +12865,8 @@ The absence of service architecture is a deliberate design choice, not a deficie
 
 #### 6.1.8.1 Source Code Files
 
-- `server.js` - Complete application implementation (lines 1-14), network binding configuration (lines 3-4), server creation and request handling (lines 6-13)
-- `package.json` - Project metadata confirming zero dependencies
+- `app.py` - Complete application implementation (lines 1-14), network binding configuration (lines 3-4), server creation and request handling (lines 6-13)
+- `requirements.txt` - Project metadata confirming zero dependencies
 - `README.md` - Project purpose documentation identifying test fixture scope
 
 #### 6.1.8.2 Technical Specification Sections
@@ -12968,7 +12906,7 @@ This determination is based on comprehensive analysis of the system's architectu
 
 #### 6.2.1.2 System Architecture Classification
 
-According to Section 5.1.1.1 of the Technical Specification, this system implements a **"Minimalist Single-File Server Architecture"** characterized by a 14-line implementation in `server.js` that leverages only Node.js built-in modules. The architectural style is event-driven synchronous request-response with no data persistence layer, session management, or state storage mechanisms.
+According to Section 5.1.1.1 of the Technical Specification, this system implements a **"Minimalist Single-File Server Architecture"** characterized by a 14-line implementation in `app.py` that leverages only Python packages and Flask. The architectural style is event-driven synchronous request-response with no data persistence layer, session management, or state storage mechanisms.
 
 The system's documented purpose as a "test project for backprop integration" (per `README.md`) establishes its scope as a test fixture rather than a production application requiring data storage capabilities. As detailed in Section 1.2.1.1, this positioning prioritizes "behavioral predictability outweighs functionality richness," making stateless operation an intentional design constraint.
 
@@ -12976,10 +12914,10 @@ The system's documented purpose as a "test project for backprop integration" (pe
 
 #### 6.2.2.1 Source Code Analysis
 
-**Complete Implementation Review (`server.js`, 14 lines):**
+**Complete Implementation Review (`app.py`, 14 lines):**
 
 The entire application implementation reveals zero database-related code:
-- **Line 1**: Imports only Node.js built-in `http` module (no database client libraries)
+- **Line 1**: Imports only Flask micro-framework (no database client libraries)
 - **Lines 3-4**: Defines hard-coded configuration constants (hostname and port only)
 - **Lines 6-11**: Implements request handler returning static "Hello, World!\n" string literal
 - **Lines 13-14**: Starts HTTP server and logs confirmation message
@@ -13000,30 +12938,30 @@ This deterministic response model requires zero data fetching, transformation, o
 
 #### 6.2.2.2 Dependency Analysis
 
-**Zero External Dependencies (`package.json`):**
+**Zero External Dependencies (`requirements.txt`):**
 
 Examination of the project's dependency manifest confirms the absence of any database-related packages:
 
 | Dependency Category | Status | Evidence |
 |---------------------|--------|----------|
-| **dependencies** | Empty object `{}` | `package.json` lines 10-11 |
-| **devDependencies** | Not defined | Absent from `package.json` |
-| **peerDependencies** | Not defined | Absent from `package.json` |
+| **dependencies** | Empty object `{}` | `requirements.txt` lines 10-11 |
+| **devDependencies** | Not defined | Absent from `requirements.txt` |
+| **peerDependencies** | Not defined | Absent from `requirements.txt` |
 
 **Database Clients Not Present:**
 
 | Database Type | Common Client Libraries | Status in This Project |
 |---------------|------------------------|------------------------|
 | **MongoDB** | mongodb, mongoose | ❌ Not installed |
-| **PostgreSQL** | pg, pg-promise, node-postgres | ❌ Not installed |
+| **PostgreSQL** | pg, pg-promise, psycopg2 | ❌ Not installed |
 | **MySQL** | mysql, mysql2 | ❌ Not installed |
 | **Redis** | redis, ioredis | ❌ Not installed |
 | **SQLite** | sqlite3, better-sqlite3 | ❌ Not installed |
 | **ORMs** | Sequelize, TypeORM, Prisma | ❌ Not installed |
 
-**Verification via `package-lock.json`:**
+**Verification via `.python-version`:**
 
-The dependency lockfile (lockfileVersion 3) contains only a single entry for the root package with no nested dependencies, confirming zero external packages of any kind are installed or required.
+The dependency lockfile (Python 3.12.3) contains only a single entry for the root package with no nested dependencies, confirming zero external packages of any kind are installed or required.
 
 #### 6.2.2.3 Configuration Analysis
 
@@ -13042,7 +12980,7 @@ The system's configuration surface consists exclusively of two hard-coded consta
 - ❌ No query timeout or retry configuration
 - ❌ No environment variable references for configuration injection
 
-The absence of environment-based configuration infrastructure (no `process.env` references in `server.js`) further confirms the system's intentional isolation from external data sources.
+The absence of environment-based configuration infrastructure (no `os.environ` references in `app.py`) further confirms the system's intentional isolation from external data sources.
 
 ### 6.2.3 Comprehensive Storage Technology Assessment
 
@@ -13089,7 +13027,7 @@ The server sets only `Content-Type: text/plain`, omitting all cache-control dire
 Section 3.5.1.3 documents that the application does not write to the file system:
 
 **Write Operations: None**
-- ❌ No log file writing (only console.log to stdout)
+- ❌ No log file writing (only print to stdout)
 - ❌ No file uploads or multipart form handling
 - ❌ No temporary file creation
 - ❌ No configuration file updates or persistence
@@ -13097,12 +13035,12 @@ Section 3.5.1.3 documents that the application does not write to the file system
 - ❌ No image/asset storage
 
 **Read Operations: Implicit Code Execution Only**
-- Node.js runtime reads `server.js` at process startup (implicit via `node server.js` command)
+- Python runtime reads `app.py` at process startup (implicit via `python app.py` command)
 - No explicit `fs` module usage in application code
 - No file path references or directory operations
 
 **File Handle Usage:**
-Limited to standard streams (stdout for console.log output), with no user-controlled file operations.
+Limited to standard streams (stdout for print output), with no user-controlled file operations.
 
 #### 6.2.3.4 Cloud Storage Services Not Integrated
 
@@ -13115,7 +13053,7 @@ Section 3.5.1.4 confirms zero cloud storage integration:
 | **Google Cloud** | Cloud Storage, Firestore, Cloud SQL | ❌ No GCP SDK installed |
 | **Other** | Dropbox, Box, Backblaze B2 | ❌ No third-party storage SDKs |
 
-**Verification**: Analysis of `package.json` confirms no cloud provider SDK dependencies (`aws-sdk`, `@azure/storage-blob`, `@google-cloud/storage`, etc.).
+**Verification**: Analysis of `requirements.txt` confirms no cloud provider SDK dependencies (`aws-sdk`, `@azure/storage-blob`, `@google-cloud/storage`, etc.).
 
 **Rationale**: No data storage requirements exist for a stateless test fixture that returns identical responses for all requests.
 
@@ -13141,7 +13079,7 @@ Section 3.5.1.5 documents the system's **"Fully Stateless"** architecture patter
 Input (any HTTP request) → Static Response ("Hello, World!\n")
 ```
 
-Every request is processed independently with zero reference to previous requests, user identity, or stored application state. The response is generated exclusively from a hardcoded string literal (`res.end('Hello, World!\n')`), requiring no data retrieval operations.
+Every request is processed independently with zero reference to previous requests, user identity, or stored application state. The response is generated exclusively from a hardcoded string literal (`return Response('Hello, World!\n', status=200, mimetype='text/plain')`), requiring no data retrieval operations.
 
 #### 6.2.4.2 Benefits of Stateless Design
 
@@ -13190,7 +13128,7 @@ The absence of data persistence eliminates testing complexity:
 - ❌ No migration rollback procedures for test environments
 - ❌ No test data factories or ORM relationships to maintain
 
-Test environment setup reduces to starting the Node.js process.
+Test environment setup reduces to starting the Python process.
 
 #### 6.2.4.3 Trade-offs and Limitations
 
@@ -13226,7 +13164,7 @@ The system has no database schema to migrate, version, or evolve:
 
 **Code Deployment Model:**
 
-Changes to system behavior require modifying `server.js` and restarting the Node.js process. No data migration coordination is needed because no data exists to migrate.
+Changes to system behavior require modifying `app.py` and restarting the Python process. No data migration coordination is needed because no data exists to migrate.
 
 #### 6.2.5.2 Versioning Strategy: Not Applicable
 
@@ -13274,8 +13212,8 @@ The system executes zero database queries, eliminating optimization concerns:
 **Response Generation Performance:**
 
 The only "data access" operation is retrieving a string literal from memory:
-```javascript
-res.end('Hello, World!\n');
+```python
+return Response('Hello, World!\n', status=200, mimetype='text/plain');
 ```
 
 This operation completes in <0.001ms, requiring no optimization.
@@ -13303,7 +13241,7 @@ The system maintains no database connections to pool:
 
 **HTTP Connection Handling:**
 
-The Node.js HTTP server manages TCP connections to clients, but this is HTTP protocol handling, not database connection pooling.
+The Python Flask HTTP server manages TCP connections to clients, but this is HTTP protocol handling, not database connection pooling.
 
 #### 6.2.6.4 Read/Write Splitting: Not Applicable
 
@@ -13386,7 +13324,7 @@ The system does not audit data access or modifications:
 
 **Request Logging:**
 
-The system logs only server startup via `console.log('Server running at http://127.0.0.1:3000/')` with no per-request logging, query logging, or data access auditing.
+The system logs only server startup via `print('Server running at http://127.0.0.1:3000/')` with no per-request logging, query logging, or data access auditing.
 
 #### 6.2.7.4 Access Controls: Not Applicable
 
@@ -13419,7 +13357,7 @@ The absence of database infrastructure is an **intentional and appropriate archi
 | **Test Fixture Purpose** | Test fixtures should be simple and predictable | ✅ Stateless design supports test reliability |
 | **Backprop Integration Validation** | Integration tests need consistent HTTP endpoints | ✅ Static responses enable deterministic testing |
 | **Zero-Dependency Profile** | Database clients add dependencies and complexity | ✅ No database = no database client dependencies |
-| **Minimal Environmental Setup** | Databases require installation and configuration | ✅ Node.js only requirement simplifies test environments |
+| **Minimal Environmental Setup** | Databases require installation and configuration | ✅ Python only requirement simplifies test environments |
 | **Rapid Startup** | Database connections add initialization overhead | ✅ No connection establishment = <160ms startup |
 
 **When Database Would Be Required:**
@@ -13438,10 +13376,10 @@ None of these requirements exist within the current scope, making database infra
 
 **In-Memory State Management:**
 
-The system could theoretically maintain state in JavaScript variables:
-```javascript
-const requestCounts = new Map();
-// Track requests per client IP
+The system could theoretically maintain state in Python variables:
+```python
+request_counts = {}
+# Track requests per client IP
 ```
 
 This approach is **intentionally not implemented** because:
@@ -13453,22 +13391,22 @@ This approach is **intentionally not implemented** because:
 **File-Based Persistence:**
 
 The system could write data to local files:
-```javascript
-const fs = require('fs');
-fs.appendFileSync('requests.log', requestData);
+```python
+with open('requests.log', 'a') as f:
+    f.write(request_data)
 ```
 
 This approach is **not pursued** because:
 - Requires file system write permissions (complicates deployment)
 - Creates I/O overhead affecting performance
 - Necessitates log rotation and disk space management
-- Violates zero-dependency and stateless design principles
+- Violates minimal-dependency and stateless design principles
 
 **Environment Variable Configuration:**
 
 The system could load database configuration from environment variables:
-```javascript
-const dbUrl = process.env.DATABASE_URL;
+```python
+db_url = os.getenv('DATABASE_URL')
 ```
 
 This approach is **not implemented** because:
@@ -13482,8 +13420,8 @@ This approach is **not implemented** because:
 
 Database Design is definitively **not applicable** to this system based on comprehensive evidence:
 
-1. **Source Code Analysis**: Zero database imports, queries, or data persistence operations in `server.js`
-2. **Dependency Verification**: No database client libraries installed (confirmed via `package.json` and `package-lock.json`)
+1. **Source Code Analysis**: Zero database imports, queries, or data persistence operations in `app.py`
+2. **Dependency Verification**: No database client libraries installed (confirmed via `requirements.txt` and `.python-version`)
 3. **Configuration Review**: No database connection strings, credentials, or configuration present
 4. **Technical Specification Documentation**: Section 3.5 explicitly documents zero database usage across all categories
 5. **Architectural Pattern**: Fully stateless design documented in Section 3.5.1.5 eliminates persistence requirements
@@ -13515,8 +13453,8 @@ Should system requirements evolve to need data storage (unlikely given test fixt
 2. **Select Minimal Database**: Choose simplest appropriate technology (e.g., SQLite for local development, Redis for caching)
 3. **Preserve Determinism**: Ensure data persistence does not introduce non-deterministic test behavior
 4. **Document Schema**: Create formal schema design with entity relationships and indexing strategy
-5. **Implement Migrations**: Use database migration tool (e.g., Flyway, Liquibase, node-db-migrate)
-6. **Update Dependencies**: Add database client library to `package.json`
+5. **Implement Migrations**: Use database migration tool (e.g., Flyway, Liquibase, alembic)
+6. **Update Dependencies**: Add database client library to `requirements.txt`
 7. **Revise Architecture Documentation**: Update Technical Specification Section 3.5 and 6.2
 
 #### 6.2.9.4 Final Assessment
@@ -13527,9 +13465,9 @@ The absence of database design in this system is not a deficiency but a **delibe
 
 #### 6.2.10.1 Source Code Files Examined
 
-- **`server.js`** (14 lines) - Complete application implementation analyzed for database imports, queries, and data persistence operations. Lines 1-14 confirmed zero database-related code.
-- **`package.json`** (11 lines) - Project metadata and dependency manifest. Lines 10-11 confirmed empty dependencies object, verifying no database client libraries installed.
-- **`package-lock.json`** - Dependency lockfile (lockfileVersion 3) confirmed zero external packages including database clients.
+- **`app.py`** (14 lines) - Complete application implementation analyzed for database imports, queries, and data persistence operations. Lines 1-14 confirmed zero database-related code.
+- **`requirements.txt`** (11 lines) - Project metadata and dependency manifest. Lines 10-11 confirmed empty dependencies object, verifying no database client libraries installed.
+- **`.python-version`** - Dependency lockfile (Python 3.12.3) confirmed zero external packages including database clients.
 - **`README.md`** - Project documentation establishing system purpose as "test project for backprop integration," contextualizing stateless design decision.
 
 #### 6.2.10.2 Technical Specification Sections Referenced
@@ -13553,7 +13491,7 @@ The absence of database design in this system is not a deficiency but a **delibe
 
 **Integration Architecture is not applicable for this system.**
 
-This system is a minimalist test fixture consisting of 14 lines of Node.js code designed exclusively for "backprop integration testing." The architecture contains zero external integrations, zero API frameworks, zero message processing capabilities, and zero third-party service connections. The system implements a basic HTTP server bound exclusively to localhost (127.0.0.1:3000), preventing any external network access or integration possibilities.
+This system is a minimalist test fixture consisting of 14 lines of Python code designed exclusively for "backprop integration testing." The architecture contains zero external integrations, zero API frameworks, zero message processing capabilities, and zero third-party service connections. The system implements a basic HTTP server bound exclusively to localhost (127.0.0.1:3000), preventing any external network access or integration possibilities.
 
 ### 6.3.2 System Characterization
 
@@ -13573,16 +13511,16 @@ The system's technical implementation demonstrates intentional minimalism:
 
 | Characteristic | Implementation | Integration Impact |
 |---------------|----------------|-------------------|
-| **Codebase Size** | 14 lines (server.js) | No complexity for integration layers |
-| **Dependencies** | Zero npm packages | No third-party integration SDKs |
+| **Codebase Size** | 14 lines (app.py) | No complexity for integration layers |
+| **Dependencies** | Zero pip packages | No third-party integration SDKs |
 | **Network Binding** | 127.0.0.1:3000 only | Prevents external system access |
 | **Response Model** | Static "Hello, World!" | No data exchange requirements |
 
-The complete absence of dependencies in `package.json` confirms the zero-integration architecture—there are no frameworks, no HTTP clients, no message queue libraries, no database drivers, and no external service SDKs.
+The complete absence of dependencies in `requirements.txt` confirms the zero-integration architecture—there are no frameworks, no HTTP clients, no message queue libraries, no database drivers, and no external service SDKs.
 
 #### 6.3.2.3 Architectural Constraints
 
-The localhost-only network binding (`server.js` lines 3-4) creates fundamental constraints that prevent integration architecture:
+The localhost-only network binding (`app.py` lines 3-4) creates fundamental constraints that prevent integration architecture:
 
 1. **External Service Communication**: Impossible—server cannot make outbound HTTP requests
 2. **Cloud Deployment**: Blocked—external networks cannot reach localhost-bound services
@@ -13606,7 +13544,7 @@ The system lacks all components of modern API design:
 | **Rate Limiting** | None | Unlimited requests accepted |
 
 **Request Handling Behavior**:
-The universal request handler (`server.js` lines 6-10) accepts all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD) and all URL paths without differentiation. Every request receives an identical HTTP 200 response with "Hello, World!\n" as the body, regardless of method, path, headers, query parameters, or request body content.
+The universal request handler (`app.py` lines 6-10) accepts all HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD) and all URL paths without differentiation. Every request receives an identical HTTP 200 response with "Hello, World!\n" as the body, regardless of method, path, headers, query parameters, or request body content.
 
 **Versioning Approach**: Not implemented—the static response model eliminates the need for API versioning.
 
@@ -13618,11 +13556,11 @@ The universal request handler (`server.js` lines 6-10) accepts all HTTP methods 
 
 The system implements zero message processing capabilities:
 
-**Event Processing Patterns**: The only event processing occurs through Node.js built-in HTTP events (connection, request, close). No custom event emitters, no event-driven architecture patterns, and no publish-subscribe mechanisms exist beyond basic HTTP request handling.
+**Event Processing Patterns**: The only event processing occurs through Python standard library HTTP events (connection, request, close). No custom event emitters, no event-driven architecture patterns, and no publish-subscribe mechanisms exist beyond basic HTTP request handling.
 
-**Message Queue Architecture**: Zero message queues are implemented. The `package.json` dependency analysis confirms no message queue libraries such as:
+**Message Queue Architecture**: Zero message queues are implemented. The `requirements.txt` dependency analysis confirms no message queue libraries such as:
 - RabbitMQ (amqplib)
-- Apache Kafka (kafkajs, node-rdkafka)
+- Apache Kafka (kafkajs, confluent-kafka)
 - Redis Pub/Sub (redis, ioredis)
 - AWS SQS (aws-sdk)
 - Azure Service Bus (azure/service-bus)
@@ -13631,7 +13569,7 @@ The system implements zero message processing capabilities:
 
 **Batch Processing Flows**: Not applicable—the system performs synchronous request-response operations only, with no batch operations, bulk processing logic, or job queue management.
 
-**Error Handling Strategy**: The system implements **zero explicit error handling**. The `server.js` file contains no try-catch blocks, no error event listeners, and no error recovery logic. All errors propagate as unhandled exceptions to the Node.js runtime, causing immediate process termination with non-zero exit codes. This fail-fast approach provides visibility for testing scenarios but makes the system unsuitable for production message processing.
+**Error Handling Strategy**: The system implements **zero explicit error handling**. The `app.py` file contains no try-catch blocks, no error event listeners, and no error recovery logic. All errors propagate as unhandled exceptions to the Python runtime, causing immediate process termination with non-zero exit codes. This fail-fast approach provides visibility for testing scenarios but makes the system unsuitable for production message processing.
 
 #### 6.3.3.3 External Systems
 
@@ -13650,7 +13588,7 @@ The system maintains complete isolation from external systems:
 
 **Legacy System Interfaces**: Not applicable—the system has no database connections (no SQL or NoSQL drivers), no file system integrations beyond startup, and no legacy protocol support (SOAP, EDI, FTP, etc.).
 
-**API Gateway Configuration**: Not implemented—the system uses Node.js's native `http.createServer()` for direct HTTP server implementation without gateway frameworks such as Kong, Tyk, or AWS API Gateway.
+**API Gateway Configuration**: Not implemented—the system uses Python's native `Flask(__name__)` for direct HTTP server implementation without gateway frameworks such as Kong, Tyk, or AWS API Gateway.
 
 **External Service Contracts**: None exist—the system operates in complete isolation without service-level agreements (SLAs), external dependencies, or integration contracts with third-party providers.
 
@@ -13682,13 +13620,13 @@ The localhost-only binding creates a physical network isolation boundary. The se
 The system implements a minimal synchronous request-response pattern:
 
 **Processing Characteristics**:
-- **Execution Model**: Synchronous (non-blocking I/O via Node.js event loop)
+- **Execution Model**: Synchronous (non-blocking I/O via WSGI server)
 - **Response Time**: < 1 millisecond for static response generation
 - **Data Transformation**: Zero—no parsing, validation, or transformation logic
 - **Business Logic**: Zero—no conditional logic or computation
 - **State Management**: Fully stateless—no session management, no request correlation
 
-**Request Handler Implementation** (`server.js` lines 6-10):
+**Request Handler Implementation** (`app.py` lines 6-10):
 ```
 Incoming Request → Set Status 200 → Set Content-Type: text/plain → Return "Hello, World!\n"
 ```
@@ -13781,8 +13719,8 @@ graph LR
     end
     
     subgraph "Application Layer"
-        SERVER[Node.js HTTP Server<br/>Port 3000]
-        PROCESS[server.js Process]
+        SERVER[Python Flask HTTP Server<br/>Port 3000]
+        PROCESS[app.py Process]
     end
     
     INTERNET -.->|BLOCKED| NIC
@@ -13823,7 +13761,7 @@ The architectural decisions optimize for **test reliability** rather than produc
 
 The system's integration limitations are **intentional design choices** rather than implementation gaps:
 
-**Zero-Dependency Architecture**: The absence of npm dependencies eliminates integration complexity, version conflicts, security vulnerabilities in third-party libraries, and supply chain risks. For a test fixture requiring only basic HTTP response capabilities, external libraries provide no value.
+**Zero-Dependency Architecture**: The absence of pip dependencies eliminates integration complexity, version conflicts, security vulnerabilities in third-party libraries, and supply chain risks. For a test fixture requiring only basic HTTP response capabilities, external libraries provide no value.
 
 **Localhost-Only Binding**: The 127.0.0.1 binding ensures:
 - **Network isolation**: Impossible for external systems to access or integrate
@@ -13845,8 +13783,8 @@ If integration architecture were required, the following changes would be necess
 
 | Integration Requirement | Required Changes |
 |------------------------|-----------------|
-| **External API Access** | Change binding to 0.0.0.0, add HTTP client library (axios, node-fetch) |
-| **Authentication** | Add passport.js, jsonwebtoken, or OAuth library |
+| **External API Access** | Change binding to 0.0.0.0, add HTTP client library (axios, requests) |
+| **Authentication** | Add Flask-Login, PyJWT, or OAuth library |
 | **Message Processing** | Add RabbitMQ (amqplib) or Kafka (kafkajs) dependencies |
 | **Database Integration** | Add database driver (pg, mysql2, mongodb) |
 
@@ -13856,8 +13794,8 @@ The current architecture's minimal design would require fundamental restructurin
 
 #### 6.3.7.1 Source Files Examined
 
-- `server.js` - Complete HTTP server implementation (14 lines), request handler logic, network binding configuration
-- `package.json` - Dependency analysis confirming zero npm packages and zero integration libraries
+- `app.py` - Complete HTTP server implementation (14 lines), request handler logic, network binding configuration
+- `requirements.txt` - Dependency analysis confirming zero pip packages and zero integration libraries
 - `README.md` - System purpose documentation identifying test fixture classification
 
 #### 6.3.7.2 Technical Specification Cross-References
@@ -13874,7 +13812,7 @@ The current architecture's minimal design would require fundamental restructurin
 
 #### 6.3.7.3 Directory Structure Analysis
 
-- **Root Directory (`/`)** - Complete exploration of project structure (4 files total: server.js, package.json, package-lock.json, README.md) confirming no integration-related modules or subdirectories
+- **Root Directory (`/`)** - Complete exploration of project structure (4 files total: app.py, requirements.txt, .python-version, README.md) confirming no integration-related modules or subdirectories
 
 ## 6.4 Security Architecture
 
@@ -13882,7 +13820,7 @@ The current architecture's minimal design would require fundamental restructurin
 
 **Detailed Security Architecture is not applicable for this system.**
 
-This system is a minimal test fixture consisting of 14 lines of Node.js code designed exclusively for backprop integration testing. The architecture implements zero traditional security controls (authentication, authorization, encryption, or input validation). Instead, security is achieved through a single fundamental mechanism: **network isolation via localhost-only binding**.
+This system is a minimal test fixture consisting of 14 lines of Python code designed exclusively for backprop integration testing. The architecture implements zero traditional security controls (authentication, authorization, encryption, or input validation). Instead, security is achieved through a single fundamental mechanism: **network isolation via localhost-only binding**.
 
 The system's classification as a test harness rather than a production application fundamentally shapes its security approach. As documented in `README.md`, this is a "test project for backprop integration" where predictability and simplicity take precedence over security infrastructure. The intentionally constrained scope eliminates the need for sophisticated security architecture while maintaining adequate protection for its intended use case.
 
@@ -13907,7 +13845,7 @@ This section documents:
 4. **Threat Analysis**: Risk assessment for the localhost-only deployment model
 5. **Production Requirements**: Mandatory security enhancements if external deployment were pursued
 
-This section does **not** document non-existent security features. All statements are grounded in the actual implementation found in `server.js`, `package.json`, and confirmed by analysis of the complete repository structure.
+This section does **not** document non-existent security features. All statements are grounded in the actual implementation found in `app.py`, `requirements.txt`, and confirmed by analysis of the complete repository structure.
 
 ### 6.4.2 Primary Security Mechanism: Network Isolation
 
@@ -13915,13 +13853,13 @@ This section does **not** document non-existent security features. All statement
 
 The system's primary and only security control is **network isolation** achieved through exclusive binding to the IPv4 loopback interface:
 
-**Network Binding Configuration** (`server.js` lines 3-4, 12):
+**Network Binding Configuration** (`app.py` lines 3-4, 12):
 - **Hostname**: `127.0.0.1` (IPv4 localhost loopback address)
 - **Port**: `3000` (hard-coded)
 - **Interface**: IPv4 loopback only
 - **External Access**: Architecturally impossible
 
-The `server.listen(port, hostname, callback)` call restricts the HTTP server to accept connections exclusively from the local machine. This configuration creates a security boundary enforced by the operating system kernel rather than application-level access controls.
+The `app.run(host=HOSTNAME, port=PORT)` call restricts the HTTP server to accept connections exclusively from the local machine. This configuration creates a security boundary enforced by the operating system kernel rather than application-level access controls.
 
 #### 6.4.2.2 Network Security Boundary Diagram
 
@@ -13948,7 +13886,7 @@ graph TB
         I[Local curl/wget<br/>Command Line Clients]
         J[Local Web Browsers<br/>Same Machine]
         K[Test Scripts<br/>Integration Tests]
-        L[Node.js Processes<br/>Same Host]
+        L[Python Processes<br/>Same Host]
     end
     
     A -.->|BLOCKED by OS Kernel| E
@@ -13965,7 +13903,7 @@ graph TB
     K --> H
     L --> H
     
-    H --> M[server.js<br/>Request Handler<br/>Static Response]
+    H --> M[app.py<br/>Request Handler<br/>Static Response]
     
     style A fill:#ffe1e1,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
     style B fill:#ffe1e1,stroke:#333,stroke-width:2px,stroke-dasharray: 5 5
@@ -13986,7 +13924,7 @@ The diagram illustrates the multi-layered security enforcement:
 
 3. **Security Boundary**: The 127.0.0.1:3000 binding creates an impenetrable barrier. Only processes running on the same physical machine can establish TCP connections to the HTTP server.
 
-4. **Permitted Zone**: Local test clients, web browsers, integration test scripts, and other Node.js processes on the same host have unrestricted access.
+4. **Permitted Zone**: Local test clients, web browsers, integration test scripts, and other Python processes on the same host have unrestricted access.
 
 #### 6.4.2.3 Security Guarantees Provided
 
@@ -14024,8 +13962,8 @@ The system implements zero authentication mechanisms:
 **Justification**: The localhost-only binding eliminates the need for authentication. Only processes on the same machine can connect, and the operating system provides process-level isolation. Authentication would add complexity without security benefit for the test fixture use case.
 
 **Evidence from Codebase**:
-- `server.js` lines 6-10: Request handler accepts all requests without credential verification
-- `package.json`: Zero authentication libraries (no passport.js, jsonwebtoken, auth0, etc.)
+- `app.py` lines 6-10: Request handler accepts all requests without credential verification
+- `requirements.txt`: Zero authentication libraries (no Flask-Login, PyJWT, Authlib, etc.)
 - Technical Specification Section 3.4: Confirms "No external authentication services integrated"
 
 **Explicitly Excluded** (Technical Specification Section 1.3.2.1):
@@ -14050,13 +13988,12 @@ The system implements zero authorization controls:
 | **Policy Enforcement Points** | ❌ Not Implemented | No policy engines or authorization middleware |
 | **Audit Logging** | ❌ Not Implemented | No request logging or audit trails |
 
-**Request Handler Behavior** (`server.js` lines 6-10):
-```javascript
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+**Request Handler Behavior** (`app.py`):
+```python
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
 ```
 
 The request handler accepts all HTTP requests without:
@@ -14081,7 +14018,7 @@ Traditional data protection controls are not applicable due to the system's stat
 
 | Encryption Requirement | Implementation | Status |
 |-----------------------|----------------|--------|
-| **Transport Layer Security (TLS)** | Plain HTTP (http module, not https) | ❌ No encryption in transit |
+| **Transport Layer Security (TLS)** | Plain HTTP (Flask framework, not https) | ❌ No encryption in transit |
 | **HTTPS Certificate Management** | None | ❌ No certificate store |
 | **Encryption in Transit** | None | ✅ Acceptable - localhost traffic stays in memory |
 | **Encryption at Rest** | Not applicable | ✅ No persistent data storage |
@@ -14089,7 +14026,7 @@ Traditional data protection controls are not applicable due to the system's stat
 **Localhost Encryption Analysis**: 
 Traffic between local clients and the HTTP server on 127.0.0.1 never traverses physical network interfaces. Data packets remain in operating system memory, making network sniffing attacks impossible. The absence of TLS encryption is acceptable because localhost communication cannot be intercepted by external attackers.
 
-**Evidence**: `server.js` line 1 uses `require('http')` instead of `require('https')`, confirming plain HTTP implementation.
+**Evidence**: `app.py` line 1 uses `from flask import Flask, Response` instead of `# HTTPS not used`, confirming plain HTTP implementation.
 
 ##### 6.4.3.3.2 Key Management
 
@@ -14102,7 +14039,7 @@ No encryption keys, secrets, or credentials are managed:
 - ❌ No environment variable secrets
 - ❌ No key rotation policies
 
-**Evidence**: `package.json` analysis confirms zero dependencies on key management libraries (no aws-secrets-manager, vault, dotenv-vault, etc.).
+**Evidence**: `requirements.txt` analysis confirms zero dependencies on key management libraries (no aws-secrets-manager, vault, dotenv-vault, etc.).
 
 ##### 6.4.3.3.3 Data Masking Rules
 
@@ -14202,7 +14139,7 @@ graph LR
 
 1. **Remote Code Execution (RCE)**: External attackers cannot reach the server due to localhost-only binding. The operating system kernel blocks all non-loopback traffic before it reaches the application layer.
 
-2. **SQL Injection**: No database connection exists. The `package.json` analysis confirms zero database drivers (no pg, mysql2, mongodb, sqlite3, etc.). The static response model eliminates query construction.
+2. **SQL Injection**: No database connection exists. The `requirements.txt` analysis confirms zero database drivers (no pg, mysql2, mongodb, sqlite3, etc.). The static response model eliminates query construction.
 
 3. **Cross-Site Scripting (XSS)**: No dynamic HTML rendering occurs. The response is plain text (`Content-Type: text/plain`) with a static string literal. No user input is reflected in responses.
 
@@ -14261,7 +14198,7 @@ graph LR
 **Attack Steps**:
 1. Malicious process sends HTTP request to `http://127.0.0.1:3000/malicious-payload`
 2. HTTP server accepts connection
-3. Request handler executes (`server.js` lines 7-9)
+3. Request handler executes (`app.py` lines 7-9)
 4. Server returns static `"Hello, World!\n"` response
 5. **Attack fails**: No injection points exist (static response ignores input)
 
@@ -14274,7 +14211,7 @@ graph LR
 **Attack Steps**:
 1. Malicious process spawns loop: `while true; do curl http://127.0.0.1:3000/; done`
 2. HTTP server processes requests synchronously (<1ms each)
-3. Node.js event loop handles concurrent connections
+3. WSGI server handles concurrent connections
 4. CPU and memory consumption increase
 
 **Potential Impact**:
@@ -14322,20 +14259,20 @@ Despite the absence of traditional security controls, the system adheres to fund
 #### 6.4.5.4 Supply Chain Security
 
 **Implementation**:
-- Zero npm dependencies (confirmed in `package.json` and `package-lock.json`)
+- Zero pip dependencies (confirmed in `requirements.txt` and `.python-version`)
 - No third-party code libraries
-- Native Node.js modules only (http module)
+- Native Python modules only (Flask framework)
 - No container base images or external build tools
 
 **Security Benefit**: Eliminates entire class of supply chain attacks. No risk of:
-- Malicious npm packages
+- Malicious pip packages
 - Compromised dependencies
 - Known vulnerabilities in third-party libraries
 - Dependency confusion attacks
 - Typosquatting attacks
 
 **Functional Requirement F-005-RQ-002** explicitly documents this security benefit:
-> "No supply chain vulnerabilities from third-party code. No need for npm audit or dependency security scanning. Eliminates entire class of dependency-related security risks."
+> "No supply chain vulnerabilities from third-party code. No need for pip audit or dependency security scanning. Eliminates entire class of dependency-related security risks."
 
 #### 6.4.5.5 Fail-Fast Security
 
@@ -14343,7 +14280,7 @@ Despite the absence of traditional security controls, the system adheres to fund
 - Zero explicit error handling (no try-catch blocks)
 - Unhandled exceptions cause immediate process termination
 - No graceful degradation that could mask security issues
-- All errors propagate to Node.js runtime with full stack traces
+- All errors propagate to Python runtime with full stack traces
 
 **Security Benefit**: 
 - Prevents undefined security states
@@ -14373,7 +14310,7 @@ Despite the absence of traditional security controls, the system adheres to fund
 | Metric | This System | Typical Web Application |
 |--------|-------------|------------------------|
 | Lines of Code | 14 | 10,000-100,000+ |
-| Dependencies | 0 | 50-500+ npm packages |
+| Dependencies | 0 | 50-500+ pip packages |
 | Security Controls | 1 (network isolation) | 10-20+ (auth, encryption, validation, etc.) |
 | Audit Time | < 5 minutes | Days to weeks |
 
@@ -14393,22 +14330,21 @@ If the system were modified for production deployment (binding to 0.0.0.0 or pub
 
 | Security Feature | Priority | Implementation Approach |
 |-----------------|----------|------------------------|
-| **HTTPS/TLS Encryption** | Critical | Replace `http` module with `https`, obtain TLS certificate from Let's Encrypt or commercial CA |
+| **HTTPS/TLS Encryption** | Critical | Replace Flask framework with `https`, obtain TLS certificate from Let's Encrypt or commercial CA |
 | **Certificate Management** | Critical | Implement automatic certificate renewal, secure private key storage |
 | **TLS Version Enforcement** | High | Disable TLS 1.0/1.1, require TLS 1.2+ with strong cipher suites |
 | **HSTS Header** | High | Add `Strict-Transport-Security: max-age=31536000; includeSubDomains` |
 
 **Implementation Changes Required**:
-```javascript
-const https = require('https');
-const fs = require('fs');
+```python
+# HTTPS via reverse proxy (recommended) or ssl context
+import ssl
 
-const options = {
-  key: fs.readFileSync('/path/to/private-key.pem'),
-  cert: fs.readFileSync('/path/to/certificate.pem')
-};
-
-const server = https.createServer(options, (req, res) => { ... });
+# Option 1: Use reverse proxy (nginx/caddy) for TLS termination
+# Option 2: Direct SSL context
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain('/path/to/certificate.pem', '/path/to/private-key.pem')
+app.run(host=HOSTNAME, port=PORT, ssl_context=context)
 ```
 
 ##### 6.4.6.2.2 Authentication Framework
@@ -14416,21 +14352,17 @@ const server = https.createServer(options, (req, res) => { ... });
 | Security Feature | Priority | Implementation Approach |
 |-----------------|----------|------------------------|
 | **API Key Authentication** | Critical | Implement API key validation in request handler, use environment variables for key storage |
-| **JWT Token Validation** | Critical | Add jsonwebtoken library, validate Bearer tokens, verify signatures |
+| **JWT Token Validation** | Critical | Add PyJWT library, validate Bearer tokens, verify signatures |
 | **OAuth 2.0 Integration** | High | Integrate with identity provider (Auth0, Okta, Azure AD) |
 | **Multi-Factor Authentication** | Moderate | Add time-based one-time password (TOTP) support for sensitive operations |
 
 **Example API Key Implementation**:
-```javascript
-const server = http.createServer((req, res) => {
-  const apiKey = req.headers['x-api-key'];
-  if (apiKey !== process.env.VALID_API_KEY) {
-    res.statusCode = 401;
-    res.end('Unauthorized');
-    return;
-  }
-  // ... existing handler logic
-});
+```python
+@app.before_request
+def check_api_key():
+    api_key = request.headers.get('X-API-Key')
+    if api_key != os.getenv('VALID_API_KEY'):
+        return Response('Unauthorized\n', status=401, mimetype='text/plain')
 ```
 
 ##### 6.4.6.2.3 Authorization System
@@ -14452,11 +14384,11 @@ const server = http.createServer((req, res) => {
 | **CORS Configuration** | Moderate | Whitelist allowed origins, methods, and headers |
 
 **Security Headers Example**:
-```javascript
-res.setHeader('X-Frame-Options', 'DENY');
-res.setHeader('X-Content-Type-Options', 'nosniff');
-res.setHeader('Content-Security-Policy', "default-src 'self'");
-res.setHeader('X-XSS-Protection', '1; mode=block');
+```python
+Response header('X-Frame-Options', 'DENY');
+Response header('X-Content-Type-Options', 'nosniff');
+Response header('Content-Security-Policy', "default-src 'self'");
+Response header('X-XSS-Protection', '1; mode=block');
 ```
 
 ##### 6.4.6.2.5 Infrastructure Security
@@ -14474,7 +14406,7 @@ The security enhancements listed above would require fundamental architectural c
 
 **Code Complexity**: Would increase from 14 lines to 200-500+ lines (15-35x increase)
 
-**Dependency Addition**: Would require 5-15 npm packages:
+**Dependency Addition**: Would require 5-15 pip packages:
 - `https` (built-in)
 - `jsonwebtoken` (JWT validation)
 - `express-rate-limit` (rate limiting)
@@ -14534,9 +14466,9 @@ These accepted risks would be **unacceptable** for production deployment and wou
 
 #### 6.4.8.1 Source Files Examined
 
-- `server.js` (14 lines) - Network binding configuration (lines 3-4, 12), request handler logic (lines 6-10), security analysis of universal request acceptance without authentication or authorization
-- `package.json` (11 lines) - Zero-dependency verification confirming no authentication libraries, no encryption libraries, no security frameworks
-- `package-lock.json` (14 lines) - Lockfile analysis confirming zero resolved dependencies, eliminating supply chain security risks
+- `app.py` (14 lines) - Network binding configuration (lines 3-4, 12), request handler logic (lines 6-10), security analysis of universal request acceptance without authentication or authorization
+- `requirements.txt` (11 lines) - Zero-dependency verification confirming no authentication libraries, no encryption libraries, no security frameworks
+- `.python-version` (14 lines) - Lockfile analysis confirming zero resolved dependencies, eliminating supply chain security risks
 - `README.md` (2 lines) - Project purpose documentation as "test project for backprop integration," establishing test fixture classification
 
 #### 6.4.8.2 Directories Analyzed
@@ -14557,8 +14489,8 @@ These accepted risks would be **unacceptable** for production deployment and wou
 #### 6.4.8.4 Security Analysis Methodology
 
 This security architecture documentation is based on:
-1. **Static Code Analysis**: Complete review of all 14 lines of server.js code
-2. **Dependency Analysis**: Verification of zero npm dependencies in package.json and package-lock.json
+1. **Static Code Analysis**: Complete review of all 14 lines of app.py code
+2. **Dependency Analysis**: Verification of zero pip dependencies in requirements.txt and .python-version
 3. **Network Configuration Review**: Analysis of localhost-only binding implementation
 4. **Threat Modeling**: Assessment of attack vectors and residual risks
 5. **Architecture Analysis**: Evaluation of security properties emerging from design
@@ -14570,10 +14502,10 @@ This security architecture documentation is based on:
 
 **Detailed Monitoring Architecture is not applicable for this system.**
 
-This system is a minimal test fixture consisting of 14 lines of Node.js code, designed exclusively for backprop integration testing as documented in `README.md`. The intentionally constrained scope, localhost-only deployment model (binding to 127.0.0.1), and stateless architecture eliminate the need for traditional monitoring and observability infrastructure found in production systems.
+This system is a minimal test fixture consisting of 14 lines of Python code, designed exclusively for backprop integration testing as documented in `README.md`. The intentionally constrained scope, localhost-only deployment model (binding to 127.0.0.1), and stateless architecture eliminate the need for traditional monitoring and observability infrastructure found in production systems.
 
 The monitoring approach reflects architectural principles documented in Section 5.1.1.2:
-- **Simplicity Over Features**: Single console.log statement vs. comprehensive logging frameworks
+- **Simplicity Over Features**: Single print statement vs. comprehensive logging frameworks
 - **Transparency Over Abstraction**: Direct stdout output vs. structured logging pipelines
 - **Isolation Over Integration**: Manual verification vs. integrated observability platforms
 
@@ -14612,12 +14544,12 @@ This maturity level is **appropriate and intentional** for the test fixture scop
 
 **Logging Architecture**: **Minimal Console-Based Logging**
 
-The system implements a bare-minimum logging strategy with a single log statement in `server.js` (line 13):
+The system implements a bare-minimum logging strategy with a single print statement in `app.py`:
 
-```javascript
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+```python
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=True)
 ```
 
 **Logged Events**:
@@ -14640,17 +14572,17 @@ server.listen(port, hostname, () => {
 ```mermaid
 flowchart LR
     subgraph "Application Layer"
-        A[server.listen Success] -->|Callback Invoked| B[console.log Statement]
+        A[app.run Success] -->|Callback Invoked| B[print Statement]
     end
     
-    subgraph "Node.js Runtime"
+    subgraph "Python Runtime"
         B -->|Write to| C[stdout Stream]
     end
     
     subgraph "Output Destinations"
         C -->|Default| D[Terminal/Console Display]
         C -->|Redirect| E[Log File via Shell Redirection]
-        C -->|Capture| F[Process Manager PM2/systemd]
+        C -->|Capture| F[Process Manager Gunicorn/systemd]
     end
     
     subgraph "Not Logged - By Design"
@@ -14679,8 +14611,8 @@ flowchart LR
 |-----------|--------|-----------|
 | No Request Tracing | Cannot debug individual request failures | Manual curl testing, packet capture (tcpdump) |
 | No Performance Analysis | Cannot identify latency trends or bottlenecks | External benchmarking tools (Apache Bench, wrk) |
-| No Error Diagnostics | Exceptions only visible via Node.js stderr | Terminal monitoring, process manager logs |
-| No Audit Trail | No historical record of operations | Shell redirection: `node server.js > server.log 2>&1` |
+| No Error Diagnostics | Exceptions only visible via Python stderr | Terminal monitoring, process manager logs |
+| No Audit Trail | No historical record of operations | Shell redirection: `python app.py > server.log 2>&1` |
 
 ### 6.5.3 Metrics and Performance Monitoring
 
@@ -14720,7 +14652,7 @@ Despite the absence of active monitoring, the system has defined Service Level O
 | Resource Type | Metric | Value | Monitoring Method |
 |--------------|--------|-------|------------------|
 | Memory - Runtime Baseline | RSS (Resident Set Size) | ~10-15 MB | OS tools (top, htop, ps) |
-| Memory - Application Code | Code segment size | < 1 KB | File system (ls -lh server.js) |
+| Memory - Application Code | Code segment size | < 1 KB | File system (ls -lh app.py) |
 | Memory - Per Request | Transient allocation | < 100 bytes | Not monitored (garbage collected) |
 | CPU - Startup | CPU time | ~10-30ms total | Not monitored |
 | CPU - Per Request | CPU time | < 0.1ms | Not monitored |
@@ -14748,13 +14680,13 @@ flowchart TD
         C --> C2[Apache Bench - Load Testing]
         C --> C3[wrk - Performance Benchmarking]
         
-        D[Process Management] --> D1[PM2 - Process Monitoring]
+        D[Process Management] --> D1[Gunicorn - Process Monitoring]
         D --> D2[systemd - Service Management]
         D --> D3[supervisord - Process Control]
     end
     
     subgraph "Target System"
-        E[server.js Process<br/>PID: XXXXX<br/>Port: 3000]
+        E[app.py Process<br/>PID: XXXXX<br/>Port: 3000]
     end
     
     A1 --> E
@@ -14781,7 +14713,7 @@ flowchart TD
 **Recommended External Monitoring Workflows**:
 
 1. **Health Verification**: `curl http://127.0.0.1:3000` - expect "Hello, World!" response
-2. **Resource Monitoring**: `top -p $(pgrep -f "node server.js")` - track CPU/memory
+2. **Resource Monitoring**: `top -p $(pgrep -f "python app.py")` - track CPU/memory
 3. **Socket Status**: `netstat -an | grep 3000` - verify listening socket
 4. **Performance Testing**: `ab -n 1000 -c 10 http://127.0.0.1:3000/` - benchmark throughput
 
@@ -14810,7 +14742,7 @@ The system includes no distributed tracing capabilities:
 ```mermaid
 sequenceDiagram
     participant Client
-    participant EventLoop as Node.js Event Loop
+    participant EventLoop as Python Event Loop
     participant Handler as Request Handler
     participant Response as HTTP Response
     
@@ -14855,7 +14787,7 @@ The system provides no dedicated health check or readiness probe endpoints:
 | Kubernetes | Liveness and readiness probes | Pods cannot signal readiness; k8s cannot restart failed pods |
 | Docker Swarm | Health check directive in service config | Cannot verify container functionality |
 | Service Mesh (Istio, Linkerd) | Health endpoint for traffic management | Cannot participate in mesh health tracking |
-| Process Managers (PM2, systemd) | HTTP-based health checks | Can only verify process existence, not responsiveness |
+| Process Managers (Gunicorn, systemd) | HTTP-based health checks | Can only verify process existence, not responsiveness |
 
 #### 6.5.5.3 Alternative Health Verification
 
@@ -14879,7 +14811,7 @@ echo $?  # Should output: 0
 
 ```bash
 # Verify process is running
-pgrep -f "node server.js" && echo "Running" || echo "Not Running"
+pgrep -f "python app.py" && echo "Running" || echo "Not Running"
 
 #### Verify port binding
 netstat -an | grep "127.0.0.1:3000" | grep LISTEN
@@ -14891,17 +14823,13 @@ For external deployment scenarios documented in Section 5.5.3, health check impl
 
 **Required Health Check Endpoint** (not currently implemented):
 
-```javascript
-// server.js modification required for production
-const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('OK\n');
-    return;
-  }
-  // ... existing Hello World logic
-});
+```python
+# app.py modification required for production
+@app.route('/health')
+def health_check():
+    return Response('OK\n', status=200, mimetype='text/plain')
+
+# ... existing Hello World route unchanged
 ```
 
 **Health Check Response Specification**:
@@ -14945,17 +14873,17 @@ flowchart TD
     C --> B
     
     B -->|Yes| D[Unhandled Exception]
-    D --> E[Node.js Runtime Termination]
+    D --> E[Python Runtime Termination]
     E --> F[Exit Code ≠ 0]
     
     F --> G{Process Manager<br/>Installed?}
     
-    G -->|Yes - PM2| H[PM2 Detects Exit]
+    G -->|Yes - Gunicorn| H[Gunicorn Detects Exit]
     G -->|Yes - systemd| I[systemd Detects Exit]
     G -->|No| J[Silent Failure<br/>No Notification]
     
-    H --> K[PM2 Automatic Restart]
-    H --> L[PM2 Email Notification<br/>- If Configured -]
+    H --> K[Gunicorn Automatic Restart]
+    H --> L[Gunicorn Email Notification<br/>- If Configured -]
     
     I --> M[systemd Restart Policy]
     I --> N[systemd Journal Logging]
@@ -14973,10 +14901,10 @@ flowchart TD
 
 | Failure Type | Detection Method | Notification Mechanism | Recovery |
 |-------------|------------------|----------------------|----------|
-| Port Conflict (EADDRINUSE) | Immediate exit on startup | stderr output only | Manual port change |
+| Port Conflict (OSError) | Immediate exit on startup | stderr output only | Manual port change |
 | Permission Error (EACCES) | Immediate exit on startup | stderr output only | Run with sudo or adjust permissions |
 | Unhandled Exception | Immediate exit | stderr stack trace | Code fix and restart |
-| Process Kill (SIGKILL) | Process manager detects absence | PM2/systemd notification (optional) | Automatic restart if configured |
+| Process Kill (SIGKILL) | Process manager detects absence | Gunicorn/systemd notification (optional) | Automatic restart if configured |
 
 #### 6.5.6.3 Alert Threshold Matrix
 
@@ -15003,10 +14931,10 @@ For production deployment, the following thresholds would be recommended:
 
 | Incident | Detection | Diagnosis | Resolution | Recovery Time |
 |----------|-----------|-----------|------------|---------------|
-| Server Not Responding | curl fails | `ps aux \| grep node` | `node server.js` | < 5 seconds |
-| Port Already In Use | EADDRINUSE error | `netstat -an \| grep 3000` | Kill conflicting process or change port | < 30 seconds |
+| Server Not Responding | curl fails | `ps aux \| grep python` | `python app.py` | < 5 seconds |
+| Port Already In Use | OSError error | `netstat -an \| grep 3000` | Kill conflicting process or change port | < 30 seconds |
 | Process Crash | Terminal exit | Check stderr for stack trace | Fix code, restart | Varies by issue |
-| High CPU Usage | System slowdown | `top -p $(pgrep node)` | Restart server, investigate load source | < 10 seconds |
+| High CPU Usage | System slowdown | `top -p $(pgrep python)` | Restart server, investigate load source | < 10 seconds |
 
 **No Post-Mortem Process**: Given the test fixture scope, formal incident post-mortems are not applicable. Failures are debugging opportunities rather than production incidents.
 
@@ -15072,20 +15000,18 @@ graph TB
 
 **Startup Output**:
 ```
-$ node server.js
+$ python app.py
 Server running at http://127.0.0.1:3000/
 ```
 
 **Error Output** (example - port conflict):
 ```
-$ node server.js
-events.js:377
-      throw er; // Unhandled 'error' event
-      ^
-
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
-    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
-    ...
+$ python app.py
+Traceback (most recent call last):
+  File "app.py", line 20, in <module>
+    app.run(host=HOSTNAME, port=PORT, debug=True)
+  ...
+OSError: [Errno 98] Address already in use
 ```
 
 This console-based approach provides immediate feedback suitable for development and testing environments.
@@ -15127,7 +15053,7 @@ flowchart LR
     
     subgraph "Permitted Access"
         F[Local Processes]
-        F --> G[server.js<br/>Port 3000]
+        F --> G[app.py<br/>Port 3000]
     end
     
     A -.->|Blocked| D
@@ -15164,8 +15090,8 @@ flowchart LR
 
 1. **Network Packet Capture**: `sudo tcpdump -i lo port 3000 -w audit.pcap`
 2. **Process Accounting**: `auditd` system for process execution tracking
-3. **Shell History**: Command history captures `node server.js` invocations
-4. **Process Manager Logs**: PM2 or systemd journal records process lifecycle
+3. **Shell History**: Command history captures `python app.py` invocations
+4. **Process Manager Logs**: Gunicorn or systemd journal records process lifecycle
 
 ### 6.5.9 Capacity Planning and Trend Analysis
 
@@ -15203,7 +15129,7 @@ The system collects no time-series data for trend analysis:
 ```mermaid
 graph TB
     subgraph "Current: Single Instance - No Monitoring"
-        A[Single Node.js Process] --> B[Event Loop]
+        A[Single Python Process] --> B[Event Loop]
         B --> C[~1000 req/sec Capacity]
         C --> D[No Capacity Monitoring]
     end
@@ -15240,7 +15166,7 @@ For external deployment scenarios described in Section 5.5.3, comprehensive moni
 
 | Monitoring Category | Current State | Production Requirement | Priority |
 |-------------------|---------------|----------------------|----------|
-| **Structured Logging** | console.log only | Winston/Pino with log levels, JSON format | Critical |
+| **Structured Logging** | print only | Winston/Pino with log levels, JSON format | Critical |
 | **Metrics Export** | None | Prometheus /metrics endpoint | Critical |
 | **Health Checks** | None | /health, /ready, /live endpoints | Critical |
 | **Error Tracking** | stderr only | Sentry or Rollbar integration | High |
@@ -15257,7 +15183,7 @@ For external deployment scenarios described in Section 5.5.3, comprehensive moni
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        A[server.js with Instrumentation]
+        A[app.py with Instrumentation]
         A --> A1[Structured Logging<br/>Winston/Pino]
         A --> A2[Metrics Export<br/>prom-client]
         A --> A3[Tracing<br/>OpenTelemetry]
@@ -15302,33 +15228,36 @@ graph TB
 
 **Code Modifications for Production Observability** (from Section 5.5.3):
 
-**Current code** (14 lines, no monitoring):
-```javascript
-const http = require('http');
-const hostname = '127.0.0.1';
-const port = 3000;
+**Current code** (minimal, no monitoring):
+```python
+from flask import Flask, Response
+import os
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+HOSTNAME = os.getenv('HOST', '127.0.0.1')
+PORT = int(os.getenv('PORT', 3000))
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app = Flask(__name__)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def hello_world(path):
+    return Response('Hello, World!\n', status=200, mimetype='text/plain')
+
+if __name__ == '__main__':
+    print(f'Server running at http://{HOSTNAME}:{PORT}/')
+    app.run(host=HOSTNAME, port=PORT, debug=True)
 ```
 
 **Production monitoring additions required** (example with structured logging and metrics):
-- Add Winston or Pino for structured logging
-- Add prom-client for Prometheus metrics
-- Implement request/response logging middleware
+- Add structlog or python-json-logger for structured logging
+- Add prometheus-client for Prometheus metrics
+- Implement `@app.before_request` / `@app.after_request` logging middleware
 - Add health check endpoint
-- Implement graceful shutdown handlers
-- Add error event listeners
+- Implement graceful shutdown via signal handlers
+- Add Flask errorhandler decorators
 - Create /metrics endpoint for Prometheus scraping
 
-**Estimated Code Growth**: 14 lines → 100-150 lines (7-10x increase)
+**Estimated Code Growth**: Current minimal → 80-120 lines (5-8x increase)
 
 ### 6.5.11 Monitoring Best Practices for Test Fixtures
 
@@ -15340,7 +15269,7 @@ The minimal monitoring approach implemented in this system aligns with test fixt
 
 | Best Practice | Implementation | Rationale |
 |--------------|----------------|-----------|
-| **Minimal Instrumentation** | Single console.log statement | Reduces test execution overhead |
+| **Minimal Instrumentation** | Single print statement | Reduces test execution overhead |
 | **Predictable Behavior** | Identical responses for all requests | Simplifies test assertion logic |
 | **Fast Startup** | No monitoring initialization overhead | Enables rapid test iteration |
 | **Clear Failure Signals** | Process exit on errors | Immediate test failure visibility |
@@ -15355,10 +15284,10 @@ While the application itself lacks monitoring, CI/CD systems provide observabili
 ```mermaid
 sequenceDiagram
     participant CI as CI/CD System
-    participant Server as node server.js
+    participant Server as python app.py
     participant Test as Test Suite
     
-    CI->>Server: Execute node server.js
+    CI->>Server: Execute python app.py
     Note over Server: stdout: "Server running at..."
     CI->>CI: Capture stdout (monitoring)
     
@@ -15387,7 +15316,7 @@ sequenceDiagram
 
 1. **Startup Verification**:
    ```bash
-   node server.js &
+   python app.py &
    # Verify output: "Server running at http://127.0.0.1:3000/"
    ```
 
@@ -15399,13 +15328,13 @@ sequenceDiagram
 
 3. **Resource Verification**:
    ```bash
-   ps aux | grep "node server.js"
+   ps aux | grep "python app.py"
    # Verify process running, note PID and resource usage
    ```
 
 4. **Shutdown**:
    ```bash
-   kill $(pgrep -f "node server.js")
+   kill $(pgrep -f "python app.py")
    # Verify process terminates cleanly
    ```
 
@@ -15421,7 +15350,7 @@ The system implements **minimal viable monitoring** appropriate for its test fix
 - Startup confirmation logging (F-001-RQ-003 compliant)
 - Fail-fast error handling (immediate visibility)
 - Manual verification workflows (curl, ps, netstat)
-- External tool compatibility (PM2, systemd, tcpdump)
+- External tool compatibility (Gunicorn, systemd, tcpdump)
 
 ❌ **Inadequate for Production Deployment**:
 - No metrics collection or performance monitoring
@@ -15473,8 +15402,8 @@ External deployment would require comprehensive monitoring additions, representi
 
 #### 6.5.13.1 Source Files
 
-- `server.js` (14 lines) - Single console.log statement for startup logging (line 13)
-- `package.json` (11 lines) - Zero dependencies confirming no monitoring libraries
+- `app.py` (14 lines) - Single print statement for startup logging (line 13)
+- `requirements.txt` (11 lines) - Zero dependencies confirming no monitoring libraries
 - `README.md` (2 lines) - Project identification as test fixture for backprop integration
 
 #### 6.5.13.2 Technical Specification Sections
@@ -15497,7 +15426,7 @@ External deployment would require comprehensive monitoring additions, representi
 - **OS Monitoring**: top, htop, ps - Process and resource monitoring
 - **Network Monitoring**: netstat, ss, tcpdump, Wireshark - Socket and packet analysis
 - **Testing Tools**: curl, Apache Bench (ab), wrk - HTTP testing and benchmarking
-- **Process Management**: PM2, systemd, supervisord - Process lifecycle management
+- **Process Management**: Gunicorn, systemd, supervisord - Process lifecycle management
 - **Container Platforms**: Docker, Kubernetes - Containerized deployment (not currently compatible)
 - **Observability Platforms** (not implemented): Prometheus, Grafana, Jaeger, ELK Stack, Sentry
 
@@ -15507,7 +15436,7 @@ External deployment would require comprehensive monitoring additions, representi
 
 **Detailed Testing Strategy is not applicable for this system.**
 
-This technical specification documents a minimal 14-line Node.js HTTP server that serves exclusively as a test harness for backprop integration validation, as identified in `README.md`. The intentionally constrained scope, deterministic behavior, and localhost-only deployment model eliminate the need for comprehensive testing infrastructure typical of production systems.
+This technical specification documents a minimal 14-line Python Flask HTTP server that serves exclusively as a test harness for backprop integration validation, as identified in `README.md`. The intentionally constrained scope, deterministic behavior, and localhost-only deployment model eliminate the need for comprehensive testing infrastructure typical of production systems.
 
 #### 6.6.1.1 System Characteristics Affecting Testing Strategy
 
@@ -15541,21 +15470,21 @@ This minimal approach is **intentional and appropriate** for the test fixture sc
 
 The repository contains no testing infrastructure:
 - ❌ No test files (no `/test`, `/tests`, `/__tests__`, `/spec` directories)
-- ❌ No testing frameworks (Jest, Mocha, Chai, Jasmine, Tap)
+- ❌ No testing frameworks (pytest, unittest, nose2)
 - ❌ No test runners configured
-- ❌ No code coverage tools (Istanbul/NYC, Jest coverage)
+- ❌ No code coverage tools (coverage.py, pytest-cov)
 - ❌ No mocking libraries (Sinon, testdouble)
-- ❌ No assertion libraries beyond Node.js built-ins
+- ❌ No assertion libraries beyond Python standard librarys
 
 **Evidence**: 
-- `package.json` shows zero dependencies and zero devDependencies
-- `package-lock.json` contains only root package entry
-- File system contains only 4 files: `server.js`, `package.json`, `package-lock.json`, `README.md`
+- `requirements.txt` shows zero dependencies and zero devDependencies
+- `.python-version` contains only root package entry
+- File system contains only 4 files: `app.py`, `requirements.txt`, `.python-version`, `README.md`
 
 #### 6.6.2.2 Test Script Configuration Defect
 
-**Current Test Script** (from `package.json` line 7):
-```json
+**Current Test Script** (from `requirements.txt` line 7):
+```python
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1"
 }
@@ -15574,7 +15503,7 @@ The repository contains no testing infrastructure:
 **Current Behavior**:
 - Exits with error code 1 regardless of system state
 - Prevents automated testing pipeline integration
-- Blocks integration with CI/CD systems that execute `npm test`
+- Blocks integration with CI/CD systems that execute `pip test`
 - Generates false-negative test results
 
 **Business Impact**:
@@ -15585,42 +15514,41 @@ The repository contains no testing infrastructure:
 
 #### 6.6.2.3 Test Script Remediation Options
 
-**Option 1: Node.js Built-in Test Runner** (Recommended)
+**Option 1: Python Built-in Test Runner** (Recommended)
 
-Maintains zero-dependency principle while providing functional testing:
+Maintains minimal-dependency principle while providing functional testing:
 
-```javascript
-// test/server.test.js (to be created)
-const test = require('node:test');
-const assert = require('node:assert');
-const http = require('http');
+```python
+# tests/test_app.py (to be created)
+import pytest
+from app import app
 
-test('server startup and response verification', async (t) => {
-  // Import and start server
-  await t.test('returns Hello World with correct status', (t, done) => {
-    http.get('http://127.0.0.1:3000/', (res) => {
-      assert.strictEqual(res.statusCode, 200);
-      assert.strictEqual(res.headers['content-type'], 'text/plain');
-      
-      let data = '';
-      res.on('data', (chunk) => { data += chunk; });
-      res.on('end', () => {
-        assert.strictEqual(data, 'Hello, World!\n');
-        done();
-      });
-    }).on('error', done);
-  });
-});
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+def test_hello_world_status(client):
+    response = client.get('/')
+    assert response.status_code == 200
+
+def test_hello_world_content_type(client):
+    response = client.get('/')
+    assert response.content_type == 'text/plain; charset=utf-8'
+
+def test_hello_world_body(client):
+    response = client.get('/')
+    assert response.data == b'Hello, World!\n'
 ```
 
-**Updated package.json**:
-```json
-"scripts": {
-  "test": "node --test test/*.test.js"
-}
+**Test execution command**:
+```bash
+pip install pytest
+pytest tests/
 ```
 
-**Requirements**: Node.js 18+ (built-in test runner availability)
+**Requirements**: Python 3.8+ with pytest or built-in unittest
 
 ---
 
@@ -15628,10 +15556,9 @@ test('server startup and response verification', async (t) => {
 
 Minimal fix that unblocks CI/CD without implementing tests:
 
-```json
-"scripts": {
-  "test": "echo 'No tests specified for minimal test fixture' && exit 0"
-}
+```bash
+# Add a simple smoke test script
+echo 'No tests specified for minimal test fixture' && exit 0
 ```
 
 **Advantages**:
@@ -15646,19 +15573,19 @@ Minimal fix that unblocks CI/CD without implementing tests:
 
 ---
 
-**Option 3: Jest Framework** (Not Recommended)
+**Option 3: Full pytest Suite** (Not Recommended for this scope)
 
 Comprehensive testing framework with extensive features:
 
-**Installation**: `npm install --save-dev jest`
+**Installation**: `pip install pytest`
 
-**Contradictions**:
-- Adds 270+ transitive dependencies
-- Violates zero-dependency architectural principle
-- Introduces supply chain security risks
-- Excessive complexity for 14-line codebase
+**Considerations**:
+- Adds pytest and its transitive dependencies
+- May be excessive for minimal codebase
+- Provides powerful fixtures and assertion introspection
+- Industry standard for Python testing
 
-**Recommendation**: **Avoid** for this minimal test fixture
+**Recommendation**: **Optional** for this minimal test fixture; use unittest if zero-dependency is required
 
 ### 6.6.3 Testing Approach
 
@@ -15666,23 +15593,23 @@ Comprehensive testing framework with extensive features:
 
 ##### 6.6.3.1.1 Unit Testing Framework
 
-**Recommended Framework**: Node.js Built-in Test Runner (Node.js 18+)
+**Recommended Framework**: Python unittest (Built-in)
 
 **Rationale**:
-- Zero installation overhead (native Node.js capability)
-- Maintains architectural zero-dependency principle
+- Zero installation overhead (Python standard library)
+- Maintains minimal dependency principle
 - Sufficient for simple functional verification
 - No supply chain security concerns
-- Modern test runner with async/await support
+- Built-in test discovery and assertion methods
 
 **Alternative Frameworks** (require dependencies):
 
 | Framework | Suitability | Dependency Count | Installation |
 |-----------|-------------|------------------|--------------|
-| Jest | High features | 270+ packages | `npm install --save-dev jest` |
-| Mocha + Chai | Medium | 50+ packages | `npm install --save-dev mocha chai` |
-| Tap | Medium | 100+ packages | `npm install --save-dev tap` |
-| AVA | Medium | 80+ packages | `npm install --save-dev ava` |
+| pytest | High features | ~10 packages | `pip install pytest` |
+| nose2 | Medium | ~5 packages | `pip install nose2` |
+| ward | Low | ~15 packages | `pip install ward` |
+| Robot Framework | Low (overkill) | ~20 packages | `pip install robotframework` |
 
 ##### 6.6.3.1.2 Test Organization Structure
 
@@ -15690,38 +15617,43 @@ Comprehensive testing framework with extensive features:
 
 ```
 hello_world_Oct_2025/
-├── server.js                 # Application code (14 lines)
-├── test/
-│   ├── server.test.js       # Functional tests
-│   └── fixtures/            # Test data (if needed)
-├── package.json
+├── app.py                 # Application code
+├── tests/
+│   ├── test_app.py          # Functional tests
+│   └── conftest.py          # Test fixtures (if needed)
+├── requirements.txt
 └── README.md
 ```
 
 **Test Naming Convention**:
-- Test files: `*.test.js` or `*.spec.js`
-- Test suites: Descriptive names matching tested functionality
-- Test cases: Use descriptive strings with Given-When-Then pattern
+- Test files: `test_*.py` or `*_test.py`
+- Test classes: Descriptive names matching tested functionality
+- Test functions: Use descriptive names with given_when_then pattern
 
 **Example Test Structure**:
-```javascript
-// test/server.test.js
-const test = require('node:test');
-const assert = require('node:assert');
+```python
+# tests/test_app.py
+import pytest
+from app import app
 
-test('HTTP Server Functional Tests', async (t) => {
-  await t.test('Given server is running, When GET /, Then returns 200 OK', async () => {
-    // Test implementation
-  });
-  
-  await t.test('Given server is running, When GET /, Then returns Hello World', async () => {
-    // Test implementation
-  });
-  
-  await t.test('Given server is running, When GET /, Then Content-Type is text/plain', async () => {
-    // Test implementation
-  });
-});
+@pytest.fixture
+def client():
+    app.config['TESTING'] = True
+    with app.test_client() as client:
+        yield client
+
+class TestHTTPServer:
+    def test_given_server_running_when_get_root_then_returns_200(self, client):
+        response = client.get('/')
+        assert response.status_code == 200
+
+    def test_given_server_running_when_get_root_then_returns_hello_world(self, client):
+        response = client.get('/')
+        assert response.data == b'Hello, World!\n'
+
+    def test_given_server_running_when_get_root_then_content_type_is_text_plain(self, client):
+        response = client.get('/')
+        assert 'text/plain' in response.content_type
 ```
 
 ##### 6.6.3.1.3 Mocking Strategy
@@ -15757,13 +15689,13 @@ test('HTTP Server Functional Tests', async (t) => {
 | Statement Coverage | 100% | Minimal statement count |
 
 **Coverage Tools** (optional, not recommended):
-- Node.js built-in coverage: `node --test --experimental-test-coverage`
+- Python standard library coverage: `python -m pytest --experimental-test-coverage`
 - Istanbul/NYC: Requires additional dependency
-- Jest coverage: Requires Jest framework
+- pytest-cov: Requires pytest framework
 
 ##### 6.6.3.1.5 Test Naming Conventions
 
-**Test File Naming**: `[feature].test.js` or `[feature].spec.js`
+**Test File Naming**: `test_[feature].py` or `test_[feature].py`
 
 **Test Case Naming**: Given-When-Then pattern or descriptive sentences
 
@@ -15787,10 +15719,10 @@ test('HTTP Server Functional Tests', async (t) => {
 **Test Data Approach**: Hard-coded expected values in test assertions
 
 **Example**:
-```javascript
-const expectedBody = 'Hello, World!\n';
-const expectedStatusCode = 200;
-const expectedContentType = 'text/plain';
+```python
+expected_body = 'Hello, World!\n'
+expected_status_code = 200
+expected_content_type = 'text/plain'
 ```
 
 #### 6.6.3.2 Integration Testing
@@ -15807,8 +15739,8 @@ const expectedContentType = 'text/plain';
 - Single-component architecture (no components to integrate)
 
 **Architecture Simplification**: The entire system consists of:
-1. Node.js HTTP module (built-in, tested by Node.js project)
-2. Single request handler function (14 lines)
+1. Flask framework (well-tested by Pallets project)
+2. Single route handler function
 3. No external boundaries to test
 
 #### 6.6.3.3 End-to-End Testing
@@ -15836,7 +15768,7 @@ const expectedContentType = 'text/plain';
 
 **Step 1: Start Server**
 ```bash
-node server.js &
+python app.py &
 ```
 
 **Expected Output**:
@@ -15854,12 +15786,12 @@ Server running at http://127.0.0.1:3000/
 
 **Step 2: Process Verification**
 ```bash
-ps aux | grep "node server.js"
+ps aux | grep "python app.py"
 ```
 
 **Expected Output**:
 ```
-user  12345  0.0  0.1  XXXXX  10240  ?  S  10:00  0:00  node server.js
+user  12345  0.0  0.1  XXXXX  10240  ?  S  10:00  0:00  python app.py
 ```
 
 **Verification Criteria**:
@@ -15881,7 +15813,7 @@ ss -tlnp | grep 3000
 
 **Expected Output**:
 ```
-tcp  0  0  127.0.0.1:3000  0.0.0.0:*  LISTEN  12345/node
+tcp  0  0  127.0.0.1:3000  0.0.0.0:*  LISTEN  12345/python
 ```
 
 **Verification Criteria**:
@@ -15994,15 +15926,15 @@ wrk -t2 -c10 -d10s http://127.0.0.1:3000/
 **Test 1: Port Conflict**
 ```bash
 # Start first instance
-node server.js &
+python app.py &
 
 #### Attempt second instance (should fail)
-node server.js
+python app.py
 ```
 
 **Expected Failure**:
 ```
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
+Error: listen OSError: Address already in use 127.0.0.1:3000
 ```
 
 **Verification**: Process exits with non-zero code, error message displayed
@@ -16012,8 +15944,8 @@ Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
 **Test 2: Permission Restriction**
 ```bash
 # Attempt binding to privileged port (requires sudo)
-# Modify server.js port to 80, then:
-node server.js
+# Modify app.py port to 80, then:
+python app.py
 ```
 
 **Expected Failure** (if not running as root):
@@ -16026,7 +15958,7 @@ Error: listen EACCES: permission denied 0.0.0.0:80
 **Test 3: Graceful Shutdown**
 ```bash
 # Start server and get PID
-node server.js &
+python app.py &
 PID=$!
 
 #### Send SIGTERM
@@ -16043,7 +15975,7 @@ ps -p $PID
 **Memory Monitoring**
 ```bash
 # Get process ID
-PID=$(pgrep -f "node server.js")
+PID=$(pgrep -f "python app.py")
 
 #### Monitor memory usage
 top -p $PID
@@ -16084,8 +16016,8 @@ top -p $PID
 
 | Blocker | Impact | Priority | Resolution |
 |---------|--------|----------|------------|
-| Failing test script (F-006-RQ-001) | npm test exits with code 1 | High | Implement Option 1 or 2 from section 6.6.2.3 |
-| No automated tests | Cannot verify functionality | High | Implement Node.js test runner tests |
+| Failing test script (F-006-RQ-001) | pip test exits with code 1 | High | Implement Option 1 or 2 from section 6.6.2.3 |
+| No automated tests | Cannot verify functionality | High | Implement Python test runner tests |
 | No build verification | Cannot validate deployment | Medium | Add server startup verification |
 
 **CI Configuration Files**: None present
@@ -16115,26 +16047,26 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20.x]
+        python-version: [16.x, 18.x, 20.x]
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          python-version: ${{ matrix.python-version }}
       
       - name: Install dependencies
-        run: npm ci
+        run: pip ci
       
       - name: Run test suite
-        run: npm test
+        run: pip test
       
       - name: Start server
         run: |
-          node server.js &
+          python app.py &
           SERVER_PID=$!
           echo "Server PID: $SERVER_PID"
           sleep 2
@@ -16160,7 +16092,7 @@ jobs:
 
 **Prerequisites for CI/CD Implementation**:
 1. Fix failing test script (F-006-RQ-001)
-2. Create test suite with Node.js test runner
+2. Create test suite with Python test runner
 3. Add server startup script with timeout handling
 4. Configure exit code handling for background processes
 
@@ -16177,7 +16109,7 @@ jobs:
 | **Manual** | Developer-initiated | Full test suite + custom test selection |
 
 **Test Execution Matrix** (recommended):
-- Node.js versions: 16.x, 18.x, 20.x
+- Python versions: 16.x, 18.x, 20.x
 - Operating systems: ubuntu-latest, macos-latest, windows-latest
 - Concurrent execution across all combinations
 
@@ -16289,7 +16221,7 @@ ok 1 - HTTP Server Functional Tests
 
 **Coverage Collection** (optional):
 ```bash
-node --test --experimental-test-coverage test/*.test.js
+python -m pytest --cov=app tests/
 ```
 
 #### 6.6.6.2 Test Success Rate Requirements
@@ -16312,9 +16244,9 @@ node --test --experimental-test-coverage test/*.test.js
 
 | Operation | Target SLA | Measurement Method | Status |
 |-----------|-----------|-------------------|--------|
-| Server Initialization | < 50ms | Time to `server.listen()` completion | ✅ Met (~10-30ms) |
+| Server Initialization | < 50ms | Time to `app.run()` completion | ✅ Met (~10-30ms) |
 | Network Binding | < 10ms | Time for socket binding | ✅ Met (~5-8ms) |
-| Startup Logging | < 100ms after binding | Time to console.log output | ✅ Met (~1-5ms) |
+| Startup Logging | < 100ms after binding | Time to print output | ✅ Met (~1-5ms) |
 | Request Processing | < 1ms | Handler execution time | ✅ Met (~0.03-0.5ms) |
 | Response Generation | < 1ms | Response write time | ✅ Met (~0.03ms) |
 
@@ -16366,7 +16298,7 @@ node --test --experimental-test-coverage test/*.test.js
 | Component | Requirement | Verification Command |
 |-----------|-------------|---------------------|
 | **Operating System** | Linux, macOS, Windows | `uname -a` or `ver` |
-| **Node.js Runtime** | ≥ 16.x (recommend 18.x or 20.x) | `node --version` |
+| **Python Runtime** | ≥ 16.x (recommend 18.x or 20.x) | `python --version` |
 | **Available Memory** | ≥ 100 MB free | `free -m` or `vm_stat` |
 | **Network** | Localhost loopback functional | `ping 127.0.0.1` |
 | **Port 3000** | Available (not in use) | `netstat -an \| grep 3000` |
@@ -16377,14 +16309,14 @@ node --test --experimental-test-coverage test/*.test.js
 git clone https://github.com/lakshya-blitzy/hello_world_Oct_2025.git
 cd hello_world_Oct_2025
 
-#### Verify Node.js installation
-node --version  # Should output: v16.x or higher
+#### Verify Python installation
+python --version  # Should output: v16.x or higher
 
 #### Install dependencies (none required)
-npm install  # Completes instantly (zero dependencies)
+pip install -r requirements.txt  # Completes instantly (zero dependencies)
 
 #### Verify environment
-node server.js &
+python app.py &
 curl http://127.0.0.1:3000/
 ```
 
@@ -16394,7 +16326,7 @@ curl http://127.0.0.1:3000/
 
 **GitHub Actions Runner Environment**:
 - OS: ubuntu-latest (Ubuntu 22.04 LTS)
-- Node.js: 16.x, 18.x, 20.x (matrix testing)
+- Python: 16.x, 18.x, 20.x (matrix testing)
 - Memory: 7 GB available
 - CPU: 2-core Intel Xeon
 - Network: Full internet access (not required for this system)
@@ -16415,7 +16347,7 @@ flowchart TB
     subgraph "Local Development Environment"
         A[Developer Machine]
         A1[Operating System<br/>Linux/macOS/Windows]
-        A2[Node.js Runtime<br/>v16.x - v20.x]
+        A2[Python Runtime<br/>v16.x - v20.x]
         A3[Localhost Loopback<br/>127.0.0.1]
         
         A --> A1
@@ -16427,7 +16359,7 @@ flowchart TB
         B[Terminal Session 1:<br/>Server Process]
         C[Terminal Session 2:<br/>Test Execution]
         
-        B -->|node server.js| D[Server Process<br/>PID: XXXXX]
+        B -->|python app.py| D[Server Process<br/>PID: XXXXX]
         D -->|Binds to| E[TCP Socket<br/>127.0.0.1:3000]
         
         C -->|curl/tests| E
@@ -16437,7 +16369,7 @@ flowchart TB
     subgraph "CI/CD Environment - Future"
         F[GitHub Actions Runner]
         F1[Ubuntu Container]
-        F2[Node.js Setup Action]
+        F2[Python Setup Action]
         F3[Test Suite Execution]
         
         F --> F1
@@ -16461,9 +16393,9 @@ flowchart TB
 **Provisioning Time**: < 1 minute
 
 **Provisioning Steps**:
-1. Install Node.js runtime (if not present): ~30 seconds
+1. Install Python runtime (if not present): ~30 seconds
 2. Clone repository: ~5 seconds
-3. Run npm install: < 1 second (zero dependencies)
+3. Run pip install -r requirements.txt: < 1 second (zero dependencies)
 4. Start server: < 100ms
 5. Verify functionality: < 1 second
 
@@ -16483,7 +16415,7 @@ flowchart TD
     
     CheckEnv -->|No| EnvSetup[Setup Test Environment]
     CheckEnv -->|Yes| StartServer
-    EnvSetup --> StartServer[Start Server Process<br/>node server.js &]
+    EnvSetup --> StartServer[Start Server Process<br/>python app.py &]
     
     StartServer --> WaitBind[Wait for Socket Binding<br/>Max 2 seconds]
     
@@ -16539,12 +16471,12 @@ flowchart TD
 #### 6.6.8.2 Test Execution Sequence
 
 **Phase 1: Environment Preparation** (< 5 seconds)
-1. Verify Node.js runtime availability
+1. Verify Python runtime availability
 2. Check port 3000 availability
 3. Verify test prerequisites installed
 
 **Phase 2: Server Startup** (< 2 seconds)
-1. Execute `node server.js &` in background
+1. Execute `python app.py &` in background
 2. Capture server PID for cleanup
 3. Wait for startup message on stdout
 4. Verify socket binding with netstat
@@ -16578,8 +16510,8 @@ flowchart LR
     end
     
     subgraph "Test Execution Layer"
-        B[Test Framework<br/>Node.js Test Runner]
-        C[HTTP Client<br/>Node.js http.get]
+        B[Test Framework<br/>Python Test Runner]
+        C[HTTP Client<br/>Python http.get]
         
         A -->|Provides Assertions| B
         B -->|Initiates Request| C
@@ -16692,7 +16624,7 @@ netstat -an | grep 3000  # Should show 127.0.0.1:3000, not 0.0.0.0:3000
 
 **Verification**:
 ```bash
-npm audit  # Should report: "found 0 vulnerabilities"
+pip audit  # Should report: "found 0 vulnerabilities"
 ```
 
 **No Security Patches Required**: No third-party dependencies to patch or update
@@ -16739,7 +16671,7 @@ The system implements a **minimal manual testing approach** appropriate for its 
 
 | Phase | Testing Enhancements | Estimated Effort | Priority |
 |-------|---------------------|------------------|----------|
-| **Phase 1 - Basic Automation** | Fix test script, implement Node.js test runner tests | 2-4 hours | High |
+| **Phase 1 - Basic Automation** | Fix test script, implement Python test runner tests | 2-4 hours | High |
 | **Phase 2 - CI/CD Integration** | GitHub Actions workflow, automated verification | 4-6 hours | High |
 | **Phase 3 - Comprehensive Testing** | Performance tests, load testing, edge cases | 1-2 days | Medium |
 | **Phase 4 - Quality Gates** | Coverage enforcement, quality metrics, reporting | 2-3 days | Low |
@@ -16782,9 +16714,9 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 
 #### 6.6.12.1 Source Files Examined
 
-- `server.js` (14 lines) - Application code with no test infrastructure
-- `package.json` (11 lines) - Failing test script (line 7), zero dependencies
-- `package-lock.json` - Confirms zero external dependencies
+- `app.py` (14 lines) - Application code with no test infrastructure
+- `requirements.txt` (11 lines) - Failing test script (line 7), zero dependencies
+- `.python-version` - Confirms zero external dependencies
 - `README.md` (2 lines) - Project identification as "test project for backprop integration"
 
 #### 6.6.12.2 Technical Specification Cross-References
@@ -16792,8 +16724,8 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 - **Section 1.1**: Executive Summary - Test fixture scope and purpose
 - **Section 2.2**: Functional Requirements - Requirement F-006-RQ-001 (test script defect)
 - **Section 2.4**: Implementation Considerations - Testing constraints, known defects
-- **Section 3.1**: Programming Languages - Node.js version requirements
-- **Section 3.2**: Frameworks & Libraries - Testing framework recommendations (Node.js built-in test runner)
+- **Section 3.1**: Programming Languages - Python version requirements
+- **Section 3.2**: Frameworks & Libraries - Testing framework recommendations (Python standard library test runner)
 - **Section 3.6**: Development & Deployment - CI/CD blockers, test infrastructure gaps
 - **Section 4.6**: Performance and Timing Specifications - Performance SLA targets
 - **Section 5.1**: High-Level Architecture - Architectural principles affecting testing
@@ -16806,9 +16738,9 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 - **curl** - HTTP client for functional testing
 - **Apache Bench (ab)** - Load testing and performance benchmarking
 - **wrk** - Modern HTTP benchmarking tool
-- **Node.js Test Runner** - Built-in test framework (Node.js 18+)
-- **Jest** - Popular testing framework (not recommended for this system)
-- **Mocha** - Flexible testing framework (not recommended for this system)
+- **Python Test Runner** - Built-in test framework (Python 18+)
+- **pytest** - Popular Python testing framework (optional for this system)
+- **unittest** - Python built-in testing framework (recommended for zero-dependency approach)
 
 **Monitoring Tools Referenced**:
 - **netstat** / **ss** - Network socket monitoring
@@ -16823,10 +16755,10 @@ This represents a fundamental scope expansion beyond the current test fixture pu
 
 #### 6.6.12.4 Related Documentation
 
-- **Node.js Test Runner Documentation**: https://nodejs.org/api/test.html
-- **Node.js HTTP Module Documentation**: https://nodejs.org/api/http.html
+- **Python Test Runner Documentation**: https://docs.python.org/3/library/unittest.html
+- **Python Flask HTTP Module Documentation**: https://flask.palletsprojects.com/
 - **GitHub Actions Documentation**: https://docs.github.com/en/actions
-- **npm Scripts Documentation**: https://docs.npmjs.com/cli/v9/using-npm/scripts
+- **pip Scripts Documentation**: https://docs.pipjs.com/cli/v9/using-pip/scripts
 
 # 7. User Interface Design
 
@@ -16851,21 +16783,21 @@ The following architectural characteristics confirm the absence of any user inte
 **Response Format**:
 - Content-Type: text/plain (not text/html)
 - Static string literal: "Hello, World!\n"
-- No HTML markup, CSS styling, or JavaScript execution
+- No HTML markup, CSS styling, or Python execution
 - 14-byte constant response body with no dynamic content generation
 
 **Component Architecture**:
-- Single component: HTTP Server Module (`server.js`)
+- Single component: HTTP Server Module (`app.py`)
 - Zero presentation layer components
 - Zero view templates or rendering engines
 - Zero client-side application code
 
 **Technology Stack**:
-- Node.js built-in `http` module only
+- Flask micro-framework only
 - Zero frontend frameworks (no React, Vue, Angular, Express views)
 - Zero templating engines (no EJS, Pug, Handlebars, Mustache)
 - Zero CSS frameworks (no Bootstrap, Tailwind, Material-UI)
-- Zero build tools (no Webpack, Vite, Parcel, Rollup)
+- Zero build tools (no setuptools, wheel, Cython compilation)
 
 **Integration Boundaries**:
 - No UI/backend interaction boundaries exist
@@ -16882,13 +16814,13 @@ The system is designed for interaction with **automated testing tools and HTTP c
 **Primary Client Types**:
 - Command-line HTTP clients (curl, wget, httpie)
 - API testing tools (Postman, Insomnia, Thunder Client)
-- Automated test frameworks (Jest, Mocha, pytest with requests library)
+- Automated test frameworks (pytest, unittest, requests)
 - Integration test suites (backprop testing infrastructure)
 
 **Client Interaction Pattern**:
 1. Client sends HTTP request (any method, any path) to http://127.0.0.1:3000
 2. Server responds with HTTP 200 OK and plain text body
-3. No HTML rendering, no JavaScript execution, no visual presentation
+3. No HTML rendering, no Python execution, no visual presentation
 
 ### 7.2.2 Response Characteristics
 
@@ -16905,7 +16837,7 @@ Hello, World!
 **Key Characteristics**:
 - No HTML document structure (`<html>`, `<head>`, `<body>` tags)
 - No CSS stylesheets or inline styles
-- No JavaScript code or script tags
+- No Python code or script tags
 - No interactive elements (forms, buttons, links)
 - No media content (images, videos, audio)
 - No responsive design considerations
@@ -16933,7 +16865,7 @@ The Feature Catalog (Section 2.1) documents seven distinct features (F-001 throu
 
 ### 7.3.2 Dependency Verification
 
-The system's zero-dependency architecture, documented in `package.json` and verified through `package-lock.json` (lockfileVersion 3), confirms the complete absence of UI-related packages:
+The system's zero-dependency architecture, documented in `requirements.txt` and verified through `.python-version` (Python 3.12.3), confirms the complete absence of UI-related packages:
 
 **No Frontend Dependencies**:
 - No React, Vue, Angular, Svelte, or other component frameworks
@@ -16942,22 +16874,22 @@ The system's zero-dependency architecture, documented in `package.json` and veri
 - No CSS-in-JS libraries (styled-components, emotion)
 - No UI component libraries (Material-UI, Ant Design, Chakra UI)
 - No state management (Redux, MobX, Vuex, Pinia)
-- No build tooling (Webpack, Vite, Parcel, Rollup, esbuild)
+- No build tooling (setuptools, wheel, Cython, PyInstaller)
 
 ### 7.3.3 File System Verification
 
 Repository structure analysis confirms no UI-related files or directories exist:
 
 **Complete Repository Inventory** (4 files total):
-- `server.js` - HTTP server implementation (14 lines)
-- `package.json` - Package metadata
-- `package-lock.json` - Dependency lockfile
+- `app.py` - HTTP server implementation (14 lines)
+- `requirements.txt` - Package metadata
+- `.python-version` - Dependency lockfile
 - `README.md` - Project documentation
 
 **Absent UI Artifacts**:
 - No HTML files (*.html)
 - No CSS files (*.css, *.scss, *.sass, *.less)
-- No JavaScript UI files (*.jsx, *.tsx, *.vue, *.svelte)
+- No Python UI files (*.jsx, *.tsx, *.vue, *.svelte)
 - No UI asset directories (public/, static/, assets/, images/)
 - No frontend source directories (src/components/, src/views/, src/pages/)
 - No template directories (views/, templates/)
@@ -17011,7 +16943,7 @@ Should future requirements introduce user interface needs, the following archite
 **Required Changes for UI Support**:
 1. **Framework Integration**: Add Express, Fastify, or similar framework with view rendering capabilities
 2. **Template Engine**: Integrate EJS, Pug, Handlebars, or React/Vue for HTML generation
-3. **Static Asset Serving**: Implement middleware for CSS, JavaScript, and image file delivery
+3. **Static Asset Serving**: Implement middleware for CSS, Python, and image file delivery
 4. **Routing Logic**: Replace universal request handler with path-based routing
 5. **Dynamic Content**: Transform static responses into template-driven dynamic HTML
 6. **Network Configuration**: Modify binding from 127.0.0.1 to 0.0.0.0 for external access
@@ -17024,9 +16956,9 @@ These modifications would fundamentally transform the system from a minimalist t
 
 ### 7.6.1 Repository Files Examined
 
-- `server.js` - Complete HTTP server implementation confirming plain text responses (Content-Type: text/plain)
-- `package.json` - Verified zero dependencies and absence of UI frameworks
-- `package-lock.json` - Confirmed no transitive dependencies or UI-related packages
+- `app.py` - Complete HTTP server implementation confirming plain text responses (Content-Type: text/plain)
+- `requirements.txt` - Verified zero dependencies and absence of UI frameworks
+- `.python-version` - Confirmed no transitive dependencies or UI-related packages
 - `README.md` - Identified project purpose as "test project for backprop integration"
 
 ### 7.6.2 Repository Structure Analyzed
@@ -17047,7 +16979,7 @@ These modifications would fundamentally transform the system from a minimalist t
 
 **Detailed Infrastructure Architecture is not applicable for this system.**
 
-This system is a minimal 14-line Node.js test fixture designed exclusively for backprop integration testing, as documented in `README.md`. The intentionally constrained architecture, localhost-only deployment model (binding to 127.0.0.1:3000), and zero-dependency profile eliminate the need for traditional infrastructure components found in production-grade applications.
+This system is a minimal 14-line Python test fixture designed exclusively for backprop integration testing, as documented in `README.md`. The intentionally constrained architecture, localhost-only deployment model (binding to 127.0.0.1:3000), and zero-dependency profile eliminate the need for traditional infrastructure components found in production-grade applications.
 
 ### 8.1.1 System Classification
 
@@ -17060,10 +16992,10 @@ This system is a minimal 14-line Node.js test fixture designed exclusively for b
 
 The infrastructure approach reflects core architectural principles documented in Section 5.1.1.2:
 
-- **Simplicity Over Features**: Direct Node.js execution vs. container orchestration platforms
+- **Simplicity Over Features**: Direct Python execution vs. container orchestration platforms
 - **Transparency Over Abstraction**: Manual script invocation vs. deployment automation pipelines
 - **Isolation Over Integration**: Localhost-only binding vs. cloud service integration
-- **Zero Dependencies**: Built-in Node.js http module vs. external infrastructure dependencies
+- **Zero Dependencies**: Built-in Flask framework vs. external infrastructure dependencies
 
 ### 8.1.3 Minimal Infrastructure Requirements
 
@@ -17071,17 +17003,17 @@ The system requires only these fundamental components for operation:
 
 | Requirement | Specification | Purpose |
 |------------|---------------|---------|
-| **Node.js Runtime** | Version ≥12.x | JavaScript execution environment |
+| **Python Runtime** | Version ≥12.x | Python execution environment |
 | **Available TCP Port** | Port 3000 (not in use) | HTTP server binding target |
-| **Operating System** | Linux, macOS, or Windows | Cross-platform Node.js support |
+| **Operating System** | Linux, macOS, or Windows | Cross-platform Python support |
 | **Available Memory** | 20 MB (15 MB runtime + 5 MB overhead) | Process execution space |
 | **Disk Space** | < 1 KB source code | Application files storage |
 | **Network Interface** | Localhost loopback (127.0.0.1) | Local-only network access |
 
-**Evidence from `server.js` (lines 3-4)**:
-```javascript
-const hostname = '127.0.0.1';  // Localhost-only binding
-const port = 3000;              // Hard-coded port
+**Evidence from `app.py` (lines 3-4)**:
+```python
+HOSTNAME = os.getenv('HOST', '127.0.0.1');  // Localhost-only binding
+PORT = int(os.getenv('PORT', 3000));              // Hard-coded port
 ```
 
 ## 8.2 Deployment Environment
@@ -17109,7 +17041,7 @@ The system architecture explicitly constrains deployment to local developer work
 ```mermaid
 graph TB
     subgraph "Developer Workstation"
-        A[Terminal/Console] -->|node server.js| B[Node.js Process<br/>PID: XXXXX<br/>Port: 3000]
+        A[Terminal/Console] -->|python app.py| B[Python Process<br/>PID: XXXXX<br/>Port: 3000]
         B -->|Bind to| C[Localhost Socket<br/>127.0.0.1:3000]
         
         D[Local HTTP Clients] --> C
@@ -17155,7 +17087,7 @@ graph TB
 | Network Bandwidth | ~164 bytes per request/response | Manual calculation | ✅ Minimal |
 
 **Storage Requirements**:
-- **Application Code**: < 1 KB (server.js only)
+- **Application Code**: < 1 KB (app.py only)
 - **Dependencies**: 0 bytes (zero external packages)
 - **Runtime Data**: 0 bytes (stateless architecture)
 - **Log Storage**: ~50 bytes (single startup message)
@@ -17203,19 +17135,19 @@ The system includes no infrastructure automation or Infrastructure as Code tooli
 # Manual "infrastructure provisioning"
 git clone github.com:lakshya-blitzy/hello_world_Oct_2025.git
 cd hello_world_Oct_2025
-node server.js  # Direct execution - no infrastructure automation
+python app.py  # Direct execution - no infrastructure automation
 ```
 
 #### 8.2.2.2 Configuration Management Strategy
 
 **Configuration Management**: **Hard-Coded Values**
 
-The system uses hard-coded configuration values in `server.js` without external configuration management:
+The system uses hard-coded configuration values in `app.py` without external configuration management:
 
-**Current Configuration** (`server.js` lines 3-4):
-```javascript
-const hostname = '127.0.0.1';  // Hard-coded, not configurable
-const port = 3000;              // Hard-coded, not configurable
+**Current Configuration** (`app.py` lines 3-4):
+```python
+HOSTNAME = os.getenv('HOST', '127.0.0.1');  // Hard-coded, not configurable
+PORT = int(os.getenv('PORT', 3000));              // Hard-coded, not configurable
 ```
 
 **Configuration Limitations**:
@@ -17228,9 +17160,9 @@ const port = 3000;              // Hard-coded, not configurable
 | Configuration Validation | None | No validation of settings |
 | Configuration Secrets | N/A | No sensitive configuration |
 
-**Deficiency**: Package.json metadata inconsistencies documented in Section 1.2.2.2:
-- Project name mismatch: README ("hao-backprop-test") vs package.json ("hello_world")
-- Main field points to non-existent "index.js" instead of "server.js"
+**Deficiency**: Requirements.txt metadata inconsistencies documented in Section 1.2.2.2:
+- Project name mismatch: README ("hao-backprop-test") vs requirements.txt ("hello_world")
+- Main field points to non-existent "app.py" instead of "app.py"
 
 #### 8.2.2.3 Environment Promotion Strategy
 
@@ -17259,7 +17191,7 @@ flowchart LR
 
 | Environment | Purpose | Deployment Method | Configuration |
 |-------------|---------|------------------|---------------|
-| **Local Dev** | Integration testing, development | Manual `node server.js` | Hard-coded in source |
+| **Local Dev** | Integration testing, development | Manual `python app.py` | Hard-coded in source |
 | ~~Staging~~ | ❌ Does not exist | N/A | N/A |
 | ~~Production~~ | ❌ Does not exist | N/A | N/A |
 
@@ -17280,9 +17212,9 @@ flowchart LR
 
 | Failure Scenario | Detection | Recovery Procedure | Recovery Time |
 |-----------------|-----------|-------------------|---------------|
-| Process Crash | Terminal exit | `node server.js` | < 5 seconds |
-| Port Conflict | EADDRINUSE error | Kill conflicting process or change port in code | < 30 seconds |
-| Code Corruption | Git status shows modifications | `git checkout server.js` | < 10 seconds |
+| Process Crash | Terminal exit | `python app.py` | < 5 seconds |
+| Port Conflict | OSError error | Kill conflicting process or change port in code | < 30 seconds |
+| Code Corruption | Git status shows modifications | `git checkout app.py` | < 10 seconds |
 | Repository Loss | Repository not found | Re-clone from GitHub | < 60 seconds |
 
 **Disaster Recovery Strategy**:
@@ -17307,8 +17239,8 @@ The system explicitly avoids cloud deployment through architectural design const
 
 | Blocker | Implementation Detail | Impact on Cloud Deployment |
 |---------|----------------------|---------------------------|
-| **Localhost Binding** | `hostname = '127.0.0.1'` in server.js line 3 | Prevents AWS EC2, Azure VM, GCP Compute Engine deployment |
-| **Hard-Coded Port** | `port = 3000` in server.js line 4 | Cannot use cloud-assigned ports (e.g., AWS ECS dynamic ports) |
+| **Localhost Binding** | `hostname = '127.0.0.1'` in app.py line 3 | Prevents AWS EC2, Azure VM, GCP Compute Engine deployment |
+| **Hard-Coded Port** | `port = 3000` in app.py line 4 | Cannot use cloud-assigned ports (e.g., AWS ECS dynamic ports) |
 | **No Health Checks** | No `/health` or `/ready` endpoints | Cannot integrate with AWS ELB, Azure Load Balancer, GCP Load Balancer |
 | **No Environment Config** | No environment variable support | Cannot configure via cloud parameter stores or secrets managers |
 
@@ -17317,8 +17249,8 @@ The system explicitly avoids cloud deployment through architectural design const
 - ❌ No AWS configuration files (no `aws-config.yaml`, `.aws/` directory, or CloudFormation templates)
 - ❌ No Azure configuration files (no `azure-pipelines.yml` or ARM templates)
 - ❌ No GCP configuration files (no `app.yaml`, `cloudbuild.yaml`, or Deployment Manager templates)
-- ❌ No cloud provider SDK dependencies in `package.json`
-- ❌ No cloud service API calls in `server.js`
+- ❌ No cloud provider SDK dependencies in `requirements.txt`
+- ❌ No cloud service API calls in `app.py`
 
 ### 8.3.3 Cloud Provider Comparison
 
@@ -17340,11 +17272,11 @@ The system explicitly avoids cloud deployment through architectural design const
 
 | Priority | Change Required | Current Code | Required Fix |
 |----------|----------------|-------------|--------------|
-| **Critical** | Network Binding | `const hostname = '127.0.0.1';` | `const hostname = process.env.HOST || '0.0.0.0';` |
-| **Critical** | Port Configuration | `const port = 3000;` | `const port = process.env.PORT || 3000;` |
-| **Critical** | Health Endpoint | None | Add `if (req.url === '/health') { res.end('OK'); }` |
-| **High** | Error Handling | None | Add `server.on('error', handler);` |
-| **High** | Graceful Shutdown | None | Add `process.on('SIGTERM', handler);` |
+| **Critical** | Network Binding | `HOSTNAME = os.getenv('HOST', '127.0.0.1')` | `HOSTNAME = os.getenv('HOST', '0.0.0.0')` |
+| **Critical** | Port Configuration | `PORT = int(os.getenv('PORT', 3000))` | Already supports environment override |
+| **Critical** | Health Endpoint | None | Add `@app.route('/health')` with health check handler |
+| **High** | Error Handling | None | Add `@app.errorhandler(Exception)` decorator |
+| **High** | Graceful Shutdown | None | Add `signal.signal(signal.SIGTERM, handler)` |
 
 **Estimated Code Changes**: 14 lines → 80-100 lines (5-7x increase) to support cloud deployment.
 
@@ -17406,11 +17338,11 @@ sequenceDiagram
 **Hypothetical Dockerfile** (not present in repository):
 
 ```dockerfile
-FROM node:18-alpine
+FROM python:3.12-slim
 WORKDIR /app
-COPY server.js .
+COPY app.py .
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["python", "app.py"]
 ```
 
 **Build and Run Attempt** (would fail):
@@ -17462,24 +17394,24 @@ docker exec hello curl http://172.17.0.2:3000  # Container's IP
 
 | File | Current Code | Required Change | Purpose |
 |------|-------------|----------------|---------|
-| `server.js` line 3 | `const hostname = '127.0.0.1';` | `const hostname = '0.0.0.0';` | Accept connections from any interface |
-| `server.js` line 4 | `const port = 3000;` | `const port = process.env.PORT || 3000;` | Environment-based port configuration |
-| `server.js` | No health endpoint | Add `/health` endpoint | Container health checks |
-| `server.js` | No error handling | Add `server.on('error', handler)` | Graceful error handling |
-| `server.js` | No graceful shutdown | Add `process.on('SIGTERM', handler)` | Clean container termination |
+| `app.py` | `HOSTNAME = os.getenv('HOST', '127.0.0.1')` | `HOSTNAME = os.getenv('HOST', '0.0.0.0')` | Accept connections from any interface |
+| `app.py` | `PORT = int(os.getenv('PORT', 3000))` | Already supports environment override | Environment-based port configuration |
+| `app.py` | No health endpoint | Add `@app.route('/health')` handler | Container health checks |
+| `app.py` | No error handling | Add `@app.errorhandler(Exception)` | Graceful error handling |
+| `app.py` | No graceful shutdown | Add `signal.signal(signal.SIGTERM, handler)` | Clean container termination |
 
 **Container-Compatible Dockerfile** (example, not implemented):
 
 ```dockerfile
-FROM node:18-alpine
+FROM python:3.12-slim
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY server.js .
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app.py .
 EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
-  CMD node -e "require('http').get('http://localhost:3000/health',(r)=>process.exit(r.statusCode===200?0:1))"
-CMD ["node", "server.js"]
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:3000/health')"
+CMD ["python", "app.py"]
 ```
 
 **Note**: This Dockerfile is **not present** in the repository and would require code changes documented above.
@@ -17492,8 +17424,8 @@ CMD ["node", "server.js"]
 
 | Consideration | Recommendation | Rationale |
 |--------------|---------------|-----------|
-| Base Image | `node:18-alpine` | Minimal footprint (~40MB vs ~900MB for full Node image) |
-| Image Versioning | Pin specific Node version | Reproducible builds |
+| Base Image | `python:3.12-slim` | Minimal footprint (~40MB vs ~900MB for full Python image) |
+| Image Versioning | Pin specific Python version | Reproducible builds |
 | Security Scanning | Trivy or Snyk integration | Vulnerability detection |
 | Multi-Stage Builds | Not needed | No compilation step; single-file application |
 | Image Registry | Docker Hub or private registry | Distribution mechanism |
@@ -17667,21 +17599,21 @@ The system requires no build step, compilation, transpilation, or bundling:
 
 **Execution Model**:
 ```bash
-node server.js  # Direct execution - no build phase
+python app.py  # Direct execution - no build phase
 ```
 
 **Build Tools Not Applicable**:
 
 | Build Tool | Typical Use Case | Status | Reason |
 |-----------|-----------------|--------|---------|
-| **Webpack** | Module bundling | ❌ Not needed | Single-file architecture |
-| **Babel** | JavaScript transpilation | ❌ Not needed | No modern JS features requiring transpilation |
-| **TypeScript** | Type checking & compilation | ❌ Not needed | Plain JavaScript codebase |
+| **setuptools** | Package building | ❌ Not needed | Single-file architecture |
+| **Babel** | Python transpilation | ❌ Not needed | No modern JS features requiring transpilation |
+| **TypeScript** | Type checking & compilation | ❌ Not needed | Plain Python codebase |
 | **Rollup** | ES module bundling | ❌ Not needed | No module bundling required |
-| **esbuild** | Fast JavaScript bundling | ❌ Not needed | Direct execution model |
+| **esbuild** | Fast Python bundling | ❌ Not needed | Direct execution model |
 | **Parcel** | Zero-config bundler | ❌ Not needed | No web assets to bundle |
 
-**Deployment Artifact**: Source code itself (`server.js`) serves as the deployable artifact.
+**Deployment Artifact**: Source code itself (`app.py`) serves as the deployable artifact.
 
 #### 8.6.3.2 Source Control Integration
 
@@ -17692,7 +17624,7 @@ node server.js  # Direct execution - no build phase
 
 **Git Configuration** (documented in Section 3.6.3.1):
 - `.git` directory present (repository initialized)
-- No `.gitignore` file (potential defect - should ignore node_modules if dependencies added)
+- No `.gitignore` file (potential defect - should ignore venv if dependencies added)
 - No Git hooks configured (no pre-commit, pre-push, or commit-msg hooks)
 
 **Branching Strategy**: Not documented (implied single-branch development)
@@ -17701,8 +17633,8 @@ node server.js  # Direct execution - no build phase
 
 **Dependencies**: **ZERO**
 
-From `package.json`:
-```json
+From `requirements.txt`:
+```python
 {
   "name": "hello_world",
   "version": "1.0.0",
@@ -17711,11 +17643,11 @@ From `package.json`:
 }
 ```
 
-**Package Lock**: `package-lock.json` confirms zero resolved packages (lockfileVersion 3, no packages object).
+**Package Lock**: `.python-version` confirms zero resolved packages (Python 3.12.3, no packages object).
 
 **Dependency Installation**:
 ```bash
-npm install  # Completes instantly - nothing to install
+pip install -r requirements.txt  # Completes instantly - nothing to install
 ```
 
 **Supply Chain Security**: Zero external dependencies eliminate supply chain attack surface.
@@ -17726,8 +17658,8 @@ npm install  # Completes instantly - nothing to install
 
 **Critical Blocker**: Test script intentionally exits with error code 1.
 
-**From `package.json` line 7**:
-```json
+**From `requirements.txt` line 7**:
+```python
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1"
 }
@@ -17739,12 +17671,12 @@ npm install  # Completes instantly - nothing to install
 flowchart TB
     A[Git Push] --> B[CI/CD Trigger]
     B --> C[Checkout Code]
-    C --> D[Install Dependencies:<br/>npm install]
-    D --> E{npm install}
+    C --> D[Install Dependencies:<br/>pip install -r requirements.txt]
+    D --> E{pip install -r requirements.txt}
     E -->|✅ Success| F[Zero dependencies installed]
     
-    F --> G[Run Tests:<br/>npm test]
-    G --> H{npm test}
+    F --> G[Run Tests:<br/>pip test]
+    G --> H{pip test}
     H -->|❌ FAILS| I[Exit Code: 1]
     I --> J[Pipeline FAILURE]
     
@@ -17771,16 +17703,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-python@v4
         with:
-          node-version: '18'
-      - run: npm install      # ✅ Succeeds (nothing to install)
-      - run: npm test         # ❌ FAILS with exit code 1
-      - run: node server.js   # Never executed - blocked by test failure
+          python-version: '18'
+      - run: pip install -r requirements.txt      # ✅ Succeeds (nothing to install)
+      - run: pip test         # ❌ FAILS with exit code 1
+      - run: python app.py   # Never executed - blocked by test failure
 ```
 
 **Workarounds** (all have drawbacks):
-1. Skip test stage: `npm test || true` (loses ability to detect real failures)
+1. Skip test stage: `pip test || true` (loses ability to detect real failures)
 2. Fix test script to: `"test": "exit 0"` (placeholder, no actual testing)
 3. Implement functional tests (requires test framework and code additions)
 
@@ -17791,12 +17723,12 @@ jobs:
 The stateless architecture and zero-dependency profile eliminate artifact generation requirements:
 
 - ❌ No compiled binaries
-- ❌ No bundled JavaScript files
+- ❌ No bundled Python files
 - ❌ No Docker images (no containerization)
-- ❌ No npm packages (not published to registry)
+- ❌ No pip packages (not published to registry)
 - ❌ No deployment archives (ZIP, TAR)
 
-**Deployable Artifact**: Raw `server.js` source file (14 lines, < 1 KB).
+**Deployable Artifact**: Raw `app.py` source file (14 lines, < 1 KB).
 
 **Artifact Storage**:
 - Primary: Git repository (GitHub)
@@ -17815,7 +17747,7 @@ git clone github.com:lakshya-blitzy/hello_world_Oct_2025.git
 cd hello_world_Oct_2025
 
 #### Step 2: Execute directly (no build or deployment automation)
-node server.js
+python app.py
 
 #### Step 3: Verify (manual testing)
 curl http://127.0.0.1:3000
@@ -17890,9 +17822,9 @@ flowchart LR
 
 | Failure Type | Detection | Rollback Procedure | Recovery Time |
 |-------------|-----------|-------------------|---------------|
-| **Server Crash** | Process exit | `node server.js` | < 5 seconds |
-| **Code Error** | Runtime exception | `git checkout HEAD~1 server.js && node server.js` | < 15 seconds |
-| **Configuration Error** | EADDRINUSE / EACCES | Edit server.js, restart | < 30 seconds |
+| **Server Crash** | Process exit | `python app.py` | < 5 seconds |
+| **Code Error** | Runtime exception | `git checkout HEAD~1 app.py && python app.py` | < 15 seconds |
+| **Configuration Error** | OSError / EACCES | Edit app.py, restart | < 30 seconds |
 | **Port Conflict** | Startup failure | Change port in code or kill conflicting process | < 30 seconds |
 
 **No Automated Rollback**: Manual intervention required for all failure scenarios.
@@ -17901,8 +17833,8 @@ flowchart LR
 ```bash
 # Rollback to previous commit
 git log --oneline  # Identify previous stable version
-git checkout <commit-hash> server.js
-node server.js
+git checkout <commit-hash> app.py
+python app.py
 ```
 
 #### 8.6.4.5 Post-Deployment Validation
@@ -17913,7 +17845,7 @@ node server.js
 
 | Validation Step | Command | Expected Result | Pass Criteria |
 |----------------|---------|----------------|---------------|
-| **Process Running** | `ps aux \| grep "node server.js"` | Process ID displayed | Exit code 0 |
+| **Process Running** | `ps aux \| grep "python app.py"` | Process ID displayed | Exit code 0 |
 | **Port Listening** | `netstat -an \| grep 3000 \| grep LISTEN` | 127.0.0.1:3000 LISTEN | Output present |
 | **HTTP Connectivity** | `curl http://127.0.0.1:3000` | "Hello, World!" | Exit code 0 |
 | **Response Headers** | `curl -i http://127.0.0.1:3000` | HTTP/1.1 200 OK<br/>Content-Type: text/plain | Status 200 |
@@ -17926,7 +17858,7 @@ node server.js
 # post-deployment-validation.sh (example, not present)
 
 #### Start server in background
-node server.js &
+python app.py &
 SERVER_PID=$!
 
 #### Wait for startup
@@ -17949,7 +17881,7 @@ fi
 
 **Release Management**: **NOT DEFINED**
 
-- No release versioning strategy (package.json shows 1.0.0 with no version updates)
+- No release versioning strategy (requirements.txt shows 1.0.0 with no version updates)
 - No release notes or changelog (no CHANGELOG.md file)
 - No release tagging (no Git tags documented)
 - No release approval workflow
@@ -17977,17 +17909,17 @@ flowchart TB
     
     subgraph "CI Pipeline - NOT CONFIGURED"
         C[Trigger: Push/PR] -.-> D[Checkout Code]
-        D -.-> E[Setup Node.js 18]
-        E -.-> F[npm install]
-        F -.-> G[npm test]
+        D -.-> E[Setup Python 18]
+        E -.-> F[pip install -r requirements.txt]
+        F -.-> G[pip test]
         G -.->|❌ BLOCKED| H[Failing Test Script]
         H -.-> I[Build Failed]
     end
     
     subgraph "Quality Gates - NOT IMPLEMENTED"
-        J[Code Linting] -.-> K[ESLint]
-        L[Security Scan] -.-> M[npm audit]
-        N[Code Coverage] -.-> O[Jest Coverage]
+        J[Code Linting] -.-> K[flake8/pylint]
+        L[Security Scan] -.-> M[pip audit]
+        N[Code Coverage] -.-> O[pytest-cov]
     end
     
     subgraph "CD Pipeline - NOT CONFIGURED"
@@ -18017,12 +17949,12 @@ flowchart TB
 | Stage | Purpose | Tools | Status |
 |-------|---------|-------|--------|
 | **Checkout** | Clone repository | GitHub Actions actions/checkout | ❌ Not configured |
-| **Setup** | Install Node.js | actions/setup-node | ❌ Not configured |
-| **Install** | Install dependencies | npm install | ✅ Would succeed (zero deps) |
-| **Lint** | Code quality checks | ESLint | ❌ Not configured (no ESLint) |
-| **Test** | Run unit/integration tests | npm test | ❌ Fails (defect F-006-RQ-001) |
+| **Setup** | Install Python | actions/setup-python | ❌ Not configured |
+| **Install** | Install dependencies | pip install -r requirements.txt | ✅ Would succeed (zero deps) |
+| **Lint** | Code quality checks | flake8/pylint | ❌ Not configured |
+| **Test** | Run unit/integration tests | python -m pytest | ❌ Not configured (no test suite) |
 | **Build** | Compile/bundle | N/A | ✅ Not needed (direct execution) |
-| **Security Scan** | Vulnerability detection | npm audit, Snyk | ❌ Not configured |
+| **Security Scan** | Vulnerability detection | pip audit, Snyk | ❌ Not configured |
 | **Deploy** | Execute deployment | SSH, kubectl | ❌ Not applicable (localhost only) |
 | **Validate** | Post-deployment checks | curl, custom scripts | ❌ Not configured |
 
@@ -18051,12 +17983,12 @@ As documented in Section 6.5, this test fixture implements minimal monitoring ap
 
 #### 8.7.2.1 Application Logging
 
-**Logging Implementation**: Single console.log statement
+**Logging Implementation**: Single print statement
 
-**From `server.js` line 13**:
-```javascript
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+**From `app.py` line 13**:
+```python
+if __name__ == '__main__':
+  print(`Server running at http://${hostname}:${port}/`);
 });
 ```
 
@@ -18078,17 +18010,17 @@ server.listen(port, hostname, () => {
 ```mermaid
 flowchart LR
     subgraph "Application"
-        A[server.listen callback] --> B[console.log]
+        A[startup block] --> B[print]
     end
     
-    subgraph "Node.js Runtime"
+    subgraph "Python Runtime"
         B --> C[stdout Stream]
     end
     
     subgraph "Output Destinations"
         C --> D[Terminal Display]
         C -.->|Optional| E[Shell Redirection]
-        C -.->|Optional| F[Process Manager<br/>PM2/systemd]
+        C -.->|Optional| F[Process Manager<br/>Gunicorn/systemd]
     end
     
     subgraph "Not Logged"
@@ -18106,11 +18038,11 @@ flowchart LR
 
 ```bash
 # Redirect to file
-node server.js > server.log 2>&1
+python app.py > server.log 2>&1
 
 #### Use process manager
-pm2 start server.js --name hello-server
-pm2 logs hello-server
+gunicorn app:app --name hello-server
+gunicorn logs hello-server
 
 #### Use systemd
 sudo systemctl status hello-server  # View logs
@@ -18131,9 +18063,9 @@ The application provides no internal metrics collection. Infrastructure monitori
 
 | Tool | Purpose | Usage | Metrics Provided |
 |------|---------|-------|-----------------|
-| **top** | Real-time process monitoring | `top -p $(pgrep -f "node server.js")` | CPU %, Memory %, Process state |
-| **htop** | Enhanced process viewer | `htop -p $(pgrep -f "node server.js")` | CPU, Memory, Thread count |
-| **ps** | Process status | `ps aux \| grep "node server"` | RSS, VSZ, CPU time, PID |
+| **top** | Real-time process monitoring | `top -p $(pgrep -f "python app.py")` | CPU %, Memory %, Process state |
+| **htop** | Enhanced process viewer | `htop -p $(pgrep -f "python app.py")` | CPU, Memory, Thread count |
+| **ps** | Process status | `ps aux \| grep "python app"` | RSS, VSZ, CPU time, PID |
 | **vmstat** | Virtual memory statistics | `vmstat 1` | System-wide CPU, Memory, I/O |
 | **free** | Memory usage | `free -h` | Total, Used, Available memory |
 
@@ -18162,8 +18094,8 @@ The application provides no internal metrics collection. Infrastructure monitori
 
 | Resource | Metric | Typical Value | Monitoring Command |
 |----------|--------|--------------|-------------------|
-| Memory (RSS) | Resident Set Size | 10-15 MB | `ps -p $(pgrep -f "node server") -o rss=` |
-| Memory (Application) | Code size | < 1 KB | `ls -lh server.js` |
+| Memory (RSS) | Resident Set Size | 10-15 MB | `ps -p $(pgrep -f "python app") -o rss=` |
+| Memory (Application) | Code size | < 1 KB | `ls -lh app.py` |
 | CPU (Startup) | Initialization time | 10-30ms | Manual timing |
 | CPU (Per Request) | Processing time | < 0.1ms | Load testing (ab, wrk) |
 | Network (Response) | Bytes per response | ~164 bytes (14 data + ~150 headers) | tcpdump analysis |
@@ -18201,7 +18133,7 @@ curl http://127.0.0.1:3000/metrics
 # Result: "Hello, World!" (not metrics endpoint)
 
 #### Check for metrics libraries in dependencies
-grep -E "prom-client|statsd" package.json
+grep -E "prom-client|statsd" requirements.txt
 #### Result: No matches (zero dependencies)
 ```
 
@@ -18212,7 +18144,7 @@ grep -E "prom-client|statsd" package.json
 **Rationale**:
 - No cloud infrastructure costs (localhost deployment)
 - No third-party service costs (zero external services)
-- No license costs (open-source Node.js runtime)
+- No license costs (open-source Python runtime)
 - No operational costs (no managed services)
 
 **Infrastructure Cost**: $0.00 (electricity for developer workstation not tracked)
@@ -18278,7 +18210,7 @@ The system provides no dedicated health check endpoints:
 curl -f http://127.0.0.1:3000 && echo "✅ Healthy" || echo "❌ Unhealthy"
 
 #### Process-level health check
-pgrep -f "node server.js" > /dev/null && echo "✅ Running" || echo "❌ Not running"
+pgrep -f "python app.py" > /dev/null && echo "✅ Running" || echo "❌ Not running"
 
 #### Port-level health check
 netstat -an | grep "127.0.0.1:3000" | grep -q LISTEN && echo "✅ Listening" || echo "❌ Not listening"
@@ -18313,8 +18245,8 @@ No automated alerting or incident response capabilities exist:
 
 | Failure | Detection Method | Resolution | Recovery Time |
 |---------|-----------------|------------|---------------|
-| Server Not Responding | `curl` fails | Restart: `node server.js` | < 5 seconds |
-| Port Conflict | EADDRINUSE error on startup | Kill conflicting process or edit code | < 30 seconds |
+| Server Not Responding | `curl` fails | Restart: `python app.py` | < 5 seconds |
+| Port Conflict | OSError error on startup | Kill conflicting process or edit code | < 30 seconds |
 | Process Crash | Terminal shows exit | Check stderr, fix bug, restart | Varies |
 | Out of Memory | Process killed by OOM | Investigate memory leak, restart | < 60 seconds |
 
@@ -18334,7 +18266,7 @@ No monitoring dashboards or visualization interfaces exist:
 
 **Console Output**:
 ```
-$ node server.js
+$ python app.py
 Server running at http://127.0.0.1:3000/
 ```
 
@@ -18342,9 +18274,9 @@ Server running at http://127.0.0.1:3000/
 
 | Terminal | Purpose | Command |
 |----------|---------|---------|
-| **Terminal 1** | Run server | `node server.js` |
+| **Terminal 1** | Run server | `python app.py` |
 | **Terminal 2** | Test requests | `while true; do curl http://127.0.0.1:3000; sleep 1; done` |
-| **Terminal 3** | Monitor resources | `watch -n 1 "ps aux \| grep node"` |
+| **Terminal 3** | Monitor resources | `watch -n 1 "ps aux \| grep python"` |
 | **Terminal 4** | Monitor network | `watch -n 1 "netstat -an \| grep 3000"` |
 
 ## 8.8 Infrastructure Diagrams
@@ -18357,9 +18289,9 @@ Server running at http://127.0.0.1:3000/
 graph TB
     subgraph "Developer Workstation"
         A[Developer] -->|Executes| B[Terminal/Console]
-        B -->|node server.js| C[Node.js Runtime]
+        B -->|python app.py| C[Python Runtime]
         
-        C --> D[HTTP Server Process<br/>server.js<br/>PID: XXXXX]
+        C --> D[HTTP Server Process<br/>app.py<br/>PID: XXXXX]
         
         D -->|Binds to| E[Network Interface:<br/>127.0.0.1:3000<br/>LISTEN]
         
@@ -18400,22 +18332,22 @@ flowchart TB
     C -->|No| D[git clone failed]
     C -->|Yes| E[Navigate to Directory]
     
-    E --> F[Verify server.js Exists]
+    E --> F[Verify app.py Exists]
     F --> G{File<br/>Present?}
-    G -->|No| H[Error: Missing server.js]
+    G -->|No| H[Error: Missing app.py]
     G -->|Yes| I[Check Port 3000 Availability]
     
     I --> J{Port<br/>Available?}
     J -->|No| K[Kill Conflicting Process<br/>or Change Port in Code]
-    J -->|Yes| L[Execute: node server.js]
+    J -->|Yes| L[Execute: python app.py]
     
     K --> L
     
-    L --> M[Node.js Starts Server]
+    L --> M[Python Starts Server]
     M --> N[Bind to 127.0.0.1:3000]
     
     N --> O{Binding<br/>Successful?}
-    O -->|No| P[Error: EADDRINUSE or EACCES]
+    O -->|No| P[Error: OSError or EACCES]
     O -->|Yes| Q[Log Startup Message]
     
     Q --> R[Server Running]
@@ -18441,7 +18373,7 @@ flowchart TB
 |-------|----------|-------|
 | Repository Clone | Varies | Depends on network speed |
 | Navigate to Directory | < 1 second | `cd` command |
-| Execute Server | < 100ms | Node.js startup + binding |
+| Execute Server | < 100ms | Python startup + binding |
 | Manual Validation | 2-5 seconds | curl request |
 | **Total (excluding clone)** | **< 10 seconds** | Manual process |
 
@@ -18485,7 +18417,7 @@ graph TB
     end
     
     subgraph "OSI Layer 7: Application"
-        B --> C[Node.js HTTP Server<br/>server.js]
+        B --> C[Python Flask HTTP Server<br/>app.py]
         C -->|HTTP Response| B
     end
     
@@ -18519,7 +18451,7 @@ graph TB
 
 | Layer | Component | Configuration | Security Posture |
 |-------|-----------|--------------|------------------|
-| **Layer 7 (Application)** | HTTP Server | Node.js http module | No authentication, all requests identical response |
+| **Layer 7 (Application)** | HTTP Server | Flask framework | No authentication, all requests identical response |
 | **Layer 4 (Transport)** | TCP Socket | 127.0.0.1:3000 LISTEN | Localhost-only, no external exposure |
 | **Layer 3 (Network)** | Loopback Interface | 127.0.0.0/8 subnet | OS-enforced isolation |
 | **Layer 2 (Data Link)** | Not applicable | Loopback only | No physical network access |
@@ -18549,7 +18481,7 @@ graph TB
 | **Monitoring** | External OS tools | N/A | $0 | $0 | $0 |
 | **Cloud Services** | None | 0 | $0 | $0 | $0 |
 | **Third-Party Services** | None | 0 | $0 | $0 | $0 |
-| **Software Licenses** | Node.js (open source) | N/A | $0 | $0 | $0 |
+| **Software Licenses** | Python (open source) | N/A | $0 | $0 | $0 |
 | **CI/CD** | Not configured | N/A | $0 | $0 | $0 |
 | **Container Registry** | Not used | N/A | $0 | $0 | $0 |
 | **Orchestration** | Not used | N/A | $0 | $0 | $0 |
@@ -18562,7 +18494,7 @@ graph TB
 **Rationale**: Zero infrastructure costs eliminate cost optimization requirements.
 
 **Cost Efficiency Achieved Through**:
-- Zero external dependencies (no npm package costs or security scanning subscriptions)
+- Zero external dependencies (no pip package costs or security scanning subscriptions)
 - Localhost-only deployment (no cloud hosting fees)
 - Manual deployment (no CI/CD service costs)
 - Minimal resource usage (< 15 MB memory, negligible CPU)
@@ -18593,8 +18525,8 @@ If this system were deployed to production with proper infrastructure:
 
 **External Dependencies**: **ZERO**
 
-From `package.json`:
-```json
+From `requirements.txt`:
+```python
 {
   "name": "hello_world",
   "version": "1.0.0",
@@ -18602,19 +18534,19 @@ From `package.json`:
 }
 ```
 
-**Built-In Node.js Modules Used**:
+**Built-In Python Modules Used**:
 
 | Module | Purpose | Version | Source |
 |--------|---------|---------|--------|
-| `http` | HTTP server implementation | Built-in | Node.js core |
+| `http` | HTTP server implementation | Built-in | Flask/Python |
 
 **Verification**:
 ```bash
-npm list --depth=0
+pip list --depth=0
 # Output: hello_world@1.0.0
 #         (empty)
 
-cat package-lock.json | jq '.packages | length'
+cat .python-version | jq '.packages | length'
 # Output: 1 (only the root package, no dependencies)
 ```
 
@@ -18624,11 +18556,11 @@ cat package-lock.json | jq '.packages | length'
 
 No devDependencies configured:
 
-- ❌ No test frameworks (Jest, Mocha, Jasmine)
-- ❌ No build tools (Webpack, Rollup, Parcel)
-- ❌ No linters (ESLint, JSHint)
-- ❌ No formatters (Prettier)
-- ❌ No type checkers (TypeScript, Flow)
+- ❌ No test frameworks (pytest, unittest)
+- ❌ No build tools (setuptools, wheel)
+- ❌ No linters (flake8, pylint)
+- ❌ No formatters (Black, autopep8)
+- ❌ No type checkers (mypy, pyright)
 
 ### 8.10.3 Infrastructure Dependencies
 
@@ -18655,10 +18587,10 @@ The system depends on no external infrastructure:
 
 | Dependency | Requirement | Purpose | Verification |
 |-----------|------------|---------|--------------|
-| **Operating System** | Linux, macOS, or Windows | Node.js runtime platform | `uname -a` or `ver` |
-| **Node.js** | Version ≥12.x | JavaScript runtime | `node --version` |
+| **Operating System** | Linux, macOS, or Windows | Python runtime platform | `uname -a` or `ver` |
+| **Python** | Version ≥12.x | Python runtime | `python --version` |
 | **Available Port** | TCP 3000 not in use | Server binding | `netstat -an \| grep 3000` |
-| **File System** | Read access to server.js | Source code loading | `ls -l server.js` |
+| **File System** | Read access to app.py | Source code loading | `ls -l app.py` |
 | **Network Stack** | Loopback interface | Localhost connectivity | `ifconfig lo` or `ip addr show lo` |
 
 **No Additional System Dependencies**:
@@ -18677,8 +18609,8 @@ The system depends on no external infrastructure:
 |----------|---------|-------------|---------|-------|
 | **CPU Cores** | 1 | 1 | N/A | Single-threaded event loop |
 | **CPU Speed** | Any modern CPU | 1+ GHz | N/A | Minimal processing requirements |
-| **Memory (RAM)** | 50 MB | 100 MB | N/A | Includes Node.js runtime + overhead |
-| **Disk Space** | 10 MB | 50 MB | N/A | Includes Node.js binary + source |
+| **Memory (RAM)** | 50 MB | 100 MB | N/A | Includes Python runtime + overhead |
+| **Disk Space** | 10 MB | 50 MB | N/A | Includes Python binary + source |
 | **Network Bandwidth** | Negligible | N/A | N/A | Loopback interface only |
 
 ### 8.11.2 Scalability Considerations
@@ -18712,10 +18644,10 @@ ab -n 10000 -c 100 http://127.0.0.1:3000/
 
 | Storage Type | Size | Growth Rate | Purpose |
 |-------------|------|-------------|---------|
-| **Application Code** | 315 bytes | Static | server.js file |
+| **Application Code** | 315 bytes | Static | app.py file |
 | **Configuration** | 0 bytes | N/A | Hard-coded in source |
 | **Log Files** | ~50 bytes per run | Minimal | Startup message only |
-| **Dependencies** | 0 bytes | Static | Zero npm packages |
+| **Dependencies** | 0 bytes | Static | Zero pip packages |
 | **Total** | **< 1 KB** | **Static** | Complete application |
 
 **No Data Persistence**: Stateless architecture eliminates database or file storage needs.
@@ -18730,10 +18662,10 @@ ab -n 10000 -c 100 http://127.0.0.1:3000/
 
 | Task | Frequency | Procedure | Downtime |
 |------|-----------|-----------|----------|
-| **Server Restart** | As needed | `kill $(pgrep -f "node server") && node server.js` | < 5 seconds |
-| **Code Updates** | As needed | `git pull && node server.js` | < 5 seconds |
+| **Server Restart** | As needed | `kill $(pgrep -f "python app") && python app.py` | < 5 seconds |
+| **Code Updates** | As needed | `git pull && python app.py` | < 5 seconds |
 | **Dependency Updates** | N/A | No dependencies to update | 0 seconds |
-| **Security Patches** | Per Node.js LTS schedule | Update Node.js runtime: `nvm install --lts` | < 60 seconds |
+| **Security Patches** | Per Python LTS schedule | Update Python runtime: `nvm install --lts` | < 60 seconds |
 | **Log Rotation** | N/A | No persistent logs | N/A |
 | **Database Maintenance** | N/A | No database | N/A |
 
@@ -18744,10 +18676,10 @@ ab -n 10000 -c 100 http://127.0.0.1:3000/
 **Scenario 1: Process Crash**
 ```bash
 # Detection
-ps aux | grep "node server.js"  # Process not found
+ps aux | grep "python app.py"  # Process not found
 
 #### Recovery
-node server.js
+python app.py
 
 #### Validation
 curl http://127.0.0.1:3000  # Should return "Hello, World!"
@@ -18756,14 +18688,14 @@ curl http://127.0.0.1:3000  # Should return "Hello, World!"
 **Scenario 2: Code Corruption**
 ```bash
 # Detection
-git status  # Shows modified server.js
+git status  # Shows modified app.py
 
 #### Recovery
-git checkout HEAD -- server.js
-node server.js
+git checkout HEAD -- app.py
+python app.py
 
 #### Validation
-git diff HEAD server.js  # Should show no differences
+git diff HEAD app.py  # Should show no differences
 ```
 
 **Scenario 3: Repository Loss**
@@ -18775,7 +18707,7 @@ ls -la  # Repository directory missing or corrupted
 cd ~
 git clone github.com:lakshya-blitzy/hello_world_Oct_2025.git
 cd hello_world_Oct_2025
-node server.js
+python app.py
 
 #### Validation
 curl http://127.0.0.1:3000
@@ -18791,14 +18723,14 @@ cd /path/to/hello_world_Oct_2025
 git pull origin main
 
 #### If server is running, restart it
-kill $(pgrep -f "node server.js")
-node server.js
+kill $(pgrep -f "python app.py")
+python app.py
 
 #### Validate
 curl http://127.0.0.1:3000
 ```
 
-**Node.js Runtime Updates** (using nvm):
+**Python Runtime Updates** (using nvm):
 
 ```bash
 # Update to latest LTS
@@ -18806,10 +18738,10 @@ nvm install --lts
 nvm use --lts
 
 #### Verify version
-node --version
+python --version
 
-#### Restart server with new Node.js version
-node server.js
+#### Restart server with new Python version
+python app.py
 ```
 
 ### 8.12.4 Monitoring and Health Checks
@@ -18823,7 +18755,7 @@ node server.js
 echo "=== Daily Health Check ==="
 
 #### Check process status
-if pgrep -f "node server.js" > /dev/null; then
+if pgrep -f "python app.py" > /dev/null; then
   echo "✅ Process is running"
 else
   echo "❌ Process is not running"
@@ -18847,7 +18779,7 @@ else
 fi
 
 #### Check resource usage
-MEM=$(ps -p $(pgrep -f "node server") -o rss= | awk '{print $1/1024}')
+MEM=$(ps -p $(pgrep -f "python app") -o rss= | awk '{print $1/1024}')
 echo "Memory usage: ${MEM} MB"
 if (( $(echo "$MEM > 100" | bc -l) )); then
   echo "⚠️  Warning: Memory usage above 100 MB"
@@ -18878,8 +18810,8 @@ echo "=== Health Check Complete ==="
 
 | Priority | Gap | Current State | Required For Production | Effort |
 |----------|-----|--------------|------------------------|--------|
-| **P0** | Localhost Binding | `127.0.0.1` | `0.0.0.0` or `process.env.HOST` | 5 min |
-| **P0** | Hard-Coded Port | `3000` | `process.env.PORT \|\| 3000` | 5 min |
+| **P0** | Localhost Binding | `127.0.0.1` | `0.0.0.0` or `os.getenv('HOST')` | 5 min |
+| **P0** | Hard-Coded Port | `3000` | `os.getenv('PORT') \|\| 3000` | 5 min |
 | **P0** | Failing Test Script | `exit 1` | Functional tests | 2-4 hours |
 | **P0** | No Health Checks | None | `/health`, `/ready` endpoints | 30 min |
 | **P1** | No Error Handling | None | `server.on('error', handler)` | 30 min |
@@ -18944,8 +18876,8 @@ The infrastructure design reflects core architectural principles documented in S
 **For Current Use Case (Integration Testing)**:
 - ✅ **Maintain current approach** - minimal infrastructure is appropriate
 - ✅ **Fix test script** (defect F-006-RQ-001) to enable basic CI validation
-- ✅ **Add .gitignore** to prevent committing node_modules if dependencies added
-- ✅ **Document npm start script** in package.json for consistency
+- ✅ **Add .gitignore** to prevent committing venv if dependencies added
+- ✅ **Document python app.py script** in requirements.txt for consistency
 
 **For Future Production Deployment** (if requirements change):
 - Code changes required (documented in Section 5.5.3):
@@ -18966,9 +18898,9 @@ The infrastructure design reflects core architectural principles documented in S
 
 ### 8.15.1 Source Files Examined
 
-- `server.js` (14 lines) - Complete HTTP server implementation with localhost binding (lines 3-4) and single log statement (line 13)
-- `package.json` (11 lines) - Zero dependencies, failing test script (line 7), missing start script
-- `package-lock.json` (14 lines) - lockfileVersion 3, confirms zero resolved packages
+- `app.py` (14 lines) - Complete HTTP server implementation with localhost binding (lines 3-4) and single log statement (line 13)
+- `requirements.txt` (11 lines) - Zero dependencies, failing test script (line 7), missing start script
+- `.python-version` (14 lines) - Python 3.12.3, confirms zero resolved packages
 - `README.md` (2 lines) - Project identification as "test project for backprop integration"
 
 ### 8.15.2 Technical Specification Sections Referenced
@@ -18988,12 +18920,12 @@ The infrastructure design reflects core architectural principles documented in S
 - OS tools: top, htop, ps, vmstat, free
 - Network tools: netstat, ss, lsof, tcpdump, Wireshark
 - Testing tools: curl, Apache Bench (ab), wrk, hey
-- Process managers: PM2, systemd, supervisord
+- Process managers: Gunicorn, systemd, supervisord
 
 **Development Tools**:
 - Version Control: Git, GitHub
-- Runtime: Node.js (≥12.x)
-- Package Manager: npm
+- Runtime: Python (≥12.x)
+- Package Manager: pip
 
 **Infrastructure Technologies Referenced** (not implemented):
 - Containerization: Docker, Podman, containerd
@@ -19006,9 +18938,9 @@ The infrastructure design reflects core architectural principles documented in S
 ### 8.15.4 Repository Evidence
 
 - File system analysis confirmed absence of infrastructure files (.github/, Dockerfile, kubernetes/, etc.)
-- Directory listing verified 4 files total (README.md, package.json, package-lock.json, server.js)
+- Directory listing verified 4 files total (README.md, requirements.txt, .python-version, app.py)
 - No subdirectories present beyond .git (version control only)
-- Zero npm dependencies confirmed via package.json and package-lock.json analysis
+- Zero pip dependencies confirmed via requirements.txt and .python-version analysis
 
 # 9. Appendices
 
@@ -19026,17 +18958,17 @@ This subsection documents known defects, metadata inconsistencies, and configura
 
 | Attribute | Value |
 |-----------|-------|
-| **Current Configuration** | `"main": "index.js"` (in `package.json` line 5) |
-| **Actual Entry Point** | `server.js` (14 lines) |
-| **Impact** | Module import failures, incorrect npm package structure |
+| **Current Configuration** | `"main": "app.py"` (in `requirements.txt` line 5) |
+| **Actual Entry Point** | `app.py` (14 lines) |
+| **Impact** | Module import failures, incorrect pip package structure |
 | **Priority** | Medium |
 | **Resolution Effort** | < 5 minutes |
 
-**Evidence**: `package.json` specifies non-existent `index.js` while actual server implementation resides in `server.js`.
+**Evidence**: `requirements.txt` specifies non-existent `app.py` while actual server implementation resides in `app.py`.
 
 **Recommended Fix**:
-```json
-"main": "server.js"
+```python
+"main": "app.py"
 ```
 
 ---
@@ -19046,13 +18978,13 @@ This subsection documents known defects, metadata inconsistencies, and configura
 | Attribute | Value |
 |-----------|-------|
 | **README.md Identifier** | "hao-backprop-test" |
-| **package.json Name** | "hello_world" |
+| **requirements.txt Name** | "hello_world" |
 | **Repository Folder** | "hello_world_Oct_2025" |
 | **Impact** | Documentation confusion, package registry mismatch |
 | **Priority** | Low |
 | **Resolution Effort** | < 15 minutes |
 
-**Evidence**: `README.md` line 1 identifies project as "hao-backprop-test" while `package.json` line 2 declares name as "hello_world".
+**Evidence**: `README.md` line 1 identifies project as "hao-backprop-test" while `requirements.txt` line 2 declares name as "hello_world".
 
 **Recommended Fix**: Align all identifiers to "hao-backprop-test" for consistency across documentation and configuration.
 
@@ -19068,10 +19000,10 @@ This subsection documents known defects, metadata inconsistencies, and configura
 | **Priority** | High (if CI/CD required) |
 | **Resolution Effort** | 2-4 hours (implement tests) or < 5 minutes (non-blocking placeholder) |
 
-**Evidence**: `package.json` line 7 contains default npm test script that always fails.
+**Evidence**: `requirements.txt` line 7 contains default pip test script that always fails.
 
 **Impact Analysis**:
-- CI/CD systems executing `npm test` receive failure signal
+- CI/CD systems executing `pip test` receive failure signal
 - Automated build verification impossible
 - GitHub Actions, Travis CI, CircleCI integration blocked
 - Pull request checks fail automatically
@@ -19079,16 +19011,16 @@ This subsection documents known defects, metadata inconsistencies, and configura
 **Remediation Options**:
 
 Option 1 - Non-blocking placeholder (immediate fix):
-```json
+```python
 "test": "echo 'No tests specified for minimal test fixture' && exit 0"
 ```
 
-Option 2 - Node.js built-in test runner (comprehensive fix):
-```json
-"test": "node --test test/*.test.js"
+Option 2 - Python standard library test runner (comprehensive fix):
+```python
+"test": "python -m pytest tests/"
 ```
 
-Requires creating test suite using Node.js 18+ built-in test runner to maintain zero-dependency architecture.
+Requires creating test suite using Python 18+ built-in test runner to maintain zero-dependency architecture.
 
 ### 9.1.2 Quick Reference: Manual Testing Commands
 
@@ -19098,7 +19030,7 @@ This subsection provides a condensed command reference for manual verification p
 
 **Start Server Process**:
 ```bash
-node server.js &
+python app.py &
 ```
 
 **Expected Output**: `Server running at http://127.0.0.1:3000/`
@@ -19107,7 +19039,7 @@ node server.js &
 
 **Verify Process Running**:
 ```bash
-ps aux | grep "node server.js"
+ps aux | grep "python app.py"
 ```
 
 **Expected Output**: Process entry with PID, < 30 MB memory usage, near-zero CPU utilization
@@ -19192,7 +19124,7 @@ wrk -t2 -c10 -d10s http://127.0.0.1:3000/
 **Memory Usage Monitoring**:
 ```bash
 # Get server process ID
-PID=$(pgrep -f "node server.js")
+PID=$(pgrep -f "python app.py")
 
 #### Monitor memory (RSS in KB)
 ps aux | grep $PID | awk '{print $6}'
@@ -19216,7 +19148,7 @@ top -p $PID
 **Graceful Shutdown**:
 ```bash
 # Get PID and send termination signal
-PID=$(pgrep -f "node server.js")
+PID=$(pgrep -f "python app.py")
 kill $PID
 
 #### Verify termination
@@ -19232,9 +19164,9 @@ The repository maintains a minimal flat file structure with zero subdirectories:
 ```
 hello_world_Oct_2025/
 ├── README.md                  (2 lines)    - Project identification
-├── package.json               (11 lines)   - Package metadata and scripts
-├── package-lock.json          (lockfileVersion 3) - Dependency lock
-└── server.js                  (14 lines)   - Complete HTTP server
+├── requirements.txt               (11 lines)   - Package metadata and scripts
+├── .python-version          (Python 3.12.3) - Dependency lock
+└── app.py                  (14 lines)   - Complete HTTP server
 ```
 
 **Total File Count**: 4 files
@@ -19307,7 +19239,7 @@ The following table consolidates performance metrics documented throughout Secti
 | **Disk I/O** | 0 bytes/sec | No persistent storage |
 | **Disk Space** | < 1 KB | Application code only |
 
-**Evidence**: Performance metrics derived from code analysis of `server.js` showing no I/O operations, dynamic allocations, or resource-intensive processing.
+**Evidence**: Performance metrics derived from code analysis of `app.py` showing no I/O operations, dynamic allocations, or resource-intensive processing.
 
 #### 9.1.3.4 Network Configuration Reference
 
@@ -19315,9 +19247,9 @@ The following table consolidates performance metrics documented throughout Secti
 
 | Parameter | Value | Evidence |
 |-----------|-------|----------|
-| **Binding Interface** | 127.0.0.1 (IPv4 localhost) | `server.js` line 3 |
-| **Listening Port** | 3000 (TCP) | `server.js` line 4 |
-| **Protocol** | HTTP/1.1 | Node.js http module default |
+| **Binding Interface** | 127.0.0.1 (IPv4 localhost) | `app.py` line 3 |
+| **Listening Port** | 3000 (TCP) | `app.py` line 4 |
+| **Protocol** | HTTP/1.1 | Flask framework default |
 | **IPv6 Support** | No (localhost-only IPv4) | Hard-coded 127.0.0.1 |
 | **Network Isolation** | Complete (external access impossible) | Loopback interface only |
 
@@ -19329,9 +19261,9 @@ The following table consolidates performance metrics documented throughout Secti
 | **URL Paths** | All (no routing) | Universal response regardless of path |
 | **Request Headers** | Ignored | No header parsing or validation |
 | **Request Body** | Ignored | No body parsing |
-| **Response Status** | 200 OK (fixed) | `server.js` line 7 |
-| **Response Content-Type** | text/plain (fixed) | `server.js` line 8 |
-| **Response Body** | "Hello, World!\n" (fixed) | `server.js` line 9 |
+| **Response Status** | 200 OK (fixed) | `app.py` line 7 |
+| **Response Content-Type** | text/plain (fixed) | `app.py` line 8 |
+| **Response Body** | "Hello, World!\n" (fixed) | `app.py` line 9 |
 
 **Security Posture**: Network-level isolation provides complete security boundary; no authentication, authorization, or encryption implemented (not required for localhost-only operation).
 
@@ -19341,13 +19273,13 @@ The following table consolidates performance metrics documented throughout Secti
 
 | Technology | Minimum Version | Recommended Version | Maximum Tested | Status |
 |------------|----------------|---------------------|----------------|--------|
-| **Node.js** | 12.x | 18.x or 20.x LTS | 20.x | ✅ Compatible |
-| **npm** | 6.x | 9.x or 10.x | 10.x | ✅ Compatible |
-| **JavaScript** | ES6 (ECMAScript 2015) | ES2020+ | ES2023 | ✅ Compatible |
+| **Python** | 12.x | 18.x or 20.x LTS | 20.x | ✅ Compatible |
+| **pip** | 6.x | 9.x or 10.x | 10.x | ✅ Compatible |
+| **Python** | Python 3 (Python 2015) | ES2020+ | ES2023 | ✅ Compatible |
 
 **Evidence**:
-- `package.json` line 10 specifies Node.js ≥ 12.x
-- Arrow function syntax (`server.js` line 7) requires ES6 minimum
+- `requirements.txt` line 10 specifies Python ≥ 12.x
+- Arrow function syntax (`app.py` line 7) requires Python 3 minimum
 - No advanced language features requiring newer versions
 
 #### 9.1.4.2 Operating System Compatibility
@@ -19357,8 +19289,8 @@ The following table consolidates performance metrics documented throughout Secti
 | **Linux** | x86_64, ARM64 | ✅ Fully supported | Ubuntu 20.04+, CentOS 7+, Debian 10+ |
 | **macOS** | x86_64, ARM64 (Apple Silicon) | ✅ Fully supported | macOS 10.15 Catalina or later |
 | **Windows** | x86_64 | ✅ Fully supported | Windows 10, Windows Server 2016+ |
-| **FreeBSD** | x86_64 | ⚠️ Untested | Likely compatible with Node.js support |
-| **Other Unix** | Various | ⚠️ Untested | Requires Node.js port availability |
+| **FreeBSD** | x86_64 | ⚠️ Untested | Likely compatible with Python support |
+| **Other Unix** | Various | ⚠️ Untested | Requires Python port availability |
 
 **Platform-Specific Considerations**:
 - **Windows**: Use `netstat -an | findstr 3000` instead of grep for port verification
@@ -19374,50 +19306,50 @@ This section defines technical terms, concepts, and domain-specific terminology 
 **Backprop Integration**  
 The primary validation purpose of this minimal HTTP server system. "Backprop" refers to backpropagation testing or integration validation scenarios for which this server acts as a test fixture. The intentionally constrained scope and deterministic behavior make this system ideal for verifying integration workflows without the complexity of production-grade infrastructure.
 
-**CommonJS**  
-A module system standard used by Node.js for organizing and loading JavaScript code. CommonJS employs `require()` for importing modules and `module.exports` for exporting functionality. This project uses CommonJS module syntax exclusively, as evidenced by `require('http')` in `server.js` line 1.
+**Python import system**  
+A module system standard used by Python for organizing and loading Python code. Python import system employs `import` and `from ... import` statements for importing modules and exposing functionality. This project uses the Python import system exclusively, as evidenced by `from flask import Flask, Response` in `app.py` line 1.
 
 **Content-Type Header**  
-An HTTP response header that specifies the MIME type of the response body, enabling clients to correctly interpret the data format. This system returns `Content-Type: text/plain` for all responses (`server.js` line 8), indicating unformatted plain text content.
+An HTTP response header that specifies the MIME type of the response body, enabling clients to correctly interpret the data format. This system returns `Content-Type: text/plain` for all responses (`app.py` line 8), indicating unformatted plain text content.
 
 **Dependency Lockfile**  
-A file (package-lock.json) that records the exact resolved versions of all dependencies and transitive dependencies to ensure reproducible installations across different environments. This project's lockfile documents zero external dependencies, containing only the root package entry.
+A file (.python-version) that records the exact resolved versions of all dependencies and transitive dependencies to ensure reproducible installations across different environments. This project's lockfile documents zero external dependencies, containing only the root package entry.
 
 **Deterministic Response**  
 A system behavior characteristic where identical output is guaranteed for all inputs. This server generates the same "Hello, World!" response regardless of HTTP method, URL path, headers, or request body, enabling predictable testing scenarios.
 
 **Event Loop**  
-The core concurrency mechanism in Node.js that enables non-blocking I/O operations through asynchronous callbacks and event-driven execution. While this system doesn't exploit asynchronous patterns (all operations are synchronous), the event loop handles incoming network connections.
+The core concurrency mechanism in Python that enables non-blocking I/O operations through asynchronous callbacks and event-driven execution. While this system doesn't exploit asynchronous patterns (all operations are synchronous), the event loop handles incoming network connections.
 
 **HTTP Method**  
-The action verb specified in an HTTP request (GET, POST, PUT, DELETE, PATCH, etc.) that conventionally indicates the intended operation. This system accepts all HTTP methods without distinction, treating GET, POST, PUT, and DELETE identically (`server.js` line 7 handles all methods with the same logic).
+The action verb specified in an HTTP request (GET, POST, PUT, DELETE, PATCH, etc.) that conventionally indicates the intended operation. This system accepts all HTTP methods without distinction, treating GET, POST, PUT, and DELETE identically (`app.py` line 7 handles all methods with the same logic).
 
 **Localhost / Loopback Interface**  
-A virtual network interface (127.0.0.1 for IPv4, ::1 for IPv6) that routes connections back to the same machine without traversing physical network hardware. This system binds exclusively to 127.0.0.1 (`server.js` line 3), providing complete network isolation and preventing external access.
+A virtual network interface (127.0.0.1 for IPv4, ::1 for IPv6) that routes connections back to the same machine without traversing physical network hardware. This system binds exclusively to 127.0.0.1 (`app.py` line 3), providing complete network isolation and preventing external access.
 
 **MIME Type**  
 Multipurpose Internet Mail Extensions type; a standardized way of classifying file types and content formats on the Internet. The value `text/plain` used by this system is a MIME type indicating unformatted plain text without markup.
 
-**Node.js**  
-A JavaScript runtime environment built on the Chrome V8 JavaScript engine that enables server-side JavaScript execution. Node.js provides built-in modules (like `http`) and an event-driven architecture for building network applications. This project's sole runtime dependency.
+**Python**  
+A Python runtime environment built on the Chrome CPython Python engine that enables server-side Python execution. Python provides built-in modules (like `http`) and an event-driven architecture for building network applications. This project's sole runtime dependency.
 
-**npm (Node Package Manager)**  
-The default package manager for Node.js, used for installing dependencies, managing project metadata, and executing scripts defined in package.json. This system uses npm for script execution (`npm test`) despite having zero dependencies to install.
+**pip (Python Package Manager)**  
+The default package manager for Python, used for installing dependencies, managing project metadata, and executing scripts defined in requirements.txt. This system uses pip for script execution (`pip test`) despite having zero dependencies to install.
 
 **Request Handler**  
-A callback function invoked by the HTTP server for each incoming request, responsible for processing the request and generating a response. This system implements a single universal request handler as an arrow function in `server.js` line 7.
+A route handler function invoked by the Flask router for each incoming request, responsible for processing the request and generating a response. This system implements a single universal request handler as a decorated function in `app.py` line 7.
 
 **REST API (Representational State Transfer API)**  
 An architectural style for designing networked applications using stateless operations, resource-based URLs, and standard HTTP methods. While mentioned in requirements documentation, this system does **not** implement true REST principles (no resource identification, no CRUD operations, no hypermedia).
 
 **Semantic Versioning (SemVer)**  
-A versioning scheme using the MAJOR.MINOR.PATCH format (e.g., 1.0.0) where increments indicate different levels of change: MAJOR for breaking changes, MINOR for backwards-compatible features, PATCH for bug fixes. This project is version 1.0.0 (`package.json` line 3).
+A versioning scheme using the MAJOR.MINOR.PATCH format (e.g., 1.0.0) where increments indicate different levels of change: MAJOR for breaking changes, MINOR for backwards-compatible features, PATCH for bug fixes. This project is version 1.0.0 (`requirements.txt` line 3).
 
 **Stateless Architecture**  
-A design pattern where the server retains no memory of previous requests; each request is processed independently with no session state, cookies, or persistent data. This system is completely stateless—there are no variables modified during request handling (`server.js` lines 7-9 contain no state mutations).
+A design pattern where the server retains no memory of previous requests; each request is processed independently with no session state, cookies, or persistent data. This system is completely stateless—there are no variables modified during request handling (`app.py` lines 7-9 contain no state mutations).
 
 **TCP Socket**  
-A network communication endpoint that enables bidirectional data transmission using the Transmission Control Protocol. The Node.js `http.createServer().listen()` call (`server.js` line 12) creates a TCP socket bound to 127.0.0.1:3000.
+A network communication endpoint that enables bidirectional data transmission using the Transmission Control Protocol. The Python `Flask(__name__).listen()` call (`app.py` line 12) creates a TCP socket bound to 127.0.0.1:3000.
 
 **TCP/IP (Transmission Control Protocol/Internet Protocol)**  
 The fundamental communication protocols of the Internet. TCP provides reliable, ordered data delivery while IP handles addressing and routing. HTTP operates over TCP connections (port 3000 in this system).
@@ -19431,16 +19363,16 @@ A software framework designed specifically to support testing activities, often 
 ### 9.2.2 Architectural Pattern Terminology
 
 **Event-Driven Architecture**  
-A programming paradigm where program flow is determined by events (user actions, sensor outputs, messages) rather than sequential execution. Node.js employs an event-driven architecture with a single-threaded event loop for handling concurrent connections without multi-threading overhead.
+A programming paradigm where program flow is determined by events (user actions, sensor outputs, messages) rather than sequential execution. Python employs an event-driven architecture with a single-threaded event loop for handling concurrent connections without multi-threading overhead.
 
 **Single-File Architecture**  
-An architectural pattern where the entire application logic resides in one source file rather than being modularized across multiple files or directories. This system uses single-file architecture (`server.js` contains all functionality), prioritizing simplicity and transparency over modularity and separation of concerns.
+An architectural pattern where the entire application logic resides in one source file rather than being modularized across multiple files or directories. This system uses single-file architecture (`app.py` contains all functionality), prioritizing simplicity and transparency over modularity and separation of concerns.
 
 **Universal Request Handler**  
-A design pattern where a single handler function processes all incoming requests regardless of HTTP method, URL path, or headers. This system implements this pattern in `server.js` lines 7-9, contrasting with typical routing-based architectures that direct requests to specialized handlers.
+A design pattern where a single handler function processes all incoming requests regardless of HTTP method, URL path, or headers. This system implements this pattern in `app.py` lines 7-9, contrasting with typical routing-based architectures that direct requests to specialized handlers.
 
 **Zero-Dependency Architecture**  
-An architectural approach that relies exclusively on runtime built-in functionality without external libraries or packages. This system demonstrates zero-dependency architecture by using only Node.js built-in modules (`http`, `console`) as documented in `package.json` (no dependencies array).
+An architectural approach that relies exclusively on runtime built-in functionality without external libraries or packages. This system demonstrates zero-dependency architecture by using only Python packages and Flask (`http`, `console`) as documented in `requirements.txt` (no dependencies array).
 
 ## 9.3 ACRONYMS
 
@@ -19452,37 +19384,37 @@ This section provides expanded forms of acronyms used throughout the technical s
 |---------|---------------|----------------|
 | **API** | Application Programming Interface | External service integration patterns (mentioned but not applicable to this localhost-only system) |
 | **CI/CD** | Continuous Integration/Continuous Deployment | Automated testing and deployment pipelines currently blocked by test script defect (F-006-RQ-001) |
-| **CLI** | Command Line Interface | Interface for executing npm commands (`npm test`, `npm start`) and Node.js runtime (`node server.js`) |
+| **CLI** | Command Line Interface | Interface for executing pip commands (`pip test`, `python app.py`) and Python runtime (`python app.py`) |
 | **CORS** | Cross-Origin Resource Sharing | HTTP security mechanism not implemented (not applicable for localhost-only binding) |
 | **CPU** | Central Processing Unit | Hardware resource for process execution; utilization metrics documented in Section 9.1.3.3 |
 | **CRUD** | Create, Read, Update, Delete | Standard database operations (not applicable to this stateless system with no data persistence) |
 | **CVE** | Common Vulnerabilities and Exposures | Security vulnerability identification system (not applicable—zero dependencies eliminate CVE exposure) |
 | **DNS** | Domain Name System | Internet name resolution service (not utilized—direct IP address binding to 127.0.0.1) |
 | **EACCES** | Error: Access Denied | POSIX error code indicating permission denied when attempting privileged port binding (ports < 1024) |
-| **EADDRINUSE** | Error: Address Already In Use | TCP socket error indicating port conflict when attempting to bind port 3000 while already occupied |
+| **OSError** | Error: Address Already In Use | TCP socket error indicating port conflict when attempting to bind port 3000 while already occupied |
 
 | Acronym | Expanded Form | Context / Usage |
 |---------|---------------|----------------|
-| **ES6** | ECMAScript 2015 (6th Edition) | JavaScript language version; minimum requirement for arrow function syntax used in `server.js` |
+| **Python 3** | Python 2015 (6th Edition) | Python language version; minimum requirement for arrow function syntax used in `app.py` |
 | **HTTP** | Hypertext Transfer Protocol | Application-layer protocol for distributed hypermedia systems; this system implements HTTP/1.1 |
 | **HTTPS** | HTTP Secure | HTTP over TLS/SSL encryption (not implemented in this system—plain HTTP only) |
 | **I/O** | Input/Output | Operations involving external resources like disk, network, or devices (this system performs zero I/O after startup) |
 | **IP** | Internet Protocol | Network layer protocol for addressing and routing packets (IPv4 address 127.0.0.1 used) |
 | **IPv4** | Internet Protocol version 4 | Fourth version of IP using 32-bit addresses (127.0.0.1 loopback address) |
 | **IPv6** | Internet Protocol version 6 | Sixth version of IP using 128-bit addresses (not supported—no ::1 binding) |
-| **JSON** | JavaScript Object Notation | Data interchange format used for package.json and package-lock.json configuration files |
+| **JSON** | Python Object Notation | Data interchange format used for requirements.txt and .python-version configuration files |
 | **JWT** | JSON Web Token | Token-based authentication standard (mentioned in security discussions but not implemented) |
 | **KB** | Kilobyte | Unit of digital information (1024 bytes); used for memory measurements and response sizes |
 
 | Acronym | Expanded Form | Context / Usage |
 |---------|---------------|----------------|
-| **LTS** | Long-Term Support | Node.js release designation for versions with extended maintenance periods (recommended: 18.x or 20.x LTS) |
+| **LTS** | Long-Term Support | Python release designation for versions with extended maintenance periods (recommended: 18.x or 20.x LTS) |
 | **MB** | Megabyte | Unit of digital information (1024 KB); used for memory footprint measurements (10-30 MB typical) |
 | **MIME** | Multipurpose Internet Mail Extensions | Standard for indicating file/content types; system returns `text/plain` MIME type |
-| **MIT** | Massachusetts Institute of Technology | Open source license type used by this project (`package.json` line 8: "license": "MIT") |
+| **MIT** | Massachusetts Institute of Technology | Open source license type used by this project (`requirements.txt` line 8: "license": "MIT") |
 | **ms** | Millisecond | Time measurement unit (1/1000th second) used for performance metrics and SLA targets |
 | **N/A** | Not Applicable | Documentation notation indicating a metric, feature, or requirement doesn't apply to this system |
-| **npm** | Node Package Manager | Default package manager for Node.js ecosystem; manages dependencies and executes scripts |
+| **pip** | Python Package Manager | Default package manager for Python ecosystem; manages dependencies and executes scripts |
 | **OS** | Operating System | System software managing hardware/software resources (Linux, macOS, Windows compatibility) |
 | **PID** | Process Identifier | Unique numeric identifier assigned by the operating system to each running process |
 | **REST** | Representational State Transfer | Architectural style for networked applications (mentioned but not genuinely implemented) |
@@ -19492,13 +19424,13 @@ This section provides expanded forms of acronyms used throughout the technical s
 | **RFC** | Request for Comments | Technical specification standards published by IETF (e.g., RFC 7231 defines HTTP/1.1 semantics) |
 | **RPO** | Recovery Point Objective | Disaster recovery metric for acceptable data loss (0 seconds for this stateless system) |
 | **RSS** | Resident Set Size | Memory usage metric indicating physical RAM occupied by process (10-30 MB typical for this system) |
-| **RTO** | Recovery Time Objective | Disaster recovery metric for acceptable downtime (< 5 seconds—instant restart via `node server.js`) |
+| **RTO** | Recovery Time Objective | Disaster recovery metric for acceptable downtime (< 5 seconds—instant restart via `python app.py`) |
 | **SLA** | Service Level Agreement | Formal commitment specifying performance targets (documented in Sections 2.4.2 and 4.6) |
-| **SPDX** | Software Package Data Exchange | Standardized format for license identifiers (`package.json` uses SPDX identifier "MIT") |
+| **SPDX** | Software Package Data Exchange | Standardized format for license identifiers (`requirements.txt` uses SPDX identifier "MIT") |
 | **TCP** | Transmission Control Protocol | Transport layer protocol providing reliable, ordered data delivery over IP networks |
 | **TLS** | Transport Layer Security | Cryptographic protocol for secure network communications (not implemented—plain HTTP only) |
 | **URL** | Uniform Resource Locator | Web address format (e.g., `http://127.0.0.1:3000/`); all URLs receive identical responses |
-| **UTF-8** | Unicode Transformation Format - 8-bit | Variable-width character encoding supporting all Unicode characters (implicit in Node.js string handling) |
+| **UTF-8** | Unicode Transformation Format - 8-bit | Variable-width character encoding supporting all Unicode characters (implicit in Python string handling) |
 
 ### 9.3.2 Feature and Requirement Identifiers
 
@@ -19528,23 +19460,23 @@ This table provides immediate access to frequently used commands and operations 
 
 | Operation | Command | Expected Outcome |
 |-----------|---------|------------------|
-| **Start Server** | `node server.js` | Console message: "Server running at http://127.0.0.1:3000/" |
-| **Start Server (Background)** | `node server.js &` | Background process started, PID displayed |
-| **Stop Server** | `kill $(pgrep -f "node server.js")` | Process terminated immediately |
+| **Start Server** | `python app.py` | Console message: "Server running at http://127.0.0.1:3000/" |
+| **Start Server (Background)** | `python app.py &` | Background process started, PID displayed |
+| **Stop Server** | `kill $(pgrep -f "python app.py")` | Process terminated immediately |
 | **Test Basic Function** | `curl http://127.0.0.1:3000/` | Response: "Hello, World!" with newline |
-| **Check Server Status** | `ps aux \| grep "node server"` | Process details if running, no output if stopped |
+| **Check Server Status** | `ps aux \| grep "python app"` | Process details if running, no output if stopped |
 | **Check Port Binding** | `netstat -an \| grep 3000` | Socket line showing 127.0.0.1:3000 LISTEN state |
-| **Run npm Test Script** | `npm test` | Currently exits with code 1 (known defect F-006-RQ-001) |
-| **Install Dependencies** | `npm install` | Completes instantly (zero dependencies) |
-| **Check Node Version** | `node --version` | Should display v12.x or higher |
+| **Run pip Test Script** | `pip test` | Currently exits with code 1 (known defect F-006-RQ-001) |
+| **Install Dependencies** | `pip install -r requirements.txt` | Completes instantly (zero dependencies) |
+| **Check Python Version** | `python --version` | Should display v12.x or higher |
 
 ### 9.4.2 File Location Reference
 
 | File Path | Lines | Purpose | Key Contents |
 |-----------|-------|---------|--------------|
-| **`server.js`** | 14 | Main application code | Complete HTTP server implementation |
-| **`package.json`** | 11 | Package metadata | Name, version, scripts, author, license |
-| **`package-lock.json`** | Variable | Dependency lock | Lockfile version 3, zero external dependencies |
+| **`app.py`** | 14 | Main application code | Complete HTTP server implementation |
+| **`requirements.txt`** | 11 | Package metadata | Name, version, scripts, author, license |
+| **`.python-version`** | Variable | Dependency lock | Lockfile version 3, zero external dependencies |
 | **`README.md`** | 2 | Project identification | Project name and purpose statement |
 
 **Total Project Size**: < 1 KB of application code
@@ -19553,10 +19485,10 @@ This table provides immediate access to frequently used commands and operations 
 
 | Error Code | Error Message | Cause | Resolution |
 |------------|--------------|-------|------------|
-| **EADDRINUSE** | "address already in use 127.0.0.1:3000" | Port 3000 already bound by another process | Stop existing process or change port in `server.js` |
+| **OSError** | "address already in use 127.0.0.1:3000" | Port 3000 already bound by another process | Stop existing process or change port in `app.py` |
 | **EACCES** | "permission denied" | Attempting to bind privileged port (< 1024) | Use port ≥ 1024 or run with elevated privileges |
-| **Exit Code 1** | npm test failure | Test script exits with error (F-006-RQ-001) | Fix test script per Section 9.1.1.2 recommendations |
-| **MODULE_NOT_FOUND** | "Cannot find module 'http'" | Node.js installation corrupted | Reinstall Node.js runtime |
+| **Exit Code 1** | pip test failure | Test script exits with error (F-006-RQ-001) | Fix test script per Section 9.1.1.2 recommendations |
+| **MODULE_NOT_FOUND** | "Cannot find module 'http'" | Python installation corrupted | Reinstall Python runtime |
 | **ENOTFOUND** | "getaddrinfo ENOTFOUND" | Invalid hostname configuration | Verify hostname is valid IP or resolvable name |
 
 ### 9.4.4 HTTP Response Reference
@@ -19565,11 +19497,11 @@ All requests to this server receive identical responses regardless of method, pa
 
 | Response Component | Value | Evidence |
 |-------------------|-------|----------|
-| **Status Code** | 200 OK | `server.js` line 7 (implicit) |
-| **Status Line** | HTTP/1.1 200 OK | Node.js http module default |
-| **Content-Type Header** | text/plain | `server.js` line 8 |
+| **Status Code** | 200 OK | `app.py` line 7 (implicit) |
+| **Status Line** | HTTP/1.1 200 OK | Flask framework default |
+| **Content-Type Header** | text/plain | `app.py` line 8 |
 | **Content-Length Header** | 14 | Automatically calculated (13 chars + newline) |
-| **Response Body** | Hello, World!\n | `server.js` line 9 |
+| **Response Body** | Hello, World!\n | `app.py` line 9 |
 | **Response Time** | < 1ms typical | No I/O operations in handler |
 
 **Response Consistency**: Deterministic—exactly identical for all request variations.
@@ -19582,15 +19514,15 @@ The following table documents configuration parameters and their current hard-co
 
 | Parameter | Current Value | Configurability | Production Recommendation |
 |-----------|--------------|-----------------|--------------------------|
-| **Hostname** | 127.0.0.1 | Hard-coded | Use `process.env.HOST \|\| '0.0.0.0'` for external access |
-| **Port** | 3000 | Hard-coded | Use `process.env.PORT \|\| 3000` for environment flexibility |
+| **Hostname** | 127.0.0.1 | Hard-coded | Use `os.getenv('HOST') \|\| '0.0.0.0'` for external access |
+| **Port** | 3000 | Hard-coded | Use `os.getenv('PORT') \|\| 3000` for environment flexibility |
 | **Response Body** | "Hello, World!\n" | Hard-coded | Externalize via configuration file or environment variable |
 | **Content-Type** | text/plain | Hard-coded | Make configurable for different response types |
 | **Logging Level** | Console only | Hard-coded | Implement structured logging (Winston, Bunyan, Pino) |
 
 **Current Limitation**: All configuration changes require source code modification and redeployment.
 
-**Evidence**: `server.js` lines 3-4 contain hard-coded configuration constants with no environment variable fallbacks.
+**Evidence**: `app.py` lines 3-4 contain hard-coded configuration constants with no environment variable fallbacks.
 
 ### 9.5.2 Environment Variable Recommendations
 
@@ -19598,11 +19530,11 @@ For production deployment (currently not implemented), the following environment
 
 | Environment Variable | Purpose | Default Value | Example Usage |
 |---------------------|---------|---------------|---------------|
-| **HOST** | Binding interface | 127.0.0.1 | `HOST=0.0.0.0 node server.js` |
-| **PORT** | Listening port | 3000 | `PORT=8080 node server.js` |
-| **LOG_LEVEL** | Logging verbosity | info | `LOG_LEVEL=debug node server.js` |
-| **NODE_ENV** | Environment type | development | `NODE_ENV=production node server.js` |
-| **RESPONSE_MESSAGE** | Custom response text | Hello, World! | `RESPONSE_MESSAGE="Test OK" node server.js` |
+| **HOST** | Binding interface | 127.0.0.1 | `HOST=0.0.0.0 python app.py` |
+| **PORT** | Listening port | 3000 | `PORT=8080 python app.py` |
+| **LOG_LEVEL** | Logging verbosity | info | `LOG_LEVEL=debug python app.py` |
+| **FLASK_ENV** | Environment type | development | `FLASK_ENV=production python app.py` |
+| **RESPONSE_MESSAGE** | Custom response text | Hello, World! | `RESPONSE_MESSAGE="Test OK" python app.py` |
 
 **Implementation Status**: ❌ None currently implemented (test fixture scope does not require configurability).
 
@@ -19612,7 +19544,7 @@ For production deployment (currently not implemented), the following environment
 
 #### 9.6.1.1 Server Won't Start
 
-**Symptom**: Error message "EADDRINUSE: address already in use"
+**Symptom**: Error message "OSError: Address already in use"
 
 **Cause**: Port 3000 already occupied by another process
 
@@ -19627,25 +19559,25 @@ kill -9 <PID>          # macOS/Linux
 taskkill /PID <PID> /F # Windows
 
 #### Restart server
-node server.js
+python app.py
 ```
 
 ---
 
 **Symptom**: No error message, server appears to hang
 
-**Cause**: Node.js runtime issue or syntax error
+**Cause**: Python runtime issue or syntax error
 
 **Solution**:
 ```bash
-# Verify Node.js installation
-node --version
+# Verify Python installation
+python --version
 
 #### Check for syntax errors
-node --check server.js
+python -m py_compile app.py
 
 #### Run with verbose error output
-node --trace-warnings server.js
+python -v app.py
 ```
 
 #### 9.6.1.2 Cannot Connect to Server
@@ -19657,13 +19589,13 @@ node --trace-warnings server.js
 **Solution**:
 ```bash
 # Verify server process is running
-ps aux | grep "node server"
+ps aux | grep "python app"
 
 #### Check port binding status
 netstat -an | grep 3000
 
 #### Restart server if not running
-node server.js &
+python app.py &
 ```
 
 ---
@@ -19674,13 +19606,13 @@ node server.js &
 
 **Explanation**: This is **intentional design** for network isolation. To enable external access (not recommended for test fixture):
 
-1. Modify `server.js` line 3: Change `'127.0.0.1'` to `'0.0.0.0'`
+1. Modify `app.py` line 3: Change `'127.0.0.1'` to `'0.0.0.0'`
 2. Add firewall rule allowing TCP port 3000
 3. **Security Warning**: Implement authentication and encryption before exposing server
 
-#### 9.6.1.3 npm test Fails
+#### 9.6.1.3 pip test Fails
 
-**Symptom**: `npm test` exits with error code 1
+**Symptom**: `pip test` exits with error code 1
 
 **Cause**: Known defect F-006-RQ-001—test script intentionally fails
 
@@ -19688,14 +19620,14 @@ node server.js &
 
 **Quick Fix (Non-Blocking)**:
 ```bash
-# Edit package.json, change line 7 to:
+# Edit requirements.txt, change line 7 to:
 "test": "echo 'No tests specified' && exit 0"
 ```
 
 **Comprehensive Fix (Requires Test Implementation)**:
 ```bash
-# Create test suite then update package.json:
-"test": "node --test test/*.test.js"
+# Create test suite then update requirements.txt:
+"test": "python -m pytest tests/"
 ```
 
 ### 9.6.2 Performance Issues
@@ -19710,7 +19642,7 @@ node server.js &
 time curl http://127.0.0.1:3000/
 
 #### Check CPU usage
-top -p $(pgrep -f "node server")
+top -p $(pgrep -f "python app")
 
 #### Check system load
 uptime
@@ -19722,7 +19654,7 @@ ps aux --sort=-%cpu | head -10
 **Common Causes**:
 - High system load (CPU, memory, disk I/O)
 - Network interface issues (rare for localhost)
-- Node.js runtime performance degradation
+- Python runtime performance degradation
 
 **Expected Performance**: < 1ms typical, < 10ms maximum under normal conditions
 
@@ -19733,15 +19665,15 @@ ps aux --sort=-%cpu | head -10
 **Diagnostic Steps**:
 ```bash
 # Monitor memory over time
-watch -n 1 "ps aux | grep 'node server'"
+watch -n 1 "ps aux | grep 'python app'"
 
 #### Check for memory leaks (requires restart)
-node --expose-gc --trace-gc server.js
+python -v app.py
 ```
 
 **Expected Behavior**: Memory should remain stable at 10-30 MB regardless of request volume (stateless architecture prevents memory leaks).
 
-**If Memory Grows**: Indicates Node.js runtime issue or system-level problem (not application-level defect given stateless design).
+**If Memory Grows**: Indicates Python runtime issue or system-level problem (not application-level defect given stateless design).
 
 ## 9.7 REFERENCES
 
@@ -19749,9 +19681,9 @@ node --expose-gc --trace-gc server.js
 
 The following files were analyzed to produce this appendices section:
 
-- **`server.js`** (14 lines) - Complete application implementation providing basis for technical details, performance characteristics, and configuration documentation
-- **`package.json`** (11 lines) - Package metadata revealing defects F-006-RQ-001 (test script), F-007-RQ-001 (main field), and F-007-RQ-002 (name inconsistency)
-- **`package-lock.json`** - Dependency lockfile confirming zero external dependencies and lockfile version 3
+- **`app.py`** (14 lines) - Complete application implementation providing basis for technical details, performance characteristics, and configuration documentation
+- **`requirements.txt`** (11 lines) - Package metadata revealing defects F-006-RQ-001 (test script), F-007-RQ-001 (main field), and F-007-RQ-002 (name inconsistency)
+- **`.python-version`** - Dependency lockfile confirming zero external dependencies and lockfile version 3
 - **`README.md`** (2 lines) - Project identification ("hao-backprop-test") and purpose statement establishing test fixture scope
 
 ### 9.7.2 Technical Specification Cross-References
@@ -19763,7 +19695,7 @@ This appendices section synthesizes and references information from the followin
 - **Section 2.1 (Feature Catalog)** - Feature identifiers F-001 through F-007 referenced in acronym section
 - **Section 2.2 (Functional Requirements)** - Requirement identifiers and defect references (F-006-RQ-001, F-007-RQ-001, F-007-RQ-002)
 - **Section 2.4 (Implementation Considerations)** - Known defects, technical constraints, performance requirements, security implications
-- **Section 3.1 (Programming Languages)** - Node.js version requirements, JavaScript compatibility
+- **Section 3.1 (Programming Languages)** - Python version requirements, Python compatibility
 - **Section 3.3 (Open Source Dependencies)** - Zero-dependency architecture confirmation
 - **Section 3.7 (Technology Stack Architecture)** - Stack overview, request flow, dependency graph
 - **Section 4.6 (Performance and Timing Specifications)** - Performance SLA targets consolidated in Section 9.1.3.2
@@ -19773,10 +19705,10 @@ This appendices section synthesizes and references information from the followin
 
 ### 9.7.3 External Resources and Standards
 
-**Node.js Documentation**:
-- Node.js API Documentation (http module): https://nodejs.org/api/http.html
-- Node.js Test Runner Documentation: https://nodejs.org/api/test.html
-- Node.js Process and Environment Variables: https://nodejs.org/api/process.html
+**Python Documentation**:
+- Flask API Documentation (Flask framework): https://flask.palletsprojects.com/
+- Python unittest Documentation: https://docs.python.org/3/library/unittest.html
+- Python os module (environment variables): https://docs.python.org/3/library/os.html
 
 **Protocol Standards**:
 - RFC 7231 (HTTP/1.1 Semantics and Content): IETF standard defining HTTP methods, status codes, and headers
@@ -19784,8 +19716,8 @@ This appendices section synthesizes and references information from the followin
 - TCP/IP Protocol Suite: Foundational networking protocols for socket communication
 
 **Package Management**:
-- npm Documentation: https://docs.npmjs.com/
-- package.json Specification: https://docs.npmjs.com/cli/v9/configuring-npm/package-json
+- pip Documentation: https://docs.pipjs.com/
+- requirements.txt Specification: https://docs.pipjs.com/cli/v9/configuring-pip/package-json
 - Semantic Versioning Specification: https://semver.org/
 
 **Testing Tools**:
@@ -19803,7 +19735,7 @@ This appendices section synthesizes and references information from the followin
 | Attribute | Value |
 |-----------|-------|
 | **Document Version** | 1.0 |
-| **System Version** | 1.0.0 (per `package.json`) |
+| **System Version** | 1.0.0 (per `requirements.txt`) |
 | **Specification Date** | October 2025 |
 | **Repository Name** | hello_world_Oct_2025 |
 | **Project Identifier** | hao-backprop-test |
