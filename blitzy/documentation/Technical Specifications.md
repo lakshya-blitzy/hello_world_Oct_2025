@@ -906,6 +906,7 @@ node --version
 
 npm --version
 # Expected output: 6.0.0 or higher
+
 \`\`\`
 ```
 
@@ -924,12 +925,14 @@ Provide step-by-step setup instructions:
 This project has no external dependencies, making installation straightforward:
 
 #### Step 1: Clone the Repository
+
 \`\`\`bash
 git clone <repository-url>
 cd hao-backprop-test
 \`\`\`
 
 #### Step 2: Verify Node.js Installation
+
 \`\`\`bash
 node --version
 \`\`\`
@@ -957,18 +960,22 @@ Get the server running in three simple commands:
 
 \`\`\`bash
 # 1. Start the server
+
 node server.js
 
 #### Output: Server running at http://127.0.0.1:3000/
+
 \`\`\`
 
 In another terminal window:
 
 \`\`\`bash
 # 2. Test the server
+
 curl http://127.0.0.1:3000/
 
 #### Expected output
+
 Hello, World!
 \`\`\`
 ```
@@ -986,6 +993,7 @@ Document operational procedures:
 ## Usage
 
 #### Starting the Server
+
 \`\`\`bash
 node server.js
 \`\`\`
@@ -1023,6 +1031,7 @@ Complete endpoint documentation with specifications:
 ## API Reference
 
 #### Base URL
+
 \`\`\`
 http://127.0.0.1:3000
 \`\`\`
@@ -1053,6 +1062,7 @@ Using **curl**:
 \`\`\`bash
 curl http://127.0.0.1:3000/
 # Output: Hello, World!
+
 \`\`\`
 
 Using **JavaScript fetch**:
@@ -1220,11 +1230,13 @@ node server.js
 #### Production Deployment
 
 #### Option 1: Direct Node.js (Basic)
+
 \`\`\`bash
 nohup node server.js > server.log 2>&1 &
 \`\`\`
 
 #### Option 2: PM2 Process Manager (Recommended)
+
 \`\`\`bash
 npm install -g pm2
 pm2 start server.js --name hello-world-server
@@ -1334,10 +1346,12 @@ Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
 Find and kill the process using port 3000:
 \`\`\`bash
 # On Linux/macOS
+
 lsof -i :3000
 kill -9 <PID>
 
 #### On Windows
+
 netstat -ano | findstr :3000
 taskkill /PID <PID> /F
 \`\`\`
@@ -1354,7 +1368,8 @@ Use a port above 1024 or run with elevated privileges:
 \`\`\`bash
 sudo node server.js  # Not recommended
 # OR
-# Change port to 3000 or 8080
+
+#### Change port to 3000 or 8080
 \`\`\`
 
 #### Issue 3: Connection Refused (ECONNREFUSED)
@@ -1382,6 +1397,7 @@ Verify Node.js installation:
 \`\`\`bash
 node --version
 # Should show v14.0.0 or higher
+
 \`\`\`
 ```
 
@@ -1398,11 +1414,13 @@ Complete remaining standard sections:
 ## Development
 
 #### Code Style
+
 - Use 2-space indentation
 - Use const for all variable declarations
 - Follow Node.js community conventions
 
 #### Making Changes
+
 1. Modify server.js as needed
 2. Test with `node server.js`
 3. Verify with curl or browser
@@ -1472,37 +1490,46 @@ No supporting infrastructure files require modification. The documentation enhan
 **Validation 1: Server Functionality**
 ```bash
 # Start server and verify console output
+
 node server.js &
 # Expected: "Server running at http://127.0.0.1:3000/"
 
 #### Test HTTP endpoint
+
 curl http://127.0.0.1:3000/
 #### Expected: "Hello, World!"
 
 #### Stop server
+
 kill %1
 ```
 
 **Validation 2: JSDoc Syntax**
 ```bash
 # Verify JSDoc comments are parseable
+
 npx jsdoc server.js -d ./docs
 # Should generate documentation without errors
+
 ```
 
 **Validation 3: Markdown Syntax**
 ```bash
 # Validate README.md markdown syntax
+
 npx markdownlint README.md
 # Should pass with no errors
+
 ```
 
 **Validation 4: Source Citation Accuracy**
 ```bash
 # Manually verify each "Source: /server.js:XX" reference
-# points to correct code line
+
+#### points to correct code line
 grep -n "Source:" README.md
-# Cross-reference line numbers with server.js
+#### Cross-reference line numbers with server.js
+
 ```
 
 #### Implementation Approach Summary
@@ -4850,9 +4877,11 @@ The complete absence of databases and storage technologies is an intentional arc
 **Direct Execution Model**:
 ```bash
 # No build step required
+
 node server.js   # Runs immediately
 
 #### Using npm script (equivalent)
+
 npm start        # Executes: node server.js
 ```
 
@@ -4893,6 +4922,7 @@ npm start        # Executes: node server.js
 
 ```dockerfile
 # Example from README.md
+
 FROM node:18-alpine
 WORKDIR /app
 COPY server.js .
@@ -5034,6 +5064,7 @@ sequenceDiagram
 $ npm test
 Error: no test specified
 # Exit code: 1 (failure)
+
 ```
 
 **Documented as Known Defect** (F-006-RQ-001 from Technical Specifications):
@@ -5054,19 +5085,23 @@ Error: no test specified
 
 ```bash
 # Test 1: Basic GET request
+
 curl http://127.0.0.1:3000/
 # Expected: Hello, World!
 
 #### Test 2: Different paths (all return same response)
+
 curl http://127.0.0.1:3000/test
 curl http://127.0.0.1:3000/api/data
 #### Expected: Hello, World! (universal handler)
 
 #### Test 3: Different HTTP methods
+
 curl -X POST http://127.0.0.1:3000/
 curl -X PUT http://127.0.0.1:3000/
 curl -X DELETE http://127.0.0.1:3000/
 #### Expected: Hello, World! (method-agnostic)
+
 ```
 
 ### 3.8.3 Code Quality Tools: NONE
@@ -8149,15 +8184,19 @@ PM2 provides comprehensive monitoring when supervising the Node.js process:
 
 ```bash
 # Start with monitoring enabled
+
 pm2 start server.js --name hello-world
 
 #### Real-time monitoring dashboard
+
 pm2 monit
 
 #### View logs with automatic rotation
+
 pm2 logs hello-world --lines 50
 
 #### Performance metrics
+
 pm2 show hello-world
 ```
 
@@ -8167,12 +8206,15 @@ systemd provides service-level monitoring on Linux platforms:
 
 ```bash
 # Service status and uptime
+
 systemctl status hello-world.service
 
 #### Real-time log streaming
+
 journalctl -u hello-world.service -f
 
 #### Resource usage via cgroups
+
 systemd-cgtop hello-world.service
 ```
 
@@ -8224,6 +8266,7 @@ The system implements a **minimalist logging strategy** with a single log statem
 $ node server.js
 Server running at http://127.0.0.1:3000/
 # No further logs during request processing
+
 ```
 
 #### 5.4.2.2 Tracing Strategy
@@ -8370,12 +8413,15 @@ Deploy with PM2 for automatic restart on crashes:
 
 ```bash
 # Start with automatic restart
+
 pm2 start server.js --name hello-world --restart-delay 1000
 
 #### Configure max restarts to prevent restart loops
+
 pm2 start server.js --name hello-world --max-restarts 10 --min-uptime 5000
 
 #### Auto-start on system boot
+
 pm2 startup
 pm2 save
 ```
@@ -8580,7 +8626,8 @@ All SLA targets are significantly exceeded due to architectural simplicity:
 
 ```bash
 # Node.js Cluster Module (multi-core utilization)
-# Create worker per CPU core
+
+#### Create worker per CPU core
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 
@@ -8598,6 +8645,7 @@ if (cluster.isMaster) {
 
 ```nginx
 # nginx load balancer configuration
+
 upstream hello_world {
     server 127.0.0.1:3000;
     server 127.0.0.1:3001;
@@ -8705,9 +8753,11 @@ The stateless design eliminates traditional backup requirements:
 **Automatic Recovery**:
 ```bash
 # PM2 automatic restart
+
 pm2 start server.js --name hello-world --restart-delay 1000
 
 #### systemd automatic restart
+
 [Service]
 Restart=always
 RestartSec=1
@@ -8725,17 +8775,21 @@ RestartSec=1
 **Manual Recovery Procedure**:
 ```bash
 # 1. Identify conflicting process (Linux/macOS)
+
 lsof -i :3000
 # Output: node 1234 user ... LISTEN
 
 #### Kill conflicting process
+
 kill -9 1234
 
 #### Restart server
+
 node server.js
 #### Output: Server running at http://127.0.0.1:3000/
 
 #### Alternative: Change port in server.js if needed
+
 #### Edit line 32: const port = 3001;
 ```
 
@@ -8749,17 +8803,22 @@ node server.js
 
 ```bash
 # 1. Reboot machine
+
 sudo reboot
 
 #### Verify service auto-start (if configured)
+
 pm2 startup  # PM2 saved processes restart automatically
 systemctl status hello-world  # systemd service restarts automatically
 
 #### Manual start if needed
+
 pm2 start hello-world
 #### OR
+
 systemctl start hello-world.service
 #### OR
+
 node server.js
 ```
 
@@ -8773,17 +8832,21 @@ node server.js
 
 ```bash
 # 1. Restore from version control
+
 git status
 git log --oneline -5
 git checkout <last-known-good-commit>
 
 #### Verify restoration
+
 node server.js
 #### Should see: Server running at http://127.0.0.1:3000/
 
 #### Test endpoint
+
 curl http://127.0.0.1:3000/
 #### Should receive: Hello, World!
+
 ```
 
 **Recovery Timeline**: 5-30 minutes (depends on Git familiarity + testing)
@@ -9130,9 +9193,11 @@ The absence of service boundaries, inter-service communication, service discover
 ### 6.1.8 References
 
 #### Source Files Examined
+
 - `server.js` - Main server implementation demonstrating monolithic single-process architecture with no distributed components
 
 #### Technical Specification Sections Referenced
+
 - Section 1.2 System Overview - Documents standalone component design and intentional isolation
 - Section 3.1 Architecture Philosophy - Establishes Zero-Dependency Principle, Single-File Architecture, and Stateless Design
 - Section 5.1 High-Level Architecture - Details single-process, event-driven, stateless request-response architecture
@@ -9145,6 +9210,7 @@ The absence of service boundaries, inter-service communication, service discover
 - Section 5.4.6 Disaster Recovery - Documents single point of failure acceptance and manual recovery procedures
 
 #### Repository Structure Analysis
+
 - Root directory structure - Confirmed single-file application with no service boundaries
 - `/blitzy/documentation/` - Technical specifications and project documentation location
 
@@ -11470,6 +11536,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 $ node server.js
 Server running at http://127.0.0.1:3000/
 # No further console output during request processing
+
 ```
 
 This minimal logging strategy prioritizes performance and simplicity. The absence of per-request logging contributes to the <1ms response time performance by eliminating I/O overhead during request handling.
@@ -11495,23 +11562,30 @@ PM2 provides production-grade monitoring capabilities when supervising the Node.
 
 ```bash
 # Start server with PM2 monitoring
+
 pm2 start server.js --name hello-world
 
 #### Real-time monitoring dashboard
+
 pm2 monit
 
 #### View detailed metrics
+
 pm2 show hello-world
 #### Output includes:
+
 ####   - Uptime and restart count
 ####   - CPU and memory usage
+
 ####   - Event loop latency
 ####   - Active handles and requests
 
 #### View logs with automatic rotation
+
 pm2 logs hello-world --lines 100
 
 #### Continuous log streaming
+
 pm2 logs hello-world -f
 ```
 
@@ -11519,12 +11593,14 @@ pm2 logs hello-world -f
 
 ```bash
 # Configure restart parameters
+
 pm2 start server.js --name hello-world \
   --restart-delay 1000 \
   --max-restarts 10 \
   --min-uptime 5000
 
 #### Auto-start on system boot
+
 pm2 startup
 pm2 save
 ```
@@ -11535,15 +11611,19 @@ Linux systems can leverage systemd's built-in monitoring capabilities:
 
 ```bash
 # Service status and uptime
+
 systemctl status hello-world.service
 
 #### Real-time log streaming
+
 journalctl -u hello-world.service -f
 
 #### Historical log viewing
+
 journalctl -u hello-world.service --since "1 hour ago"
 
 #### Resource usage via cgroups
+
 systemd-cgtop hello-world.service
 ```
 
@@ -11558,10 +11638,12 @@ StartLimitBurst=5
 StartLimitIntervalSec=10
 
 #### Resource limits
+
 MemoryLimit=100M
 CPUQuota=50%
 
 #### Logging configuration
+
 StandardOutput=journal
 StandardError=journal
 ```
@@ -11572,17 +11654,22 @@ Docker provides container-level monitoring when the application runs in a contai
 
 ```bash
 # View container logs
+
 docker logs hello-server -f
 
 #### Real-time resource monitoring
+
 docker stats hello-server
 #### Output includes:
+
 ####   - CPU percentage
 ####   - Memory usage / limit
+
 ####   - Network I/O
 ####   - Block I/O
 
 #### Inspect container health (requires health check configuration)
+
 docker inspect --format='{{.State.Health.Status}}' hello-server
 ```
 
@@ -11638,9 +11725,11 @@ PM2 automatically rotates logs to prevent unbounded growth:
 
 ```bash
 # Install PM2 log rotation module
+
 pm2 install pm2-logrotate
 
 #### Configure rotation parameters
+
 pm2 set pm2-logrotate:max_size 10M
 pm2 set pm2-logrotate:retain 30
 pm2 set pm2-logrotate:compress true
@@ -11695,12 +11784,14 @@ Process managers provide alert capabilities at the infrastructure level:
 
 ```bash
 # Configure PM2 to execute custom action on restart
+
 pm2 start server.js --name hello-world \
   --restart-delay 1000 \
   --max-restarts 10 \
   --min-uptime 5000
 
 #### Integrate with external alerting (requires custom scripts)
+
 #### Example: Send alert on 3rd restart within 1 minute
 ```
 
@@ -11747,9 +11838,11 @@ pm2 monit
 
 ```bash
 # Install PM2 web dashboard module
+
 pm2 install pm2-web
 
 #### Access at http://localhost:9615
+
 ```
 
 #### Manual Monitoring Commands Reference
@@ -11788,14 +11881,18 @@ The universal request handler provides implicit health signaling:
 
 ```bash
 # Simple health verification
+
 curl -f http://127.0.0.1:3000/ && echo "Healthy" || echo "Unhealthy"
 
 #### With timeout
+
 curl -f --max-time 1 http://127.0.0.1:3000/
 
 #### HTTP status code check
+
 curl -o /dev/null -s -w "%{http_code}" http://127.0.0.1:3000/
 #### Expected output: 200
+
 ```
 
 **Production Recommendation**:
@@ -11843,14 +11940,18 @@ The system defines performance SLA targets but does not implement automated perf
 
 ```bash
 # Single request timing
+
 time curl http://127.0.0.1:3000/
 
 #### Response time with curl verbose timing
+
 curl -w "@curl-format.txt" -o /dev/null -s http://127.0.0.1:3000/
 
 ## curl-format.txt contents:
+
 ####   time_total: %{time_total}sn
 ####   time_connect: %{time_connect}sn
+
 ####   time_starttransfer: %{time_starttransfer}sn
 ```
 
@@ -11858,14 +11959,18 @@ curl -w "@curl-format.txt" -o /dev/null -s http://127.0.0.1:3000/
 
 ```bash
 # Memory usage snapshot
+
 ps -o pid,vsz,rss,comm -p $(pgrep -f "node server.js")
 # vsz: Virtual memory size
-# rss: Resident set size (physical memory)
+
+#### rss: Resident set size (physical memory)
 
 #### Continuous monitoring
+
 top -p $(pgrep -f "node server.js")
 
 #### PM2 resource monitoring
+
 pm2 show hello-world | grep -E "cpu|memory"
 ```
 
@@ -11881,12 +11986,15 @@ pm2 show hello-world | grep -E "cpu|memory"
 
 ```bash
 # Apache Bench
+
 ab -n 10000 -c 10 http://127.0.0.1:3000/
 
 #### wrk (higher performance)
+
 wrk -t 4 -c 10 -d 30s http://127.0.0.1:3000/
 
 #### autocannon (Node.js-based)
+
 npx autocannon -c 10 -d 30 http://127.0.0.1:3000/
 ```
 
@@ -11942,15 +12050,20 @@ Capacity is tracked through external process manager tools rather than applicati
 
 ```bash
 # Real-time resource monitoring
+
 pm2 monit
 
 #### Detailed process metrics
+
 pm2 show hello-world
 #### Output includes:
+
 ####   - Memory usage (RSS, heap used, heap total)
 ####   - CPU usage percentage
+
 ####   - Event loop latency
 ####   - Active handles
+
 ####   - Active requests (if tracked)
 ```
 
@@ -11958,9 +12071,11 @@ pm2 show hello-world
 
 ```bash
 # View resource usage via cgroups
+
 systemd-cgtop hello-world.service
 
 #### Resource limits in service file
+
 [Service]
 MemoryLimit=100M
 CPUQuota=50%
@@ -12003,12 +12118,14 @@ The application does not implement alert routing or notification systems. Alert 
 
 ```bash
 # PM2 with custom alert script
+
 pm2 start server.js --name hello-world \
   --max-restarts 5 \
   --min-uptime 5000 \
   --restart-delay 1000
 
 #### Integrate with external alerting (custom script required)
+
 pm2 startup  # Configure auto-restart on boot
 ```
 
@@ -12064,25 +12181,31 @@ The repository includes comprehensive troubleshooting procedures in the README f
 
 ```bash
 # Linux/macOS: Identify process using port 3000
+
 lsof -i :3000
 # Output: node 1234 user ... LISTEN
 
 #### Windows: Identify process using port 3000
+
 netstat -ano | findstr :3000
 #### Output: TCP 127.0.0.1:3000 ... LISTENING 1234
+
 ```
 
 **Resolution**:
 
 ```bash
 # Option 1: Kill conflicting process
+
 kill -9 1234  # Linux/macOS
 taskkill /PID 1234 /F  # Windows
 
 #### Option 2: Change port in server.js
+
 #### Edit line 32: const port = 3001;
 
 #### Restart server
+
 node server.js
 ```
 
@@ -12101,20 +12224,25 @@ node server.js
 
 ```bash
 # Verify port number < 1024 requires root
+
 cat server.js | grep "const port"
 # If port < 1024, privileged binding required
+
 ```
 
 **Resolution**:
 
 ```bash
 # Option 1: Run with elevated privileges (not recommended)
+
 sudo node server.js
 
 #### Option 2: Use unprivileged port (recommended)
+
 #### Edit server.js line 32: const port = 3000;  # Ensure port >= 1024
 
 #### Restart server
+
 node server.js
 ```
 
@@ -12132,10 +12260,12 @@ node server.js
 
 ```bash
 # Verify server process is running
+
 ps aux | grep "node server.js"
 # If no output, server is not running
 
 #### Verify server is listening on correct port
+
 lsof -i :3000  # Linux/macOS
 netstat -ano | findstr :3000  # Windows
 ```
@@ -12144,14 +12274,18 @@ netstat -ano | findstr :3000  # Windows
 
 ```bash
 # If server not running, start it
+
 node server.js
 
 #### Verify server started successfully
+
 #### Expected output: Server running at http://127.0.0.1:3000/
 
 #### Test connection
+
 curl http://127.0.0.1:3000/
 #### Expected output: Hello, World!
+
 ```
 
 **Common Causes**:
@@ -12173,10 +12307,12 @@ curl http://127.0.0.1:3000/
 
 ```bash
 # Verify Node.js installation
+
 node --version
 # Should output v12.0.0 or higher
 
 #### Verify Node.js installation integrity
+
 which node  # Linux/macOS
 where node  # Windows
 ```
@@ -12185,21 +12321,26 @@ where node  # Windows
 
 ```bash
 # Reinstall Node.js
-# Download from https://nodejs.org/
-# Or use package manager:
+
+#### Download from https://nodejs.org/
+#### Or use package manager:
 
 #### Linux (Ubuntu/Debian)
+
 sudo apt-get update
 sudo apt-get install nodejs
 
 #### macOS (Homebrew)
+
 brew install node
 
 #### Verify installation
+
 node --version
 npm --version
 
 #### Restart server
+
 node server.js
 ```
 
@@ -12693,18 +12834,23 @@ graph TB
 
 ```bash
 # Detailed process information
+
 pm2 show hello-world
 # Output includes:
-#   - Restart count and last restart time
-#   - Event loop latency
-#   - Active handles and requests
-#   - Process versions (Node.js, V8, PM2)
+
+####   - Restart count and last restart time
+####   - Event loop latency
+
+####   - Active handles and requests
+####   - Process versions (Node.js, V8, PM2)
 
 #### Process list view
+
 pm2 list
 #### Tabular view of all processes
 
 #### Log viewing with filtering
+
 pm2 logs hello-world --lines 100 --nostream
 pm2 logs hello-world --err  # Error logs only
 ```
@@ -12965,6 +13111,7 @@ From `package.json` line 7:
 $ npm test
 Error: no test specified
 # Exit code: 1 (failure)
+
 ```
 
 **Documented as Known Issue:**
@@ -13139,15 +13286,20 @@ test('server returns same response for different URL paths', async (t) => {
 
 ```bash
 # Using Node.js built-in coverage (v20+)
+
 node --test --experimental-test-coverage test/server.test.js
 
 #### Output example:
+
 #### ----------------------|----------|----------|----------|----------|
 #### File                  | % Stmts  | % Branch | % Funcs  | % Lines  |
+
 #### ----------------------|----------|----------|----------|----------|
 #### All files             |    92.85 |      100 |      100 |    92.85 |
+
 ##  server.js            |    92.85 |      100 |      100 |    92.85 |
 #### ----------------------|----------|----------|----------|----------|
+
 ```
 
 **Uncovered Lines Acceptable:**
@@ -13399,14 +13551,17 @@ async function makeRequest(path = '/') {
 
 ```bash
 # Prerequisite: Ensure port 3000 is available
+
 lsof -i :3000  # Should return nothing
 netstat -an | grep 3000  # Should return nothing
 
 #### Run tests (server must be running)
+
 #### Terminal 1: Start server
 node server.js
 
 #### Terminal 2: Run tests
+
 node --test test/*.test.js
 ```
 
@@ -13470,12 +13625,15 @@ This allows test code to start server programmatically on different ports for pa
 
 ```bash
 # Run tests once
+
 npm test
 
 #### Run with coverage report
+
 npm run test:coverage
 
 #### Run in watch mode (during development)
+
 npm run test:watch
 ```
 
@@ -13501,6 +13659,7 @@ From Technical Specifications Section 3.7.5:
 
 ```yaml
 # .github/workflows/test.yml
+
 name: Node.js Tests
 
 on:
@@ -13590,6 +13749,7 @@ The Node.js built-in test runner executes tests sequentially by default:
 ```bash
 node --test test/*.test.js
 # Tests run one at a time
+
 ```
 
 **Parallel Execution (Optional Enhancement):**
@@ -13598,9 +13758,11 @@ For faster test execution with larger test suites:
 
 ```bash
 # Parallel execution (Node.js v20+)
+
 node --test --parallel test/*.test.js
 
 #### Or with concurrency limit
+
 node --test --max-concurrency=4 test/*.test.js
 ```
 
@@ -13825,6 +13987,7 @@ All tests must pass before code is merged or deployed.
 
 ```bash
 # Run tests and capture exit code
+
 npm test
 if [ $? -eq 0 ]; then
   echo "✅ All tests passed (100% success rate)"
@@ -13915,6 +14078,7 @@ Quality gates are automated checks that must pass before code can proceed to the
 
 ```yaml
 # .github/branch-protection.yml (conceptual; configured via GitHub UI)
+
 branches:
   main:
     protection:
@@ -14160,9 +14324,11 @@ The absence of service boundaries, inter-service communication, service discover
 ### 6.1.8 References
 
 #### Source Files Examined
+
 - `server.js` - Main server implementation demonstrating monolithic single-process architecture with no distributed components
 
 #### Technical Specification Sections Referenced
+
 - Section 1.2 System Overview - Documents standalone component design and intentional isolation
 - Section 3.1 Architecture Philosophy - Establishes Zero-Dependency Principle, Single-File Architecture, and Stateless Design
 - Section 5.1 High-Level Architecture - Details single-process, event-driven, stateless request-response architecture
@@ -14175,6 +14341,7 @@ The absence of service boundaries, inter-service communication, service discover
 - Section 5.4.6 Disaster Recovery - Documents single point of failure acceptance and manual recovery procedures
 
 #### Repository Structure Analysis
+
 - Root directory structure - Confirmed single-file application with no service boundaries
 - `/blitzy/documentation/` - Technical specifications and project documentation location
 
@@ -16500,6 +16667,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 $ node server.js
 Server running at http://127.0.0.1:3000/
 # No further console output during request processing
+
 ```
 
 This minimal logging strategy prioritizes performance and simplicity. The absence of per-request logging contributes to the <1ms response time performance by eliminating I/O overhead during request handling.
@@ -16525,23 +16693,30 @@ PM2 provides production-grade monitoring capabilities when supervising the Node.
 
 ```bash
 # Start server with PM2 monitoring
+
 pm2 start server.js --name hello-world
 
 #### Real-time monitoring dashboard
+
 pm2 monit
 
 #### View detailed metrics
+
 pm2 show hello-world
 #### Output includes:
+
 ####   - Uptime and restart count
 ####   - CPU and memory usage
+
 ####   - Event loop latency
 ####   - Active handles and requests
 
 #### View logs with automatic rotation
+
 pm2 logs hello-world --lines 100
 
 #### Continuous log streaming
+
 pm2 logs hello-world -f
 ```
 
@@ -16549,12 +16724,14 @@ pm2 logs hello-world -f
 
 ```bash
 # Configure restart parameters
+
 pm2 start server.js --name hello-world \
   --restart-delay 1000 \
   --max-restarts 10 \
   --min-uptime 5000
 
 #### Auto-start on system boot
+
 pm2 startup
 pm2 save
 ```
@@ -16565,15 +16742,19 @@ Linux systems can leverage systemd's built-in monitoring capabilities:
 
 ```bash
 # Service status and uptime
+
 systemctl status hello-world.service
 
 #### Real-time log streaming
+
 journalctl -u hello-world.service -f
 
 #### Historical log viewing
+
 journalctl -u hello-world.service --since "1 hour ago"
 
 #### Resource usage via cgroups
+
 systemd-cgtop hello-world.service
 ```
 
@@ -16588,10 +16769,12 @@ StartLimitBurst=5
 StartLimitIntervalSec=10
 
 #### Resource limits
+
 MemoryLimit=100M
 CPUQuota=50%
 
 #### Logging configuration
+
 StandardOutput=journal
 StandardError=journal
 ```
@@ -16602,17 +16785,22 @@ Docker provides container-level monitoring when the application runs in a contai
 
 ```bash
 # View container logs
+
 docker logs hello-server -f
 
 #### Real-time resource monitoring
+
 docker stats hello-server
 #### Output includes:
+
 ####   - CPU percentage
 ####   - Memory usage / limit
+
 ####   - Network I/O
 ####   - Block I/O
 
 #### Inspect container health (requires health check configuration)
+
 docker inspect --format='{{.State.Health.Status}}' hello-server
 ```
 
@@ -16668,9 +16856,11 @@ PM2 automatically rotates logs to prevent unbounded growth:
 
 ```bash
 # Install PM2 log rotation module
+
 pm2 install pm2-logrotate
 
 #### Configure rotation parameters
+
 pm2 set pm2-logrotate:max_size 10M
 pm2 set pm2-logrotate:retain 30
 pm2 set pm2-logrotate:compress true
@@ -16725,12 +16915,14 @@ Process managers provide alert capabilities at the infrastructure level:
 
 ```bash
 # Configure PM2 to execute custom action on restart
+
 pm2 start server.js --name hello-world \
   --restart-delay 1000 \
   --max-restarts 10 \
   --min-uptime 5000
 
 #### Integrate with external alerting (requires custom scripts)
+
 #### Example: Send alert on 3rd restart within 1 minute
 ```
 
@@ -16777,9 +16969,11 @@ pm2 monit
 
 ```bash
 # Install PM2 web dashboard module
+
 pm2 install pm2-web
 
 #### Access at http://localhost:9615
+
 ```
 
 #### Manual Monitoring Commands Reference
@@ -16818,14 +17012,18 @@ The universal request handler provides implicit health signaling:
 
 ```bash
 # Simple health verification
+
 curl -f http://127.0.0.1:3000/ && echo "Healthy" || echo "Unhealthy"
 
 #### With timeout
+
 curl -f --max-time 1 http://127.0.0.1:3000/
 
 #### HTTP status code check
+
 curl -o /dev/null -s -w "%{http_code}" http://127.0.0.1:3000/
 #### Expected output: 200
+
 ```
 
 **Production Recommendation**:
@@ -16873,14 +17071,18 @@ The system defines performance SLA targets but does not implement automated perf
 
 ```bash
 # Single request timing
+
 time curl http://127.0.0.1:3000/
 
 #### Response time with curl verbose timing
+
 curl -w "@curl-format.txt" -o /dev/null -s http://127.0.0.1:3000/
 
 ## curl-format.txt contents:
+
 ####   time_total: %{time_total}sn
 ####   time_connect: %{time_connect}sn
+
 ####   time_starttransfer: %{time_starttransfer}sn
 ```
 
@@ -16888,14 +17090,18 @@ curl -w "@curl-format.txt" -o /dev/null -s http://127.0.0.1:3000/
 
 ```bash
 # Memory usage snapshot
+
 ps -o pid,vsz,rss,comm -p $(pgrep -f "node server.js")
 # vsz: Virtual memory size
-# rss: Resident set size (physical memory)
+
+#### rss: Resident set size (physical memory)
 
 #### Continuous monitoring
+
 top -p $(pgrep -f "node server.js")
 
 #### PM2 resource monitoring
+
 pm2 show hello-world | grep -E "cpu|memory"
 ```
 
@@ -16911,12 +17117,15 @@ pm2 show hello-world | grep -E "cpu|memory"
 
 ```bash
 # Apache Bench
+
 ab -n 10000 -c 10 http://127.0.0.1:3000/
 
 #### wrk (higher performance)
+
 wrk -t 4 -c 10 -d 30s http://127.0.0.1:3000/
 
 #### autocannon (Node.js-based)
+
 npx autocannon -c 10 -d 30 http://127.0.0.1:3000/
 ```
 
@@ -16972,15 +17181,20 @@ Capacity is tracked through external process manager tools rather than applicati
 
 ```bash
 # Real-time resource monitoring
+
 pm2 monit
 
 #### Detailed process metrics
+
 pm2 show hello-world
 #### Output includes:
+
 ####   - Memory usage (RSS, heap used, heap total)
 ####   - CPU usage percentage
+
 ####   - Event loop latency
 ####   - Active handles
+
 ####   - Active requests (if tracked)
 ```
 
@@ -16988,9 +17202,11 @@ pm2 show hello-world
 
 ```bash
 # View resource usage via cgroups
+
 systemd-cgtop hello-world.service
 
 #### Resource limits in service file
+
 [Service]
 MemoryLimit=100M
 CPUQuota=50%
@@ -17033,12 +17249,14 @@ The application does not implement alert routing or notification systems. Alert 
 
 ```bash
 # PM2 with custom alert script
+
 pm2 start server.js --name hello-world \
   --max-restarts 5 \
   --min-uptime 5000 \
   --restart-delay 1000
 
 #### Integrate with external alerting (custom script required)
+
 pm2 startup  # Configure auto-restart on boot
 ```
 
@@ -17094,25 +17312,31 @@ The repository includes comprehensive troubleshooting procedures in the README f
 
 ```bash
 # Linux/macOS: Identify process using port 3000
+
 lsof -i :3000
 # Output: node 1234 user ... LISTEN
 
 #### Windows: Identify process using port 3000
+
 netstat -ano | findstr :3000
 #### Output: TCP 127.0.0.1:3000 ... LISTENING 1234
+
 ```
 
 **Resolution**:
 
 ```bash
 # Option 1: Kill conflicting process
+
 kill -9 1234  # Linux/macOS
 taskkill /PID 1234 /F  # Windows
 
 #### Option 2: Change port in server.js
+
 #### Edit line 32: const port = 3001;
 
 #### Restart server
+
 node server.js
 ```
 
@@ -17131,20 +17355,25 @@ node server.js
 
 ```bash
 # Verify port number < 1024 requires root
+
 cat server.js | grep "const port"
 # If port < 1024, privileged binding required
+
 ```
 
 **Resolution**:
 
 ```bash
 # Option 1: Run with elevated privileges (not recommended)
+
 sudo node server.js
 
 #### Option 2: Use unprivileged port (recommended)
+
 #### Edit server.js line 32: const port = 3000;  # Ensure port >= 1024
 
 #### Restart server
+
 node server.js
 ```
 
@@ -17162,10 +17391,12 @@ node server.js
 
 ```bash
 # Verify server process is running
+
 ps aux | grep "node server.js"
 # If no output, server is not running
 
 #### Verify server is listening on correct port
+
 lsof -i :3000  # Linux/macOS
 netstat -ano | findstr :3000  # Windows
 ```
@@ -17174,14 +17405,18 @@ netstat -ano | findstr :3000  # Windows
 
 ```bash
 # If server not running, start it
+
 node server.js
 
 #### Verify server started successfully
+
 #### Expected output: Server running at http://127.0.0.1:3000/
 
 #### Test connection
+
 curl http://127.0.0.1:3000/
 #### Expected output: Hello, World!
+
 ```
 
 **Common Causes**:
@@ -17203,10 +17438,12 @@ curl http://127.0.0.1:3000/
 
 ```bash
 # Verify Node.js installation
+
 node --version
 # Should output v12.0.0 or higher
 
 #### Verify Node.js installation integrity
+
 which node  # Linux/macOS
 where node  # Windows
 ```
@@ -17215,21 +17452,26 @@ where node  # Windows
 
 ```bash
 # Reinstall Node.js
-# Download from https://nodejs.org/
-# Or use package manager:
+
+#### Download from https://nodejs.org/
+#### Or use package manager:
 
 #### Linux (Ubuntu/Debian)
+
 sudo apt-get update
 sudo apt-get install nodejs
 
 #### macOS (Homebrew)
+
 brew install node
 
 #### Verify installation
+
 node --version
 npm --version
 
 #### Restart server
+
 node server.js
 ```
 
@@ -17723,18 +17965,23 @@ graph TB
 
 ```bash
 # Detailed process information
+
 pm2 show hello-world
 # Output includes:
-#   - Restart count and last restart time
-#   - Event loop latency
-#   - Active handles and requests
-#   - Process versions (Node.js, V8, PM2)
+
+####   - Restart count and last restart time
+####   - Event loop latency
+
+####   - Active handles and requests
+####   - Process versions (Node.js, V8, PM2)
 
 #### Process list view
+
 pm2 list
 #### Tabular view of all processes
 
 #### Log viewing with filtering
+
 pm2 logs hello-world --lines 100 --nostream
 pm2 logs hello-world --err  # Error logs only
 ```
@@ -17995,6 +18242,7 @@ From `package.json` line 7:
 $ npm test
 Error: no test specified
 # Exit code: 1 (failure)
+
 ```
 
 **Documented as Known Issue:**
@@ -18169,15 +18417,20 @@ test('server returns same response for different URL paths', async (t) => {
 
 ```bash
 # Using Node.js built-in coverage (v20+)
+
 node --test --experimental-test-coverage test/server.test.js
 
 #### Output example:
+
 #### ----------------------|----------|----------|----------|----------|
 #### File                  | % Stmts  | % Branch | % Funcs  | % Lines  |
+
 #### ----------------------|----------|----------|----------|----------|
 #### All files             |    92.85 |      100 |      100 |    92.85 |
+
 ##  server.js            |    92.85 |      100 |      100 |    92.85 |
 #### ----------------------|----------|----------|----------|----------|
+
 ```
 
 **Uncovered Lines Acceptable:**
@@ -18429,14 +18682,17 @@ async function makeRequest(path = '/') {
 
 ```bash
 # Prerequisite: Ensure port 3000 is available
+
 lsof -i :3000  # Should return nothing
 netstat -an | grep 3000  # Should return nothing
 
 #### Run tests (server must be running)
+
 #### Terminal 1: Start server
 node server.js
 
 #### Terminal 2: Run tests
+
 node --test test/*.test.js
 ```
 
@@ -18500,12 +18756,15 @@ This allows test code to start server programmatically on different ports for pa
 
 ```bash
 # Run tests once
+
 npm test
 
 #### Run with coverage report
+
 npm run test:coverage
 
 #### Run in watch mode (during development)
+
 npm run test:watch
 ```
 
@@ -18531,6 +18790,7 @@ From Technical Specifications Section 3.7.5:
 
 ```yaml
 # .github/workflows/test.yml
+
 name: Node.js Tests
 
 on:
@@ -18620,6 +18880,7 @@ The Node.js built-in test runner executes tests sequentially by default:
 ```bash
 node --test test/*.test.js
 # Tests run one at a time
+
 ```
 
 **Parallel Execution (Optional Enhancement):**
@@ -18628,9 +18889,11 @@ For faster test execution with larger test suites:
 
 ```bash
 # Parallel execution (Node.js v20+)
+
 node --test --parallel test/*.test.js
 
 #### Or with concurrency limit
+
 node --test --max-concurrency=4 test/*.test.js
 ```
 
@@ -18855,6 +19118,7 @@ All tests must pass before code is merged or deployed.
 
 ```bash
 # Run tests and capture exit code
+
 npm test
 if [ $? -eq 0 ]; then
   echo "✅ All tests passed (100% success rate)"
@@ -18945,6 +19209,7 @@ Quality gates are automated checks that must pass before code can proceed to the
 
 ```yaml
 # .github/branch-protection.yml (conceptual; configured via GitHub UI)
+
 branches:
   main:
     protection:
@@ -18988,12 +19253,15 @@ branches:
 
 ```bash
 # Run all tests
+
 npm test
 
 #### Run tests with coverage report
+
 npm run test:coverage
 
 #### Run tests in watch mode (re-run on file changes)
+
 npm run test:watch
 ```
 
@@ -19261,9 +19529,11 @@ graph TB
 
 ```bash
 # No environment variables currently required
-# Server configuration is hard-coded in server.js
+
+#### Server configuration is hard-coded in server.js
 
 #### Optional environment indicators (not currently used):
+
 export NODE_ENV=test          # Test environment indicator
 export DEBUG=*                # Enable debug logging (no effect on current code)
 ```
@@ -19274,6 +19544,7 @@ Add environment variable support for flexible configuration:
 
 ```bash
 # Enhanced configuration (future)
+
 export PORT=3001              # Override port (default: 3000)
 export HOSTNAME=127.0.0.1     # Override hostname (default: 127.0.0.1)
 export NODE_ENV=test          # Environment indicator
@@ -20088,11 +20359,13 @@ The system does not implement traditional dev/staging/prod environment promotion
 
 ```bash
 # Development
+
 git clone <repository-url>
 cd hao-backprop-test
 node server.js  # Immediate execution, no build or configuration
 
 #### "Production" (if used in testing environments)
+
 #### Same command - no differentiation between environments
 node server.js
 ```
@@ -20116,6 +20389,7 @@ The stateless architecture eliminates traditional backup and recovery requiremen
 
 ```bash
 # Complete disaster recovery process
+
 node server.js  # Restart server (typically completes in ~50ms)
 ```
 
@@ -20175,9 +20449,11 @@ The system does not integrate with any cloud provider services:
 
 ```bash
 # Procfile for Heroku
+
 web: node server.js
 
 #### Deployment commands
+
 heroku create my-hello-world-app
 git push heroku main
 heroku ps:scale web=1
@@ -20187,12 +20463,15 @@ heroku ps:scale web=1
 
 ```bash
 # Initialize EB application
+
 eb init -p node.js hao-backprop-test
 
 #### Create environment
+
 eb create hao-backprop-env
 
 #### Deploy application
+
 eb deploy
 ```
 
@@ -20238,9 +20517,11 @@ CMD ["node", "server.js"]
 
 ```bash
 # Build container image
+
 docker build -t hao-backprop-test:latest .
 
 #### Verify image creation
+
 docker images | grep hao-backprop-test
 ```
 
@@ -20248,18 +20529,23 @@ docker images | grep hao-backprop-test
 
 ```bash
 # Run container (foreground)
+
 docker run -p 3000:3000 hao-backprop-test:latest
 
 #### Run container (background/detached)
+
 docker run -d -p 3000:3000 --name hello-server hao-backprop-test:latest
 
 #### Verify container status
+
 docker ps | grep hello-server
 
 #### View container logs
+
 docker logs hello-server
 
 #### Stop container
+
 docker stop hello-server
 ```
 
@@ -20269,9 +20555,11 @@ docker stop hello-server
 
 ```bash
 # Standard mapping (host port 3000 → container port 3000)
+
 docker run -p 3000:3000 hao-backprop-test
 
 #### Alternative host port (host port 8080 → container port 3000)
+
 docker run -p 8080:3000 hao-backprop-test
 ```
 
@@ -20334,6 +20622,7 @@ The system operates on a direct execution model without compilation, transpilati
 
 ```bash
 # No build step required
+
 node server.js  # Runs immediately from source code
 ```
 
@@ -20366,9 +20655,16 @@ The current deployment process is entirely manual:
 
 ```bash
 # Complete deployment procedure
-git clone <repository-url>       # 1. Retrieve source code
-cd hao-backprop-test             # 2. Navigate to directory
-node server.js                   # 3. Execute server (no build step)
+
+git clone <repository-url>       
+
+# 1. Retrieve source code
+cd hao-backprop-test             
+
+# 2. Navigate to directory
+node server.js                   
+
+# 3. Execute server (no build step)
 ```
 
 **Deployment Characteristics:**
@@ -20453,15 +20749,19 @@ PM2 provides comprehensive monitoring capabilities without application-level ins
 
 ```bash
 # Start server with PM2 monitoring
+
 pm2 start server.js --name hello-world
 
 #### Real-time monitoring dashboard
+
 pm2 monit
 
 #### View detailed metrics
+
 pm2 show hello-world
 
 #### Access logs with automatic rotation
+
 pm2 logs hello-world --lines 100
 ```
 
@@ -20493,12 +20793,15 @@ Performance metrics are measured manually using command-line tools:
 
 ```bash
 # Apache Bench - basic load testing
+
 ab -n 10000 -c 10 http://127.0.0.1:3000/
 
 #### wrk - advanced benchmarking
+
 wrk -t 4 -c 10 -d 30s http://127.0.0.1:3000/
 
 #### autocannon - Node.js-based testing
+
 npx autocannon -c 10 -d 30 http://127.0.0.1:3000/
 ```
 
@@ -20940,6 +21243,7 @@ The stateless architecture enables instant recovery:
 
 ```bash
 # Complete disaster recovery procedure
+
 node server.js  # Restart server (~50ms startup time)
 ```
 
@@ -21075,19 +21379,24 @@ The following infrastructure capabilities are intentionally excluded and should 
 
 ```bash
 # Check current version
+
 node --version
 
 #### Update Node.js (via package manager)
+
 #### macOS with Homebrew
 brew upgrade node
 
 #### Ubuntu/Debian
+
 sudo apt-get update && sudo apt-get install nodejs
 
 #### Verify new version
+
 node --version
 
 #### Test server still functions
+
 node server.js
 curl http://127.0.0.1:3000/  # Should return "Hello, World!"
 ```
@@ -21096,9 +21405,11 @@ curl http://127.0.0.1:3000/  # Should return "Hello, World!"
 
 ```bash
 # Check for Node.js security advisories
+
 npm audit  # Should report "found 0 vulnerabilities" (no dependencies)
 
 #### Monitor Node.js security releases
+
 #### Subscribe to: https://nodejs.org/en/blog/vulnerability/
 ```
 
@@ -21365,7 +21676,8 @@ This subsection documents actual system performance measurements compared agains
 
 ```bash
 # Command: time node server.js
-# Measurement: Time from process start to "Server running" message
+
+#### Measurement: Time from process start to "Server running" message
 
 Real time: 0.052s (52ms)
 User time: 0.041s (41ms)
@@ -21379,7 +21691,8 @@ Result: ✅ PASS (52% of target, 48ms under SLA)
 
 ```bash
 # Command: ab -n 1000 -c 1 http://127.0.0.1:3000/
-# Measurement: 1000 requests, concurrency 1
+
+#### Measurement: 1000 requests, concurrency 1
 
 Mean response time: 0.8ms
 Median response time: 0.7ms
@@ -21396,7 +21709,8 @@ Result: ✅ PASS (8% of target for average, 5% of target for P99)
 
 ```bash
 # Command: ab -n 10000 -c 10 http://127.0.0.1:3000/
-# Measurement: 10,000 requests, concurrency 10
+
+#### Measurement: 10,000 requests, concurrency 10
 
 Requests per second: 1,247.82 [#/sec] (mean)
 Time per request: 8.014 [ms] (mean, across all concurrent requests)
@@ -21411,7 +21725,8 @@ Result: ✅ PASS (1,248% of target, 1,148 req/s over SLA)
 
 ```bash
 # Command: ps aux | grep "node server.js"
-# Measurement: Resident Set Size (RSS) in various states
+
+#### Measurement: Resident Set Size (RSS) in various states
 
 Idle state (no requests): 12.3 MB RSS
 After 1,000 requests: 18.7 MB RSS
@@ -21427,7 +21742,8 @@ Result: ✅ PASS (24-58% of target, remains well under SLA even under load)
 
 ```bash
 # Command: top -p <PID>
-# Measurement: CPU percentage during various load conditions
+
+#### Measurement: CPU percentage during various load conditions
 
 Idle state: 0.0-0.3% CPU
 Light load (10 req/s): 0.5-1.2% CPU
@@ -21485,54 +21801,73 @@ graph LR
 
 ```bash
 # 1. Server Startup Time Measurement
+
 time node server.js
 # Expected: Real time < 100ms (typically ~50ms)
-# Validates: F-001 (Server Initialization) SLA
+
+#### Validates: F-001 (Server Initialization) SLA
 
 #### Basic Response Time Test
+
 curl -w "@curl-format.txt" -o /dev/null -s http://127.0.0.1:3000/
 ## curl-format.txt contains: time_total: %{time_total}n
+
 #### Expected: <0.010s (10ms)
 #### Validates: F-002 (HTTP Request Handling) SLA
 
 #### Throughput Benchmark (Apache Bench)
+
 ab -n 1000 -c 10 http://127.0.0.1:3000/
 #### Expected: >100 requests/second
+
 #### Validates: System throughput SLA
 
 #### Load Test with Concurrency (Apache Bench)
+
 ab -n 10000 -c 100 http://127.0.0.1:3000/
 #### Expected: Maintains <10ms average response time
+
 #### Validates: Concurrent request handling SLA
 
 #### Memory Footprint Monitoring
+
 ps aux | grep "node server.js" | awk '{print $6/1024 " MB"}'
 #### Expected: <50MB RSS
+
 #### Validates: Memory efficiency SLA
 
 #### CPU Usage Monitoring
+
 top -b -n 1 -p $(pgrep -f "node server.js") | tail -1 | awk '{print $9"%"}'
 #### Expected: <1% idle, <10% under load
+
 #### Validates: CPU efficiency SLA
 
 #### PM2 Monitoring (if using PM2)
+
 pm2 show hao-backprop-test
 #### Displays: Memory, CPU, uptime, restart count
+
 #### Validates: All SLAs in production-like environment
 
 #### Sustained Load Test (wrk)
+
 wrk -t4 -c100 -d30s http://127.0.0.1:3000/
 #### 4 threads, 100 connections, 30 seconds duration
+
 #### Expected: Consistent <10ms latency over duration
 #### Validates: Sustained performance under load
 
 #### Burst Load Test (autocannon)
+
 npx autocannon -c 100 -d 10 http://127.0.0.1:3000/
 #### 100 concurrent connections, 10 seconds duration
+
 #### Expected: No degradation in response time
 #### Validates: Performance under burst traffic
 
 #### Memory Leak Detection (extended runtime)
+
 node server.js &
 PID=$!
 while true; do
@@ -21540,8 +21875,10 @@ while true; do
   sleep 60
 done
 #### Monitor RSS growth over 24 hours
+
 #### Expected: Stable memory usage, no continuous growth
 #### Validates: No memory leaks
+
 ```
 
 ### 9.1.4 Repository Statistics and Metrics
@@ -21722,48 +22059,63 @@ This subsection provides comprehensive command-line instructions for validating 
 
 ```bash
 # Start the server
+
 node server.js
 
 #### Expected Output:
+
 #### Server running at http://127.0.0.1:3000/
 
 #### Validation Criteria:
+
 #### - Process starts without errors
 #### - Startup message appears within 100ms
+
 #### - Process remains running (does not exit)
 #### - No error messages in stdout/stderr
+
 ```
 
 **Server Response Validation (curl):**
 
 ```bash
 # Test GET request to root path
+
 curl http://127.0.0.1:3000/
 
 #### Expected Output:
+
 #### Hello, World!
 
 #### Expected HTTP Status: 200 OK
+
 #### Expected Content-Type: text/plain
 
 #### Full validation with headers:
+
 curl -i http://127.0.0.1:3000/
 
 #### Expected Output:
+
 ## HTTP/1.1 200 OK
 #### Content-Type: text/plain
+
 #### Date: [current date]
 #### Connection: keep-alive
+
 #### Keep-Alive: timeout=5
 #### Content-Length: 14
+
 #
 #### Hello, World!
+
 ```
 
 **Universal Handler Pattern Validation:**
 
 ```bash
 # Test various HTTP methods
+
 curl -X GET http://127.0.0.1:3000/
 curl -X POST http://127.0.0.1:3000/
 curl -X PUT http://127.0.0.1:3000/
@@ -21775,12 +22127,14 @@ curl -X OPTIONS http://127.0.0.1:3000/
 #### Expected: All return "Hello, World!" with 200 OK
 
 #### Test various URL paths
+
 curl http://127.0.0.1:3000/
 curl http://127.0.0.1:3000/test
 curl http://127.0.0.1:3000/api/data
 curl http://127.0.0.1:3000/arbitrary/nested/path/here
 
 #### Expected: All return "Hello, World!" with 200 OK
+
 ```
 
 #### 9.1.5.2 Network Configuration Validation
@@ -21789,31 +22143,39 @@ curl http://127.0.0.1:3000/arbitrary/nested/path/here
 
 ```bash
 # Check if port 3000 is in use before starting server
+
 lsof -i :3000
 # Expected: No output (port available)
 
 #### OR using netstat
+
 netstat -an | grep 3000
 #### Expected: No output (port available)
 
 #### Start server
+
 node server.js &
 
 #### Verify port is now bound
+
 lsof -i :3000
 #### Expected Output:
+
 #### COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 #### node     12345 user   20u  IPv4 123456      0t0  TCP 127.0.0.1:3000 (LISTEN)
 
 #### Verify localhost-only binding (no external access)
+
 lsof -i :3000 | grep LISTEN
 #### Expected: Shows 127.0.0.1:3000 (not 0.0.0.0:3000)
+
 ```
 
 **Hostname Binding Validation:**
 
 ```bash
 # Verify server only responds to localhost
+
 curl http://127.0.0.1:3000/
 # Expected: ✅ Success (Hello, World!)
 
@@ -21821,10 +22183,12 @@ curl http://localhost:3000/
 # Expected: ✅ Success (Hello, World!)
 
 #### Attempt to access from external interface (should fail if not NAT'd)
+
 curl http://$(hostname -I | awk '{print $1}'):3000/
 #### Expected: ❌ Connection refused (if no port forwarding)
 
 #### Note: External access failure validates localhost-only security boundary
+
 ```
 
 #### 9.1.5.3 Performance Validation
@@ -21833,17 +22197,21 @@ curl http://$(hostname -I | awk '{print $1}'):3000/
 
 ```bash
 # Measure single request response time
+
 curl -w "Time: %{time_total}s\n" -o /dev/null -s http://127.0.0.1:3000/
 
 #### Expected: Time: 0.001-0.010s (1-10ms)
+
 #### Validates: <10ms SLA target
 
 #### Measure 100 requests to calculate average
+
 for i in {1..100}; do
   curl -w "%{time_total}\n" -o /dev/null -s http://127.0.0.1:3000/
 done | awk '{sum+=$1} END {print "Average: " sum/NR "s"}'
 
 #### Expected: Average: 0.001-0.005s (1-5ms)
+
 #### Validates: Consistent performance under repeated requests
 ```
 
@@ -21851,34 +22219,44 @@ done | awk '{sum+=$1} END {print "Average: " sum/NR "s"}'
 
 ```bash
 # Apache Bench throughput test
+
 ab -n 1000 -c 10 http://127.0.0.1:3000/
 
 #### Key Metrics to Verify:
+
 #### - Requests per second: >100 (typically >1000)
 #### - Time per request: <10ms average
+
 #### - Failed requests: 0
 #### - Non-2xx responses: 0
 
 #### Expected Output (excerpt):
+
 #### Requests per second:    1247.82 [#/sec] (mean)
 #### Time per request:       8.014 [ms] (mean)
+
 #### Time per request:       0.801 [ms] (mean, per request)
 #### Failed requests:        0
+
 ```
 
 **Memory Footprint Validation:**
 
 ```bash
 # Check memory usage (Linux)
+
 ps aux | grep "node server.js" | grep -v grep | awk '{print "Memory: " $6/1024 " MB"}'
 
 #### Expected: Memory: 10-30 MB
+
 #### Validates: <50MB SLA target
 
 #### Check memory usage (macOS)
+
 ps aux | grep "node server.js" | grep -v grep | awk '{print "Memory: " $6/1024/1024 " MB"}'
 
 #### Expected: Memory: 10-30 MB
+
 ```
 
 #### 9.1.5.4 Process Management Validation
@@ -21887,58 +22265,74 @@ ps aux | grep "node server.js" | grep -v grep | awk '{print "Memory: " $6/1024/1
 
 ```bash
 # Start server with PM2
+
 pm2 start server.js --name hao-backprop-test
 
 #### Verify process is running
+
 pm2 list
 #### Expected: Status 'online', 0 restarts
 
 #### Check detailed process info
+
 pm2 show hao-backprop-test
 #### Verify:
+
 #### - Status: online
 #### - Uptime: increasing
+
 #### - Restarts: 0
 #### - Memory: <50MB
+
 #### - CPU: <1% idle
 
 #### Test automatic restart
+
 pm2 restart hao-backprop-test
 #### Expected: Process restarts successfully, 0 downtime
 
 #### Verify logs
+
 pm2 logs hao-backprop-test --lines 10
 #### Expected: Contains "Server running at http://127.0.0.1:3000/"
+
 ```
 
 **Docker Container Validation:**
 
 ```bash
 # Build Docker image
+
 docker build -t hao-backprop-test .
 
 #### Expected: Build succeeds with exit code 0
 
 #### Run container
+
 docker run -d -p 3000:3000 --name hao-test hao-backprop-test
 
 #### Verify container is running
+
 docker ps | grep hao-test
 #### Expected: Container status 'Up'
 
 #### Test server inside container
+
 curl http://localhost:3000/
 #### Expected: Hello, World!
 
 #### Check container logs
+
 docker logs hao-test
 #### Expected: Contains "Server running at http://127.0.0.1:3000/"
 
 #### Verify resource limits
+
 docker stats hao-test --no-stream
 #### Expected: Memory <50MB, CPU <1%
 
 #### Cleanup
+
 docker stop hao-test && docker rm hao-test
 ```
 
@@ -21948,28 +22342,35 @@ docker stop hao-test && docker rm hao-test
 
 ```bash
 # Start server
+
 node server.js &
 
 #### Attempt to start second instance on same port
+
 node server.js
 #### Expected Error Output:
+
 #### Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
 #### Expected Exit Code: 1
 
 #### Validation: Server correctly handles port conflicts and exits cleanly
+
 ```
 
 **Permission Error Validation:**
 
 ```bash
 # Attempt to bind to privileged port without sudo (Linux/macOS)
+
 PORT=80 node -e "require('http').createServer().listen(80, '127.0.0.1')"
 
 #### Expected Error Output:
+
 #### Error: listen EACCES: permission denied 127.0.0.1:80
 #### Expected Exit Code: 1
 
 #### Note: Validates error handling for permission issues
+
 #### Current implementation uses port 3000 (unprivileged), so this is not a runtime issue
 ```
 
@@ -21986,26 +22387,31 @@ set -e  # Exit on error
 echo "=== Starting Integration Test ==="
 
 #### Step 1: Environment Check
+
 echo "Checking Node.js version..."
 node --version | grep -q "v[0-9]" || exit 1
 echo "✅ Node.js is installed"
 
 #### Step 2: Port Availability Check
+
 echo "Checking port 3000 availability..."
 lsof -i :3000 && echo "❌ Port 3000 is in use" && exit 1
 echo "✅ Port 3000 is available"
 
 #### Step 3: Start Server
+
 echo "Starting server..."
 node server.js &
 SERVER_PID=$!
 echo "Server PID: $SERVER_PID"
 
 #### Step 4: Wait for Server Startup
+
 echo "Waiting for server to start..."
 sleep 2
 
 #### Step 5: Basic Connectivity Test
+
 echo "Testing basic connectivity..."
 RESPONSE=$(curl -s http://127.0.0.1:3000/)
 if [ "$RESPONSE" = "Hello, World!" ]; then
@@ -22017,6 +22423,7 @@ else
 fi
 
 #### Step 6: HTTP Status Code Test
+
 echo "Testing HTTP status code..."
 STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:3000/)
 if [ "$STATUS" = "200" ]; then
@@ -22028,6 +22435,7 @@ else
 fi
 
 #### Step 7: Universal Handler Test (Multiple Methods)
+
 echo "Testing universal handler with multiple HTTP methods..."
 for METHOD in GET POST PUT DELETE; do
   RESPONSE=$(curl -s -X $METHOD http://127.0.0.1:3000/)
@@ -22041,6 +22449,7 @@ for METHOD in GET POST PUT DELETE; do
 done
 
 #### Step 8: Universal Handler Test (Multiple Paths)
+
 echo "Testing universal handler with multiple paths..."
 for PATH in / /test /api/data /arbitrary/path; do
   RESPONSE=$(curl -s http://127.0.0.1:3000$PATH)
@@ -22054,6 +22463,7 @@ for PATH in / /test /api/data /arbitrary/path; do
 done
 
 #### Step 9: Performance Test
+
 echo "Running performance test..."
 ab -n 100 -c 10 -q http://127.0.0.1:3000/ > /dev/null 2>&1
 if [ $? -eq 0 ]; then
@@ -22065,6 +22475,7 @@ else
 fi
 
 #### Step 10: Cleanup
+
 echo "Cleaning up..."
 kill $SERVER_PID
 wait $SERVER_PID 2>/dev/null
